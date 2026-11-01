@@ -1,6 +1,6 @@
 /* ===== PLANES PKR + PAGO A TALAL + ACTIVACIÓN ADMIN + COMPROBANTES ===== */
 (function(){
-var NX_PAY={jazzcash:'+92 3XX XXXXXXX',easypaisa:'+92 3XX XXXXXXX',holder:'Talal · NexusShop Pakistan'};
+var NX_PAY=window.NX_PAY={jazzcash:'',easypaisa:'',holder:'Talal · NexusShop Pakistan'};
 var NX_PLANS=[
  {id:'free',name:'Free',price:0,features:['Up to 5 products live','WhatsApp COD checkout','Committee Buy groups','Public shop profile']},
  {id:'pro',name:'Pro',price:2500,features:['Up to 50 products live','Priority placement on home','Sales stats dashboard','Pro shop badge','Official payment receipts']},
@@ -69,3 +69,25 @@ function stats(s){var div=document.createElement('div');div.className='nxpf-card
   SB.from('ns_products').select('id',{count:'exact',head:true}).eq('shop_id',s.id).then(function(c){
    var el=document.getElementById('myProdCount');if(el&&c.count!=null)el.innerHTML=c.count+' / '+window.NXLIMIT+(p==='free'?' free':' included');});});}
  setTimeout(setLimit,2500);})();
+/* config dinamica de cobro + metodos disponibles */
+(function(){
+ function loadCfg(){if(!window.SB)return setTimeout(loadCfg,1200);
+  SB.from('pay_config').select('*').limit(1).then(function(r){var c=r.data&&r.data[0];if(!c)return;
+   if(c.jazzcash)NX_PAY.jazzcash=c.jazzcash;if(c.easypaisa)NX_PAY.easypaisa=c.easypaisa;
+   if(c.bank_name)NX_PAY.bank_name=c.bank_name;if(c.bank_title)NX_PAY.bank_title=c.bank_title;
+   if(c.bank_iban)NX_PAY.bank_iban=c.bank_iban;if(c.holder)NX_PAY.holder=c.holder;});}
+ setTimeout(loadCfg,1500);
+ window.nxPay=function(shopId,plan,price){var ov=document.getElementById('nxPayOv');ov.hidden=false;
+  var methods=[];var lines='';
+  if(NX_PAY.jazzcash){methods.push('JazzCash');lines+='• JazzCash: <b>'+NX_PAY.jazzcash+'</b><br>';}
+  if(NX_PAY.easypaisa){methods.push('Easypaisa');lines+='• Easypaisa: <b>'+NX_PAY.easypaisa+'</b><br>';}
+  if(NX_PAY.bank_name){methods.push('Bank transfer');lines+='• '+NX_PAY.bank_name+' — Title: <b>'+NX_PAY.bank_title+'</b> — AC/IBAN: <b>'+NX_PAY.bank_iban+'</b><br>';}
+  if(!methods.length)lines='Payment methods are being configured. Contact support on WhatsApp.';
+  ov.innerHTML='<div class="nxpf-card"><button class="nxpf-btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:inherit" onclick="document.getElementById(\'nxPayOv\').hidden=true">← Back</button>'+
+  '<h2 style="margin:10px 0 6px;font-size:16px;font-weight:800">💳 Subscribe to '+plan.toUpperCase()+'</h2>'+
+  '<p style="font-size:15px;font-weight:800;color:#00A650">Rs. '+price.toLocaleString()+' / month (PKR)</p>'+
+  '<p style="font-size:12px;opacity:.85;line-height:1.7;margin:10px 0">Send the amount to the NexusShop Pakistan account:<br>'+lines+'Holder: <b>'+NX_PAY.holder+'</b><br>Then paste the Transaction ID / deposit slip number below. Your plan is activated within 24h with an official receipt.</p>'+
+  '<div class="nxpf-lbl">Method</div><select class="nxpf-inp" id="pyM">'+methods.map(function(m){return '<option>'+m+'</option>'}).join('')+'</select>'+
+  '<div class="nxpf-lbl">Transaction ID / slip number</div><input class="nxpf-inp" id="pyT" placeholder="e.g. 1234567890">'+
+  '<button class="nxpf-btn" onclick="nxPaySend(\''+shopId+'\',\''+plan+'\','+price+')">✅ I have paid — send for activation</button></div>';};
+})();
