@@ -21,7 +21,7 @@ window.nxGuestForm=function(after){var g=guest();var o=document.getElementById('
  '<button class="btn" onclick="nxGuestSave()">Continue →</button></div>';
  window._gAfter=after;};
 window.nxGuestSave=function(){var n=document.getElementById('gN').value.trim(),p=document.getElementById('gP').value.trim(),c=document.getElementById('gC').value.trim();
- if(!n||p.replace(/\D/g,'').length<10){toast('Name + valid WhatsApp required','err');return}
+ if(!n||p.replace(/\D/g,'').length<10||p.replace(/[^0-9]/g,"").length>13){toast('Name + valid WhatsApp required','err');return}
  saveGuest({name:n,phone:p,city:c});document.getElementById('nxGroup').hidden=true;
  if(window._gAfter)window._gAfter();};
 function whoLine(){var g=guest();return (BUYER&&BUYER.email?BUYER.email+' / ':'')+(g?g.name+' · '+g.phone:'guest')}
@@ -65,3 +65,27 @@ function userTap(){var g=guest();var o=document.getElementById('nxGroup');o.hidd
 window.nxGuestEdit=function(){nxGuestForm(function(){userTap()})};
 window.nxLogout=function(){BUYER=null;LS.set('nx_buyer',null);document.getElementById('userB').textContent='👤';nxClose();toast('Logged out','info');render()};
 window.nxEmailLogin=function(){nxClose();go('login')};
+/* ===== LAUNCH POLISH: reviews, stock, select style, multi-shop cart ===== */
+(function(){
+document.head.insertAdjacentHTML('beforeend','<style>select.f{background:var(--glass);color:var(--text);border:1px solid var(--border);border-radius:14px;padding:12px 14px;font-size:14px;font-family:inherit}select.f option{background:#0b1030;color:#eef2ff}body.light select.f{background:#fff;color:#141a3a}body.light select.f option{background:#fff;color:#141a3a}</style>');
+window.nxPolish=function(){var p=PRODS.find(function(x){return x.id===CUR});if(!p||p.demo)return;
+ var tags=document.querySelector('#view .tags');
+ if(tags&&p.stock!=null&&!tags.querySelector('.tgstock'))tags.insertAdjacentHTML('beforeend','<span class="tag tgstock">📦 '+p.stock+' in stock</span>');
+ if(!document.getElementById('nxRev')){var box=document.getElementById('nxCommitBox');if(box)box.insertAdjacentHTML('beforebegin',
+ '<div class="card" id="nxRev"><h2 class="t">⭐ Reviews</h2><p style="font-size:13px;color:var(--muted);line-height:1.6">★★★★★ <b>0 reviews yet</b> — be the first! Reviews unlock with the first delivered COD orders. Every review is tied to a real order, so ratings on NexusShop can never be faked.</p></div>');}};
+var _rp=render;render=function(){_rp();if(typeof VIEW!=='undefined'&&VIEW==='detail')nxPolish();};
+window.waCart=function(){function send(){var c=cart().filter(function(x){return !x.demo});if(!c.length)return;
+ var shops={};c.forEach(function(x){var k=x.shopName||'Seller';(shops[k]=shops[k]||[]).push(x)});
+ var keys=Object.keys(shops);var g=guest();
+ function whoLine2(){return (BUYER&&BUYER.email?BUYER.email+' / ':'')+(g?g.name+' · '+g.phone:'guest')}
+ function msgFor(k){var items=shops[k];return 'Assalam o Alaikum '+k+'! I want to order from NexusShop:\n'+
+  items.map(function(x){return '• '+x.name+' x'+x.q+' — '+money(x.price*x.q)}).join('\n')+
+  '\nTotal: '+money(items.reduce(function(s,x){return s+x.price*x.q},0))+' (COD)'+
+  '\n👤 '+whoLine2()+(g&&g.city?' · '+g.city:'')+
+  (window.NXCOURIER&&window.NXCOURIER!=='Seller arranges'?'\n🚚 Courier: '+window.NXCOURIER:'');}
+ var first=keys[0];var wa=(shops[first][0].wa)||WA_DEFAULT;
+ window.open('https://wa.me/'+String(wa).replace(/\D/g,'')+'?text='+encodeURIComponent(msgFor(first)),'_blank');
+ if(keys.length>1&&navigator.clipboard){navigator.clipboard.writeText(msgFor(keys[1]));toast('📋 Order for '+keys[1]+' copied — paste in WhatsApp','info');}
+ markOrdered(c.map(function(x){return x.i}));saveCart([]);toast('✓ Order sent — saved for reorder','ok');render();}
+ if(!guest())nxGuestForm(send);else send();};
+})();

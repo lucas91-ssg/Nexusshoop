@@ -28,7 +28,7 @@ window.nxAiSend=function(text){
   var ty=nxAiAdd('ai','…');
   var settled=false;
   function finish(reply,ids){ if(settled)return; settled=true; try{ty.remove()}catch(e){} nxAiAdd('ai',reply,ids); }
-  setTimeout(function(){ if(!settled){ var r=nxLocal2(text); finish(r.reply,r.picks); } },12000);
+  setTimeout(function(){ if(!settled){ var r=nxLocal2(text); finish(r.reply,r.picks); } },6000);
   var snap=nxSnap();
   var SYS='You are Raahnuma, the friendly shopping guide of NexusShop (Pakistan marketplace, COD cash-on-delivery, WhatsApp checkout, Committee Buy group discounts). Answer in the user\'s language (Urdu if Urdu, English otherwise; understand Roman Urdu and Spanish too). Recommend ONLY product ids present in CATALOG. Reply with ONLY valid JSON: {"reply":string,"products":[id strings, max 4]}. If nothing matches, say so kindly and suggest closest alternatives. Be warm, brief, useful.';
   try{

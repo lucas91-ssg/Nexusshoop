@@ -246,7 +246,7 @@ footer{max-width:640px;margin:0 auto;padding:20px 16px 8px;text-align:center;col
 </header>
 
 <main id="view"></main>
-<footer>© 2026 NexusShop™ · Built with ❤️ in Argentina 🇦🇷 · Made for Pakistan 🇰</footer>
+<footer>© 2026 NexusShop™ · The E-Commerce of Pakistan · پاکستان کا ای کامرس</footer>
 
 <nav id="nav">
   <button data-v="home" onclick="go('home')"><i>🏠</i><span data-i="home"></span></button>
@@ -276,11 +276,11 @@ en:{home:'Home',reorder:'Reorder',cart:'Cart',orders:'Orders',sell:'Sell',search
  sellT:'Sell on NexusShop',sellP:'Start FREE with 5 products. Then upgrade from PKR 2,500/month.',
  sellBtn:'See plans & subscribe',openCenter:'Open Seller Center',login:'Log in',signup:'Sign up',email:'Email',pass:'Password',logout:'Log out',
  offline:'Offline mode: catalog syncs when connection returns.',noProds:'Products appear as sellers onboard this week.',details:'Details',waSolo:'Chat with seller',back:'← Back',
- demoBanner:'Showcase items are DEMO examples — not real products yet.',
+ demoBanner:'Example catalog with real photos — test orders welcome. First Lahore sellers go live this week.',
  demoDetail:'DEMO showcase item — not a real product yet.',
  pkWelcome:'Welcome to Pakistan\'s Future',
  pkTagline:'Where commerce meets innovation. Your marketplace, your language, your success.',
- enterBtn:'Enter NexusShop',buyerLogin:'Buyer login',buyerInfo:'To order, please log in first',
+ enterBtn:'Enter NexusShop',buyerLogin:'Buyer login',buyerInfo:'Sign in is optional — you can order as a guest.',
  carousel:[
   {badge:'🚀 Free',title:'Start Free · Grow Fast',subtitle:'5 products FREE forever. No credit card needed.',features:['5 Free Products','Direct WhatsApp','Zero Commission']},
   {badge:'🇵🇰 Local',title:'Made for Pakistan',subtitle:'Cash on Delivery, Urdu support, WhatsApp checkout.',features:['COD Ready','Urdu Language','WhatsApp']},
@@ -296,11 +296,11 @@ ur:{home:'ہوم',reorder:'دوبارہ آرڈر',cart:'کارٹ',orders:'آرڈ
  orderWA:'واٹس ایپ پر آرڈر (COD)',sellT:'NexusShop پر فروخت',sellP:'5 مصنوعات مفت۔ پھر PKR 2,500/ماہ سے اپ گریڈ کریں۔',
  sellBtn:'پلان دیکھیں',openCenter:'سیلر سینٹر کھولیں',login:'لاگ ان',signup:'سائن اپ',email:'ای میل',pass:'پاس ورڈ',logout:'لاگ آؤٹ',
  offline:'آف لائن موڈ: کنکشن آنے پر کیٹلاگ sync ہوگا۔',noProds:'اس ہفتہ فروش شامل ہو رہے ہیں۔',details:'تفصیل',waSolo:'فروخت کنندہ سے چیٹ',back:'← واپس',
- demoBanner:'شوکیس آئٹمز DEMO مثالیں ہیں — ابھی حقیقی مصنوعات نہیں۔',
+ demoBanner:'مثالی کیٹلاگ حقیقی تصاویر کے ساتھ — ٹیسٹ آرڈرز خوش آمدید۔ لاہور کے پہلے فروش اس ہفتے شامل ہو رہے ہیں۔',
  demoDetail:'DEMO شوکیس آئٹم — ابھی حقیقی پروڈکٹ نہیں۔',
  pkWelcome:'پاکستان کے مستقبل میں خوش آمدید',
  pkTagline:'جہاں تجارت اور جدت ملتی ہے۔ آپ کی مارکیٹ، آپ کی زبان، آپ کی کامیابی۔',
- enterBtn:'نیکسس شاپ میں داخل ہوں',buyerLogin:'خریدار لاگ ان',buyerInfo:'آرڈر کرنے کے لیے پہلے لاگ ان کریں',
+ enterBtn:'نیکسس شاپ میں داخل ہوں',buyerLogin:'خریدار لاگ ان',buyerInfo:'لاگ ان اختیاری ہے — آپ مہمان کے طور پر آرڈر کر سکتے ہیں۔',
  carousel:[
   {badge:'🚀 مفت',title:'مفت شروع کریں · تیزی سے بڑھیں',subtitle:'5 مصنوعات ہمیشہ کے لیے مفت۔ کوئی کریڈٹ کارڈ نہیں۔',features:['5 مفت مصنوعات','ڈائریکٹ واٹس ایپ','زیرو کمیشن']},
   {badge:'🇵🇰 پاکستانی',title:'پاکستان کے لیے بنایا گیا',subtitle:'کیش آن ڈیلیوری، اردو سپورٹ، واٹس ایپ چیک آؤٹ۔',features:['COD تیار','اردو زبان','واٹس ایپ']},
@@ -542,7 +542,7 @@ async function doBuyerSignup(){var email=document.getElementById('le').value.tri
 
 async function loadCatalog(){var s=await ensurePublic();if(!s){var o=document.getElementById('off');if(o)o.hidden=false;return}
  try{var a=await s.from('ns_products').select('*,ns_shops(name,whatsapp,plan)').eq('status','active').limit(60);
-  if(!a.error&&a.data&&a.data.length){PRODS=a.data.map(function(p){return{id:p.id,name:LAN==='ur'&&p.title_ur?p.title_ur:p.title_en,price:(p.price_cents||0)/100,img:p.image_url,cat:p.category_id,desc:p.description,demo:!!p.is_demo,wa:(p.ns_shops&&p.ns_shops.whatsapp)||null,shopName:(p.ns_shops&&p.ns_shops.name)||null,shopPlan:(p.ns_shops&&p.ns_shops.plan)||'free'}});}
+  if(!a.error&&a.data&&a.data.length){PRODS=a.data.map(function(p){return{id:p.id,name:LAN==='ur'&&p.title_ur?p.title_ur:p.title_en,price:(p.price_cents||0)/100,img:p.image_url,cat:p.category_id,desc:p.description,stock:p.stock,demo:!!p.is_demo,wa:(p.ns_shops&&p.ns_shops.whatsapp)||null,shopName:(p.ns_shops&&p.ns_shops.name)||null,shopPlan:(p.ns_shops&&p.ns_shops.plan)||'free'}});}
   else{var b=await s.from('products').select('*').limit(60);
    if(!b.error&&b.data)PRODS=b.data.map(function(p){return{id:p.id,name:p.name||p.title||'Item',price:p.price_pkr||p.price||0,img:p.image_url,cat:p.category_id,desc:p.description,demo:true,wa:null,shopName:null}});}
   var c=await s.from('ns_categories').select('*');if(!c.error&&c.data)CATS=c.data.map(function(x){return{id:x.id,name:LAN==='ur'&&x.name_ur?x.name_ur:x.name_en}});
@@ -595,7 +595,7 @@ function nxForm(title,cb){var g=document.getElementById('nxGroup');g.hidden=fals
  '<button class="btn" onclick="nxSubmitForm()">Confirm →</button></div>';
  window._nxcb=cb;}
 window.nxSubmitForm=function(){var n=document.getElementById('gn').value.trim(),p=document.getElementById('gp').value,c=document.getElementById('gc').value.trim();
- if(!n||nxPhone(p).length<10)return toast('Name + valid WhatsApp required','err');window._nxcb(n,p,c);};
+ if(!n||nxPhone(p).length<10||nxPhone(p).length>13)return toast('Name + valid WhatsApp required','err');window._nxcb(n,p,c);};
 window.nxShow=function(id){var g=document.getElementById('nxGroup');g.hidden=false;g.innerHTML='<div class="card">Loading…</div>';
  Promise.all([SB.from('group_deals').select('*').eq('id',id).single(),SB.from('group_members').select('*').eq('deal_id',id).order('created_at')]).then(function(r){
   var d=r[0].data,mem=r[1].data||[];if(!d)return toast('Group not found','err');
