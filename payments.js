@@ -91,3 +91,23 @@ function stats(s){var div=document.createElement('div');div.className='nxpf-card
   '<div class="nxpf-lbl">Transaction ID / slip number</div><input class="nxpf-inp" id="pyT" placeholder="e.g. 1234567890">'+
   '<button class="nxpf-btn" onclick="nxPaySend(\''+shopId+'\',\''+plan+'\','+price+')">✅ I have paid — send for activation</button></div>';};
 })();
+/* ===== SELLER: bandeja de pedidos entrantes en tiempo real ===== */
+(function(){function esc2(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function money2(n){return 'Rs. '+Number(n||0).toLocaleString('en-PK')}
+function boot2(){if(!window.SB||!window.NXUID)return setTimeout(boot2,1500);
+ SB.from('stores').select('id').eq('owner_id',window.NXUID).limit(1).then(function(r){var s=r.data&&r.data[0];if(s)loadOrders(s.id);});}
+function loadOrders(shopId){SB.from('orders').select('*').eq('store_id',shopId).order('created_at',{ascending:false}).limit(25).then(function(r){var l=r.data||[];
+ var old=document.getElementById('nxOrdersCard');if(old)old.remove();
+ var div=document.createElement('div');div.className='nxpf-card';div.id='nxOrdersCard';
+ div.innerHTML='<h2 style="font-size:16px;font-weight:800;margin-bottom:10px">📥 Incoming orders ('+l.length+')</h2>'+
+ (l.length?l.map(function(o){return '<div style="border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px;margin-bottom:8px;font-size:12.5px;line-height:1.6">'+
+  '<b>'+esc2(o.customer_name)+'</b> · '+esc2(o.customer_city||'')+'<br>📞 '+esc2(o.customer_phone||'')+
+  '<br>'+(o.items||[]).map(function(it){return esc2(it.name)+' x'+it.q}).join(', ')+
+  '<br><b style="color:#00A650">'+money2(o.total)+' · '+o.status.toUpperCase()+'</b>'+
+  (o.status==='pending'?'<div style="margin-top:8px"><button class="nxpf-btn" style="padding:9px" onclick="nxShip(\''+o.id+'\')">🚚 Mark shipped</button></div>':'')+
+  (o.status==='shipped'?'<div style="margin-top:8px"><button class="nxpf-btn" style="padding:9px" onclick="nxDeliver(\''+o.id+'\')">🟢 Mark delivered (COD collected)</button></div>':'')+
+  '</div>';}).join(''):'<p style="font-size:12px;opacity:.7">No orders yet. Share your shop link — orders arrive here in real time.</p>');
+ (document.querySelector('main')||document.body).appendChild(div);});}
+window.nxShip=function(id){SB.from('orders').update({status:'shipped'}).eq('id',id).then(function(){toast('🚚 Marked shipped','ok');location.reload();})};
+window.nxDeliver=function(id){SB.from('orders').update({status:'delivered'}).eq('id',id).then(function(){toast('🟢 Delivered — buyer can now review','ok');location.reload();})};
+setTimeout(boot2,2000);})();
