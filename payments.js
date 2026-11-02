@@ -5,7 +5,7 @@ var NX_PLANS=[
  {id:'free',name:'Free',price:0,features:['Up to 5 products live','WhatsApp COD checkout','Committee Buy groups','Public shop profile']},
  {id:'pro',name:'Pro',price:2500,features:['Up to 50 products live','Priority placement on home','Sales stats dashboard','Pro shop badge','Official payment receipts']},
  {id:'max',name:'Max',price:5000,features:['Up to 500 products live','Top-of-category placement','Everything in Pro','Dedicated WhatsApp support line','Early access to new features']}];
-var ADMIN=['lucasyabi125@gmail.com'];
+var ADMIN=['lucasyabi125@gmail.com','properiapro2025@gmail.com'];
 document.body.insertAdjacentHTML('beforeend','<div id="nxPayOv" style="position:fixed;inset:0;z-index:999;background:#070b21;overflow-y:auto;padding:16px" hidden></div>');
 function boot(){if(!window.SB)return setTimeout(boot,800);
  SB.auth.getUser().then(function(u){if(!u.user)return;window.NXME=u.user.email;window.NXUID=u.user.id;
