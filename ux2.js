@@ -60,3 +60,15 @@ window.nxWaSave=function(){var p=(document.getElementById('waId').value||'').tri
  var g=guest()||{};g.phone=p;g.name=g.name||'Guest';LS.set('nx_guest',g);nxClose();document.getElementById('userB').textContent='✅';toast('✓ WhatsApp identity saved','ok');};
 window.nxGoogle=function(){ensureSB().then(function(s){if(!s){toast('Offline','err');return}s.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname}}).then(function(r){if(r.error)toast('Google sign-in needs one-time setup (Supabase → Auth → Providers → Google). Email works now.','err');});});};
 })();
+/* v2.1: planes públicos con Subscribe que siempre responde */
+(function(){
+window.nxPlans=function(){var o=document.getElementById('nxGroup');o.hidden=false;
+ var FE=[['Up to 5 products live','WhatsApp COD checkout','Committee Buy groups','Public shop profile'],
+ ['Up to 50 products live','Priority placement on home','Sales stats dashboard','Pro shop badge','Official payment receipts'],
+ ['Up to 500 products live','Top-of-category placement','Everything in Pro','Dedicated WhatsApp support','Early access to new features']];
+ var PL=[{n:'Free',p:0},{n:'Pro',p:2500},{n:'Max',p:5000}];
+ o.innerHTML='<div class="card"><button class="btn ghost" style="width:auto;padding:9px 14px;margin:0 0 10px" onclick="nxClose()">← Back</button><h2 class="t">📈 Plans & pricing (PKR)</h2><p style="font-size:12px;color:var(--muted);margin-bottom:10px">No login needed to compare. Subscribe opens the Seller Center payment desk.</p>'+
+ PL.map(function(x,i){return '<div style="border:1px solid '+(i===0?'#00A650':'var(--border)')+';border-radius:14px;padding:12px;margin-bottom:10px;background:'+(i===0?'rgba(0,166,80,.08)':'rgba(255,255,255,.03)')+'"><b style="font-size:14px">'+x.n+' · Rs. '+x.p.toLocaleString()+'/month</b><ul style="margin:8px 0 0 16px;font-size:12px;line-height:1.7;color:var(--muted)">'+FE[i].map(function(f){return '<li>'+(i===0?'✓ ':'🔒 ')+f+'</li>'}).join('')+'</ul>'+(i>0?'<button class="btn" style="margin-top:10px" onclick="nxSubscribe(\''+x.n.toLowerCase()+'\')">&#128179; Subscribe to '+x.n+' →</button>':'')+'</div>';}).join('')+
+ '<button class="btn ghost" onclick="location.href=\'checkout.html\'">Already have an account? Sign in →</button></div>';};
+window.nxSubscribe=function(plan){toast('🔐 Sign in to subscribe — opening Seller Center…','info');setTimeout(function(){location.href='seller.html?plan='+plan;},900);};
+})();

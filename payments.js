@@ -111,3 +111,13 @@ function loadOrders(shopId){SB.from('orders').select('*').eq('store_id',shopId).
 window.nxShip=function(id){SB.from('orders').update({status:'shipped'}).eq('id',id).then(function(){toast('🚚 Marked shipped','ok');location.reload();})};
 window.nxDeliver=function(id){SB.from('orders').update({status:'delivered'}).eq('id',id).then(function(){toast('🟢 Delivered — buyer can now review','ok');location.reload();})};
 setTimeout(boot2,2000);})();
+/* v2.1: nxPay a prueba de fallos + auto-apertura desde ?plan= */
+(function(){
+var _np=window.nxPay;
+window.nxPay=function(a,b,c){if(!document.getElementById('nxPayOv'))document.body.insertAdjacentHTML('beforeend','<div id="nxPayOv" style="position:fixed;inset:0;z-index:999;background:#070b21;overflow-y:auto;padding:16px" hidden></div>');_np(a,b,c);};
+function autoPlan(){var m=new URLSearchParams(location.search).get('plan');if(!m||!window.SB||!window.NXUID)return;
+ SB.from('stores').select('id').eq('owner_id',window.NXUID).limit(1).then(function(r){var s=r.data&&r.data[0];
+  if(!s){toast('Create your shop first, then subscribe','info');return;}
+  window.nxPay(s.id,m,m==='max'?5000:2500);});}
+setTimeout(autoPlan,2500);setTimeout(autoPlan,5000);
+})();
