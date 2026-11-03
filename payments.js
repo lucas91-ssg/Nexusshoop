@@ -137,3 +137,18 @@ setTimeout(autoPlan,2500);setTimeout(autoPlan,5000);
  setTimeout(function(){var m=new URLSearchParams(location.search).get('plan');
   if(m&&!window._payOpened){toast('⚠️ Could not open the payment desk — check your internet and tap See plans again','err');}},9000);
 })();
+/* v2.3: cliente Supabase compartido + reapertura de plan */
+(function(){
+ function mk(){if(window.SB)return;
+  import('https://esm.sh/@supabase/supabase-js@2.45.4').then(function(m){
+   if(!window.SB)window.SB=m.createClient('https://iafofzwxkzwliisvstfy.supabase.co','sb_publishable_uXpbSgDe4OXVWibgQ187RA_INLaX0SY');
+   retryPlan();
+  }).catch(function(){toast('⚠️ Could not load database client','err');});}
+ function retryPlan(){var m=new URLSearchParams(location.search).get('plan');if(!m||window._payOpened)return;
+  function tryOpen(){if(window._payOpened)return;if(!window.SB||!window.NXUID)return setTimeout(tryOpen,1000);
+   SB.from('stores').select('id').eq('owner_id',window.NXUID).limit(1).then(function(r){var s=r.data&&r.data[0];
+    if(s&&window.nxPay){window.nxPay(s.id,m,m==='max'?5000:2500);}});}
+  setTimeout(tryOpen,1500);}
+ setTimeout(mk,1200);setTimeout(mk,3500);
+ window.addEventListener('load',function(){setTimeout(mk,800);});
+})();
