@@ -40,3 +40,37 @@ window.nxActivate=function(id,shopId,plan){var code='NX-'+new Date().getFullYear
   else if(p.ref_text){SB.from('stores').update({plan:plan}).eq('name',p.ref_text).then(function(rs){if(rs.error||(rs.data||[]).length===0){toast('No shop matches "'+p.ref_text+'" — check the exact shop name','err');return;}finish();});}
   else{toast('Payment has no shop or reference','err');}});};
 })();
+/* v2.4: confirmación post-pago + WhatsApp por tap directo + pending banner */
+(function(){
+window.nxPaySendDesk=function(plan,price){var ref=(document.getElementById('dkRef').value||'').trim();var tid=(document.getElementById('dkT').value||'').trim();var m=document.getElementById('dkM').value;
+ if(!ref){toast('Add your seller email or shop name','err');return}
+ if(tid.length<6){toast('Enter the transaction ID from your bank slip','err');return}
+ function client(cb){if(window.SB)return cb();import('https://esm.sh/@supabase/supabase-js@2.45.4').then(function(mm){if(!window.SB)window.SB=mm.createClient('https://iafofzwxkzwliisvstfy.supabase.co','sb_publishable_uXpbSgDe4OXVWibgQ187RA_INLaX0SY');cb();});}
+ client(function(){if(!window.SB){toast('Offline — try again','err');return}
+  SB.from('payments').insert({plan:plan,amount_pkr:price,method:m,txn_ref:tid,ref_text:ref,owner_id:window.NXUID||null,shop_id:window.NXSHOPID||null,status:'pending'}).then(function(r){
+   if(r.error){toast(r.error.message,'err');return}
+   var msg='NexusShop subscription: '+plan.toUpperCase()+' Rs. '+price+'/month via '+m+'. TID: '+tid+' · ref: '+ref+'. Please activate.';
+   window._nxPayMsg=msg;
+   document.getElementById('nxDeskOv').innerHTML=
+   '<div class="card" style="max-width:560px;margin:0 auto;border-color:rgba(0,166,80,.5)"><h2 class="t">✅ Payment requested</h2>'+
+   '<div style="border:1px solid rgba(0,166,80,.4);border-radius:12px;padding:12px;margin:10px 0;font-size:13px;line-height:1.8;background:rgba(0,166,80,.07)">Plan: <b>'+plan.toUpperCase()+'</b><br>Amount: <b>Rs. '+price.toLocaleString()+'</b><br>TID: <b>'+tid+'</b><br>Reference: <b>'+ref+'</b><br>Status: <b style="color:#fbbf24">⏳ PENDING ACTIVATION</b></div>'+
+   '<p style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:10px">Send your bank slip to support now. Your features unlock within 24h with an official receipt — until then they stay locked.</p>'+
+   '<button class="btn wa" onclick="window.open(\'https://wa.me/542257550650?text=\'+encodeURIComponent(window._nxPayMsg),\'_blank\')">💬 Send slip on WhatsApp</button>'+
+   '<button class="btn ghost" onclick="navigator.clipboard&&navigator.clipboard.writeText(window._nxPayMsg);toast(\'📋 Copied\',\'info\')">📋 Copy message</button>'+
+   '<button class="btn ghost" onclick="document.getElementById(\'nxDeskOv\').hidden=true">Done</button></div>';
+   toast('✓ Payment registered — send your slip to support','ok');});});};
+window.nxActivate=function(id,shopId,plan){var code='NX-'+new Date().getFullYear()+'-'+Math.floor(1000+Math.random()*9000);
+ SB.from('payments').select('*').eq('id',id).single().then(function(pr){var p=pr.data||{};
+  function finish(){SB.from('payments').update({status:'active',receipt_code:code,activated_at:new Date().toISOString()}).eq('id',id).then(function(){toast('✓ Activated — receipt '+code,'ok');location.reload();});}
+  if(shopId){SB.from('stores').update({plan:plan}).eq('id',shopId).then(finish);}
+  else if(p.ref_text){SB.from('stores').update({plan:plan}).ilike('name',p.ref_text.trim()).then(function(rs){if(rs.error||(rs.data||[]).length===0){toast('No shop matches "'+p.ref_text+'" — check the shop name','err');return;}finish();});}
+  else{toast('Payment has no shop or reference','err');}});};
+function pendingBanner(){if(location.pathname.indexOf('seller')<0)return;if(!window.SB||!window.NXUID)return setTimeout(pendingBanner,1500);
+ SB.from('stores').select('id,name').eq('owner_id',window.NXUID).limit(1).then(function(r){var s=r.data&&r.data[0];if(!s)return;
+  function done(l){if(!l.length||document.getElementById('nxPendBan'))return;
+   var host=document.querySelector('main')||document.body;
+   host.insertAdjacentHTML('afterbegin','<div id="nxPendBan" class="card" style="border-color:rgba(251,191,36,.5);background:rgba(251,191,36,.08)"><b style="font-size:13.5px">⏳ Payment under review</b><p style="font-size:12px;color:var(--muted);line-height:1.6;margin:6px 0">Your '+l[0].plan.toUpperCase()+' subscription is pending activation. Features unlock with your official receipt (within 24h of your slip).</p></div>');}
+  SB.from('payments').select('plan').eq('status','pending').eq('shop_id',s.id).limit(1).then(function(pr){var l=pr.data||[];if(l.length)return done(l);
+   SB.from('payments').select('plan').eq('status','pending').ilike('ref_text',s.name).limit(1).then(function(pr2){done(pr2.data||[]);});});});}
+setTimeout(pendingBanner,2000);setTimeout(pendingBanner,5000);
+})();
