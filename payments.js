@@ -129,3 +129,11 @@ setTimeout(autoPlan,2500);setTimeout(autoPlan,5000);
  setTimeout(function(){var m=new URLSearchParams(location.search).get('plan');
   if(m&&!window._payOpened){toast('⚠️ Could not open the payment desk — check your internet and tap See plans again','err');}},9000);
 })();
+/* v2.2: feedback si el payment desk no puede abrirse (sin red) */
+(function(){
+ window._payOpened=false;
+ var _np2=window.nxPay; window.nxPay=function(a,b,c){window._payOpened=true;_np2(a,b,c);};
+ window.addEventListener('offline',function(){toast('📡 No connection — orders and payments need internet','err');});
+ setTimeout(function(){var m=new URLSearchParams(location.search).get('plan');
+  if(m&&!window._payOpened){toast('⚠️ Could not open the payment desk — check your internet and tap See plans again','err');}},9000);
+})();
