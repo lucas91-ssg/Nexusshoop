@@ -171,9 +171,10 @@ window.delProd=async function(id){if(!confirm('Delete this product?'))return;
  var r=await SB.from('ns_products').delete().eq('id',id);toast(r.error?r.error.message:'Deleted',r.error?'err':'ok');if(!r.error)await refresh();};
 boot();
 </script>
-<script src="seller-profile.js?v=1"></script>
-<script src="payments.js?v=1"></script>
-<script src="seller-tools.js?v=1"></script>
-<script src="paydesk.js?v=1"></script>
+<script src="seller-profile.js?v=2"></script>
+<script src="payments.js?v=2"></script>
+<script src="seller-tools.js?v=2"></script>
+<script src="paydesk.js?v=2"></script>
+<script src="payui.js?v=2"></script>
 </body>
 </html>
