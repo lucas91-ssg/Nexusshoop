@@ -70,3 +70,4 @@ function splashUp(){var s=document.getElementById('splash');if(!s||s.dataset.ux5
   var cube=s.querySelector('[class*="cube"],[id*="cube"]');if(cube)cube.style.transform='rotateY('+(x*26)+'deg) rotateX('+(-y*20)+'deg)';});}
 setTimeout(splashUp,300);setTimeout(splashUp,1200);
 })();
+window.nxPlans=function(){nxPlanGate();};
