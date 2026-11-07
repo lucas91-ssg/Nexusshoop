@@ -1,21 +1,21 @@
-/* ===== UX15: UN SOLO ARCHIVO — precios + urdu sin reload + shop now ===== */
+/* ===== NX_FINAL: el único archivo de UX — precios + urdu + shop now, sin loops ===== */
 (function(){
 "use strict";
-var DONE=false;
-function run(){
- if(DONE)return;DONE=true;
+var INIT_DONE=false;
 
- /* A) PRECIOS: reemplazo directo */
+function init(){
+ if(INIT_DONE)return;INIT_DONE=true;
+ 
+ /* A) PRECIOS CORRECTOS */
+ var priceMap={'Rs. 2,500/mo':'Rs. 1,999/mo','Rs. 5,000/mo':'Rs. 3,999/mo',
+               'Rs. 2,500/month':'Rs. 1,999/mo','Rs. 5,000/month':'Rs. 3,999/mo'};
  document.body.querySelectorAll('*').forEach(function(el){
   if(el.children.length>0)return;
   var t=el.textContent.trim();
-  if(t==='Rs. 2,500/mo'||t==='Rs. 2,500/month')el.textContent='Rs. 1,999/mo';
-  if(t==='Rs. 5,000/mo'||t==='Rs. 5,000/month')el.textContent='Rs. 3,999/mo';
-  if(t==='Rs. 2,500')el.textContent='Rs. 1,999';
-  if(t==='Rs. 5,000')el.textContent='Rs. 3,999';
+  if(priceMap[t])el.textContent=priceMap[t];
  });
-
- /* B) URDU SIN RELOAD */
+ 
+ /* B) URDU SIN RELOADS */
  var UR={};
  UR['Shop Now']='ابھی خریدیں';UR['Start Selling — free']='فروخت شروع کریں — مفت';
  UR['The marketplace that speaks your language']='وہ مارکیٹ جو آپ کی بولی بولتی ہے';
@@ -82,42 +82,45 @@ function run(){
  UR['New']='نیا';UR['Only 5 left']='صرف 5 باقی';UR['Home']='ہوم';
  UR['Search products...']='مصنوعات تلاش کریں...';
 
- function doSweep(){
-  var ur=document.documentElement.dir==='rtl';
+ function translateToUrdu(){
+  document.documentElement.dir='rtl';document.documentElement.lang='ur';
+  localStorage.setItem('nx_lang','ur');
   document.body.querySelectorAll('*').forEach(function(el){
    if(el.children.length>0||el.tagName==='SCRIPT'||el.tagName==='STYLE')return;
    var t=el.textContent.trim();if(!t)return;
-   if(ur&&UR[t])el.textContent=UR[t];
+   if(UR[t])el.textContent=UR[t];
   });
  }
-
+ 
+ function translateToEnglish(){
+  document.documentElement.dir='ltr';document.documentElement.lang='en';
+  localStorage.setItem('nx_lang','en');
+  location.reload(); // Solo para volver a inglés limpio
+ }
+ 
  var urduBtn=[].slice.call(document.querySelectorAll('button')).find(function(b){return b.textContent.trim()==='اردو'});
  var enBtn=[].slice.call(document.querySelectorAll('button')).find(function(b){return b.textContent.trim()==='English'});
- if(urduBtn){
-  urduBtn.onclick=function(e){e.preventDefault();e.stopPropagation();
-   document.documentElement.dir='rtl';document.documentElement.lang='ur';
-   localStorage.setItem('nx_lang','ur');doSweep();return false;};
+ 
+ if(urduBtn)urduBtn.onclick=function(e){e.preventDefault();translateToUrdu();return false;};
+ if(enBtn)enBtn.onclick=function(e){e.preventDefault();translateToEnglish();return false;};
+ 
+ if(localStorage.getItem('nx_lang')==='ur'){
+  setTimeout(translateToUrdu,200);
  }
- if(enBtn){
-  enBtn.onclick=function(e){e.preventDefault();e.stopPropagation();
-   document.documentElement.dir='ltr';document.documentElement.lang='en';
-   localStorage.setItem('nx_lang','en');doSweep();return false;};
- }
- if(localStorage.getItem('nx_lang')==='ur'){document.documentElement.dir='rtl';setTimeout(doSweep,200);}
-
- /* C) SHOP NOW — scroll al grid */
+ 
+ /* C) SHOP NOW FUNCIONAL */
  var shopBtn=[].slice.call(document.querySelectorAll('button')).find(function(b){return /Shop Now/.test(b.textContent||'')});
  if(shopBtn){
-  shopBtn.onclick=function(e){e.preventDefault();e.stopPropagation();
+  shopBtn.onclick=function(e){e.preventDefault();
    var grid=document.querySelector('#view');
    if(grid)grid.scrollIntoView({behavior:'smooth',block:'start'});
    else window.scrollTo({top:600,behavior:'smooth'});
-   return false;};
+   return false;
+  };
  }
 }
 
-/* Ejecutar UNA SOLA VEZ cuando el DOM esté listo */
-if(document.readyState==='complete')run();
-else window.addEventListener('load',run);
-setTimeout(run,500);
+// Ejecutar UNA sola vez cuando todo esté listo
+if(document.readyState==='complete')init();
+else window.addEventListener('load',init);
 })();
