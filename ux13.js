@@ -28,7 +28,7 @@ function setupUrdu(){
   document.documentElement.dir='ltr';
   document.documentElement.lang='en';
   localStorage.setItem('nx_lang','en');
-  location.reload();
+  ;
  };
  if(localStorage.getItem('nx_lang')==='ur'){document.documentElement.dir='rtl';setTimeout(doUrduSweep,300);}
 }
