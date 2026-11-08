@@ -76,3 +76,66 @@ var _p=window.pickLang;if(_p&&!window._nxPL){window._nxPL=1;window.pickLang=func
 fixPrices();
 });
 })();
+/* ===== v11 module: profile + photo + predictive For-You + full settings + light mode PK ===== */
+;(function(){
+"use strict";
+function ready(fn){if(document.readyState!=='loading')fn();else document.addEventListener('DOMContentLoaded',fn);}
+ready(function(){
+function applyTheme(){var l=localStorage.getItem('nx_theme')==='light';document.documentElement.classList.toggle('nxLight',l);
+ if(!document.getElementById('nxLightCss')){var st=document.createElement('style');st.id='nxLightCss';
+ st.textContent='html.nxLight{--bg:#f7fcf8;--glass:rgba(1,65,28,.06);--border:rgba(1,65,28,.18);--text:#06281a;--muted:#41684f;--grad:linear-gradient(135deg,#01411C,#059669,#34d399)}html.nxLight body{background:#f7fcf8;color:#06281a}html.nxLight header,html.nxLight nav{background:rgba(255,255,255,.9)}html.nxLight .card,html.nxLight .pcard{background:#fff;border-color:rgba(1,65,28,.14)}html.nxLight .search,html.nxLight input.f{background:#fff;color:#06281a;border-color:rgba(1,65,28,.22)}html.nxLight .chip,html.nxLight .tag,html.nxLight .slide-pill{background:rgba(1,65,28,.06);color:#06281a;border-color:rgba(1,65,28,.18)}html.nxLight .btn,html.nxLight .add{color:#fff}html.nxLight .infob{background:rgba(5,150,105,.08);border-color:rgba(5,150,105,.35);color:#065f46}html.nxLight .empty{color:#41684f}';
+ document.head.appendChild(st);}}
+applyTheme();
+function prof(){try{return JSON.parse(localStorage.getItem('nx_profile')||'null')}catch(e){return null}}
+function saveProf(p){localStorage.setItem('nx_profile',JSON.stringify(p));if(p.email){var b={email:p.email,loginTime:Date.now()};localStorage.setItem('nx_buyer',JSON.stringify(b));window.BUYER=b;}avatar();}
+function avatar(){var u=document.getElementById('userB');if(!u)return;var p=prof();
+ if(p&&p.pic){u.innerHTML='<img src="'+p.pic+'" style="width:26px;height:26px;border-radius:50%;object-fit:cover">';}
+ else if(p&&p.name){u.textContent=p.name.charAt(0).toUpperCase();}
+ else if(window.BUYER){u.textContent='✅';}else{u.textContent='👤';}}
+window.nxProfile=function(){var p=prof()||{};var ov=document.createElement('div');ov.id='nxProfOv';ov.style.cssText='position:fixed;inset:0;z-index:9998;background:var(--bg,#070b21);overflow-y:auto;padding:16px';
+ ov.innerHTML='<div class="card" style="max-width:560px;margin:0 auto"><button class="btn ghost" style="width:auto;padding:10px 16px" onclick="document.getElementById(\'nxProfOv\').remove()">← Back</button><h2 class="t" style="margin-top:12px">👤 My Profile</h2>'+
+ '<div style="display:flex;align-items:center;gap:12px;margin:12px 0">'+(p.pic?'<img id="nxPicPrev" src="'+p.pic+'" style="width:64px;height:64px;border-radius:50%;object-fit:cover">':'<div id="nxPicPrev" style="width:64px;height:64px;border-radius:50%;background:var(--glass);display:flex;align-items:center;justify-content:center;font-size:26px">👤</div>')+
+ '<label class="btn ghost" style="width:auto;padding:10px 14px;cursor:pointer;margin:0">📷 Photo<input type="file" accept="image/*" hidden id="nxPicIn"></label></div>'+
+ '<div class="lbl">Full name</div><input class="f" id="nxPName" value="'+(p.name||'')+'" placeholder="e.g. Ali Raza">'+
+ '<div class="lbl">Email</div><input class="f" id="nxPEmail" type="email" value="'+(p.email||'')+'" placeholder="you@email.com">'+
+ '<div class="lbl">WhatsApp</div><input class="f" id="nxPWa" value="'+(p.wa||'')+'" placeholder="+92 3XX XXXXXXX">'+
+ '<div class="lbl">City</div><input class="f" id="nxPCity" value="'+(p.city||'')+'" placeholder="Lahore">'+
+ '<button class="btn" style="margin-top:8px" onclick="nxSaveProfile()">💾 Save profile</button>'+
+ (p.email?'<button class="btn ghost" style="margin-top:8px" onclick="nxLogout()">Log out</button>':'')+'</div>';
+ document.body.appendChild(ov);
+ document.getElementById('nxPicIn').onchange=function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();
+  r.onload=function(ev){var img=new Image();img.onload=function(){var c=document.createElement('canvas');var s=128/Math.max(img.width,img.height);c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);c.getContext('2d').drawImage(img,0,0,c.width,c.height);var d=c.toDataURL('image/jpeg',.72);localStorage.setItem('nx_pic_tmp',d);var pv=document.getElementById('nxPicPrev');if(pv)pv.outerHTML='<img id="nxPicPrev" src="'+d+'" style="width:64px;height:64px;border-radius:50%;object-fit:cover">';};img.src=ev.target.result;};r.readAsDataURL(f);};};
+window.nxSaveProfile=function(){var p={name:document.getElementById('nxPName').value.trim(),email:document.getElementById('nxPEmail').value.trim(),wa:document.getElementById('nxPWa').value.trim(),city:document.getElementById('nxPCity').value.trim(),pic:localStorage.getItem('nx_pic_tmp')||(prof()||{}).pic||null};
+ if(!p.name||!p.email){toast('Name and email required','err');return;}
+ localStorage.removeItem('nx_pic_tmp');saveProf(p);var o=document.getElementById('nxProfOv');if(o)o.remove();toast('✓ Profile saved — experience personalized','ok');};
+window.nxLogout=function(){localStorage.removeItem('nx_profile');localStorage.setItem('nx_buyer','null');window.BUYER=null;avatar();var o=document.getElementById('nxProfOv');if(o)o.remove();toast('Logged out','info');};
+var ub=document.getElementById('userB');if(ub)ub.onclick=function(e){e.stopPropagation();nxProfile();};
+avatar();
+var _op=window.openP;if(_op&&!window._nxHist){window._nxHist=1;window.openP=function(id){try{var h=JSON.parse(localStorage.getItem('nx_hist')||'[]');var p=(window.PRODS||[]).find(function(x){return x.id===id;});if(p){h.unshift({id:id,cat:p.cat,ts:Date.now()});localStorage.setItem('nx_hist',JSON.stringify(h.slice(0,60)));}}catch(e){}_op(id);};}
+function forYou(){if(typeof VIEW==='undefined'||VIEW!=='home')return;if(document.getElementById('nxForYouRail'))return;var h=JSON.parse(localStorage.getItem('nx_hist')||'[]');if(h.length<1)return;var cnt={};h.forEach(function(x){cnt[x.cat]=(cnt[x.cat]||0)+1;});var top=Object.keys(cnt).sort(function(a,b){return cnt[b]-cnt[a];}).slice(0,2);var seen={};h.forEach(function(x){seen[x.id]=1;});var recs=(window.PRODS||[]).filter(function(p){return top.indexOf(String(p.cat))>=0&&!seen[p.id];}).slice(0,6);if(!recs.length)return;var g=document.getElementById('grid');if(!g)return;var rail=document.createElement('div');rail.id='nxForYouRail';rail.style.cssText='margin:14px 0';rail.innerHTML='<h3 style="font-size:12px;font-weight:800;letter-spacing:1px;color:var(--muted);margin-bottom:8px">💡 FOR YOU — PICKED FROM YOUR TASTE</h3><div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:6px">'+recs.map(function(p){return '<div style="flex:0 0 150px;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--glass);cursor:pointer" onclick="openP(\''+p.id+'\')">'+(p.img?'<img src="'+p.img+'" style="width:100%;height:110px;object-fit:cover">':'')+'<div style="padding:8px"><div style="font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+p.name+'</div><div style="font-size:12px;font-weight:800;color:var(--g3)">Rs. '+Number(p.price).toLocaleString()+'</div></div></div>';}).join('')+'</div>';g.insertAdjacentElement('beforebegin',rail);}
+var gear=document.getElementById('nxGear');if(gear)gear.onclick=function(e){e.stopPropagation();nxSettings();};
+window.nxSettings=function(){var ov=document.createElement('div');ov.id='nxSetOv';ov.style.cssText='position:fixed;inset:0;z-index:9998;background:var(--bg,#070b21);overflow-y:auto;padding:16px';
+ var light=localStorage.getItem('nx_theme')==='light';
+ function row(ic,tx,fn){return '<div class="row" style="cursor:pointer" onclick="'+fn+'"><div style="font-size:20px">'+ic+'</div><div class="inf"><div class="nm">'+tx+'</div></div><span style="color:var(--muted)">›</span></div>';}
+ ov.innerHTML='<div class="card" style="max-width:560px;margin:0 auto"><button class="btn ghost" style="width:auto;padding:10px 16px" onclick="document.getElementById(\'nxSetOv\').remove()">← Back</button><h2 class="t" style="margin-top:12px">⚙️ Settings</h2>'+
+ row('👤','My profile & photo','nxProfile()')+
+ row(light?'🌙':'',light?'Switch to dark mode':'Light mode — Pakistan white & green','nxToggleTheme()')+
+ row('📖','About us','nxPage("about")')+
+ row('🔒','Privacy policy (Pakistan & international)','nxPage("privacy")')+
+ row('⚖️','Terms & legal rights','nxPage("legal")')+
+ row('📧','Support 24/7','nxPage("support")')+
+ row('🌐','Language: '+(document.documentElement.dir==='rtl'?'Urdu':'English'),'toggleLang();document.getElementById(\'nxSetOv\').remove()')+
+ '</div>';
+ document.body.appendChild(ov);};
+window.nxToggleTheme=function(){var l=localStorage.getItem('nx_theme')==='light';localStorage.setItem('nx_theme',l?'dark':'light');applyTheme();var o=document.getElementById('nxSetOv');if(o)o.remove();toast(localStorage.getItem('nx_theme')==='light'?'🌗 Light mode — Pakistan white & green':'🌙 Dark mode','info');};
+var PAGES={
+about:{t:'📖 About us',b:'NexusShop is Pakistan\'s COD-first marketplace, built to give every seller — from a Lahore basement shop to a Karachi startup — a digital storefront in minutes. Buyers browse free forever, pay on delivery, open the box before paying, and chat with sellers on WhatsApp. NexusShop is an independent technology platform: we do not own inventory and we do not sell products; we connect Pakistani sellers with Pakistani buyers, in their own language.'},
+privacy:{t:'🔒 Privacy policy',b:'Your privacy is protected under international best practices (GDPR principles) and the laws of the Islamic Republic of Pakistan, including the Prevention of Electronic Crimes Act 2016 and the Personal Data Protection Bill framework.\n\nWe collect only what is necessary: name, email, WhatsApp number, city and order history — stored on your device and in our secured database with row-level security (each user sees only their own data). We never sell personal data. Your profile photo stays on your device. You may request access, correction or deletion of your data at any time at neuralfocusai@gmail.com.\n\nLocalStorage/cookies are used only for cart, language, theme and session. Payment declarations contain only transaction references; bank account details belong exclusively to the official account holder and are displayed solely to enable the transfer.'},
+legal:{t:'⚖️ Terms & legal rights',b:'NexusShop is a technology intermediary intended for lawful commerce within Pakistan. Sellers are independent businesses solely responsible for their products, prices, stock and delivery promises. Prohibited: weapons, drugs, counterfeit goods, stolen items, adult content and anything illegal under Pakistani law.\n\nThe platform is not a party to buyer-seller transactions; our liability is limited to providing the software service. Users agree to indemnify NexusShop against any claim arising from their listings, purchases or misuse of the service. All intellectual property (code, brand, design) belongs to NexusShop Pakistan.\n\nThese terms are governed by the laws of the Islamic Republic of Pakistan, with jurisdiction in Lahore. By using NexusShop you accept these terms.'},
+support:{t:'📧 Support 24/7',b:'We answer every message within 24 hours.\n\nEmail: neuralfocusai@gmail.com\n\n• Buyers: order issues, undelivered COD, committee groups.\n• Sellers: onboarding help by WhatsApp during launch week (Lahore first).\n• Partners & press: same email, subject "Partnership".'}};
+window.nxPage=function(k){var o=document.getElementById('nxSetOv');if(o)o.remove();var pg=PAGES[k];var ov=document.createElement('div');ov.style.cssText='position:fixed;inset:0;z-index:9998;background:var(--bg,#070b21);overflow-y:auto;padding:16px';
+ ov.innerHTML='<div class="card" style="max-width:640px;margin:0 auto"><button class="btn ghost" style="width:auto;padding:10px 16px" onclick="this.parentElement.parentElement.remove()">← Back</button><h2 class="t" style="margin-top:12px">'+pg.t+'</h2><p style="font-size:13.5px;line-height:1.8;color:var(--muted);white-space:pre-line">'+pg.b+'</p>'+(k==='support'?'<a class="btn" style="display:block;text-align:center;margin-top:14px;text-decoration:none" href="mailto:neuralfocusai@gmail.com">✉️ Write to support</a>':'')+'</div>';
+ document.body.appendChild(ov);};
+var _r2=window.render;if(_r2&&!window._nx11){window._nx11=1;window.render=function(){_r2.apply(this,arguments);setTimeout(function(){forYou();avatar();},150);};}
+});
+})();
