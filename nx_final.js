@@ -179,3 +179,22 @@ window.nxSettings=function(){var ov=document.createElement('div');ov.id='nxSetOv
 window.nxInstallApp=function(){var b=document.getElementById('nxInstallBtn');if(b)b.click();else alert('Tap ⋮ → "Add to Home screen"');};
 });
 })();
+/* ===== v13 module: footer único © NexusShop platform e-commerce 2026 ===== */
+;(function(){
+function clean(){
+ var f=document.querySelector('footer');
+ if(f)f.innerHTML='© NexusShop platform e-commerce 2026';
+ document.querySelectorAll('div,p').forEach(function(d){
+  if(d.innerHTML.indexOf('Lahore, Pakistan')>=0&&d.querySelectorAll('*').length<=1)d.innerHTML='© NexusShop platform e-commerce 2026';
+ });
+}
+function boot(){
+ clean();
+ var _r=window.render;if(_r&&!window._nx13){window._nx13=1;window.render=function(){_r.apply(this,arguments);setTimeout(clean,100);};}
+ var _p=window.nxPage;if(_p&&!window._nx13p){window._nx13p=1;window.nxPage=function(k){_p(k);setTimeout(clean,80);};}
+ var _s=window.nxSettings;if(_s&&!window._nx13s){window._nx13s=1;window.nxSettings=function(){_s();setTimeout(clean,80);};}
+ var _q=window.nxProfile;if(_q&&!window._nx13q){window._nx13q=1;window.nxProfile=function(){_q();setTimeout(clean,80);};}
+ setInterval(clean,2500);
+}
+if(document.readyState!=='loading')boot();else document.addEventListener('DOMContentLoaded',boot);
+})();
