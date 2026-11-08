@@ -1,9 +1,9 @@
-/* ===== NX_FINAL v2: precios + urdu + shop now scroll + entrada animada + PWA install ===== */
+/* ===== NX_FINAL v3: FIXES URGENTES ===== */
 (function(){
 "use strict";
 var INIT_DONE=false;
 
-/* A) ANIMACIÓN DE ENTRADA FUTURISTA */
+/* A) ANIMACIÓN DE ENTRADA */
 function animateEntrance(){
  var style=document.createElement('style');
  style.textContent=`
@@ -28,18 +28,19 @@ function fixPrices(){
  });
 }
 
-/* C) SHOP NOW SCROLL SUAVE */
+/* C) SHOP NOW SCROLL + BOTONES FUNCIONALES */
 function fixShopNow(){
  var btn=[].slice.call(document.querySelectorAll('button')).find(function(b){return /Shop Now/.test(b.textContent||'')});
- if(!btn)return;
- btn.onclick=function(e){e.preventDefault();e.stopPropagation();
-  var grid=document.querySelector('#view');
-  if(grid){grid.scrollIntoView({behavior:'smooth',block:'start'});
-   var sb=document.getElementById('nxSortBar');
-   if(sb){sb.style.boxShadow='0 0 0 3px #22d3ee, 0 0 30px rgba(34,211,238,.6)';setTimeout(function(){sb.style.boxShadow=''},1500);}
-  }else{window.scrollTo({top:600,behavior:'smooth'});}
-  return false;
- };
+ if(btn){
+  btn.onclick=function(e){e.preventDefault();e.stopPropagation();
+   var grid=document.querySelector('#view');
+   if(grid){grid.scrollIntoView({behavior:'smooth',block:'start'});
+    var sb=document.getElementById('nxSortBar');
+    if(sb){sb.style.boxShadow='0 0 0 3px #22d3ee';setTimeout(function(){sb.style.boxShadow=''},1500);}
+   }else{window.scrollTo({top:400,behavior:'smooth'});}
+   return false;
+  };
+ }
 }
 
 /* D) URDU SIN RELOADS */
@@ -130,19 +131,16 @@ function setupUrdu(){
  if(localStorage.getItem('nx_lang')==='ur'){document.documentElement.dir='rtl';setTimeout(doSweep,200);}
 }
 
-/* E) PWA INSTALL PROMPT */
-function setupPWA(){
- if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('/sw.js?v=2').catch(function(){});
+/* E) EMAIL SOPORTE EN CONFIG */
+function addSupportEmail(){
+ var gearBtn=[].slice.call(document.querySelectorAll('button')).find(function(b){return b.innerHTML.includes('⚙')||b.textContent.includes('⚙')});
+ if(gearBtn&&!document.getElementById('nxSupport')){
+  var div=document.createElement('div');div.id='nxSupport';
+  div.style.cssText='position:fixed;top:52px;left:12px;z-index:900;background:rgba(10,14,35,.9);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px 14px;font-size:11px;color:#a5f3fc;white-space:nowrap';
+  div.innerHTML='📧 <b>Support 24/7:</b> neuralfocusai@gmail.com';
+  document.body.appendChild(div);
+  gearBtn.onclick=function(e){e.stopPropagation();div.style.display=div.style.display==='none'?'block':'none';};
  }
- var deferredPrompt=null;
- window.addEventListener('beforeinstallprompt',function(e){
-  e.preventDefault();deferredPrompt=e;
-  var btn=document.createElement('button');btn.textContent='📲 Install App';
-  btn.style.cssText='position:fixed;bottom:80px;right:16px;z-index:900;background:linear-gradient(90deg,#059669,#34d399);border:0;border-radius:99px;padding:12px 20px;color:#fff;font-weight:700;box-shadow:0 8px 24px rgba(5,150,105,.4);cursor:pointer';
-  btn.onclick=function(){deferredPrompt.prompt();deferredPrompt.userChoice.then(function(){btn.remove();});};
-  document.body.appendChild(btn);
- });
 }
 
 /* F) MARQUEE ANIMADO */
@@ -155,6 +153,22 @@ function addMarquee(){
  hero.insertAdjacentElement('afterend',d);
 }
 
+/* G) PWA INSTALL BUTTON POSICIONADO ARRIBA */
+function setupPWA(){
+ if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js?v=2').catch(function(){});
+ }
+ var deferredPrompt=null;
+ window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();deferredPrompt=e;
+  var btn=document.createElement('button');btn.textContent='';
+  btn.title='Install App';
+  btn.style.cssText='position:fixed;top:52px;right:70px;z-index:900;width:44px;height:44px;border-radius:50%;border:1px solid rgba(34,211,238,.4);background:linear-gradient(90deg,#059669,#34d399);color:#fff;font-size:19px;cursor:pointer;box-shadow:0 4px 12px rgba(5,150,105,.4)';
+  btn.onclick=function(){deferredPrompt.prompt();deferredPrompt.userChoice.then(function(){btn.remove();});};
+  document.body.appendChild(btn);
+ });
+}
+
 /* EJECUCIÓN ÚNICA */
 function init(){
  if(INIT_DONE)return;INIT_DONE=true;
@@ -162,6 +176,7 @@ function init(){
  fixPrices();
  fixShopNow();
  setupUrdu();
+ addSupportEmail();
  setupPWA();
  setTimeout(addMarquee,1500);
 }
