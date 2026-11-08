@@ -177,7 +177,7 @@ waitForDOM(function(){
   window.addEventListener('beforeinstallprompt',function(e){
    e.preventDefault();deferredPrompt=e;
    var btn=document.createElement('button');btn.title='Install NexusShop App';
-   btn.style.cssText='position:fixed;bottom:80px;right:16px;z-index:900;width:56px;height:56px;border-radius:50%;border:2px solid rgba(34,211,238,.5);background:linear-gradient(135deg,#059669,#34d399);color:#fff;font-size:24px;cursor:pointer;box-shadow:0 6px 20px rgba(5,150,105,.5);display:flex;align-items:center;justify-content:center';
+   btn.style.cssText='position:fixed;bottom:140px;right:16px;z-index:900;width:56px;height:56px;border-radius:50%;border:2px solid rgba(34,211,238,.5);background:linear-gradient(135deg,#059669,#34d399);color:#fff;font-size:24px;cursor:pointer;box-shadow:0 6px 20px rgba(5,150,105,.5);display:flex;align-items:center;justify-content:center';
    btn.innerHTML='📲';
    btn.onclick=function(){deferredPrompt.prompt();deferredPrompt.userChoice.then(function(){btn.remove();});};
    document.body.appendChild(btn);
