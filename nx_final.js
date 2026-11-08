@@ -1,12 +1,24 @@
-/* ===== NX_FINAL: el único archivo de UX — precios + urdu + shop now, sin loops ===== */
+/* ===== NX_FINAL v2: precios + urdu + shop now scroll + entrada animada + PWA install ===== */
 (function(){
 "use strict";
 var INIT_DONE=false;
 
-function init(){
- if(INIT_DONE)return;INIT_DONE=true;
- 
- /* A) PRECIOS CORRECTOS */
+/* A) ANIMACIÓN DE ENTRADA FUTURISTA */
+function animateEntrance(){
+ var style=document.createElement('style');
+ style.textContent=`
+  @keyframes nxFadeIn{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+  @keyframes nxGlow{0%,100%{filter:drop-shadow(0 0 20px rgba(34,211,238,.6))}50%{filter:drop-shadow(0 0 40px rgba(244,114,182,.8))}}
+  body{opacity:0;animation:nxFadeIn 1.2s ease-out forwards}
+  #splash img,#splash .nx9logo{animation:nxGlow 3s ease-in-out infinite}
+  .nx-card{transition:transform .3s,box-shadow .3s}
+  .nx-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(34,211,238,.3)}
+ `;
+ document.head.appendChild(style);
+}
+
+/* B) PRECIOS CORRECTOS */
+function fixPrices(){
  var priceMap={'Rs. 2,500/mo':'Rs. 1,999/mo','Rs. 5,000/mo':'Rs. 3,999/mo',
                'Rs. 2,500/month':'Rs. 1,999/mo','Rs. 5,000/month':'Rs. 3,999/mo'};
  document.body.querySelectorAll('*').forEach(function(el){
@@ -14,8 +26,24 @@ function init(){
   var t=el.textContent.trim();
   if(priceMap[t])el.textContent=priceMap[t];
  });
- 
- /* B) URDU SIN RELOADS */
+}
+
+/* C) SHOP NOW SCROLL SUAVE */
+function fixShopNow(){
+ var btn=[].slice.call(document.querySelectorAll('button')).find(function(b){return /Shop Now/.test(b.textContent||'')});
+ if(!btn)return;
+ btn.onclick=function(e){e.preventDefault();e.stopPropagation();
+  var grid=document.querySelector('#view');
+  if(grid){grid.scrollIntoView({behavior:'smooth',block:'start'});
+   var sb=document.getElementById('nxSortBar');
+   if(sb){sb.style.boxShadow='0 0 0 3px #22d3ee, 0 0 30px rgba(34,211,238,.6)';setTimeout(function(){sb.style.boxShadow=''},1500);}
+  }else{window.scrollTo({top:600,behavior:'smooth'});}
+  return false;
+ };
+}
+
+/* D) URDU SIN RELOADS */
+function setupUrdu(){
  var UR={};
  UR['Shop Now']='ابھی خریدیں';UR['Start Selling — free']='فروخت شروع کریں — مفت';
  UR['The marketplace that speaks your language']='وہ مارکیٹ جو آپ کی بولی بولتی ہے';
@@ -82,45 +110,63 @@ function init(){
  UR['New']='نیا';UR['Only 5 left']='صرف 5 باقی';UR['Home']='ہوم';
  UR['Search products...']='مصنوعات تلاش کریں...';
 
- function translateToUrdu(){
-  document.documentElement.dir='rtl';document.documentElement.lang='ur';
-  localStorage.setItem('nx_lang','ur');
+ function doSweep(){
+  var ur=document.documentElement.dir==='rtl';
   document.body.querySelectorAll('*').forEach(function(el){
    if(el.children.length>0||el.tagName==='SCRIPT'||el.tagName==='STYLE')return;
    var t=el.textContent.trim();if(!t)return;
-   if(UR[t])el.textContent=UR[t];
+   if(ur&&UR[t])el.textContent=UR[t];
   });
  }
- 
- function translateToEnglish(){
-  document.documentElement.dir='ltr';document.documentElement.lang='en';
-  localStorage.setItem('nx_lang','en');
-  location.reload(); // Solo para volver a inglés limpio
- }
- 
+
  var urduBtn=[].slice.call(document.querySelectorAll('button')).find(function(b){return b.textContent.trim()==='اردو'});
  var enBtn=[].slice.call(document.querySelectorAll('button')).find(function(b){return b.textContent.trim()==='English'});
- 
- if(urduBtn)urduBtn.onclick=function(e){e.preventDefault();translateToUrdu();return false;};
- if(enBtn)enBtn.onclick=function(e){e.preventDefault();translateToEnglish();return false;};
- 
- if(localStorage.getItem('nx_lang')==='ur'){
-  setTimeout(translateToUrdu,200);
- }
- 
- /* C) SHOP NOW FUNCIONAL */
- var shopBtn=[].slice.call(document.querySelectorAll('button')).find(function(b){return /Shop Now/.test(b.textContent||'')});
- if(shopBtn){
-  shopBtn.onclick=function(e){e.preventDefault();
-   var grid=document.querySelector('#view');
-   if(grid)grid.scrollIntoView({behavior:'smooth',block:'start'});
-   else window.scrollTo({top:600,behavior:'smooth'});
-   return false;
-  };
- }
+ if(urduBtn){urduBtn.onclick=function(e){e.preventDefault();e.stopPropagation();
+  document.documentElement.dir='rtl';document.documentElement.lang='ur';
+  localStorage.setItem('nx_lang','ur');doSweep();return false;};}
+ if(enBtn){enBtn.onclick=function(e){e.preventDefault();e.stopPropagation();
+  document.documentElement.dir='ltr';document.documentElement.lang='en';
+  localStorage.setItem('nx_lang','en');doSweep();return false;};}
+ if(localStorage.getItem('nx_lang')==='ur'){document.documentElement.dir='rtl';setTimeout(doSweep,200);}
 }
 
-// Ejecutar UNA sola vez cuando todo esté listo
+/* E) PWA INSTALL PROMPT */
+function setupPWA(){
+ if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js?v=2').catch(function(){});
+ }
+ var deferredPrompt=null;
+ window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();deferredPrompt=e;
+  var btn=document.createElement('button');btn.textContent='📲 Install App';
+  btn.style.cssText='position:fixed;bottom:80px;right:16px;z-index:900;background:linear-gradient(90deg,#059669,#34d399);border:0;border-radius:99px;padding:12px 20px;color:#fff;font-weight:700;box-shadow:0 8px 24px rgba(5,150,105,.4);cursor:pointer';
+  btn.onclick=function(){deferredPrompt.prompt();deferredPrompt.userChoice.then(function(){btn.remove();});};
+  document.body.appendChild(btn);
+ });
+}
+
+/* F) MARQUEE ANIMADO */
+function addMarquee(){
+ if(document.getElementById('nxMq'))return;
+ var hero=document.getElementById('nxHero');if(!hero)return;
+ var d=document.createElement('div');d.id='nxMq';
+ d.style.cssText='overflow:hidden;white-space:nowrap;border-block:1px solid rgba(255,255,255,.1);background:rgba(34,211,238,.06);font-size:11px;color:#a5f3fc;padding:6px 0;margin:8px 0';
+ d.innerHTML='<span style="display:inline-block;padding-left:100%;animation:nxmq 22s linear infinite">🚀 NexusShop launch week · 7 products live · COD en todo Pakistán · Committee Buy: 3 amigos = −15% · 🚀 NexusShop launch week · 7 products live · COD en todo Pakistán · Committee Buy: 3 amigos = −15% · </span><style>@keyframes nxmq{to{transform:translateX(-100%)}}</style>';
+ hero.insertAdjacentElement('afterend',d);
+}
+
+/* EJECUCIÓN ÚNICA */
+function init(){
+ if(INIT_DONE)return;INIT_DONE=true;
+ animateEntrance();
+ fixPrices();
+ fixShopNow();
+ setupUrdu();
+ setupPWA();
+ setTimeout(addMarquee,1500);
+}
+
 if(document.readyState==='complete')init();
 else window.addEventListener('load',init);
+setTimeout(init,500);
 })();
