@@ -1,50 +1,58 @@
-/* ===== NX_FINAL v3: FIXES URGENTES ===== */
+/* ===== NX_FINAL v4: ROBUSTO — espera al DOM completo ===== */
 (function(){
 "use strict";
-var INIT_DONE=false;
 
-/* A) ANIMACIÓN DE ENTRADA */
-function animateEntrance(){
+function waitForDOM(callback){
+ if(document.readyState==='complete')callback();
+ else window.addEventListener('load',callback);
+}
+
+waitForDOM(function(){
+ /* A) ANIMACIÓN DE ENTRADA FUTURISTA */
  var style=document.createElement('style');
  style.textContent=`
-  @keyframes nxFadeIn{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
-  @keyframes nxGlow{0%,100%{filter:drop-shadow(0 0 20px rgba(34,211,238,.6))}50%{filter:drop-shadow(0 0 40px rgba(244,114,182,.8))}}
-  body{opacity:0;animation:nxFadeIn 1.2s ease-out forwards}
+  @keyframes nxFadeIn{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+  @keyframes nxGlow{0%,100%{filter:drop-shadow(0 0 25px rgba(34,211,238,.7))}50%{filter:drop-shadow(0 0 50px rgba(244,114,182,.9)}}
+  @keyframes nxSlideUp{0%{opacity:0;transform:translateY(60px)}100%{opacity:1;transform:translateY(0)}}
+  body{animation:nxFadeIn 1.5s ease-out forwards}
   #splash img,#splash .nx9logo{animation:nxGlow 3s ease-in-out infinite}
-  .nx-card{transition:transform .3s,box-shadow .3s}
-  .nx-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(34,211,238,.3)}
+  .card,.nx-card,[onclick^="openP"]{animation:nxSlideUp .8s ease-out backwards}
+  [onclick^="openP"]:nth-child(2){animation-delay:.1s}
+  [onclick^="openP"]:nth-child(3){animation-delay:.2s}
+  [onclick^="openP"]:nth-child(4){animation-delay:.3s}
  `;
  document.head.appendChild(style);
-}
 
-/* B) PRECIOS CORRECTOS */
-function fixPrices(){
- var priceMap={'Rs. 2,500/mo':'Rs. 1,999/mo','Rs. 5,000/mo':'Rs. 3,999/mo',
-               'Rs. 2,500/month':'Rs. 1,999/mo','Rs. 5,000/month':'Rs. 3,999/mo'};
- document.body.querySelectorAll('*').forEach(function(el){
-  if(el.children.length>0)return;
-  var t=el.textContent.trim();
-  if(priceMap[t])el.textContent=priceMap[t];
- });
-}
-
-/* C) SHOP NOW SCROLL + BOTONES FUNCIONALES */
-function fixShopNow(){
- var btn=[].slice.call(document.querySelectorAll('button')).find(function(b){return /Shop Now/.test(b.textContent||'')});
- if(btn){
-  btn.onclick=function(e){e.preventDefault();e.stopPropagation();
-   var grid=document.querySelector('#view');
-   if(grid){grid.scrollIntoView({behavior:'smooth',block:'start'});
-    var sb=document.getElementById('nxSortBar');
-    if(sb){sb.style.boxShadow='0 0 0 3px #22d3ee';setTimeout(function(){sb.style.boxShadow=''},1500);}
-   }else{window.scrollTo({top:400,behavior:'smooth'});}
-   return false;
-  };
+ /* B) PRECIOS CORRECTOS */
+ function fixPrices(){
+  var map={'Rs. 2,500/mo':'Rs. 1,999/mo','Rs. 5,000/mo':'Rs. 3,999/mo',
+           'Rs. 2,500/month':'Rs. 1,999/mo','Rs. 5,000/month':'Rs. 3,999/mo'};
+  document.body.querySelectorAll('*').forEach(function(el){
+   if(el.children.length>0)return;
+   var t=el.textContent.trim();
+   if(map[t])el.textContent=map[t];
+  });
  }
-}
+ fixPrices();
+ setTimeout(fixPrices,2000); // retry por si carga dinámico
 
-/* D) URDU SIN RELOADS */
-function setupUrdu(){
+ /* C) SHOP NOW SCROLL */
+ function fixShopNow(){
+  var btn=[].slice.call(document.querySelectorAll('button')).find(function(b){return /Shop Now/.test(b.textContent||'')});
+  if(btn){
+   btn.onclick=function(e){e.preventDefault();e.stopPropagation();
+    var grid=document.querySelector('#view');
+    if(grid){grid.scrollIntoView({behavior:'smooth',block:'start'});
+     var sb=document.getElementById('nxSortBar');
+     if(sb){sb.style.boxShadow='0 0 0 3px #22d3ee';setTimeout(function(){sb.style.boxShadow=''},1500);}
+    }else{window.scrollTo({top:400,behavior:'smooth'});}
+    return false;
+   };
+  }
+ }
+ fixShopNow();
+
+ /* D) URDU SIN RELOADS */
  var UR={};
  UR['Shop Now']='ابھی خریدیں';UR['Start Selling — free']='فروخت شروع کریں — مفت';
  UR['The marketplace that speaks your language']='وہ مارکیٹ جو آپ کی بولی بولتی ہے';
@@ -110,6 +118,7 @@ function setupUrdu(){
  UR['Committee −15%']='کمیٹی −15%';
  UR['New']='نیا';UR['Only 5 left']='صرف 5 باقی';UR['Home']='ہوم';
  UR['Search products...']='مصنوعات تلاش کریں...';
+ UR['Support 24/7: neuralfocusai@gmail.com']='24/7 سپورٹ: neuralfocusai@gmail.com';
 
  function doSweep(){
   var ur=document.documentElement.dir==='rtl';
@@ -129,59 +138,51 @@ function setupUrdu(){
   document.documentElement.dir='ltr';document.documentElement.lang='en';
   localStorage.setItem('nx_lang','en');doSweep();return false;};}
  if(localStorage.getItem('nx_lang')==='ur'){document.documentElement.dir='rtl';setTimeout(doSweep,200);}
-}
 
-/* E) EMAIL SOPORTE EN CONFIG */
-function addSupportEmail(){
+ /* E) EMAIL SOPORTE DENTRO DE CONFIGURACIÓN (botón ⚙️) */
  var gearBtn=[].slice.call(document.querySelectorAll('button')).find(function(b){return b.innerHTML.includes('⚙')||b.textContent.includes('⚙')});
- if(gearBtn&&!document.getElementById('nxSupport')){
-  var div=document.createElement('div');div.id='nxSupport';
-  div.style.cssText='position:fixed;top:52px;left:12px;z-index:900;background:rgba(10,14,35,.9);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px 14px;font-size:11px;color:#a5f3fc;white-space:nowrap';
-  div.innerHTML='📧 <b>Support 24/7:</b> neuralfocusai@gmail.com';
-  document.body.appendChild(div);
-  gearBtn.onclick=function(e){e.stopPropagation();div.style.display=div.style.display==='none'?'block':'none';};
+ if(gearBtn&&!gearBtn.dataset.nxSupportAdded){
+  gearBtn.dataset.nxSupportAdded='1';
+  gearBtn.onclick=function(e){e.stopPropagation();
+   var existing=document.getElementById('nxSupportPanel');
+   if(existing){existing.remove();return;}
+   var panel=document.createElement('div');panel.id='nxSupportPanel';
+   panel.style.cssText='position:fixed;top:52px;left:12px;z-index:900;background:rgba(10,14,35,.95);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px 20px;font-size:13px;color:#e2e8f0;min-width:260px;box-shadow:0 12px 40px rgba(0,0,0,.5)';
+   panel.innerHTML='<div style="font-weight:800;margin-bottom:8px;font-size:14px">⚙️ Settings</div>'+
+    '<div style="margin-bottom:12px;padding:10px;background:rgba(34,211,238,.08);border-radius:10px;border-left:3px solid #22d3ee">'+
+    '<div style="font-size:11px;color:#67e8f9;margin-bottom:4px">📧 Support 24/7</div>'+
+    '<div style="font-size:13px;font-weight:600">neuralfocusai@gmail.com</div></div>'+
+    '<button onclick="this.parentElement.remove()" style="width:100%;padding:8px;border:1px solid rgba(255,255,255,.15);border-radius:8px;background:transparent;color:#94a3b8;font-size:12px;cursor:pointer">Close</button>';
+   document.body.appendChild(panel);
+  };
  }
-}
 
-/* F) MARQUEE ANIMADO */
-function addMarquee(){
- if(document.getElementById('nxMq'))return;
- var hero=document.getElementById('nxHero');if(!hero)return;
- var d=document.createElement('div');d.id='nxMq';
- d.style.cssText='overflow:hidden;white-space:nowrap;border-block:1px solid rgba(255,255,255,.1);background:rgba(34,211,238,.06);font-size:11px;color:#a5f3fc;padding:6px 0;margin:8px 0';
- d.innerHTML='<span style="display:inline-block;padding-left:100%;animation:nxmq 22s linear infinite">🚀 NexusShop launch week · 7 products live · COD en todo Pakistán · Committee Buy: 3 amigos = −15% · 🚀 NexusShop launch week · 7 products live · COD en todo Pakistán · Committee Buy: 3 amigos = −15% · </span><style>@keyframes nxmq{to{transform:translateX(-100%)}}</style>';
- hero.insertAdjacentElement('afterend',d);
-}
-
-/* G) PWA INSTALL BUTTON POSICIONADO ARRIBA */
-function setupPWA(){
- if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('/sw.js?v=2').catch(function(){});
+ /* F) MARQUEE ANIMADO */
+ function addMarquee(){
+  if(document.getElementById('nxMq'))return;
+  var hero=document.getElementById('nxHero');if(!hero)return;
+  var d=document.createElement('div');d.id='nxMq';
+  d.style.cssText='overflow:hidden;white-space:nowrap;border-block:1px solid rgba(255,255,255,.1);background:rgba(34,211,238,.06);font-size:11px;color:#a5f3fc;padding:6px 0;margin:8px 0';
+  d.innerHTML='<span style="display:inline-block;padding-left:100%;animation:nxmq 22s linear infinite">🚀 NexusShop launch week · 7 products live · COD en todo Pakistán · Committee Buy: 3 amigos = −15% · 🚀 NexusShop launch week · 7 products live · COD en todo Pakistán · Committee Buy: 3 amigos = −15% · </span><style>@keyframes nxmq{to{transform:translateX(-100%)}}</style>';
+  hero.insertAdjacentElement('afterend',d);
  }
- var deferredPrompt=null;
- window.addEventListener('beforeinstallprompt',function(e){
-  e.preventDefault();deferredPrompt=e;
-  var btn=document.createElement('button');btn.textContent='';
-  btn.title='Install App';
-  btn.style.cssText='position:fixed;top:52px;right:70px;z-index:900;width:44px;height:44px;border-radius:50%;border:1px solid rgba(34,211,238,.4);background:linear-gradient(90deg,#059669,#34d399);color:#fff;font-size:19px;cursor:pointer;box-shadow:0 4px 12px rgba(5,150,105,.4)';
-  btn.onclick=function(){deferredPrompt.prompt();deferredPrompt.userChoice.then(function(){btn.remove();});};
-  document.body.appendChild(btn);
- });
-}
+ setTimeout(addMarquee,2000);
 
-/* EJECUCIÓN ÚNICA */
-function init(){
- if(INIT_DONE)return;INIT_DONE=true;
- animateEntrance();
- fixPrices();
- fixShopNow();
- setupUrdu();
- addSupportEmail();
+ /* G) PWA INSTALL BUTTON CON LOGO */
+ function setupPWA(){
+  if('serviceWorker' in navigator){
+   navigator.serviceWorker.register('/sw.js?v=2').catch(function(){});
+  }
+  var deferredPrompt=null;
+  window.addEventListener('beforeinstallprompt',function(e){
+   e.preventDefault();deferredPrompt=e;
+   var btn=document.createElement('button');btn.title='Install NexusShop App';
+   btn.style.cssText='position:fixed;bottom:80px;right:16px;z-index:900;width:56px;height:56px;border-radius:50%;border:2px solid rgba(34,211,238,.5);background:linear-gradient(135deg,#059669,#34d399);color:#fff;font-size:24px;cursor:pointer;box-shadow:0 6px 20px rgba(5,150,105,.5);display:flex;align-items:center;justify-content:center';
+   btn.innerHTML='📲';
+   btn.onclick=function(){deferredPrompt.prompt();deferredPrompt.userChoice.then(function(){btn.remove();});};
+   document.body.appendChild(btn);
+  });
+ }
  setupPWA();
- setTimeout(addMarquee,1500);
-}
-
-if(document.readyState==='complete')init();
-else window.addEventListener('load',init);
-setTimeout(init,500);
+});
 })();
