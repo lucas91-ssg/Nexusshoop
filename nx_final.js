@@ -139,3 +139,43 @@ window.nxPage=function(k){var o=document.getElementById('nxSetOv');if(o)o.remove
 var _r2=window.render;if(_r2&&!window._nx11){window._nx11=1;window.render=function(){_r2.apply(this,arguments);setTimeout(function(){forYou();avatar();},150);};}
 });
 })();
+/* ===== v12 module: settings serio/moderno + onclicks con comillas simples ===== */
+;(function(){
+"use strict";
+function ready(fn){if(document.readyState!=='loading')fn();else document.addEventListener('DOMContentLoaded',fn);}
+ready(function(){
+var TEXTS={
+about:{ic:'📖',t:'About us',b:'NexusShop is Pakistan\'s COD-first marketplace, built to give every seller — from a Lahore basement shop to a Karachi startup — a digital storefront in minutes. Buyers browse free forever, pay on delivery, open the box before paying, and chat with sellers on WhatsApp.\n\nNexusShop is an independent technology platform: we do not own inventory and we do not sell products; we connect Pakistani sellers with Pakistani buyers, in their own language.\n\nFounded 2026 · Built mobile-first · Urdu & English native.'},
+privacy:{ic:'🔒',t:'Privacy policy',b:'Your privacy is protected under international best practices (GDPR principles) and the laws of the Islamic Republic of Pakistan, including the Prevention of Electronic Crimes Act 2016 and the Personal Data Protection Bill framework.\n\nWe collect only what is necessary: name, email, WhatsApp number, city and order history — stored on your device and in our secured database with row-level security (each user sees only their own data). We never sell personal data. Your profile photo stays on your device. You may request access, correction or deletion of your data at any time at neuralfocusai@gmail.com.\n\nLocalStorage/cookies are used only for cart, language, theme and session. Payment declarations contain only transaction references; bank account details belong exclusively to the official account holder and are displayed solely to enable the transfer.'},
+legal:{ic:'⚖️',t:'Terms & legal rights',b:'NexusShop is a technology intermediary intended for lawful commerce within Pakistan. Sellers are independent businesses solely responsible for their products, prices, stock and delivery promises. Prohibited: weapons, drugs, counterfeit goods, stolen items, adult content and anything illegal under Pakistani law.\n\nThe platform is not a party to buyer-seller transactions; our liability is limited to providing the software service. Users agree to indemnify NexusShop against any claim arising from their listings, purchases or misuse of the service. All intellectual property (code, brand, design) belongs to NexusShop Pakistan.\n\nThese terms are governed by the laws of the Islamic Republic of Pakistan, with jurisdiction in Lahore. By using NexusShop you accept these terms.'},
+support:{ic:'📧',t:'Support 24/7',b:'We answer every message within 24 hours.\n\nEmail: neuralfocusai@gmail.com\n\n• Buyers: order issues, undelivered COD, committee groups.\n• Sellers: onboarding help by WhatsApp during launch week (Lahore first).\n• Partners & press: same email, subject "Partnership".'}};
+window.nxPage=function(k){var o=document.getElementById('nxSetOv');if(o)o.remove();var pg=TEXTS[k];if(!pg)return;
+ var ov=document.createElement('div');ov.style.cssText='position:fixed;inset:0;z-index:9998;background:var(--bg,#070b21);overflow-y:auto;padding:16px';
+ ov.innerHTML='<div class="card" style="max-width:640px;margin:0 auto;padding:22px"><button class="btn ghost" style="width:auto;padding:9px 14px;font-size:12px" onclick="this.parentElement.parentElement.remove()">← Back</button>'+
+ '<div style="display:flex;align-items:center;gap:10px;margin:14px 0 6px"><div style="width:40px;height:40px;border-radius:12px;background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.25);display:flex;align-items:center;justify-content:center;font-size:19px">'+pg.ic+'</div><div><div style="font-size:17px;font-weight:900">'+pg.t+'</div><div style="font-size:10.5px;color:var(--muted)">Last updated: November 2026</div></div></div>'+
+ '<p style="font-size:13.5px;line-height:1.85;color:var(--muted);white-space:pre-line;margin-top:10px">'+pg.b+'</p>'+
+ (k==='support'?'<a class="btn" style="display:block;text-align:center;margin-top:16px;text-decoration:none" href="mailto:neuralfocusai@gmail.com">✉️ Write to support</a>':'')+
+ '<div style="margin-top:16px;font-size:10.5px;color:var(--muted);text-align:center">NexusShop™ · Lahore, Pakistan</div></div>';
+ document.body.appendChild(ov);};
+window.nxSettings=function(){var ov=document.createElement('div');ov.id='nxSetOv';ov.style.cssText='position:fixed;inset:0;z-index:9998;background:var(--bg,#070b21);overflow-y:auto;padding:16px';
+ var light=localStorage.getItem('nx_theme')==='light';
+ function row(ic,tx,sb,fn){return '<div class="row" style="cursor:pointer;padding:14px" onclick="'+fn+'"><div style="width:38px;height:38px;border-radius:12px;background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.25);display:flex;align-items:center;justify-content:center;font-size:18px;flex:0 0 auto">'+ic+'</div><div class="inf"><div class="nm" style="font-size:13.5px">'+tx+'</div><div style="font-size:11px;color:var(--muted);margin-top:2px">'+sb+'</div></div><span style="color:var(--muted);font-size:18px">›</span></div>';}
+ function grp(t){return '<div style="font-size:10px;font-weight:800;letter-spacing:2px;color:var(--muted);margin:16px 4px 8px">'+t+'</div>';}
+ ov.innerHTML='<div class="card" style="max-width:560px;margin:0 auto;padding:20px">'+
+ '<div style="display:flex;align-items:center;gap:10px;margin-bottom:4px"><img src="/icon.svg" style="width:34px;height:34px;border-radius:10px"><div><div style="font-size:17px;font-weight:900">Settings</div><div style="font-size:11px;color:var(--muted)">NexusShop · v2.12 · Pakistan</div></div><button class="btn ghost" style="width:auto;padding:8px 12px;margin-left:auto;font-size:12px" onclick="document.getElementById(\'nxSetOv\').remove()">✕</button></div>'+
+ grp('ACCOUNT')+
+ row('👤','My profile & photo','Personal data, avatar, delivery city','nxProfile()')+
+ row(light?'🌙':'🌗','Appearance',light?'Dark mode (default)':'Light mode — Pakistan white & green','nxToggleTheme()')+
+ grp('PLATFORM')+
+ row('🌐','Language',document.documentElement.dir==='rtl'?'Urdu':'English','toggleLang();document.getElementById(\'nxSetOv\').remove()')+
+ row('📲','Install app','Add NexusShop to your home screen','nxInstallApp()')+
+ grp('LEGAL & COMPANY')+
+ row('📖','About us','Who we are and what we are building','nxPage(\'about\')')+
+ row('🔒','Privacy policy','Pakistan PECA 2016 + GDPR principles','nxPage(\'privacy\')')+
+ row('⚖️','Terms & legal rights','Intermediary liability · jurisdiction Lahore','nxPage(\'legal\')')+
+ row('📧','Support 24/7','neuralfocusai@gmail.com · reply < 24h','nxPage(\'support\')')+
+ '<div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--border);font-size:10.5px;color:var(--muted);line-height:1.7;text-align:center">© 2026 NexusShop™ · The E-Commerce of Pakistan<br>Registered intermediary platform · Lahore, Pakistan</div></div>';
+ document.body.appendChild(ov);};
+window.nxInstallApp=function(){var b=document.getElementById('nxInstallBtn');if(b)b.click();else alert('Tap ⋮ → "Add to Home screen"');};
+});
+})();
