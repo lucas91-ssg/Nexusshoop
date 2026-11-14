@@ -198,3 +198,24 @@ function boot(){
 }
 if(document.readyState!=='loading')boot();else document.addEventListener('DOMContentLoaded',boot);
 })();
+/* ===== v16 module: Peace-audit fixes — COD plain language, FAQ additions (COD/Temu/domain), audit doc ===== */
+;(function(){
+"use strict";
+function ready(fn){if(document.readyState!=='loading')fn();else document.addEventListener('DOMContentLoaded',fn);}
+ready(function(){
+var RULES=[['COD nationwide','Pay-on-delivery nationwide'],['Cash on Delivery','Pay on delivery (cash)'],['(COD)','(pay on delivery)'],['COD in all','Pay-on-delivery in all'],['COD first','Pay-on-delivery first']];
+function codify(){var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);var n;
+ while(n=w.nextNode()){var t=n.nodeValue;if(!t||t.indexOf('COD')<0)continue;var nt=t;
+  for(var i=0;i<RULES.length;i++)nt=nt.split(RULES[i][0]).join(RULES[i][1]);
+  if(nt!==t)n.nodeValue=nt;}}
+var EXTRA=[['What does the COD mean?','Cash on Delivery: the rider brings the box, you open it and check it, and you pay ONLY if you keep it — cash or transfer. No prepayment, no risk. In Nigeria: pay on delivery, same rule.'],
+['Is this Temu?','No. Temu ships from China in weeks. NexusShop connects YOU with sellers in your own city: delivery in days, pay on delivery, open-the-box trust, and Committee Buy (-15% with 3 neighbours). Local first.'],
+['Why does the address say nexusshoop but the brand is NexusShop?','The beta address (nexusshoop.vercel.app) was registered on day one; the brand is NexusShop. A clean nexusshop domain migration is in progress — your bookmarks keep working via redirect.']];
+var _f=window.nxFAQ;if(_f&&!window._nx16f){window._nx16f=1;window.nxFAQ=function(){_f();setTimeout(function(){
+ var ov=document.body.lastElementChild;if(!ov)return;var card=ov.querySelector('.card');if(!card)return;var foot=card.lastElementChild;
+ var d=document.createElement('div');d.innerHTML=EXTRA.map(function(q){return '<div style="margin:12px 0"><div style="font-size:13.5px;font-weight:800">'+q[0]+'</div><div style="font-size:12.5px;color:var(--muted);line-height:1.7;margin-top:4px">'+q[1]+'</div></div>';}).join('');
+ card.insertBefore(d,foot);},120);};}
+var _r=window.render;if(_r&&!window._nx16){window._nx16=1;window.render=function(){var a=_r.apply(this,arguments);setTimeout(codify,260);return a;};}
+setTimeout(codify,600);
+});
+})();
