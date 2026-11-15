@@ -219,3 +219,87 @@ var _r=window.render;if(_r&&!window._nx16){window._nx16=1;window.render=function
 setTimeout(codify,600);
 });
 })();
+/* ===== v17 module: Vitrina Premium — Fase 1 del plan Ayesha + pagos verificados + límites de plan ===== */
+;(function(){
+"use strict";
+function ready(fn){if(document.readyState!=='loading')fn();else document.addEventListener('DOMContentLoaded',fn);}
+ready(function(){
+/* --- Tema sereno premium (neutros cálidos) por defecto, con toggle --- */
+var st=document.createElement('style');st.id='nxWarm';st.textContent=
+'body.warm{--bg:#f7f3ea;--muted:#6b7f74;background:#f7f3ea;color:#20342c}'+
+'body.warm .card,body.warm .pcard,body.warm .glass{background:#fffdf8;border-color:#e4dcc9;color:#20342c;box-shadow:0 1px 2px rgba(32,52,44,.06)}'+
+'body.warm header{background:rgba(247,243,234,.94);border-bottom:1px solid #e4dcc9}'+
+'body.warm h1,body.warm h2,body.warm h3,body.warm .t{color:#1d4035;font-family:Georgia,"Times New Roman",serif}'+
+'body.warm .btn,body.warm .cta{background:#2f6b4f;color:#f7f3ea;border:none}'+
+'body.warm .chip.on{background:#2f6b4f;color:#f7f3ea}'+
+'body.warm input,body.warm select,body.warm textarea{background:#fffdf8;border-color:#e4dcc9;color:#20342c}'+
+'body.warm .pprice{color:#2f6b4f}body.warm .ribbon{background:#2f6b4f;color:#f7f3ea}'+
+'body.warm .pimg{filter:saturate(.95)}';
+document.head.appendChild(st);
+window.nxTheme=function(warm){document.body.classList.toggle('warm',warm);localStorage.setItem('nx_theme',warm?'warm':'dark');};
+nxTheme((localStorage.getItem('nx_theme')||'warm')==='warm');
+
+/* --- Límites canónicos de plan (hallazgo 3: 5, no 10) --- */
+window.NX_PLANS={free:5,premium:50,platinum:100,gold:500};
+
+/* --- Splash: fuera el clic de inicio (Fase 1) --- */
+function noGate(){var sp=document.getElementById('splash')||document.querySelector('.splash');if(!sp)return;var b=sp.querySelector('button');if(b)b.click();setTimeout(function(){if(sp.parentNode)sp.remove();},900);}
+
+/* --- Hero claro + barra de confianza (Fase 1) --- */
+function hero(){if(document.getElementById('nxHero'))return;var anchor=document.querySelector('.chips')||document.querySelector('.grid');if(!anchor)return;
+ var h=document.createElement('div');h.id='nxHero';
+ h.innerHTML='<div style="padding:16px 2px 4px"><div style="font-size:25px;font-weight:800;font-family:Georgia,serif;line-height:1.15;color:inherit">Apni dukaan 5 minute mein<span style="display:block;font-size:13px;font-weight:600;color:var(--muted)">Tu tienda en 5 minutos — vendé por WhatsApp, cobrá al entregar</span></div>'+
+ '<div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 2px"><span class="chip">🚚 Pago contra entrega</span><span class="chip">💬 Pedidos por WhatsApp</span><span class="chip">🇵 Urdu + English</span><span class="chip">📲 Instalable sin Play Store</span></div></div>';
+ anchor.parentNode.insertBefore(h,anchor);}
+
+/* --- Vitrina limpia: fuera sticker DEMO y aviso de catálogo vacío (Fase 1) --- */
+function clean(){document.querySelectorAll('.ribbon,.tag,.pill').forEach(function(r){if(/DEMO/i.test(r.textContent))r.remove();});
+ var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);var n;
+ while(n=w.nextNode()){var t=n.nodeValue;if(!t)continue;var nt=t.split('7 productos activos').join('Vendedores de Punjab uniéndose esta semana').split('10 productos').join('5 productos');if(nt!==t)n.nodeValue=nt;}}
+
+/* --- Cola de verificación de pagos (hallazgo 2) --- */
+function pays(){try{return JSON.parse(localStorage.getItem('nx_payments')||'[]')}catch(e){return[]}}
+function savePays(a){localStorage.setItem('nx_payments',JSON.stringify(a));}
+window.nxPaySubmit=function(d){var a=pays();d.id=Date.now();d.status='pending';a.unshift(d);savePays(a);toast('💳 Enviado a verificación — respuesta en 24h','ok');};
+window.nxPayDecide=function(id,ok){var a=pays();a.forEach(function(p){if(p.id===id)p.status=ok?'verified':'rejected';});savePays(a);toast(ok?'✅ Pago verificado — activá el plan del vendedor':'❌ Pago rechazado','info');if(typeof render==='function')render();};
+function payCard(){if(typeof VIEW==='undefined'||VIEW!=='sell')return;if(document.getElementById('nxPayCard'))return;var v=document.getElementById('view');if(!v)return;
+ var c=document.createElement('div');c.id='nxPayCard';c.className='card';
+ c.innerHTML='<h3 class="t">💳 Pagar suscripción — verificación en 24h</h3>'+
+ '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">'+
+ '<select id="pBank"><option>JazzCash</option><option>Easypaisa</option><option>HBL</option><option>Meezan</option></select>'+
+ '<input id="pAmt" type="number" placeholder="Monto PKR 2500">'+
+ '<input id="pName" placeholder="Nombre del remitente">'+
+ '<input id="pLast" placeholder="Últimos 4 del teléfono">'+
+ '<input id="pTid" class="span2" placeholder="TID / referencia de transferencia" style="grid-column:1/-1"></div>'+
+ '<button class="btn" id="pSend" style="margin-top:10px">Enviar a verificación</button>'+
+ '<div style="font-size:10.5px;color:var(--muted);margin-top:6px">Cada pago se verifica contra el extracto antes de activar el plan. Sin TID válido no hay activación.</div>';
+ v.appendChild(c);
+ c.querySelector('#pSend').addEventListener('click',function(){var d={bank:c.querySelector('#pBank').value,amt:Number(c.querySelector('#pAmt').value)||0,name:c.querySelector('#pName').value.trim(),last:c.querySelector('#pLast').value.trim(),tid:c.querySelector('#pTid').value.trim()};
+  if(!d.tid||!d.amt||!d.name){toast('Completá remitente, monto y TID','err');return;}nxPaySubmit(d);});}
+function adminPays(){var ov=document.getElementById('nxSetOv');if(!ov||document.getElementById('nxPayRow'))return;var card=ov.querySelector('.card');if(!card)return;
+ var r=document.createElement('div');r.id='nxPayRow';r.className='row';r.style.cursor='pointer';
+ r.innerHTML='<div style="width:38px;height:38px;border-radius:12px;background:rgba(47,107,79,.12);border:1px solid rgba(47,107,79,.3);display:flex;align-items:center;justify-content:center;font-size:18px">💳</div><div class="inf"><div class="nm" style="font-size:13.5px">Cola de verificación de pagos</div><div style="font-size:11px;color:var(--muted)">'+pays().filter(function(p){return p.status==='pending'}).length+' pendientes · aprobá o rechazá</div></div><span style="color:var(--muted)">›</span>';
+ r.onclick=function(){var list=pays();var html=list.length?list.map(function(p){return '<div style="border:1px solid var(--border);border-radius:12px;padding:10px;margin:8px 0;font-size:12px"><b>'+p.name+'</b> · '+p.bank+' · PKR '+p.amt+' · TID '+p.tid+' <span style="color:var(--muted)">('+p.status+')</span><br><span style="font-size:10.5px;color:var(--muted)">últimos 4: '+p.last+'</span>'+(p.status==='pending'?'<div style="display:flex;gap:8px;margin-top:8px"><button class="btn" style="padding:7px" onclick="nxPayDecide('+p.id+',true)">Aprobar</button><button class="btn ghost" style="padding:7px" onclick="nxPayDecide('+p.id+',false)">Rechazar</button></div>':'')+'</div>';}).join(''):'<div style="font-size:12px;color:var(--muted)">Sin pagos en cola.</div>';
+  var o=document.createElement('div');o.style.cssText='position:fixed;inset:0;z-index:9998;background:var(--bg);overflow-y:auto;padding:16px';
+  o.innerHTML='<div class="card" style="max-width:560px;margin:0 auto;padding:18px"><button class="btn ghost" style="width:auto;padding:8px 14px;font-size:12px" onclick="this.parentElement.parentElement.remove()">← Volver</button><h3 class="t" style="margin-top:10px">💳 Cola de pagos</h3>'+html+'</div>';
+  document.body.appendChild(o);};
+ card.appendChild(r);}
+
+/* --- Toggle de tema en Settings --- */
+function themeRow(){var ov=document.getElementById('nxSetOv');if(!ov||document.getElementById('nxThemeRow'))return;var card=ov.querySelector('.card');if(!card)return;
+ var r=document.createElement('div');r.id='nxThemeRow';r.className='row';r.style.cursor='pointer';
+ r.innerHTML='<div style="width:38px;height:38px;border-radius:12px;background:rgba(47,107,79,.12);border:1px solid rgba(47,107,79,.3);display:flex;align-items:center;justify-content:center;font-size:18px">🎨</div><div class="inf"><div class="nm" style="font-size:13.5px">Tema de la tienda</div><div style="font-size:11px;color:var(--muted)">Actual: '+((localStorage.getItem('nx_theme')||'warm')==='warm'?'Cálido premium':'Oscuro')+' · tocá para cambiar</div></div><span style="color:var(--muted)">›</span>';
+ r.onclick=function(){nxTheme(!(document.body.classList.contains('warm')));ov.remove();toast('🎨 Tema actualizado','info');};
+ card.appendChild(r);}
+
+/* --- Raahnuma: el cliente ahora manda el header de cliente y maneja 429 --- */
+var _fetch=window.fetch;window.fetch=function(u,o){if(typeof u==='string'&&u.indexOf('/api/raahnuma')>=0){o=o||{};o.headers=o.headers||{};o.headers['x-nx-client']='nx-web-v17';
+ return _fetch.call(this,u,o).then(function(r){if(r.status===429){toast('⏳ Raahnuma: límite de uso alcanzado, probá en un minuto','err');throw new Error('NX_RATE');}return r;});}
+ return _fetch.apply(this,arguments);};
+
+/* --- Hooks de render --- */
+function post(){noGate();hero();clean();payCard();adminPays();themeRow();}
+var _r=window.render;if(_r&&!window._nx17){window._nx17=1;window.render=function(){var a=_r.apply(this,arguments);setTimeout(post,240);return a;};}
+setTimeout(post,600);
+});
+})();
