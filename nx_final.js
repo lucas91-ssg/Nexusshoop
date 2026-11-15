@@ -303,3 +303,90 @@ var _r=window.render;if(_r&&!window._nx17){window._nx17=1;window.render=function
 setTimeout(post,600);
 });
 })();
+/* ===== v18 module: AmarSkin — UI exacta de los mockups de Ayesha (crema/serif/verde, nav 5, cart por vendedor, order placed, detalle trust, UR RTL) ===== */
+;(function(){
+"use strict";
+function ready(fn){if(document.readyState!=='loading')fn();else document.addEventListener('DOMContentLoaded',fn);}
+ready(function(){
+var CSS='body{background:#e9e2d3!important;color:#26221b!important;padding-bottom:70px!important}'+
+'header,footer{background:#ece5d6!important;border:none!important}'+
+'h1,h2,h3,.t,.logo{font-family:Georgia,"Times New Roman",serif!important;color:#221d15!important}'+
+'.card,.pcard,.glass{background:#f6f1e4!important;border:1px solid #d9d0bb!important;border-radius:16px!important;box-shadow:none!important;color:#26221b!important}'+
+'.btn{background:#2a251d!important;color:#f5efe2!important;border:none!important;border-radius:12px!important}'+
+'.btn.ghost{background:transparent!important;border:1px solid #2a251d!important;color:#2a251d!important}'+
+'.btn.wa{background:#1d6b45!important;color:#fff!important}'+
+'.chip{background:#f6f1e4!important;border:1px solid #d9d0bb!important;color:#26221b!important;border-radius:999px!important}'+
+'.pprice,.price{color:#1d5c3f!important}'+
+'nav:not(#axNav){display:none!important}'+
+'.axnav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#ece5d6;border-top:1px solid #d9d0bb;z-index:60;padding:6px 4px calc(6px + env(safe-area-inset-bottom))}'+
+'.axnav button{flex:1;background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;color:#6b6355}'+
+'.axnav button.on{color:#1d5c3f;font-weight:700}'+
+'.axbanner{background:#d9d0bb;color:#4a443a;font-size:11px;text-align:center;padding:6px}'+
+'.axhero{background:#efe8d9;border:1px solid #d9d0bb;border-radius:20px;padding:22px;margin:12px 0}'+
+'.axhero h1{font-size:26px;line-height:1.25;margin:0 0 8px}'+
+'.axhero p{color:#6b6355;font-size:13px;margin:0 0 14px}'+
+'.axrow{display:flex;gap:8px;flex-wrap:wrap}'+
+'.axtrust{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:#4a443a}'+
+'.axlab{font-size:15px;margin:16px 0 8px}'+
+'.axchips{display:flex;gap:8px;overflow-x:auto}'+
+'.axov{position:fixed;inset:0;background:rgba(20,17,12,.45);z-index:998;overflow:auto;padding:16px}'+
+'.axovcard{background:#f6f1e4;border-radius:20px;padding:20px;max-width:560px;margin:24px auto}'+
+'.axline{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #d9d0bb;font-size:13px}'+
+'.axitem{display:block;width:100%;text-align:left;background:#efe8d9;border:1px solid #d9d0bb;border-radius:12px;padding:12px;margin:8px 0;font-size:14px}'+
+'.axtrustcard{background:#f6f1e4;border:1px solid #d9d0bb;border-radius:14px;padding:12px;margin:10px 0;font-size:12.5px;color:#4a443a;display:flex;flex-direction:column;gap:6px}'+
+'.axcheck{width:56px;height:56px;border-radius:50%;background:#1d5c3f;color:#fff;font-size:26px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}'+
+'.axcenter{text-align:center}'+
+'.axid{font-family:Georgia,serif;font-size:20px;letter-spacing:1px;margin:6px 0 10px}'+
+'.axorder{border:1px solid #d9d0bb;border-radius:14px;padding:14px;margin:10px 0;text-align:left}'+
+'.axorder .btn{margin-top:8px}'+
+'.axmuted{color:#6b6355;font-size:12.5px}'+
+'.axback{width:auto!important;padding:8px 14px!important;font-size:12px!important;margin-bottom:10px}'+
+'.axstart{margin-top:12px}'+
+'[dir=rtl] h1,[dir=rtl] .axhero h1{font-family:"Noto Nastaliq Urdu",Georgia,serif!important;line-height:1.9}';
+var st=document.createElement('style');st.id='axCSS';st.textContent=CSS;document.head.appendChild(st);
+function RTL(){return document.documentElement.dir==='rtl'}
+function T(en,ur){return RTL()?ur:en}
+function banner(){if(document.getElementById('axBanner'))return;var h=document.querySelector('header');if(!h)return;var d=document.createElement('div');d.id='axBanner';d.className='axbanner';d.textContent='ⓘ '+T('Preview mode: sample products. Connect the backend to go live.','پریویو موڈ: نمونہ مصنوعات۔ لائیو کے لیے بیک اینڈ جوڑیں۔');h.after(d);}
+function hero(){var old=document.getElementById('nxHero');if(old)old.remove();if(document.getElementById('axHero'))return;var a=document.querySelector('.grid')||document.getElementById('view');if(!a)return;var d=document.createElement('div');d.id='axHero';d.className='axhero';
+ d.innerHTML='<h1>'+T('Buy from trusted Pakistani shops. Pay when it arrives.','قابلِ اعتماد پاکستانی دکانوں سے خریدیں۔ پہنچنے پر ادائیگی کریں۔')+'</h1><p>'+T('Every order has a number, a seller you can call, and cash on delivery.','ہر آرڈر کا نمبر، فروخت کنندہ کا رابطہ، اور کیش آن ڈیلیوری۔')+'</p><div class="axrow"><button class="btn" id="axShop">🛍 '+T('Shop now','خریداری کریں')+'</button><button class="btn ghost" id="axSell">🏪 '+T('Start selling free','مفت بیچنا شروع کریں')+'</button></div><div class="axtrust"><span>💳 '+T('Cash on delivery','کیش آن ڈیلیوری')+'</span><span>🚚 '+T('Order tracking','آرڈر ٹریکنگ')+'</span><span>✓ '+T('Verified reviews','تصدیق شدہ جائزے')+'</span></div>';
+ a.parentNode.insertBefore(d,a);
+ d.querySelector('#axShop').onclick=function(){var g=document.querySelector('.grid');if(g)g.scrollIntoView({behavior:'smooth'});};
+ d.querySelector('#axSell').onclick=function(){clickOld('Sell');};}
+function cats(){if(document.getElementById('axCats'))return;var a=document.querySelector('.grid');if(!a)return;var seen={},out=[];(window.PRODS||[]).forEach(function(p){var c=p.cat||p.category;if(c&&!seen[c]){seen[c]=1;out.push(c);}});
+ var d=document.createElement('div');d.id='axCats';d.innerHTML='<h3 class="axlab">'+T('Categories','زمرے')+'</h3><div class="axchips">'+out.slice(0,6).map(function(c){return '<span class="chip" data-cat="'+c+'">'+c+'</span>';}).join('')+'</div><h3 class="axlab">'+T('Featured shops','نمایاں دکانیں')+'</h3>';
+ a.parentNode.insertBefore(d,a);
+ d.addEventListener('click',function(e){var s=e.target.closest('[data-cat]');if(!s)return;var q=document.querySelector('input[placeholder*="Search"],#q');if(q){q.value=s.dataset.cat;q.dispatchEvent(new Event('input'));}var g=document.querySelector('.grid');if(g)g.scrollIntoView({behavior:'smooth'});});}
+function oldBtn(t){var bs=[].slice.call(document.querySelectorAll('button,a'));for(var i=0;i<bs.length;i++){if(bs[i].textContent.trim().toLowerCase()===t.toLowerCase())return bs[i];}return null;}
+function clickOld(t){var b=oldBtn(t);if(b){b.click();return true;}return false;}
+function clickCart(){var c=document.getElementById('cartB')||oldBtn('Cart');if(c)c.click();}
+function SAVED(){try{return JSON.parse(localStorage.getItem('nx_saved')||'[]')}catch(e){return[]}}
+document.addEventListener('click',function(e){var h=e.target.closest('[class*=wish],.wish,[aria-label*=Save],[aria-label*=save]');if(!h)return;var card=h.closest('.pcard,.card');if(!card)return;var nm=((card.querySelector('h3,.nm,.pname')||{}).textContent||'').trim();var pr=((card.querySelector('.pprice,.price')||{}).textContent||'').trim();if(!nm)return;var a=SAVED();var i=-1;a.forEach(function(x,j){if(x.n===nm)i=j;});if(i>=0)a.splice(i,1);else a.unshift({n:nm,p:pr});localStorage.setItem('nx_saved',JSON.stringify(a));},true);
+function ov(title,html,wire){var d=document.createElement('div');d.className='axov';d.innerHTML='<div class="axovcard"><button class="btn ghost axback">← '+T('Back','واپس')+'</button><h2>'+title+'</h2>'+html+'</div>';document.body.appendChild(d);d.querySelector('.axback').onclick=function(){d.remove();};if(wire)wire(d);}
+function savedOv(){var a=SAVED();ov(T('Saved','محفوظ'),a.length?a.map(function(x){return '<div class="axline"><b>'+x.n+'</b><span>'+x.p+'</span></div>';}).join(''):'<p class="axmuted">'+T('Nothing saved yet. Tap the heart on any product.','ابھی کچھ محفوظ نہیں۔ کسی پروڈکٹ پر دل دبائیں۔')+'</p>');}
+function ORDERS(){try{return JSON.parse(localStorage.getItem('nx_orders')||'[]')}catch(e){return[]}}
+function ordersOv(){var o=ORDERS();ov(T('Orders','آرڈرز'),o.length?o.map(function(x){return '<div class="axline"><b>'+x.id+'</b><span>'+x.s+'</span></div>';}).join(''):'<p class="axmuted">'+T('No orders yet.','ابھی کوئی آرڈر نہیں۔')+'</p>');}
+function accountOv(){var acts=[[function(){clickOld('Sell')},'🏪 '+T('Seller Center','سیلر سینٹر')],[function(){clickOld('Committee')},'👥 '+T('Committee Buy','کمیٹی خرید')],[function(){var m=document.getElementById('nxMk');if(m)m.click();},'🌍 '+T('Market & currency','مارکیٹ اور کرنسی')],[function(){var g=document.getElementById('nxGear');if(g)g.click();},'⚙️ '+T('Settings & support','ترتیبات اور مدد')]];
+ ov(T('Account','اکاؤنٹ'),'<div>'+acts.map(function(r,i){return '<button class="axitem" data-i="'+i+'">'+r[1]+'</button>';}).join('')+'</div>',function(root){root.addEventListener('click',function(e){var b=e.target.closest('[data-i]');if(!b)return;root.remove();acts[Number(b.dataset.i)][0]();});});}
+function nav(){if(document.getElementById('axNav'))return;var N=[['home','🏠','Home','ہوم'],['saved','♡','Saved','محفوظ'],['cart','🛍','Cart','کارٹ'],['orders','📦','Orders','آرڈرز'],['account','👤','Account','اکاؤنٹ']];
+ var d=document.createElement('nav');d.id='axNav';d.className='axnav';d.innerHTML=N.map(function(n){return '<button data-t="'+n[0]+'"><span>'+n[1]+'</span><small>'+T(n[2],n[3])+'</small></button>';}).join('');document.body.appendChild(d);
+ d.addEventListener('click',function(e){var b=e.target.closest('[data-t]');if(!b)return;var t=b.dataset.t;
+  if(t==='home')clickOld('Home');else if(t==='cart')clickCart();else if(t==='orders')ordersOv();else if(t==='saved')savedOv();else accountOv();
+  d.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);});});}
+document.addEventListener('click',function(e){var b=e.target.closest('button,a');if(!b)return;if(!/checkout|confirm order|place order/i.test(b.textContent))return;
+ setTimeout(function(){var rows=[].slice.call(document.querySelectorAll('#view .pcard,#view .cartrow,#view li,#view .card')).map(function(r){return{n:((r.querySelector('h3,.nm,.pname')||{}).textContent||'').trim(),p:((r.querySelector('.pprice,.price')||{}).textContent||'').trim(),s:((r.querySelector('.seller,.shop,.ss')||{}).textContent||'').trim()||'NexusShop Seller'};}).filter(function(x){return x.n&&x.p;});
+  if(!rows.length)return;var g={};rows.forEach(function(r){(g[r.s]=g[r.s]||[]).push(r);});
+  var orders=Object.keys(g).map(function(s){return{id:'NX-'+Math.random().toString(36).slice(2,8).toUpperCase(),s:s};});
+  var o=ORDERS();orders.forEach(function(x){o.unshift(x);});localStorage.setItem('nx_orders',JSON.stringify(o.slice(0,30)));
+  var d=document.createElement('div');d.className='axov';d.innerHTML='<div class="axovcard axcenter"><div class="axcheck">✓</div><h2>'+T('Order placed','آرڈر ہو گیا')+'</h2><p class="axmuted">'+T('Save your order number. The seller will confirm on WhatsApp or by call.','آرڈر نمبر محفوظ کریں۔ فروخت کنندہ واٹس ایپ یا کال پر تصدیق کرے گا۔')+'</p>'+orders.map(function(x,i){return '<div class="axorder"><b>'+x.s+'</b><div class="axid">'+x.id+'</div><button class="btn wa" data-i="'+i+'">💬 '+T('Message seller on WhatsApp','فروخت کنندہ کو واٹس ایپ پر پیغام')+'</button><button class="btn ghost">'+T('Track an order','آرڈر ٹریک کریں')+'</button></div>';}).join('')+'<button class="btn ghost axstart">'+T('Start shopping','خریداری شروع کریں')+'</button></div>';
+  document.body.appendChild(d);
+  d.querySelector('.axstart').onclick=function(){d.remove();clickOld('Home');};
+  d.querySelectorAll('.wa').forEach(function(btn){btn.onclick=function(){var x=orders[Number(btn.dataset.i)];window.open('https://wa.me/?text='+encodeURIComponent(T('Hello! I placed order ','سلام! میں نے آرڈر رکھا ')+x.id+' — '+x.s),'_blank');};});},700);},true);
+function detail(){var v=document.getElementById('view');if(!v||document.getElementById('axTrust'))return;if(!/Rs|₨/.test(v.textContent))return;var card=v.querySelector('.card');if(!card)return;var t=document.createElement('div');t.id='axTrust';t.className='axtrustcard';
+ t.innerHTML='<div>💳 '+T('Cash on delivery — Check the parcel before you pay','کیش آن ڈیلیوری — ادائیگی سے پہلے پارسل چیک کریں')+'</div><div>🚚 '+T('Delivery: Rs 200 · Free delivery over Rs 5,000','ڈیلیوری: Rs 200 · Rs 5,000 سے اوپر مفت')+'</div><div>↩ '+T('Returns & refunds','واپسی اور رقم کی واپسی')+'</div>';
+ card.after(t);}
+function post(){banner();nav();var v=(typeof VIEW!=='undefined')?VIEW:'';if(v==='home'||v===''){hero();cats();}detail();
+ document.querySelectorAll('.ribbon,[class*=demo],[class*=badge]').forEach(function(x){if(/DEMO/i.test(x.textContent))x.style.display='none';});}
+var _r=window.render;if(_r&&!window._nx18){window._nx18=1;window.render=function(){var a=_r.apply(this,arguments);setTimeout(post,220);return a;};}
+setTimeout(post,500);
+});
+})();
