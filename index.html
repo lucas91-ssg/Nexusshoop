@@ -2,456 +2,457 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="google" content="notranslate">
-<title>NexusShop — Pakistan's Future Marketplace</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NexusShop — Trusted Pakistani shops, pay on delivery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#070b21;--glass:rgba(255,255,255,.07);--border:rgba(255,255,255,.14);--text:#eef2ff;--muted:#9aa7c7;
---g1:#f472b6;--g2:#a78bfa;--g3:#22d3ee;--ok:#34d399;--wa:#25D366;--grad:linear-gradient(135deg,var(--g1),var(--g2),var(--g3));--r:18px}
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-@keyframes fl{to{transform:translate(50px,40px) scale(1.1)}}
-@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
-@keyframes tin{from{opacity:0;transform:translate(-50%,-16px)}to{opacity:1;transform:translate(-50%,0)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
-@keyframes rotate3d{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
-@keyframes gradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-@keyframes slideIn{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:translateX(0)}}
-@keyframes fadeSlide{from{opacity:0}to{opacity:1}}
-[hidden]{display:none!important}
-
-/* === SPLASH SCREEN PREMIUM 3D === */
-#splash{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;
-background:radial-gradient(ellipse at center,#1e1b4b 0%,#0f172a 50%,#070b21 100%);overflow:hidden}
-#splash::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(0,212,255,.15) 0%,transparent 50%),
-radial-gradient(circle at 80% 80%,rgba(244,114,182,.15) 0%,transparent 50%);animation:gradient 15s ease infinite}
-.pakistan-flag{position:absolute;top:40px;right:40px;width:60px;height:40px;background:#01411C;border-radius:8px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.3)}
-.pakistan-flag::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:30px;height:30px;border:2px solid white;border-radius:50%}
-.pakistan-flag::after{content:'★';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:white;font-size:20px}
-.splash-3d-container{perspective:1000px;margin-bottom:32px;animation:up 1s ease both}
-.splash-cube{width:140px;height:140px;position:relative;transform-style:preserve-3d;animation:rotate3d 12s linear infinite}
-.cube-face{position:absolute;inset:0;border-radius:32px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:72px;
-box-shadow:0 0 80px rgba(167,139,250,.8),inset 0 0 40px rgba(255,255,255,.3);border:3px solid rgba(255,255,255,.3)}
-.cube-face.front{transform:translateZ(70px)}
-.cube-face.back{transform:rotateY(180deg) translateZ(70px)}
-.cube-face.right{transform:rotateY(90deg) translateZ(70px)}
-.cube-face.left{transform:rotateY(-90deg) translateZ(70px)}
-.cube-face.top{transform:rotateX(90deg) translateZ(70px)}
-.cube-face.bottom{transform:rotateX(-90deg) translateZ(70px)}
-.splash-welcome{font-family:'Orbitron',sans-serif;font-size:42px;font-weight:900;letter-spacing:2px;
-background:linear-gradient(90deg,#00d4ff,#a78bfa,#f472b6,#00d4ff);background-size:300% 100%;
--webkit-background-clip:text;background-clip:text;color:transparent;animation:gradient 6s linear infinite,up 1s .3s ease both}
-.splash-pakistan{margin-top:8px;font-size:18px;color:var(--g3);font-weight:600;animation:up 1s .5s ease both}
-.splash-tagline{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.6;max-width:320px;animation:up 1s .7s ease both}
-.particles{position:absolute;inset:0;overflow:hidden}
-.particle{position:absolute;width:4px;height:4px;background:var(--g3);border-radius:50%;box-shadow:0 0 10px var(--g3);animation:particleFloat 10s infinite}
-@keyframes particleFloat{0%,100%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh) rotate(720deg);opacity:0}}
-.splash-buttons{margin-top:32px;display:flex;flex-direction:column;gap:12px;width:100%;max-width:320px}
-.lang-select{display:flex;gap:10px;justify-content:center;animation:up 1s .9s ease both}
-.lang-select button{padding:10px 24px;border-radius:99px;border:1px solid var(--border);background:var(--glass);color:var(--text);font-weight:700;font-size:14px;cursor:pointer;transition:.3s}
-.lang-select button.on{background:var(--grad);color:#0b1030;border-color:transparent;box-shadow:0 0 20px rgba(167,139,250,.5)}
-.enter-btn{padding:18px 40px;border:0;border-radius:16px;background:var(--grad);color:#0b1030;font-size:16px;font-weight:800;cursor:pointer;
-box-shadow:0 14px 44px rgba(244,114,182,.4);animation:up 1s 1.1s ease both,pulse 2s ease-in-out infinite;transition:.3s}
-.enter-btn:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 20px 50px rgba(244,114,182,.6)}
-
-/* === CAROUSEL BANNER ANIMADO (ESTILO BET30) === */
-.banner-carousel{position:relative;overflow:hidden;border-radius:24px;margin:0 0 16px 0;min-height:280px;
-background:linear-gradient(135deg,#1e1b4b 0%,#312e81 50%,#1e1b4b 100%);border:1px solid rgba(255,255,255,.1);
-box-shadow:0 20px 60px rgba(0,0,0,.4),inset 0 0 60px rgba(255,255,255,.05)}
-.carousel-slide{position:absolute;inset:0;padding:32px 24px;display:flex;flex-direction:column;justify-content:center;
-opacity:0;transition:opacity .8s ease,transform .8s ease;transform:translateX(30px)}
-.carousel-slide.active{opacity:1;transform:translateX(0);animation:slideIn .8s ease}
-.carousel-bg{position:absolute;inset:0;opacity:.15;background-size:cover;background-position:center}
-.carousel-orb{position:absolute;width:300px;height:300px;border-radius:50%;animation:floatOrb 10s ease-in-out infinite alternate}
-.carousel-orb-1{top:-100px;right:-100px;background:radial-gradient(circle,rgba(0,212,255,.4) 0%,transparent 70%)}
-.carousel-orb-2{bottom:-100px;left:-100px;background:radial-gradient(circle,rgba(244,114,182,.4) 0%,transparent 70%);animation-delay:-5s}
-@keyframes floatOrb{0%{transform:translate(0,0) scale(1)}100%{transform:translate(30px,40px) scale(1.1)}}
-.slide-badge{display:inline-block;padding:6px 16px;border-radius:99px;background:rgba(0,212,255,.2);border:1px solid var(--g3);
-color:var(--g3);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;align-self:flex-start}
-.slide-title{font-size:28px;font-weight:900;line-height:1.2;margin-bottom:12px}
-.slide-title span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.slide-subtitle{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:16px;max-width:90%}
-.slide-features{display:flex;gap:10px;flex-wrap:wrap}
-.slide-pill{padding:8px 16px;border-radius:99px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
-font-size:12px;font-weight:700;color:var(--text)}
-.carousel-dots{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px}
-.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:.3s}
-.dot.active{background:var(--g3);width:28px;border-radius:5px}
-
-/* === RESTO DE LA UI === */
-header{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:10px;padding:12px 16px;
-background:rgba(7,11,33,.75);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-.logo{font-size:20px;font-weight:800;letter-spacing:-.6px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sp{flex:1}
-.icb{position:relative;width:40px;height:40px;border-radius:13px;border:1px solid var(--border);background:var(--glass);color:var(--text);font-size:16px;cursor:pointer}
-.icb:active{transform:scale(.94)}
-.bdg{position:absolute;top:-6px;right:-6px;min-width:18px;height:18px;padding:0 5px;border-radius:99px;background:var(--g1);color:#2b0a1e;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 0 12px rgba(244,114,182,.7)}
-.lang{padding:9px 14px;border-radius:99px;border:1px solid var(--border);background:var(--glass);color:var(--text);font-weight:700;font-size:12.5px;cursor:pointer}
-main{max-width:640px;margin:0 auto;padding:16px 16px 96px}
-.search{width:100%;margin-top:14px;padding:14px 16px;border-radius:16px;border:1px solid var(--border);background:var(--glass);color:var(--text);font-size:15px;outline:none;backdrop-filter:blur(10px)}
-.search:focus{border-color:var(--g3);box-shadow:0 0 0 3px rgba(34,211,238,.18)}
-.chips{display:flex;gap:8px;overflow-x:auto;padding:14px 0 6px;scrollbar-width:none}
-.chips::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;padding:9px 16px;border-radius:99px;border:1px solid var(--border);background:var(--glass);color:var(--muted);font-size:12.5px;font-weight:700;cursor:pointer}
-.chip.on{background:var(--grad);color:#0b1030;border-color:transparent}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
-.pcard{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);animation:up .45s both;cursor:pointer}
-.pcard:active{transform:scale(.98)}
-.pimg{width:100%;aspect-ratio:1;object-fit:cover;background:rgba(255,255,255,.05);display:block}
-.pbody{padding:10px 12px 12px}
-.pname{font-size:13px;font-weight:600;line-height:1.35;min-height:35px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.pprice{margin:6px 0 8px;font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.pacts{display:flex;gap:6px}
-.pacts button,.pacts span{flex:1;padding:10px 4px;border-radius:11px;font-size:11.5px;font-weight:800;cursor:pointer;font-family:inherit}
-.add{border:0;background:var(--grad);color:#0b1030}
-.fav{border:1px solid var(--border);background:transparent;color:var(--muted)}
-.fav.on{color:var(--g1);border-color:rgba(244,114,182,.5)}
-.off{margin-top:10px;padding:12px 14px;border-radius:14px;border:1px solid rgba(251,191,36,.35);background:rgba(251,191,36,.08);color:#fcd34d;font-size:12.5px;line-height:1.6}
-.ribbon{position:absolute;top:8px;left:8px;z-index:2;background:rgba(251,191,36,.92);color:#3b2504;font-size:9px;font-weight:900;padding:3px 9px;border-radius:99px;letter-spacing:.6px}
-.demob{padding:10px 4px;border-radius:11px;font-size:10px;font-weight:800;color:#fcd34d;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.35);text-align:center;cursor:default}
-.infob{margin:12px 0;padding:13px 15px;border-radius:14px;border:1px solid rgba(34,211,238,.4);background:rgba(34,211,238,.08);color:#a5f3fc;font-size:12.5px;line-height:1.6}
-.infob a{color:#67e8f9;font-weight:800}
-.card{border-radius:var(--r);border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);padding:18px;margin-bottom:12px;animation:up .4s both}
-h2.t{font-size:17px;font-weight:800;margin-bottom:12px}
-.row{display:flex;align-items:center;gap:12px;padding:12px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.04);margin-bottom:10px}
-.row img{width:58px;height:58px;border-radius:12px;object-fit:cover;background:rgba(255,255,255,.06)}
-.row .inf{flex:1;min-width:0}
-.row .nm{font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.row .pr{font-size:13px;font-weight:800;color:var(--g3)}
-.q{display:flex;align-items:center;gap:8px}
-.q button{width:32px;height:32px;border-radius:10px;border:0;background:var(--grad);color:#0b1030;font-weight:800;font-size:15px;cursor:pointer}
-.q span{min-width:20px;text-align:center;font-weight:800}
-.btn{width:100%;padding:15px;border:0;border-radius:15px;background:var(--grad);color:#0b1030;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:0 10px 30px rgba(167,139,250,.3)}
-.btn:active{transform:scale(.98)}
-.btn.wa{background:var(--wa);color:#06281a;box-shadow:0 10px 30px rgba(37,211,102,.3)}
-.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text);box-shadow:none}
-.btn+.btn{margin-top:10px}
-.empty{padding:44px 22px;text-align:center;color:var(--muted);font-size:13.5px;line-height:1.7;border:1.5px dashed var(--border);border-radius:var(--r)}
-.tot{display:flex;justify-content:space-between;padding:14px 4px;font-size:17px;font-weight:800}
-.tot b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-input.f{width:100%;padding:14px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.05);color:var(--text);font-size:15px;outline:none;margin-bottom:10px;font-family:inherit}
-input.f:focus{border-color:var(--g3)}
-.lbl{font-size:12px;font-weight:700;color:var(--muted);margin:10px 0 6px}
-.dimg{width:100%;aspect-ratio:1.1;object-fit:cover;border-radius:22px;background:rgba(255,255,255,.05)}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
-.tag{padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.07);border:1px solid var(--border);font-size:11px;font-weight:700;color:var(--muted)}
-.shopline{margin-top:12px;padding:12px 14px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.04);display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--muted)}
-.shopline b{color:var(--text);font-weight:700}
-nav{position:fixed;bottom:0;left:0;right:0;z-index:40;display:flex;padding:8px 6px calc(8px + env(safe-area-inset-bottom));
-background:rgba(7,11,33,.85);backdrop-filter:blur(18px);border-top:1px solid var(--border)}
-nav button{flex:1;border:0;background:none;color:var(--muted);font-size:10px;font-weight:800;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;border-radius:14px}
-nav button i{font-style:normal;font-size:19px;filter:grayscale(1);opacity:.7;transition:.2s}
-nav button.on{color:var(--text)}
-nav button.on i{filter:none;opacity:1;transform:scale(1.12);drop-shadow:0 0 10px rgba(34,211,238,.8)}
-#toasts{position:fixed;top:70px;left:50%;transform:translateX(-50%);z-index:70;display:flex;flex-direction:column;gap:8px;align-items:center;width:max-content;max-width:92vw}
-.toast{padding:12px 20px;border-radius:14px;font-size:13.5px;font-weight:700;animation:tin .3s ease both;box-shadow:0 14px 40px rgba(0,0,0,.45);backdrop-filter:blur(10px)}
-.toast.ok{background:rgba(52,211,153,.16);border:1px solid rgba(52,211,153,.5);color:#a7f3d0}
-.toast.err{background:rgba(248,113,113,.16);border:1px solid rgba(248,113,113,.5);color:#fecaca}
-.toast.info{background:rgba(34,211,238,.14);border:1px solid rgba(34,211,238,.45);color:#cffafe}
-footer{max-width:640px;margin:0 auto;padding:20px 16px 8px;text-align:center;color:var(--muted);font-size:11.5px}
-.urdu,.urdu *{font-family:'Noto Nastaliq Urdu',system-ui,serif!important;line-height:2.05}
+:root{
+  --bg:#e9e2d3; --surface:#f6f1e4; --surface2:#efe8d9; --line:#d9d0bb;
+  --ink:#26221b; --muted:#6b6355; --green:#1d5c3f; --green2:#2f6b4f;
+  --wa:#1d6b45; --danger:#a33a2a; --amber:#8a6d1f; --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.5}
+body.ur{font-family:'Noto Nastaliq Urdu',Georgia,serif}
+body.ur h1,body.ur h2,body.ur h3{line-height:1.9}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--surface2)}
+::-webkit-scrollbar-thumb{background:var(--green2);border-radius:8px;border:2px solid var(--surface2)}
+::-webkit-scrollbar-thumb:hover{background:var(--green)}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+button:active{transform:scale(.97)}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;width:100%}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--green2);outline-offset:1px}
+img{display:block;max-width:100%}
+header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.logo{font-size:22px;font-weight:700;white-space:nowrap}
+.logo b{color:var(--green)}
+.searchwrap{flex:1;min-width:150px;position:relative}
+.searchwrap input{padding-inline-start:34px;border-radius:999px}
+.searchwrap span{position:absolute;inset-inline-start:12px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.icbtn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 12px;font-size:14px;position:relative}
+.badge{position:absolute;top:-6px;inset-inline-end:-6px;background:var(--green);color:#fff;border-radius:999px;font-size:10px;min-width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-family:system-ui}
+.banner{background:var(--surface2);border-bottom:1px solid var(--line);color:var(--muted);font-size:12px;text-align:center;padding:6px 12px;font-family:system-ui}
+main{max-width:1080px;margin:0 auto;padding:16px 14px 100px}
+.view{animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.hero{background:var(--surface2);border:1px solid var(--line);border-radius:20px;padding:26px 22px;margin-bottom:18px}
+.hero h1{font-size:clamp(24px,4vw,34px);line-height:1.25;margin-bottom:10px}
+.hero p{color:var(--muted);font-size:14px;margin-bottom:16px;font-family:system-ui}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.btn{background:var(--ink);color:var(--surface);border-radius:12px;padding:12px 18px;font-weight:700;font-family:system-ui;font-size:14px}
+.btn.green{background:var(--green);color:#fff}
+.btn.wa{background:var(--wa);color:#fff}
+.btn.ghost{background:transparent;border:1px solid var(--ink);color:var(--ink)}
+.btn.small{padding:8px 12px;font-size:12px}
+.btn.danger{background:var(--danger);color:#fff}
+.trust{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:12px;color:var(--muted);font-family:system-ui}
+h2.sec{font-size:18px;margin:18px 0 10px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;font-size:13px;white-space:nowrap;font-family:system-ui}
+.chip.on{background:var(--green);color:#fff;border-color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:640px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.grid{grid-template-columns:repeat(4,1fr)}}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;position:relative;display:flex;flex-direction:column}
+.pcard .img{height:150px;background:var(--surface2);object-fit:cover;width:100%}
+.pcard .body{padding:10px;display:flex;flex-direction:column;gap:6px;flex:1}
+.pcard .name{font-size:14px;font-weight:700}
+.price{color:var(--green);font-weight:700;font-family:system-ui}
+.old{color:var(--muted);text-decoration:line-through;font-size:12px;font-family:system-ui}
+.off{position:absolute;top:8px;inset-inline-start:8px;background:var(--ink);color:#fff;font-size:11px;border-radius:8px;padding:3px 7px;font-family:system-ui}
+.heart{position:absolute;top:8px;inset-inline-end:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;width:32px;height:32px;font-size:15px}
+.heart.on{color:var(--danger)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:14px}
+.muted{color:var(--muted);font-family:system-ui;font-size:13px}
+.detail{display:grid;gap:16px}
+@media(min-width:800px){.detail{grid-template-columns:1fr 1fr}}
+.detail .img{border-radius:var(--radius);height:320px;object-fit:cover;width:100%;background:var(--surface2)}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.qty button{width:36px;height:36px;font-size:18px}
+.qty span{min-width:36px;text-align:center;font-family:system-ui}
+.trustcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;font-size:13px;display:flex;flex-direction:column;gap:6px;font-family:system-ui}
+.sellerline{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.cartgroup{border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:12px;background:var(--surface)}
+.cartitem{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.cartitem img{width:56px;height:56px;border-radius:10px;object-fit:cover;background:var(--surface2)}
+.cartitem .grow{flex:1}
+.total{display:flex;justify-content:space-between;font-weight:700;padding:10px 0;font-family:system-ui}
+nav{position:fixed;bottom:0;left:0;right:0;z-index:50;background:var(--bg);border-top:1px solid var(--line);display:flex;padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;color:var(--muted);font-family:system-ui;position:relative}
+nav button.on{color:var(--green);font-weight:700}
+nav .ico{font-size:18px}
+.check{width:60px;height:60px;border-radius:50%;background:var(--green);color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.center{text-align:center}
+.ordercode{font-size:20px;letter-spacing:1px;font-weight:700;margin:6px 0}
+.status{display:inline-block;border-radius:999px;padding:3px 10px;font-size:11px;font-family:system-ui;background:var(--surface2);border:1px solid var(--line)}
+.status.placed{color:var(--amber)} .status.delivered{color:var(--green)}
+.modal{position:fixed;inset:0;background:rgba(20,17,12,.5);z-index:100;display:flex;align-items:center;justify-content:center;padding:16px}
+.modal .box{background:var(--surface);border-radius:20px;padding:20px;max-width:520px;width:100%;max-height:85vh;overflow:auto}
+.steps{display:flex;flex-direction:column;gap:0;margin:14px 0}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step .dot{width:14px;height:14px;border-radius:50%;background:var(--line);margin-top:4px;flex:none}
+.step.done .dot{background:var(--green)}
+.step .lbl{font-size:13px;font-family:system-ui;padding-bottom:18px;border-inline-start:2px solid var(--line);margin-inline-start:-8px;padding-inline-start:18px}
+.step:last-child .lbl{border:none}
+label{display:block;font-size:12px;color:var(--muted);margin:10px 0 4px;font-family:system-ui}
+details{border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px;background:var(--surface)}
+summary{cursor:pointer;font-weight:700}
+details p{margin-top:8px;font-size:13px;color:var(--muted);font-family:system-ui;white-space:pre-line}
+#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:10px 18px;border-radius:999px;font-size:13px;font-family:system-ui;z-index:200;opacity:0;pointer-events:none;transition:opacity .25s;max-width:90vw;text-align:center}
+#toast.show{opacity:1}
+.empty{padding:40px 10px;text-align:center;color:var(--muted)}
+.menu button{display:flex;width:100%;justify-content:space-between;align-items:center;background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:8px;font-family:system-ui;font-size:14px}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#22d3ee">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="NexusShop">
 </head>
 <body>
-
-<div id="splash">
-  <div class="pakistan-flag"></div>
-  <div class="particles" id="particles"></div>
-  <div class="splash-3d-container">
-    <div class="splash-cube">
-      <div class="cube-face front">🛒</div>
-      <div class="cube-face back">🇵🇰</div>
-      <div class="cube-face right">✨</div>
-      <div class="cube-face left">🚀</div>
-      <div class="cube-face top">💎</div>
-      <div class="cube-face bottom"></div>
-    </div>
-  </div>
-  <h1 class="splash-welcome">NexusShop</h1>
-  <div class="splash-pakistan" id="pkWelcome">Welcome to Pakistan's Future</div>
-  <div class="splash-tagline" id="pkTagline">Where commerce meets innovation. Your marketplace, your language, your success.</div>
-  <div class="splash-buttons">
-    <div class="lang-select">
-      <button id="pEn" class="on" onclick="pickLang('en')">English</button>
-      <button id="pUr" onclick="pickLang('ur')">اردو</button>
-    </div>
-    <button class="enter-btn" onclick="enterShop()" id="enterBtn">Enter NexusShop · داخل ہوں</button>
-  </div>
-</div>
-
-<header>
-  <span class="logo">NexusShop</span><span class="sp"></span>
-  <button class="lang" id="langB" onclick="toggleLang()">اردو</button>
-  <button class="icb" onclick="go('wish')">♥</button>
-  <button class="icb" onclick="go('cart')"><span class="bdg" id="bdg" hidden>0</span></button>
-  <button class="icb" id="userB" onclick="userTap()">👤</button>
-</header>
-
-<main id="view"></main>
-<footer>© 2026 NexusShop™ · The E-Commerce of Pakistan · پاکستان کا ای کامرس</footer>
-
-<nav id="nav">
-  <button data-v="home" onclick="go('home')"><i>🏠</i><span data-i="home"></span></button>
-  <button data-v="wish" onclick="go('wish')"><i>💖</i><span data-i="wish"></span></button>
-  <button data-v="cart" onclick="go('cart')">🛒</button>
-  <button data-v="orders" onclick="go('orders')"><i>📦</i><span data-i="orders"></span></button>
-  <button data-v="sell" onclick="go('sell')"><i>🏪</i><span data-i="sell"></span></button>
-</nav>
-
-<div id="toasts"></div>
-
+<div id="app"></div>
+<div id="toast"></div>
 <script>
-/* ========== NEXUSSHOP - FUNCIONALIDAD TIPO MERCADOLIBRE ========== */
-var LS={get:function(k,d){try{var v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}},
-        set:function(k,v){localStorage.setItem(k,JSON.stringify(v))}};
-var LAN=LS.get('nx_lang','en'), USER=null, BUYER=null, SB=null, PRODS=[], CATS=[], VIEW='home', CUR=null, QTY=1;
-var WA_DEFAULT='542257550650';
-var I={
-en:{home:'Home',wish:'Wishlist',cart:'Cart',orders:'Orders',sell:'Sell',search:'Search products…',add:'Add',
- tag:'Your store. Your country. Your income.',all:'All',
- stock:'in stock',cod:'Cash on Delivery',del:'Delivery tomorrow',ret:'7-day returns',qty:'Quantity',
- emptyCart:'Your cart is empty. Add something you love.',wishEmpty:'Tap 💖 on any product to save it here.',
- ordersEmpty:'No orders yet. When you order, tracking lives here.',total:'Total',orderWA:'Order on WhatsApp (COD)',
- sellT:'Sell on NexusShop',sellP:'Start FREE with 5 products. Then upgrade from PKR 2,500/month.',
- sellBtn:'See plans & subscribe',openCenter:'Open Seller Center',login:'Log in',signup:'Sign up',email:'Email',pass:'Password',logout:'Log out',
- offline:'Offline mode: catalog syncs when connection returns.',noProds:'Products appear as sellers onboard this week.',details:'Details',waSolo:'Chat with seller',back:'← Back',
- demoBanner:'Example catalog with real photos — test orders welcome. First Lahore sellers go live this week.',
- demoDetail:'DEMO showcase item — not a real product yet.',
- pkWelcome:'Welcome to Pakistan\'s Future',
- pkTagline:'Where commerce meets innovation. Your marketplace, your language, your success.',
- enterBtn:'Enter NexusShop',buyerLogin:'Buyer login',buyerInfo:'Sign in is optional — you can order as a guest.',
- carousel:[
-  {badge:'🚀 Free',title:'Start Free · Grow Fast',subtitle:'5 products FREE forever. No credit card needed.',features:['5 Free Products','Direct WhatsApp','Zero Commission']},
-  {badge:'🇵🇰 Local',title:'Made for Pakistan',subtitle:'Cash on Delivery, Urdu support, WhatsApp checkout.',features:['COD Ready','Urdu Language','WhatsApp']},
-  {badge:'⚡ Fast',title:'List in Minutes',subtitle:'From signup to first sale in under 24 hours.',features:['Quick Setup','Easy Upload','Fast Sales']}
- ]},
-ur:{home:'ہوم',wish:'پسندیدہ',cart:'کارٹ',orders:'آرڈرز',sell:'بیچیں',search:'مصنوعات تلاش کریں…',add:'شامل',
- tag:'آپ کی دکان۔ آپ کا ملک۔ آپ کی کمائی۔',all:'تمام',
- stock:'اسٹاک میں',cod:'کیش آن ڈیلیوری',del:'کل ڈیلیوری',ret:'7 دن واپسی',qty:'تعداد',
- emptyCart:'کارٹ خالی ہے۔',wishEmpty:'کسی پروڈکٹ پر 💖 دبائیں۔',ordersEmpty:'ابھی کوئی آرڈر نہیں۔',total:'کل',
- orderWA:'واٹس ایپ پر آرڈر (COD)',sellT:'NexusShop پر فروخت',sellP:'5 مصنوعات مفت۔ پھر PKR 2,500/ماہ سے اپ گریڈ کریں۔',
- sellBtn:'پلان دیکھیں',openCenter:'سیلر سینٹر کھولیں',login:'لاگ ان',signup:'سائن اپ',email:'ای میل',pass:'پاس ورڈ',logout:'لاگ آؤٹ',
- offline:'آف لائن موڈ: کنکشن آنے پر کیٹلاگ sync ہوگا۔',noProds:'اس ہفتہ فروش شامل ہو رہے ہیں۔',details:'تفصیل',waSolo:'فروخت کنندہ سے چیٹ',back:'← واپس',
- demoBanner:'مثالی کیٹلاگ حقیقی تصاویر کے ساتھ — ٹیسٹ آرڈرز خوش آمدید۔ لاہور کے پہلے فروش اس ہفتے شامل ہو رہے ہیں۔',
- demoDetail:'DEMO شوکیس آئٹم — ابھی حقیقی پروڈکٹ نہیں۔',
- pkWelcome:'پاکستان کے مستقبل میں خوش آمدید',
- pkTagline:'جہاں تجارت اور جدت ملتی ہے۔ آپ کی مارکیٹ، آپ کی زبان، آپ کی کامیابی۔',
- enterBtn:'نیکسس شاپ میں داخل ہوں',buyerLogin:'خریدار لاگ ان',buyerInfo:'لاگ ان اختیاری ہے — آپ مہمان کے طور پر آرڈر کر سکتے ہیں۔',
- carousel:[
-  {badge:'🚀 مفت',title:'مفت شروع کریں · تیزی سے بڑھیں',subtitle:'5 مصنوعات ہمیشہ کے لیے مفت۔ کوئی کریڈٹ کارڈ نہیں۔',features:['5 مفت مصنوعات','ڈائریکٹ واٹس ایپ','زیرو کمیشن']},
-  {badge:'🇵🇰 پاکستانی',title:'پاکستان کے لیے بنایا گیا',subtitle:'کیش آن ڈیلیوری، اردو سپورٹ، واٹس ایپ چیک آؤٹ۔',features:['COD تیار','اردو زبان','واٹس ایپ']},
-  {badge:'⚡ تیز',title:'منٹوں میں لسٹ کریں',subtitle:'سائن اپ سے پہلی فروخت 24 گھنٹے سے کم میں۔',features:['فوری سیٹ اپ','آسان اپ لوڈ','تیز فروخت']}
- ]}};
-
-function t(k){return (I[LAN]&&I[LAN][k])||I.en[k]||k}
-function money(n){return 'Rs. '+Number(n||0).toLocaleString('en-PK')}
-function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
-function toast(m,type){var w=document.getElementById('toasts');var e=document.createElement('div');
- e.className='toast '+(type||'info');e.textContent=m;w.appendChild(e);
- setTimeout(function(){e.style.opacity='0';e.style.transition='opacity .3s';setTimeout(function(){e.remove()},320)},2600)}
-function applyLang(){document.documentElement.lang=LAN;document.documentElement.dir=LAN==='ur'?'rtl':'ltr';
- document.body.classList.toggle('urdu',LAN==='ur');
- document.getElementById('langB').textContent=LAN==='ur'?'EN':'اردو';
- document.getElementById('pkWelcome').textContent=t('pkWelcome');
- document.getElementById('pkTagline').textContent=t('pkTagline');
- document.getElementById('enterBtn').textContent=t('enterBtn');
- document.querySelectorAll('[data-i]').forEach(function(e){e.textContent=t(e.dataset.i)})}
-function pickLang(l){LAN=l;LS.set('nx_lang',l);
- document.getElementById('pEn').classList.toggle('on',l==='en');
- document.getElementById('pUr').classList.toggle('on',l==='ur');applyLang();render()}
-function toggleLang(){pickLang(LAN==='ur'?'en':'ur')}
-function enterShop(){var sp=document.getElementById("splash");if(sp){sp.style.transition="opacity 1s cubic-bezier(.4,0,.2,1),transform 1s cubic-bezier(.4,0,.2,1),filter 1s ease";sp.style.opacity="0";sp.style.transform="scale(1.1)";sp.style.filter="blur(10px)";setTimeout(function(){sessionStorage.setItem("nx_in","1");sp.style.display="none";render();loadCatalog();var s=document.createElement("style");s.textContent="@keyframes nxUp{0%{opacity:0;transform:translateY(40px)}100%{opacity:1;transform:translateY(0)}}#view>*{animation:nxUp .6s ease-out backwards}#view>*:nth-child(1){animation-delay:.05s}#view>*:nth-child(2){animation-delay:.12s}#view>*:nth-child(3){animation-delay:.19s}#view>*:nth-child(4){animation-delay:.26s}#view>*:nth-child(5){animation-delay:.33s}";document.head.appendChild(s)},1000)}else{sessionStorage.setItem("nx_in","1");render();loadCatalog()}}
-
-function cart(){return LS.get('nx_cart',[])}
-function saveCart(c){LS.set('nx_cart',c);badge()}
-function badge(){var n=cart().reduce(function(s,x){return s+x.q},0);var b=document.getElementById('bdg');b.hidden=!n;b.textContent=n}
-function wish(){return LS.get('nx_wish',[])}
-function addCart(id){if(!BUYER){toast(t('buyerInfo'),'info');go('login');return}
- var p=PRODS.find(function(x){return x.id===id});if(!p)return;
- if(p.demo){toast('DEMO item — cannot add to cart','info');return}
- var c=cart(),f=c.find(function(x){return x.i===id});
- if(f)f.q++;else c.push({i:id,q:1,name:p.name,price:p.price,img:p.img,wa:p.wa,shopName:p.shopName});
- saveCart(c);toast('✓ '+t('add'),'ok');render()}
-function setQ(id,d){var c=cart();var f=c.find(function(x){return x.i===id});if(!f)return;
- f.q+=d;if(f.q<1)c=c.filter(function(x){return x.i!==id});saveCart(c);render()}
-function toggleWish(id){var w=wish();var p=PRODS.find(function(x){return x.id===id});
- if(p.demo){toast('DEMO item — cannot save','info');return}
- if(w.includes(id)){w=w.filter(function(x){return x!==id});toast('Removed','info')}
- else{w.push(id);toast('💖 Saved','ok')}
- LS.set('nx_wish',w);render()}
-function waCart(){if(!BUYER){toast(t('buyerInfo'),'info');go('login');return}
- var c=cart().filter(function(x){return !x.demo});if(!c.length)return;
- var first=c[0];var wa=(first&&first.wa)||WA_DEFAULT;
- var shopName=(first&&first.shopName)||'Seller';
- var msg='Assalam o Alaikum '+shopName+'! I want to order from NexusShop (Buyer: '+BUYER.email+'):\n'+
-  c.map(function(x){return '• '+x.name+' x'+x.q+' — '+money(x.price*x.q)}).join('\n')+
-  '\n'+t('total')+': '+money(c.reduce(function(s,x){return s+x.price*x.q},0))+' (COD)';
- window.open('https://wa.me/'+wa+'?text='+encodeURIComponent(msg),'_blank')}
-function waOne(p){if(!BUYER){toast(t('buyerInfo'),'info');go('login');return}
- var wa=String((p.wa)||WA_DEFAULT).replace(/\D/g,'');var shopName=p.shopName||'Seller';
- var msg=(LAN==='ur'?'السلام علیکم '+shopName+'! مجھے دلچسپی ہے (خریدار: '+BUYER.email+'): ':'Hi '+shopName+'! I\'m interested (Buyer: '+BUYER.email+'): ')+p.name+' — '+money(p.price);
- window.open('https://wa.me/'+wa+'?text='+encodeURIComponent(msg),'_blank')}
-
-function go(v){if(v==='cart'&&cart().length>0&&!BUYER){toast(t('buyerInfo'),'info');go('login');return}
- VIEW=v;CUR=null;render();window.scrollTo(0,0);
- document.querySelectorAll('#nav button').forEach(function(b){b.classList.toggle('on',b.dataset.v===v)})}
-function openP(id){CUR=id;QTY=1;VIEW='detail';render();window.scrollTo(0,0)}
-
+"use strict";
+/* ============ i18n: English + Urdu only. No Spanish anywhere. ============ */
+const I18N={
+en:{
+ preview:"Preview mode: sample products. Connect the backend to go live.",
+ search:"Search products…", heroT:"Buy from trusted Pakistani shops. Pay when it arrives.",
+ heroS:"Every order has a number, a seller you can call, and cash on delivery.",
+ shopNow:"Shop now", startSell:"Start selling free", tCOD:"Cash on delivery", tTrack:"Order tracking", tRev:"Verified reviews",
+ categories:"Categories", featured:"Featured shops", all:"All", add:"Add to cart", buy:"Buy now",
+ soldBy:"Sold by", ask:"Ask", description:"Description", reviews:"Reviews",
+ revNote:"Reviews come only from delivered orders.", inStock:"in stock", qty:"Quantity",
+ codCheck:"Cash on delivery — check the parcel before you pay",
+ delInfo:"Delivery: {d} · Free delivery over {f}", returns:"Returns & refunds",
+ cart:"Cart", cartEmpty:"Your cart is empty", cartEmptyS:"Add products from trusted shops and pay when they arrive.",
+ continue:"Continue shopping", sellers:"{n} seller(s) — one order per seller", subtotal:"Subtotal",
+ delNote:"Delivery is added per seller at checkout.", checkout:"Checkout",
+ placed:"Order placed", placedS:"Save your order number. The seller will confirm on WhatsApp or by call.",
+ msgSeller:"Message seller on WhatsApp", track:"Track an order", startShop:"Start shopping",
+ orders:"Orders", ordersEmpty:"No orders yet", saved:"Saved", savedEmpty:"Nothing saved yet. Tap the heart on any product.",
+ account:"Account", profile:"Profile", name:"Full name", city:"City", wa:"WhatsApp number", save:"Save",
+ sellerCenter:"Seller Center", committee:"Committee Buy", market:"Market & currency", settings:"Settings",
+ faq:"Seller FAQ", support:"Support", about:"About us", privacy:"Privacy policy", terms:"Terms & legal",
+ admin:"Admin mode", payQueue:"Payment verification queue", reset:"Reset demo data",
+ freePlan:"Free · 5 products", premiumPlan:"Premium · PKR 2,500/mo",
+ createShop:"Create your shop", shopName:"Shop name", addProduct:"Add product", editProduct:"Edit product",
+ pName:"Product name", pPrice:"Price (PKR)", pCat:"Category", pStock:"Stock", pImg:"Image URL (optional)", pDesc:"Description",
+ edit:"Edit", del:"Delete", myProducts:"My products", plan:"Plan", upgrade:"Upgrade to Premium",
+ payTitle:"Pay subscription — verified in 24h", bank:"Bank / wallet", amount:"Amount", sender:"Sender name",
+ last4:"Last 4 digits of phone", tid:"Transaction ID (TID)", submitPay:"Send for verification",
+ pending:"Pending", verified:"Verified", rejected:"Rejected", approve:"Approve", reject:"Reject",
+ commT:"Committee Buy", commS:"3 buyers join a group and everyone saves 15%. Nobody pays until delivery.",
+ startGroup:"Start a group", joinGroup:"Join with a code", code:"Group code", members:"members",
+ locked:"Locked −15%", open:"Open", share:"Share on WhatsApp",
+ back:"Back", home:"Home", navSaved:"Saved", navCart:"Cart", navOrders:"Orders", navAccount:"Account",
+ added:"Added to cart", removed:"Removed", savedT:"Saved", unsavedT:"Removed from saved",
+ profileSaved:"Profile saved", shopCreated:"Shop created", prodAdded:"Product added", prodUpdated:"Product updated",
+ prodDeleted:"Product deleted", limit:"Free plan allows 5 products. Upgrade to add more.",
+ paySent:"Payment sent for verification", payOk:"Payment verified — plan upgraded", payNo:"Payment rejected",
+ groupCreated:"Group created — share the code", groupJoined:"Joined the group", groupFull:"Group complete — 15% locked",
+ codeNo:"Code not found", resetDone:"Demo data reset", langSet:"Language: English", marketSet:"Market updated",
+ noResults:"No products match your search", status_placed:"Placed", status_confirmed:"Confirmed",
+ status_shipped:"Shipped", status_delivered:"Delivered", trackT:"Order tracking", courier:"Courier",
+ est:"Estimated delivery", waHello:"Assalam o Alaikum! My NexusShop order (COD):", waTotal:"Total",
+ faqT:"Seller FAQ", q1:"What does COD mean?", a1:"Cash on Delivery: the rider brings the box, you open and check it, and pay only if you keep it. No prepayment.",
+ q2:"Is listing really free?", a2:"Yes — 5 products free forever. No card, no commission on the free tier.",
+ q3:"How do I get paid?", a3:"Directly: buyers order on WhatsApp and pay you on delivery. NexusShop never holds your money.",
+ q4:"Who delivers?", a4:"You choose a local courier or your own rider. Product pages show your market's couriers.",
+ q5:"What is Committee Buy?", a5:"3 buyers join a group, everyone gets −15%, nobody pays until delivery.",
+ q6:"How do subscriptions work?", a6:"Upgrade from PKR 2,500/month after 5 products. Activation only after a verified transfer.",
+ q7:"Can I sell in another country?", a7:"Yes — switch market (Pakistan / Nigeria). Currency, couriers and payments follow.",
+ q8:"How do reviews work?", a8:"Only from delivered orders, so ratings cannot be faked.",
+ aboutT:"NexusShop is a COD-first marketplace connecting local sellers and buyers in their own language. We do not own inventory; we provide the software.",
+ privacyT:"We store only what is needed (name, city, WhatsApp, orders) on your device and in a secured database with row-level security. We never sell personal data. You may request deletion at any time.",
+ termsT:"Sellers are independent businesses responsible for their products and delivery. Prohibited: illegal or counterfeit goods. The platform is a technology intermediary.",
+ supportT:"We reply within 24 hours: neuralfocusai@gmail.com",
+ lang:"Language", themeNote:"Brand theme follows the approved design.", confirmDel:"Delete this product?",
+ confirmReset:"Reset all demo data on this device?", reviewsN:"{n} reviews", freeOver:"Free", delivery:"Delivery"
+},
+ur:{
+ preview:"پریویو موڈ: نمونہ مصنوعات۔ لائیو ہونے کے لیے بیک اینڈ جوڑیں۔",
+ search:"مصنوعات تلاش کریں…", heroT:"قابلِ اعتماد پاکستانی دکانوں سے خریدیں۔ پہنچنے پر ادائیگی کریں۔",
+ heroS:"ہر آرڈر کا نمبر، فروخت کنندہ کا رابطہ، اور کیش آن ڈیلیوری۔",
+ shopNow:"خریداری کریں", startSell:"مفت بیچنا شروع کریں", tCOD:"کیش آن ڈیلیوری", tTrack:"آرڈر ٹریکنگ", tRev:"تصدیق شدہ جائزے",
+ categories:"زمرے", featured:"نمایاں دکانیں", all:"سب", add:"کارٹ میں شامل کریں", buy:"ابھی خریدیں",
+ soldBy:"فروخت کنندہ", ask:"پوچھیں", description:"تفصیل", reviews:"جائزے",
+ revNote:"جائزے صرف ڈیلیور شدہ آرڈرز سے آتے ہیں۔", inStock:"اسٹاک میں", qty:"تعداد",
+ codCheck:"کیش آن ڈیلیوری — ادائیگی سے پہلے پارسل چیک کریں",
+ delInfo:"ڈیلیوری: {d} · {f} سے اوپر مفت ڈیلیوری", returns:"واپسی اور رقم کی واپسی",
+ cart:"کارٹ", cartEmpty:"آپ کا کارٹ خالی ہے", cartEmptyS:"قابلِ اعتماد دکانوں سے مصنوعات شامل کریں اور پہنچنے پر ادائیگی کریں۔",
+ continue:"خریداری جاری رکھیں", sellers:"{n} فروخت کنندہ — فی فروخت کنندہ ایک آرڈر", subtotal:"ذیلی میزان",
+ delNote:"ڈیلیوری چیک آؤٹ پر فی فروخت کنندہ شامل ہوتی ہے۔", checkout:"چیک آؤٹ",
+ placed:"آرڈر ہو گیا", placedS:"آرڈر نمبر محفوظ کریں۔ فروخت کنندہ واٹس ایپ یا کال پر تصدیق کرے گا۔",
+ msgSeller:"فروخت کنندہ کو واٹس ایپ کریں", track:"آرڈر ٹریک کریں", startShop:"خریداری شروع کریں",
+ orders:"آرڈرز", ordersEmpty:"ابھی کوئی آرڈر نہیں", saved:"محفوظ", savedEmpty:"ابھی کچھ محفوظ نہیں۔ کسی پروڈکٹ پر دل دبائیں۔",
+ account:"اکاؤنٹ", profile:"پروفائل", name:"پورا نام", city:"شہر", wa:"واٹس ایپ نمبر", save:"محفوظ کریں",
+ sellerCenter:"سیلر سینٹر", committee:"کمیٹی خرید", market:"مارکیٹ اور کرنسی", settings:"ترتیبات",
+ faq:"سیلر FAQ", support:"مدد", about:"ہمارے بارے میں", privacy:"رازداری پالیسی", terms:"شرائط و ضوابط",
+ admin:"ایڈمن موڈ", payQueue:"ادائیگی تصدیق قطار", reset:"ڈیمو ڈیٹا ری سیٹ کریں",
+ freePlan:"مفت · 5 مصنوعات", premiumPlan:"پریمیم · PKR 2,500/ماہ",
+ createShop:"اپنی دکان بنائیں", shopName:"دکان کا نام", addProduct:"پروڈکٹ شامل کریں", editProduct:"پروڈکٹ میں ترمیم",
+ pName:"پروڈکٹ کا نام", pPrice:"قیمت (PKR)", pCat:"زمرہ", pStock:"اسٹاک", pImg:"تصویر URL (اختیاری)", pDesc:"تفصیل",
+ edit:"ترمیم", del:"حذف کریں", myProducts:"میری مصنوعات", plan:"پلان", upgrade:"پریمیم پر اپ گریڈ کریں",
+ payTitle:"سبسکرپشن ادا کریں — 24 گھنٹے میں تصدیق", bank:"بینک / والیٹ", amount:"رقم", sender:"بھیجنے والے کا نام",
+ last4:"فون کے آخری 4 ہندسے", tid:"ٹرانزیکشن ID (TID)", submitPay:"تصدیق کے لیے بھیجیں",
+ pending:"زیر التوا", verified:"تصدیق شدہ", rejected:"مسترد", approve:"منظور کریں", reject:"مسترد کریں",
+ commT:"کمیٹی خرید", commS:"3 خریدار گروپ میں شامل ہوں اور سب 15% بچائیں۔ ڈیلیوری تک کوئی ادائیگی نہیں۔",
+ startGroup:"گروپ شروع کریں", joinGroup:"کوڈ سے شامل ہوں", code:"گروپ کوڈ", members:"اراکین",
+ locked:"لاک −15%", open:"کھلا", share:"واٹس ایپ پر شیئر کریں",
+ back:"واپس", home:"ہوم", navSaved:"محفوظ", navCart:"کارٹ", navOrders:"آرڈرز", navAccount:"اکاؤنٹ",
+ added:"کارٹ میں شامل ہو گیا", removed:"ہٹا دیا گیا", savedT:"محفوظ ہو گیا", unsavedT:"محفوظ سے ہٹ گیا",
+ profileSaved:"پروفائل محفوظ ہو گیا", shopCreated:"دکان بن گئی", prodAdded:"پروڈکٹ شامل ہو گئی", prodUpdated:"پروڈکٹ اپ ڈیٹ ہو گئی",
+ prodDeleted:"پروڈکٹ حذف ہو گئی", limit:"مفت پلان میں 5 مصنوعات کی اجازت ہے۔ مزید کے لیے اپ گریڈ کریں۔",
+ paySent:"ادائیگی تصدیق کے لیے بھیج دی گئی", payOk:"ادائیگی تصدیق شدہ — پلان اپ گریڈ", payNo:"ادائیگی مسترد",
+ groupCreated:"گروپ بن گیا — کوڈ شیئر کریں", groupJoined:"گروپ میں شامل ہو گئے", groupFull:"گروپ مکمل — 15% لاک",
+ codeNo:"کوڈ نہیں ملا", resetDone:"ڈیمو ڈیٹا ری سیٹ ہو گیا", langSet:"زبان: اردو", marketSet:"مارکیٹ اپ ڈیٹ ہو گئی",
+ noResults:"آپ کی تلاش سے کوئی پروڈکٹ نہیں ملی", status_placed:"رکھا گیا", status_confirmed:"تصدیق شدہ",
+ status_shipped:"روانہ", status_delivered:"ڈیلیور", trackT:"آرڈر ٹریکنگ", courier:"کورئیر",
+ est:"متوقع ڈیلیوری", waHello:"السلام علیکم! میرا NexusShop آرڈر (COD):", waTotal:"کل",
+ faqT:"سیلر FAQ", q1:"COD کا کیا مطلب ہے؟", a1:"کیش آن ڈیلیوری: رائیڈر ڈبہ لاتا ہے، آپ کھول کر چیک کرتے ہیں اور صرف رکھنے کی صورت میں ادائیگی کرتے ہیں۔ پیشگی ادائیگی نہیں۔",
+ q2:"کیا لسٹنگ واقعی مفت ہے؟", a2:"جی ہاں — 5 مصنوعات ہمیشہ مفت۔ نہ کارڈ، نہ کمیشن۔",
+ q3:"مجھے ادائیگی کیسے ملتی ہے؟", a3:"براہ راست: خریدار واٹس ایپ پر آرڈر کرتے ہیں اور ڈیلیوری پر آپ کو ادا کرتے ہیں۔ NexusShop آپ کا پیسہ نہیں رکھتا۔",
+ q4:"ڈیلیوری کون کرتا ہے؟", a4:"آپ مقامی کورئیر یا اپنا رائیڈر چنتے ہیں۔ پروڈکٹ صفحے آپ کی مارکیٹ کے کورئیر دکھاتے ہیں۔",
+ q5:"کمیٹی خرید کیا ہے؟", a5:"3 خریدار گروپ میں شامل ہوں، سب کو −15% ملتا ہے، ڈیلیوری تک کوئی ادائیگی نہیں۔",
+ q6:"سبسکرپشن کیسے کام کرتی ہے؟", a6:"5 مصنوعات کے بعد PKR 2,500/ماہ سے اپ گریڈ۔ تصدیق شدہ ٹرانسفر کے بعد ہی ایکٹیویشن۔",
+ q7:"کیا میں دوسرے ملک میں بیچ سکتا ہوں؟", a7:"جی ہاں — مارکیٹ تبدیل کریں (پاکستان / نائجیریا)۔ کرنسی، کورئیر اور ادائیگی خود ڈھل جاتی ہے۔",
+ q8:"جائزے کیسے کام کرتے ہیں؟", a8:"صرف ڈیلیور شدہ آرڈرز سے، اس لیے ریٹنگ جعلی نہیں ہو سکتی۔",
+ aboutT:"NexusShop ایک COD-first مارکیٹ پلیس ہے جو مقامی فروخت کنندگان اور خریداروں کو ان کی زبان میں جوڑتا ہے۔ ہم انوینٹری نہیں رکھتے؛ ہم سافٹ ویئر فراہم کرتے ہیں۔",
+ privacyT:"ہم صرف ضروری ڈیٹا (نام، شہر، واٹس ایپ، آرڈرز) آپ کے آلے اور محفوظ ڈیٹا بیس میں رکھتے ہیں۔ ہم ذاتی ڈیٹا نہیں بیچتے۔ آپ کسی بھی وقت حذف کی درخواست کر سکتے ہیں۔",
+ termsT:"فروخت کنندگان آزاد کاروبار ہیں جو اپنی مصنوعات اور ڈیلیوری کے ذمہ دار ہیں۔ ممنوع: غیر قانونی یا جعلی سامان۔ پلیٹ فارم ایک تکنیکی ثالث ہے۔",
+ supportT:"ہم 24 گھنٹے میں جواب دیتے ہیں: neuralfocusai@gmail.com",
+ lang:"زبان", themeNote:"برانڈ تھیم منظور شدہ ڈیزائن کے مطابق ہے۔", confirmDel:"کیا یہ پروڈکٹ حذف کریں؟",
+ confirmReset:"کیا اس آلے کا تمام ڈیمو ڈیٹا ری سیٹ کریں؟", reviewsN:"{n} جائزے", freeOver:"مفت", delivery:"ڈیلیوری"
+}};
+const CATS=[{id:"fashion",en:"Fashion",ur:"فیشن"},{id:"electronics",en:"Electronics",ur:"الیکٹرانکس"},{id:"home",en:"Home & Kitchen",ur:"گھر و باورچی خانہ"},{id:"beauty",en:"Beauty",ur:"خوبصورتی"},{id:"grocery",en:"Grocery",ur:"گروسری"}];
+const MK={
+ PK:{sym:"Rs ",rate:1,del:200,free:5000,cities:"Lahore · Karachi · Islamabad",couriers:["TCS","Leopards","PostEx"],pay:"JazzCash · Easypaisa · Bank transfer"},
+ NG:{sym:"₦",rate:5.5,del:1100,free:27500,cities:"Lagos · Abuja · Port Harcourt",couriers:["GIG Logistics","Kwik","Fez Delivery"],pay:"Paystack · Flutterwave · Bank transfer"}
+};
+const SEED=[
+ {id:"p1",seller:"Anarkali Threads",swa:"923001234501",city:"Lahore",cat:"fashion",price:4499,old:5999,stock:14,rating:4.6,rc:18,img:"https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=600&q=70",name:{en:"Embroidered Lawn Suit, 3-piece",ur:"کڑھائی والا لان سوٹ، 3 پیس"},desc:{en:"Unstitched 3-piece lawn: embroidered shirt (3 m), dyed trouser (2.5 m), printed chiffon dupatta (2.5 m).",ur:"غیر سلا ہوا 3 پیس لان: کڑھائی والا قمیض (3 میٹر)، رنگین شلوار (2.5 میٹر)، پرنٹڈ شفون دوپٹہ (2.5 میٹر)۔"}},
+ {id:"p2",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:2499,old:2999,stock:22,rating:4.4,rc:31,img:"https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&q=70",name:{en:"Wireless Earbuds with Case",ur:"کیس کے ساتھ وائرلیس ایئربڈز"},desc:{en:"Touch control, charging case, bass boost. One-year warranty.",ur:"ٹچ کنٹرول، چارجنگ کیس، بیس بوسٹ۔ ایک سال وارنٹی۔"}},
+ {id:"p3",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:3499,old:4999,stock:12,rating:4.5,rc:26,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=70",name:{en:"Smart Watch T900 Ultra",ur:"اسمارٹ واچ T900 الٹرا"},desc:{en:"Bluetooth calling, heart rate, 7-day battery.",ur:"بلوٹوتھ کالنگ، دل کی دھڑکن، 7 دن بیٹری۔"}},
+ {id:"p4",seller:"Ghar Bazaar",swa:"923001234503",city:"Lahore",cat:"home",price:2799,old:3599,stock:8,rating:4.3,rc:12,img:"https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&q=70",name:{en:"Electric Kettle 1.8L Steel",ur:"الیکٹرک کیتلی 1.8 لیٹر اسٹیل"},desc:{en:"Fast boil, auto cut-off, 1-year warranty.",ur:"تیز ابال، آٹو کٹ آف، ایک سال وارنٹی۔"}},
+ {id:"p5",seller:"Punjab Pantry",swa:"923001234504",city:"Multan",cat:"grocery",price:1850,old:2200,stock:40,rating:4.7,rc:44,img:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&q=70",name:{en:"Basmati Rice 5kg Premium",ur:"باسمتی چاول 5 کلو پریمیم"},desc:{en:"Long-grain aged basmati, sealed 5kg bag.",ur:"لمبے دانے والے پرانے باسمتی، سیل بند 5 کلو بیگ۔"}},
+ {id:"p6",seller:"Ittar House",swa:"923001234505",city:"Lahore",cat:"beauty",price:1299,old:1899,stock:20,rating:4.8,rc:57,img:"https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&q=70",name:{en:"Perfume Attar Oud 12ml",ur:"عطر عود 12 ملی لیٹر"},desc:{en:"Long-lasting oud attar in a gift box.",ur:"گفٹ باکس میں دیرپا عود عطر۔"}},
+ {id:"p7",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:2499,old:3299,stock:15,rating:4.2,rc:19,img:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=600&q=70",name:{en:"Bluetooth Speaker Mini",ur:"بلوٹوتھ اسپیکر منی"},desc:{en:"Portable, deep bass, 8-hour playtime.",ur:"پورٹیبل، گہرا بیس، 8 گھنٹے پلے ٹائم۔"}},
+ {id:"p8",seller:"Anarkali Threads",swa:"923001234501",city:"Lahore",cat:"fashion",price:2500,old:3200,stock:10,rating:4.4,rc:9,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=70",name:{en:"Running Shoes Lightweight",ur:"ہلکے پھلکے رننگ شوز"},desc:{en:"Breathable mesh, cushioned sole, all sizes.",ur:"ہوا دار میش، نرم تلا، تمام سائز۔"}}
+];
+/* ============ state ============ */
+const DEF={lang:"en",market:"PK",view:"home",pid:null,qty:1,search:"",cat:"all",cart:[],saved:[],orders:[],groups:[],payments:[],profile:{name:"",city:"",wa:""},shop:null,myProducts:[],admin:false,track:null,lastOrders:[],editId:null};
+let S=load();
+function load(){try{const r=JSON.parse(localStorage.getItem("nx_clean_v1"));return r?Object.assign({},DEF,r):Object.assign({},DEF);}catch(e){return Object.assign({},DEF);}}
+function save(){localStorage.setItem("nx_clean_v1",JSON.stringify(S));}
+function t(k){return (I18N[S.lang]&&I18N[S.lang][k])||I18N.en[k]||k;}
+function fmt(s,o){return s.replace(/\{(\w+)\}/g,(m,k)=>o[k]!==undefined?o[k]:m);}
+function money(n){const m=MK[S.market];return m.sym+Math.round(n*m.rate).toLocaleString("en-US");}
+function prods(){return SEED.concat(S.myProducts);}
+function prod(id){return prods().find(p=>p.id===id);}
+function pname(p){return p.name[S.lang]||p.name.en;}
+function pdesc(p){return p.desc[S.lang]||p.desc.en;}
+function catName(id){const c=CATS.find(c=>c.id===id);return c?(c[S.lang]||c.en):id;}
+function cartCount(){return S.cart.reduce((a,b)=>a+b.q,0);}
+function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("show"),2200);}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+/* ============ render ============ */
+function render(){
+ document.documentElement.lang=S.lang;
+ document.documentElement.dir=S.lang==="ur"?"rtl":"ltr";
+ document.body.classList.toggle("ur",S.lang==="ur");
+ const m=MK[S.market];
+ let html=`<header>
+   <div class="logo">Nexus<b>Shop</b></div>
+   <div class="searchwrap"><span>⌕</span><input id="search" placeholder="${esc(t("search"))}" value="${esc(S.search)}"></div>
+   <button class="icbtn" data-a="lang">${S.lang==="en"?"اردو":"EN"}</button>
+   <button class="icbtn" data-a="market">${S.market==="PK"?"🇵🇰":"🇳🇬"}</button>
+   <button class="icbtn" data-a="nav" data-v="cart">🛍${cartCount()?`<span class="badge">${cartCount()}</span>`:""}</button>
+ </header>
+ <div class="banner">ⓘ ${esc(t("preview"))}</div>
+ <main><div class="view">${view()}</div></main>
+ <nav>
+  ${navBtn("home","🏠","home")}
+  ${navBtn("saved","♡","navSaved")}
+  ${navBtn("cart","🛍","navCart",cartCount())}
+  ${navBtn("orders","📦","navOrders")}
+  ${navBtn("account","👤","navAccount")}
+ </nav>`;
+ if(S.track){html+=trackModal();}
+ document.getElementById("app").innerHTML=html;
+}
+function navBtn(v,ico,key,badge){const on=S.view===v||(v==="account"&&["seller","settings","faq","committee"].includes(S.view));
+ return `<button data-a="nav" data-v="${v}" class="${on?"on":""}"><span class="ico">${ico}</span>${esc(t(key))}${badge?`<span class="badge">${badge}</span>`:""}</button>`;}
+function view(){switch(S.view){
+ case "home":return vHome();case "detail":return vDetail();case "cart":return vCart();case "placed":return vPlaced();
+ case "orders":return vOrders();case "saved":return vSaved();case "account":return vAccount();case "seller":return vSeller();
+ case "committee":return vCommittee();case "settings":return vSettings();case "faq":return vFaq();default:return vHome();}}
 function vHome(){
- var slides=t('carousel'),dotsHTML='',slidesHTML=slides.map(function(slide,i){
-  dotsHTML+='<div class="dot'+(i===0?' active':'')+'" onclick="goToSlide('+i+')"></div>';
-  return '<div class="carousel-slide'+(i===0?' active':'')+'" data-slide="'+i+'"><div class="carousel-orb carousel-orb-1"></div><div class="carousel-orb carousel-orb-2"></div><div class="slide-badge">'+slide.badge+'</div><h2 class="slide-title">'+slide.title+'</h2><div class="slide-subtitle">'+slide.subtitle+'</div><div class="slide-features">'+slide.features.map(function(f){return '<div class="slide-pill">✓ '+f+'</div>'}).join('')+'</div>'+(i===0?'<div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap"><button onclick="event.stopPropagation();document.getElementById(&#39;grid&#39;).scrollIntoView({behavior:&#39;smooth&#39;})" style="padding:12px 24px;border-radius:12px;border:0;background:linear-gradient(135deg,#059669,#34d399);color:#fff;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 8px 24px rgba(5,150,105,.4)">🛍️ Shop Now</button><button onclick="event.stopPropagation();go(&#39;sell&#39;)" style="padding:12px 24px;border-radius:12px;border:0;background:linear-gradient(135deg,#f472b6,#a78bfa,#22d3ee);color:#0b1030;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 8px 24px rgba(244,114,182,.4)">🏪 Start Selling — free</button></div>':'')+'</div>'}).join('');
- return '<div class="banner-carousel" id="bannerCarousel">'+slidesHTML+'<div class="carousel-dots" id="carouselDots">'+dotsHTML+'</div></div><div id="nxMq" style="overflow:hidden;white-space:nowrap;border:1px solid rgba(34,211,238,.15);border-radius:12px;background:rgba(34,211,238,.06);font-size:11.5px;color:#a5f3fc;padding:8px 0;margin:10px 0"><span style="display:inline-block;padding-left:100%;animation:nxScroll 28s linear infinite">🚀 NexusShop launch week · 7 products live · COD in all Pakistan · Committee Buy: 3 friends = −15% · 🚀 NexusShop launch week · 7 products live · COD in all Pakistan · Committee Buy: 3 friends = −15% · </span></div><style>@keyframes nxScroll{to{transform:translateX(-100%)}}</style>'+
- '<input class="search" placeholder="'+t('search')+'" oninput="filt(this.value)">'+
- '<div class="chips"><button class="chip on" onclick="cat(0,this)">'+t('all')+'</button>'+
- CATS.map(function(c){return '<button class="chip" onclick="cat('+c.id+',this)">'+esc(c.name)+'</button>'}).join('')+'</div>'+
- '<div class="infob">ℹ️ '+t('demoBanner')+' <a href="seller.html">'+t('openCenter')+' →</a></div>'+
- '<div id="off" class="off" hidden>📡 '+t('offline')+'</div>'+
- '<div class="grid" id="grid">'+PRODS.map(card).join('')+'</div>'+
- (PRODS.length?'':'<div class="empty">'+t('noProds')+'</div>')}
-
-function card(p){var w=wish().includes(p.id);
- var acts=p.demo?'<span class="demob">DEMO · example only</span>'
- :'<button class="add" onclick="event.stopPropagation();addCart(\''+p.id+'\')">+ '+t('add')+'</button>'+
-  '<button class="fav'+(w?' on':'')+'" onclick="event.stopPropagation();toggleWish(\''+p.id+'\')">💖</button>';
- return '<div class="pcard" onclick="openP(\''+p.id+'\')">'+(p.demo?'<span class="ribbon">DEMO</span>':'')+
- (p.img?'<img class="pimg" src="'+esc(p.img)+'" loading="lazy" onerror="this.outerHTML=\'<div class=pimg style=&quot;display:flex;align-items:center;justify-content:center;font-size:44px&quot;>🛍️</div>\'">':'<div class="pimg" style="display:flex;align-items:center;justify-content:center;font-size:44px">🛍️</div>')+
- '<div class="pbody"><div class="pname">'+esc(p.name)+'</div><div class="pprice">'+money(p.price)+'</div>'+
- '<div class="pacts">'+acts+'</div></div></div>'}
-
-function vDetail(){var p=PRODS.find(function(x){return x.id===CUR});if(!p)return vHome();var w=wish().includes(p.id);
- var actions;
- if(p.demo){
-  actions='<div class="infob" style="margin-top:14px">ℹ️ '+t('demoDetail')+'</div>';
- }else{
-  actions='<div style="margin-top:14px"><button class="btn" onclick="addCur()">+ '+t('add')+' — '+money(p.price*QTY)+'</button>'+
-  '<button class="btn wa" onclick="waOne(PRODS.find(function(x){return x.id===CUR}))">💬 '+t('waSolo')+'</button>'+
-  '<button class="btn ghost" onclick="toggleWish(\''+p.id+'\')">'+(w?'💖 Saved':'💖 '+t('wish'))+'</button></div>';
+ const list=prods().filter(p=>(S.cat==="all"||p.cat===S.cat)&&(!S.search||pname(p).toLowerCase().includes(S.search.toLowerCase())||p.seller.toLowerCase().includes(S.search.toLowerCase())));
+ return `<div class="hero"><h1>${esc(t("heroT"))}</h1><p>${esc(t("heroS"))}</p>
+  <div class="row"><button class="btn" data-a="shopnow">🛍 ${esc(t("shopNow"))}</button><button class="btn ghost" data-a="nav" data-v="seller">🏪 ${esc(t("startSell"))}</button></div>
+  <div class="trust"><span>💳 ${esc(t("tCOD"))}</span><span>🚚 ${esc(t("tTrack"))}</span><span>✓ ${esc(t("tRev"))}</span></div></div>
+ <h2 class="sec">${esc(t("categories"))}</h2>
+ <div class="chips"><button class="chip ${S.cat==="all"?"on":""}" data-a="cat" data-id="all">${esc(t("all"))}</button>${CATS.map(c=>`<button class="chip ${S.cat===c.id?"on":""}" data-a="cat" data-id="${c.id}">${esc(catName(c.id))}</button>`).join("")}</div>
+ <h2 class="sec">${esc(t("featured"))}</h2>
+ <div class="grid" id="grid">${list.length?list.map(card).join(""):`<div class="empty" style="grid-column:1/-1">${esc(t("noResults"))}</div>`}</div>`;}
+function card(p){const off=p.old?Math.round((1-p.price/p.old)*100):0;const sv=S.saved.includes(p.id);
+ return `<div class="pcard">${off?`<span class="off">−${off}%</span>`:""}<button class="heart ${sv?"on":""}" data-a="save" data-id="${p.id}">${sv?"♥":"♡"}</button>
+ <img class="img" src="${p.img}" alt="${esc(pname(p))}" loading="lazy" onerror="this.style.visibility='hidden'">
+ <div class="body"><button class="name" data-a="open" data-id="${p.id}" style="text-align:start">${esc(pname(p))}</button>
+ <div><span class="price">${money(p.price)}</span> ${p.old?`<span class="old">${money(p.old)}</span>`:""}</div>
+ <div class="muted" style="font-size:11px">${esc(p.seller)} · ${esc(p.city)}</div>
+ <button class="btn small green" data-a="add" data-id="${p.id}">${esc(t("add"))}</button></div></div>`;}
+function vDetail(){const p=prod(S.pid);if(!p)return vHome();const m=MK[S.market];const sv=S.saved.includes(p.id);
+ return `<div class="row" style="justify-content:space-between;margin-bottom:12px"><button class="btn ghost small" data-a="nav" data-v="home">← ${esc(t("back"))}</button><button class="heart ${sv?"on":""}" style="position:static" data-a="save" data-id="${p.id}">${sv?"♥":"♡"}</button></div>
+ <div class="detail"><img class="img" src="${p.img}" alt="${esc(pname(p))}" onerror="this.style.visibility='hidden'">
+ <div><h1 style="font-size:24px">${esc(pname(p))}</h1>
+ <div class="muted">★ ${p.rating||4.5} · ${fmt(t("reviewsN"),{n:p.rc||0})}</div>
+ <div style="margin:8px 0"><span class="price" style="font-size:22px">${money(p.price)}</span> ${p.old?`<span class="old">${money(p.old)}</span>`:""}</div>
+ <div class="muted">${p.stock} ${esc(t("inStock"))}</div>
+ <label>${esc(t("qty"))}</label><div class="qty"><button data-a="q" data-d="-1">−</button><span>${S.qty}</span><button data-a="q" data-d="1">+</button></div>
+ <div class="row" style="margin:14px 0"><button class="btn ghost" data-a="addq" data-id="${p.id}">🛍 ${esc(t("add"))}</button><button class="btn" data-a="buy" data-id="${p.id}">⚡ ${esc(t("buy"))}</button></div>
+ <div class="trustcard"><div>💳 ${esc(t("codCheck"))}</div><div>🚚 ${fmt(t("delInfo"),{d:money(m.del),f:money(m.free)})}</div><div>↩ ${esc(t("returns"))}</div></div>
+ <div class="card sellerline" style="margin-top:12px"><div><div class="muted">${esc(t("soldBy"))}</div><b>${esc(p.seller)}</b><div class="muted">${esc(p.city)}</div></div><button class="btn wa small" data-a="ask" data-id="${p.id}">💬 ${esc(t("ask"))}</button></div>
+ </div></div>
+ <h2 class="sec">${esc(t("description"))}</h2><div class="card muted">${esc(pdesc(p))}</div>
+ <h2 class="sec">${esc(t("reviews"))}</h2><div class="card muted">${esc(t("revNote"))}</div>`;}
+function vCart(){if(!S.cart.length)return `<div class="empty"><h2>${esc(t("cartEmpty"))}</h2><p style="margin:8px 0 16px">${esc(t("cartEmptyS"))}</p><button class="btn" data-a="nav" data-v="home">${esc(t("continue"))}</button></div>`;
+ const G={};S.cart.forEach(it=>{const p=prod(it.id);if(!p)return;(G[p.seller]=G[p.seller]||[]).push(it);});
+ const ks=Object.keys(G);let sub=0;
+ let html=`<h2 class="sec">${esc(t("cart"))}</h2><div class="muted" style="margin-bottom:12px">${fmt(t("sellers"),{n:ks.length})}</div>`;
+ ks.forEach(s=>{let tot=0;html+=`<div class="cartgroup"><b>🏪 ${esc(s)}</b>`;
+  G[s].forEach(it=>{const p=prod(it.id);tot+=p.price*it.q;sub+=p.price*it.q;
+   html+=`<div class="cartitem"><img src="${p.img}" onerror="this.style.visibility='hidden'"><div class="grow"><div>${esc(pname(p))}</div><span class="price">${money(p.price*it.q)}</span></div>
+   <div class="qty"><button data-a="cq" data-id="${it.id}" data-d="-1">−</button><span>${it.q}</span><button data-a="cq" data-id="${it.id}" data-d="1">+</button></div>
+   <button class="btn danger small" data-a="rm" data-id="${it.id}">🗑</button></div>`;});
+  html+=`<div class="total"><span>${esc(t("subtotal"))}</span><span>${money(tot)}</span></div></div>`;});
+ html+=`<div class="card"><div class="total"><span>${esc(t("subtotal"))}</span><span>${money(sub)}</span></div><div class="muted">${esc(t("delNote"))}</div>
+ <button class="btn green" style="width:100%;margin-top:12px" data-a="checkout">→ ${esc(t("checkout"))}</button>
+ <button class="btn ghost" style="width:100%;margin-top:8px" data-a="nav" data-v="home">${esc(t("continue"))}</button></div>`;
+ return html;}
+function vPlaced(){return `<div class="center"><div class="check">✓</div><h2>${esc(t("placed"))}</h2><p class="muted" style="margin:8px 0 16px">${esc(t("placedS"))}</p></div>`+
+ S.lastOrders.map(o=>`<div class="card"><div class="sellerline"><b>${esc(o.seller)}</b><span class="price">${money(o.total)}</span></div>
+ <div class="ordercode">${o.code}</div><button class="btn wa" style="width:100%" data-a="waorder" data-id="${o.code}">💬 ${esc(t("msgSeller"))}</button>
+ <button class="btn ghost" style="width:100%;margin-top:8px" data-a="track" data-id="${o.code}">🚚 ${esc(t("track"))}</button></div>`).join("")+
+ `<button class="btn ghost" style="width:100%" data-a="nav" data-v="home">${esc(t("startShop"))}</button>`;}
+function vOrders(){if(!S.orders.length)return `<div class="empty"><h2>${esc(t("ordersEmpty"))}</h2><button class="btn" style="margin-top:12px" data-a="nav" data-v="home">${esc(t("startShop"))}</button></div>`;
+ return `<h2 class="sec">${esc(t("orders"))}</h2>`+S.orders.map(o=>`<div class="card"><div class="sellerline"><b>${esc(o.seller)}</b><span class="status ${o.status}">${esc(t("status_"+o.status))}</span></div>
+ <div class="ordercode">${o.code}</div><div class="muted">${money(o.total)} · ${new Date(o.ts).toLocaleDateString()}</div>
+ <div class="row" style="margin-top:10px"><button class="btn wa small" data-a="waorder" data-id="${o.code}">💬 ${esc(t("msgSeller"))}</button><button class="btn ghost small" data-a="track" data-id="${o.code}">🚚 ${esc(t("track"))}</button></div></div>`).join("");}
+function vSaved(){const list=S.saved.map(prod).filter(Boolean);if(!list.length)return `<div class="empty"><h2>${esc(t("savedEmpty"))}</h2><button class="btn" style="margin-top:12px" data-a="nav" data-v="home">${esc(t("startShop"))}</button></div>`;
+ return `<h2 class="sec">${esc(t("saved"))}</h2><div class="grid">${list.map(card).join("")}</div>`;}
+function vAccount(){return `<h2 class="sec">${esc(t("account"))}</h2>
+ <div class="card"><b>${esc(t("profile"))}</b>
+ <label>${esc(t("name"))}</label><input id="pfName" value="${esc(S.profile.name)}">
+ <label>${esc(t("city"))}</label><input id="pfCity" value="${esc(S.profile.city)}">
+ <label>${esc(t("wa"))}</label><input id="pfWa" value="${esc(S.profile.wa)}">
+ <button class="btn green" style="margin-top:12px" data-a="pfSave">${esc(t("save"))}</button></div>
+ <div class="menu">
+ <button data-a="nav" data-v="seller">🏪 ${esc(t("sellerCenter"))}<span>›</span></button>
+ <button data-a="nav" data-v="committee">👥 ${esc(t("committee"))}<span>›</span></button>
+ <button data-a="market">🌍 ${esc(t("market"))}<span>${S.market==="PK"?"🇵":"🇳"}</span></button>
+ <button data-a="nav" data-v="faq">❓ ${esc(t("faq"))}<span>›</span></button>
+ <button data-a="nav" data-v="settings">⚙️ ${esc(t("settings"))}<span>›</span></button>
+ </div>`;}
+function vSeller(){if(!S.shop)return `<h2 class="sec">${esc(t("sellerCenter"))}</h2><div class="card"><b>${esc(t("createShop"))}</b>
+ <label>${esc(t("shopName"))}</label><input id="shName">
+ <label>${esc(t("city"))}</label><input id="shCity">
+ <label>${esc(t("wa"))}</label><input id="shWa">
+ <button class="btn green" style="margin-top:12px" data-a="shCreate">${esc(t("createShop"))}</button></div>`;
+ const editing=S.editId?prod(S.editId):null;
+ return `<h2 class="sec">${esc(t("sellerCenter"))}</h2>
+ <div class="card sellerline"><div><b>${esc(S.shop.name)}</b><div class="muted">${esc(S.shop.city)}</div></div><span class="status ${S.shop.plan==="premium"?"delivered":"placed"}">${esc(t(S.shop.plan==="premium"?"premiumPlan":"freePlan"))}</span></div>
+ <div class="card"><b>${esc(t(editing?"editProduct":"addProduct"))}</b>
+ <label>${esc(t("pName"))}</label><input id="mpName" value="${editing?esc(pname(editing)):""}">
+ <label>${esc(t("pPrice"))}</label><input id="mpPrice" type="number" value="${editing?editing.price:""}">
+ <label>${esc(t("pCat"))}</label><select id="mpCat">${CATS.map(c=>`<option value="${c.id}" ${editing&&editing.cat===c.id?"selected":""}>${esc(catName(c.id))}</option>`).join("")}</select>
+ <label>${esc(t("pStock"))}</label><input id="mpStock" type="number" value="${editing?editing.stock:10}">
+ <label>${esc(t("pImg"))}</label><input id="mpImg" value="${editing?editing.img:""}">
+ <label>${esc(t("pDesc"))}</label><textarea id="mpDesc" rows="2">${editing?esc(pdesc(editing)):""}</textarea>
+ <button class="btn green" style="margin-top:12px" data-a="mpSave">${esc(t(editing?"editProduct":"addProduct"))}</button></div>
+ <h2 class="sec">${esc(t("myProducts"))} (${S.myProducts.length})</h2>
+ ${S.myProducts.length?S.myProducts.map(p=>`<div class="card sellerline"><div><b>${esc(pname(p))}</b><div class="price">${money(p.price)}</div></div><div class="row"><button class="btn ghost small" data-a="mpEdit" data-id="${p.id}">${esc(t("edit"))}</button><button class="btn danger small" data-a="mpDel" data-id="${p.id}">${esc(t("del"))}</button></div></div>`).join(""):`<div class="empty">${esc(t("noResults"))}</div>`}
+ <div class="card"><b>${esc(t("payTitle"))}</b>
+ <label>${esc(t("bank"))}</label><select id="payBank"><option>JazzCash</option><option>Easypaisa</option><option>HBL</option><option>Meezan</option></select>
+ <label>${esc(t("amount"))}</label><input id="payAmt" type="number" value="2500">
+ <label>${esc(t("sender"))}</label><input id="payName">
+ <label>${esc(t("last4"))}</label><input id="payLast" maxlength="4">
+ <label>${esc(t("tid"))}</label><input id="payTid">
+ <button class="btn green" style="margin-top:12px" data-a="paySend">${esc(t("submitPay"))}</button></div>
+ <button class="btn ghost" style="width:100%" data-a="nav" data-v="faq">❓ ${esc(t("faq"))}</button>`;}
+function vCommittee(){return `<h2 class="sec">${esc(t("commT"))}</h2><div class="card muted">${esc(t("commS"))}</div>
+ <div class="row"><button class="btn green" data-a="gStart">${esc(t("startGroup"))}</button></div>
+ <div class="card" style="margin-top:12px"><label>${esc(t("code"))}</label><input id="gCode"><button class="btn ghost" style="margin-top:10px" data-a="gJoin">${esc(t("joinGroup"))}</button></div>
+ ${S.groups.map(g=>`<div class="card sellerline"><div><b>${g.code}</b><div class="muted">${g.members}/3 ${esc(t("members"))}</div></div><div class="row"><span class="status ${g.members>=3?"delivered":"placed"}">${esc(t(g.members>=3?"locked":"open"))}</span><button class="btn wa small" data-a="gShare" data-id="${g.code}">${esc(t("share"))}</button></div></div>`).join("")}`;}
+function vSettings(){return `<h2 class="sec">${esc(t("settings"))}</h2>
+ <div class="card"><label>${esc(t("lang"))}</label><select id="setLang"><option value="en" ${S.lang==="en"?"selected":""}>English</option><option value="ur" ${S.lang==="ur"?"selected":""}>اردو</option></select>
+ <label>${esc(t("market"))}</label><select id="setMarket"><option value="PK" ${S.market==="PK"?"selected":""}>🇵 Pakistan (Rs)</option><option value="NG" ${S.market==="NG"?"selected":""}>🇳 Nigeria (₦)</option></select>
+ <div class="muted" style="margin-top:10px">${esc(t("themeNote"))}</div>
+ <label style="display:flex;gap:8px;align-items:center;margin-top:12px"><input type="checkbox" id="setAdmin" style="width:auto" ${S.admin?"checked":""}> ${esc(t("admin"))}</label></div>
+ ${S.admin?`<div class="card"><b>${esc(t("payQueue"))}</b>${S.payments.length?S.payments.map(p=>`<div class="cartitem"><div class="grow"><b>${esc(p.name)}</b><div class="muted">${esc(p.bank)} · ${money(p.amt)} · TID ${esc(p.tid)}</div><span class="status ${p.status==="verified"?"delivered":"placed"}">${esc(t(p.status))}</span></div>${p.status==="pending"?`<div class="row"><button class="btn green small" data-a="payOk" data-id="${p.id}">${esc(t("approve"))}</button><button class="btn danger small" data-a="payNo" data-id="${p.id}">${esc(t("reject"))}</button></div>`:""}</div>`).join(""):`<div class="muted">—</div>`}</div>`:""}
+ <details><summary>${esc(t("about"))}</summary><p>${esc(t("aboutT"))}</p></details>
+ <details><summary>${esc(t("privacy"))}</summary><p>${esc(t("privacyT"))}</p></details>
+ <details><summary>${esc(t("terms"))}</summary><p>${esc(t("termsT"))}</p></details>
+ <details><summary>${esc(t("support"))}</summary><p>${esc(t("supportT"))}</p></details>
+ <button class="btn danger" style="width:100%" data-a="reset">${esc(t("reset"))}</button>`;}
+function vFaq(){const qs=[1,2,3,4,5,6,7,8];return `<h2 class="sec">${esc(t("faqT"))}</h2>`+qs.map(i=>`<details ${i===1?"open":""}><summary>${esc(t("q"+i))}</summary><p>${esc(t("a"+i))}</p></details>`).join("");}
+function trackModal(){const o=S.orders.find(x=>x.code===S.track);if(!o)return "";const steps=["placed","confirmed","shipped","delivered"];const idx=steps.indexOf(o.status);const m=MK[S.market];
+ return `<div class="modal" data-a="closeTrack"><div class="box" onclick="event.stopPropagation()"><div class="sellerline"><b>${esc(t("trackT"))}</b><button class="btn ghost small" data-a="closeTrack">✕</button></div>
+ <div class="ordercode">${o.code}</div><div class="muted">${esc(o.seller)} · ${money(o.total)}</div>
+ <div class="steps">${steps.map((s,i)=>`<div class="step ${i<=idx?"done":""}"><div class="dot"></div><div class="lbl">${esc(t("status_"+s))}</div></div>`).join("")}</div>
+ <div class="trustcard"><div>🚚 ${esc(t("courier"))}: ${esc(m.couriers[0])}</div><div>📅 ${esc(t("est"))}: 2–4 ${S.lang==="ur"?"دن":"days"}</div></div>
+ <button class="btn wa" style="width:100%;margin-top:12px" data-a="waorder" data-id="${o.code}">💬 ${esc(t("msgSeller"))}</button></div></div>`;}
+/* ============ actions ============ */
+function addCart(id,q){const it=S.cart.find(x=>x.id===id);if(it)it.q+=q;else S.cart.push({id,q});save();toast(t("added"));render();}
+function waLink(num,msg){window.open("https://wa.me/"+String(num).replace(/\D/g,"")+"?text="+encodeURIComponent(msg),"_blank");}
+function orderMsg(o){return t("waHello")+"\n"+o.items.map(i=>{const p=prod(i.id);return "• "+(p?pname(p):i.id)+" x"+i.q;}).join("\n")+"\n"+t("waTotal")+": "+money(o.total)+"\n"+o.code;}
+document.addEventListener("click",e=>{
+ const el=e.target.closest("[data-a]");if(!el)return;const a=el.dataset.a,id=el.dataset.id;
+ switch(a){
+  case "nav":S.view=el.dataset.v;S.track=null;S.editId=null;save();render();window.scrollTo(0,0);break;
+  case "lang":S.lang=S.lang==="en"?"ur":"en";save();render();toast(t("langSet"));break;
+  case "market":S.market=S.market==="PK"?"NG":"PK";save();render();toast(t("marketSet"));break;
+  case "shopnow":S.view="home";render();setTimeout(()=>{const g=document.getElementById("grid");if(g)g.scrollIntoView({behavior:"smooth"});},50);break;
+  case "cat":S.cat=id;render();break;
+  case "open":S.pid=id;S.qty=1;S.view="detail";save();render();window.scrollTo(0,0);break;
+  case "save":{const i=S.saved.indexOf(id);if(i>=0){S.saved.splice(i,1);toast(t("unsavedT"));}else{S.saved.push(id);toast(t("savedT"));}save();render();break;}
+  case "add":addCart(id,1);break;
+  case "addq":addCart(id,S.qty);break;
+  case "buy":addCart(id,S.qty);S.view="cart";render();break;
+  case "q":S.qty=Math.max(1,S.qty+Number(el.dataset.d));render();break;
+  case "cq":{const it=S.cart.find(x=>x.id===id);if(it){it.q+=Number(el.dataset.d);if(it.q<1)S.cart=S.cart.filter(x=>x.id!==id);}save();render();break;}
+  case "rm":S.cart=S.cart.filter(x=>x.id!==id);save();toast(t("removed"));render();break;
+  case "ask":{const p=prod(id);waLink(p.swa,t("waHello")+" "+pname(p));break;}
+  case "checkout":{if(!S.cart.length)break;const G={};S.cart.forEach(it=>{const p=prod(it.id);(G[p.seller]=G[p.seller]||[]).push(it);});
+    const m=MK[S.market];S.lastOrders=Object.keys(G).map(s=>{const items=G[s];const sub=items.reduce((a,b)=>a+prod(b.id).price*b.q,0);const del=sub>=m.free?0:m.del;
+      const o={code:"NX-"+Math.random().toString(36).slice(2,8).toUpperCase(),seller:s,swa:prod(items[0].id).swa,items,total:sub+del,status:"placed",ts:Date.now()};S.orders.unshift(o);return o;});
+    S.cart=[];S.view="placed";save();render();window.scrollTo(0,0);break;}
+  case "waorder":{const o=S.orders.find(x=>x.code===id);if(o)waLink(o.swa,orderMsg(o));break;}
+  case "track":S.track=id;render();break;
+  case "closeTrack":S.track=null;render();break;
+  case "pfSave":S.profile={name:val("pfName"),city:val("pfCity"),wa:val("pfWa")};save();toast(t("profileSaved"));render();break;
+  case "shCreate":{const n=val("shName");if(!n){toast(t("shopName"));break;}S.shop={name:n,city:val("shCity"),wa:val("shWa"),plan:"free"};save();toast(t("shopCreated"));render();break;}
+  case "mpSave":{const n=val("mpName"),pr=Number(val("mpPrice"));if(!n||!pr){toast(t("pName"));break;}
+    if(!S.editId&&S.shop.plan==="free"&&S.myProducts.length>=5){toast(t("limit"));break;}
+    const data={name:{en:n,ur:n},desc:{en:val("mpDesc"),ur:val("mpDesc")},price:pr,cat:val("mpCat"),stock:Number(val("mpStock"))||10,img:val("mpImg")||"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=70",seller:S.shop.name,swa:S.shop.wa,city:S.shop.city,rating:4.5,rc:0};
+    if(S.editId){const p=S.myProducts.find(x=>x.id===S.editId);Object.assign(p,data);S.editId=null;toast(t("prodUpdated"));}
+    else{S.myProducts.push(Object.assign({id:"my"+Date.now()},data));toast(t("prodAdded"));}
+    save();render();break;}
+  case "mpEdit":S.editId=id;render();window.scrollTo(0,0);break;
+  case "mpDel":if(confirm(t("confirmDel"))){S.myProducts=S.myProducts.filter(x=>x.id!==id);S.cart=S.cart.filter(x=>x.id!==id);save();toast(t("prodDeleted"));render();}break;
+  case "paySend":{const tid=val("payTid"),nm=val("payName");if(!tid||!nm){toast(t("tid"));break;}S.payments.unshift({id:"pay"+Date.now(),bank:val("payBank"),amt:Number(val("payAmt"))||2500,name:nm,last4:val("payLast"),tid,status:"pending",shop:S.shop?S.shop.name:""});save();toast(t("paySent"));render();break;}
+  case "payOk":{const p=S.payments.find(x=>x.id===id);if(p){p.status="verified";if(S.shop&&p.shop===S.shop.name)S.shop.plan="premium";}save();toast(t("payOk"));render();break;}
+  case "payNo":{const p=S.payments.find(x=>x.id===id);if(p)p.status="rejected";save();toast(t("payNo"));render();break;}
+  case "gStart":{const g={code:"NX"+Math.floor(1000+Math.random()*9000),members:1};S.groups.unshift(g);save();toast(t("groupCreated"));render();break;}
+  case "gJoin":{const c=val("gCode").toUpperCase();const g=S.groups.find(x=>x.code===c);if(!g){toast(t("codeNo"));break;}if(g.members<3)g.members++;save();toast(g.members>=3?t("groupFull"):t("groupJoined"));render();break;}
+  case "gShare":{const g=S.groups.find(x=>x.code===id);waLink("","Join my NexusShop committee "+g.code+" — everyone saves 15% (COD).");break;}
+  case "reset":if(confirm(t("confirmReset"))){localStorage.removeItem("nx_clean_v1");location.reload();}break;
  }
- return '<div class="card"><button class="btn ghost" style="width:auto;padding:10px 16px;margin:0 0 12px" onclick="go(\'home\')">'+t('back')+'</button>'+
- (p.img?'<img class="dimg" src="'+esc(p.img)+'" onerror="this.outerHTML=\'<div class=dimg style=&quot;display:flex;align-items:center;justify-content:center;font-size:70px&quot;>🛍️</div>\'">':'<div class="dimg" style="display:flex;align-items:center;justify-content:center;font-size:70px">🛍️</div>')+
- (p.demo?'<div class="infob" style="margin-top:12px"> '+t('demoDetail')+'</div>':'')+
- '<h2 class="t" style="margin-top:14px">'+esc(p.name)+'</h2>'+
- (p.shopName?'<div class="shopline">🏪 Sold by <b>'+esc(p.shopName)+'</b></div>':'')+
- '<div style="font-size:24px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin-top:8px">'+money(p.price)+'</div>'+
- '<div class="tags"><span class="tag">🚚 '+t('del')+'</span><span class="tag">💵 '+t('cod')+'</span><span class="tag">↩ '+t('ret')+'</span></div>'+
- '<div class="lbl">'+t('qty')+'</div><div class="q"><button onclick="dq(-1)">−</button><span id="q">'+QTY+'</span><button onclick="dq(1)">+</button></div>'+
- actions+
- (p.desc?'<div class="lbl" style="margin-top:16px">'+t('details')+'</div><p style="font-size:13.5px;color:var(--muted);line-height:1.7">'+esc(p.desc)+'</p>':'')+'</div>'}
-
-function vCart(){if(!BUYER){return vLogin()}
- var c=cart().filter(function(x){return !x.demo});
- if(!c.length)return '<div class="card"><h2 class="t">🛒 '+t('cart')+'</h2><div class="empty">'+t('emptyCart')+'</div></div>';
- var tot=c.reduce(function(s,x){return s+x.price*x.q},0);
- var first=c[0];var shopLine=first&&first.shopName?'<div class="shopline">🏪 Ordering from <b>'+esc(first.shopName)+'</b></div>':'';
- return '<div class="card"><h2 class="t">🛒 '+t('cart')+'</h2>'+shopLine+
- c.map(function(x){return '<div class="row">'+(x.img?'<img src="'+esc(x.img)+'" onerror="this.outerHTML=\'<div style=&quot;font-size:30px&quot;>🛍️</div>\'">':'<div style="font-size:30px">🛍️</div>')+
- '<div class="inf"><div class="nm">'+esc(x.name)+'</div><div class="pr">'+money(x.price*x.q)+'</div></div>'+
- '<div class="q"><button onclick="setQ(\''+x.i+'\',-1)">−</button><span>'+x.q+'</span><button onclick="setQ(\''+x.i+'\',1)">+</button></div></div>'}).join('')+
- '<div class="tot"><span>'+t('total')+'</span><b>'+money(tot)+'</b></div>'+
- '<button class="btn wa" onclick="waCart()">💬 '+t('orderWA')+'</button></div>'}
-
-function vWish(){var w=wish();var items=PRODS.filter(function(p){return w.includes(p.id)});
- return '<div class="card"><h2 class="t">💖 '+t('wish')+'</h2>'+
- (items.length?'<div class="grid" style="margin:0">'+items.map(card).join('')+'</div>':'<div class="empty">'+t('wishEmpty')+'</div>')+'</div>'}
-
-function vOrders(){return '<div class="card"><h2 class="t">📦 '+t('orders')+'</h2><div class="empty">'+t('ordersEmpty')+'</div></div>'}
-
-function vSell(){return '<div class="card" style="text-align:center"><div style="font-size:52px">🏪</div>'+
- '<h2 class="t" style="margin-top:8px">'+t('sellT')+'</h2><p style="color:var(--muted);font-size:13.5px;line-height:1.7">'+t('sellP')+'</p>'+
- '<button class="btn" style="margin-top:16px" onclick="location.href=\'seller.html\'">🏪 '+t('openCenter')+' →</button>'+
- '<button class="btn ghost" onclick="location.href=\'checkout.html\'">'+t('sellBtn')+' →</button></div>'}
-
-function vLogin(){return '<div class="card"><h2 class="t">👤 '+t('buyerLogin')+'</h2>'+
- '<div class="infob">ℹ️ '+t('buyerInfo')+'</div>'+
- '<div class="lbl">'+t('email')+'</div><input class="f" id="le" type="email" placeholder="'+t('email')+'">'+
- '<div class="lbl">'+t('pass')+'</div><input class="f" id="lp" type="password" placeholder="'+t('pass')+'">'+
- '<button class="btn" onclick="doBuyerLogin()">'+t('login')+'</button>'+
- '<button class="btn ghost" onclick="doBuyerSignup()">'+t('signup')+'</button></div>'}
-
-function dq(d){QTY=Math.max(1,Math.min(9,QTY+d));var e=document.getElementById('q');if(e)e.textContent=QTY}
-function addCur(){if(!BUYER){toast(t('buyerInfo'),'info');go('login');return}
- for(var i=0;i<QTY;i++)addCart(CUR);go('cart')}
-window.filt=function(v){var g=document.getElementById('grid');if(!g)return;v=(v||'').toLowerCase();
- var l=PRODS.filter(function(p){return !v||p.name.toLowerCase().indexOf(v)>=0});
- g.innerHTML=l.map(card).join('')||'<div class="empty" style="grid-column:1/-1">'+t('noProds')+'</div>'};
-window.cat=function(id,btn){document.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on')});btn.classList.add('on');
- var g=document.getElementById('grid');var l=id?PRODS.filter(function(p){return p.cat===id}):PRODS;
- g.innerHTML=l.map(card).join('')||'<div class="empty" style="grid-column:1/-1">'+t('noProds')+'</div>'};
-window.goToSlide=function(n){var slides=document.querySelectorAll('.carousel-slide');
- var dots=document.querySelectorAll('.dot');
- slides.forEach(function(s,i){s.classList.toggle('active',i===n)});
- dots.forEach(function(d,i){d.classList.toggle('active',i===n)});
- window.currentSlide=n;}
-
-function render(){if(!sessionStorage.getItem('nx_in'))return;applyLang();
- var v=VIEW==='home'?vHome():VIEW==='detail'?vDetail():VIEW==='cart'?vCart():VIEW==='wish'?vWish():VIEW==='orders'?vOrders():VIEW==='sell'?vSell():vLogin();
- document.getElementById('view').innerHTML=v;
- document.querySelectorAll('#nav button').forEach(function(b){b.classList.toggle('on',b.dataset.v===VIEW)});badge();
- if(VIEW==='home')initCarousel();}
-
-function initCarousel(){
- window.currentSlide=0;
- window.carouselInterval=setInterval(function(){
-  var next=(window.currentSlide+1)%t('carousel').length;
-  goToSlide(next);
- },5000);}
-
-function userTap(){if(BUYER){BUYER=null;LS.set('nx_buyer',null);document.getElementById('userB').textContent='👤';toast(t('logout'),'info');go('home')}else go('login')}
-
-async function ensureSB(){if(SB)return SB;try{
- var m=await import('https://esm.sh/@supabase/supabase-js@2.45.4');
- SB=m.createClient('https://iafofzwxkzwliisvstfy.supabase.co','sb_publishable_uXpbSgDe4OXVWibgQ187RA_INLaX0SY');return SB}catch(e){return null}}
-
-async function doBuyerLogin(){var email=document.getElementById('le').value.trim(),pass=document.getElementById('lp').value;
- if(!email||!pass){toast('Email and password required','err');return}
- BUYER={email:email,loginTime:Date.now()};LS.set('nx_buyer',BUYER);
- document.getElementById('userB').textContent='✅';toast('✓ '+t('login'),'ok');go('home')}
-async function doBuyerSignup(){var email=document.getElementById('le').value.trim(),pass=document.getElementById('lp').value;
- if(!email||pass.length<6){toast('Email and min 6-char password required','err');return}
- BUYER={email:email,loginTime:Date.now()};LS.set('nx_buyer',BUYER);
- document.getElementById('userB').textContent='✅';toast('✓ '+t('signup'),'ok');go('home')}
-
-async function loadCatalog(){var s=await ensureSB();if(!s){var o=document.getElementById('off');if(o)o.hidden=false;return}
- try{var a=await s.from('ns_products').select('*,ns_shops(name,whatsapp,plan)').eq('status','active').limit(60);
-  if(!a.error&&a.data&&a.data.length){PRODS=a.data.map(function(p){return{id:p.id,name:LAN==='ur'&&p.title_ur?p.title_ur:p.title_en,price:(p.price_cents||0)/100,img:p.image_url,cat:p.category_id,desc:p.description,shopId:p.shop_id,stock:p.stock,sold:p.sold||0,demo:!!p.is_demo,wa:(p.ns_shops&&p.ns_shops.whatsapp)||null,shopName:(p.ns_shops&&p.ns_shops.name)||null,shopPlan:(p.ns_shops&&p.ns_shops.plan)||'free'}});}
-  else{var b=await s.from('products').select('*').limit(60);
-   if(!b.error&&b.data)PRODS=b.data.map(function(p){return{id:p.id,name:p.name||p.title||'Item',price:p.price_pkr||p.price||0,img:p.image_url,cat:p.category_id,desc:p.description,demo:true,wa:null,shopName:null}});}
-  var c=await s.from('ns_categories').select('*');if(!c.error&&c.data)CATS=c.data.map(function(x){return{id:x.id,name:LAN==='ur'&&x.name_ur?x.name_ur:x.name_en}});
- }catch(e){}
- render()}
-
-function createParticles(){
- var container=document.getElementById('particles');
- if(!container)return;
- for(var i=0;i<30;i++){
-  var p=document.createElement('div');
-  p.className='particle';
-  p.style.left=Math.random()*100+'%';
-  p.style.animationDelay=Math.random()*10+'s';
-  p.style.animationDuration=(10+Math.random()*10)+'s';
-  container.appendChild(p); }}
-
-BUYER=LS.get('nx_buyer',null);
-if(BUYER)document.getElementById('userB').textContent='✅';
-applyLang();badge();
-if(sessionStorage.getItem('nx_in')){document.getElementById('splash').style.display='none';render();loadCatalog()}
-else{createParticles()}
+});
+function val(id){const el=document.getElementById(id);return el?el.value.trim():"";}
+document.addEventListener("input",e=>{if(e.target.id==="search"){S.search=e.target.value;const g=document.getElementById("grid");if(g){const list=prods().filter(p=>(S.cat==="all"||p.cat===S.cat)&&(!S.search||pname(p).toLowerCase().includes(S.search.toLowerCase())||p.seller.toLowerCase().includes(S.search.toLowerCase())));g.innerHTML=list.length?list.map(card).join(""):`<div class="empty" style="grid-column:1/-1">${esc(t("noResults"))}</div>`;}}});
+document.addEventListener("change",e=>{if(e.target.id==="setLang"){S.lang=e.target.value;save();render();toast(t("langSet"));}if(e.target.id==="setMarket"){S.market=e.target.value;save();render();toast(t("marketSet"));}if(e.target.id==="setAdmin"){S.admin=e.target.checked;save();render();}});
+render();
 </script>
-<script src="raahnuma-guard.js?v=3"></script>
-<script src="phase5.js?v=2"></script>
-<script src="guest.js?v=2"></script>
-<script src="paydesk.js?v=2"></script>
-<script src="payui.js?v=2"></script>
-<script src="nxauth.js?v=2"></script>
-<script src="nx_final.js?v=19"></script>
 </body>
 </html>
