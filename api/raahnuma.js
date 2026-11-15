@@ -1,6 +1,22 @@
-// NexusShop — Raahnuma proxy v2: origin allowlist + rate-limit + errores visibles + fallback de modelos
+// NexusShop — Raahnuma proxy v3: model auto-discovery + origin allowlist + rate-limit + visible errors
 const ALLOWED = ['https://nexusshoop.vercel.app', 'https://nexusshop.vercel.app', 'http://localhost:3000'];
 const win = new Map(); const day = new Map();
+let cache = null; let cacheAt = 0;
+async function liveModels(key) {
+  if (cache && Date.now() - cacheAt < 3600000) return cache;
+  try {
+    const r = await fetch('https://generativelanguage.googleapis.com/v1beta/models?key=' + key + '&pageSize=200');
+    if (r.ok) {
+      const j = await r.json();
+      const ok = (j.models || [])
+        .filter(m => JSON.stringify(m.supportedGenerationMethods || m.supportedMethods || []).match(/generateContent/i))
+        .map(m => (m.name || '').replace('models/', '')).filter(Boolean);
+      const pref = ok.filter(n => /flash/i.test(n)).concat(ok.filter(n => /pro/i.test(n))).concat(ok);
+      if (pref.length) { cache = pref.slice(0, 6); cacheAt = Date.now(); return cache; }
+    }
+  } catch (e) {}
+  return ['gemini-2.5-flash'];
+}
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ ok: false, error: 'method' });
   const origin = req.headers.origin || '';
@@ -16,10 +32,9 @@ export default async function handler(req, res) {
   if (!key) return res.status(500).json({ ok: false, error: 'no_key' });
   const body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
   const payload = body.contents ? body : { contents: [{ parts: [{ text: body.prompt || '' }] }] };
-  const models = (process.env.GEMINI_MODEL ? [process.env.GEMINI_MODEL] : [])
-    .concat(['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash']);
+  const models = process.env.GEMINI_MODEL ? [process.env.GEMINI_MODEL] : await liveModels(key);
   let last = null;
-  for (const mod of models) {
+  for (const mod of models.slice(0, 4)) {
     const r = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + mod + ':generateContent?key=' + key, {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
     });
