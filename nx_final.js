@@ -390,3 +390,58 @@ var _r=window.render;if(_r&&!window._nx18){window._nx18=1;window.render=function
 setTimeout(post,500);
 });
 })();
+/* ===== v19 module: MockupFidelity — apaga neones residuales, auto-enter welcome, Order placed correcto, precio canónico 2500, tema único de marca, rebuild por idioma, y RESTAURA markets 🌍 + Seller FAQ (v15 condensado) ===== */
+;(function(){
+"use strict";
+function ready(fn){if(document.readyState!=='loading')fn();else document.addEventListener('DOMContentLoaded',fn);}
+ready(function(){
+function hide(){['#bannerCarousel','#nxHeroBar','#nxLive','.marquee'].forEach(function(s){document.querySelectorAll(s).forEach(function(el){el.style.display='none';});});
+ var w=document.getElementById('nxW');if(w){var b=document.getElementById('nxWEnter');if(b)b.click();else w.remove();}
+ var ac=document.getElementById('axCats'),ch=document.querySelector('.chips');if(ac&&ch)ch.style.display='none';
+ var tr=document.getElementById('nxThemeRow');if(tr)tr.remove();}
+function repricing(){var m={'Rs. 1,999/mo':'Rs. 2,500/mo','Rs. 3,999/mo':'Rs. 5,000/mo','Rs. 1,999/month':'Rs. 2,500/mo'};
+ document.querySelectorAll('*').forEach(function(el){if(el.children.length>0)return;var t=el.textContent.trim();if(m[t])el.textContent=m[t];});}
+window.nxToggleTheme=function(){toast('🎨 Brand theme fixed by design (Ayesha mockups, Nov 2026)','info');};
+var _tl=window.toggleLang;if(_tl&&!window._nx19tl){window._nx19tl=1;window.toggleLang=function(){var a=_tl.apply(this,arguments);setTimeout(function(){['axNav','axBanner','axHero','axCats'].forEach(function(id){var e=document.getElementById(id);if(e)e.remove();});if(window.render)render();},280);return a;};}
+/* --- markets condensado (restaura v15) --- */
+window.NX_MARKETS={PK:{code:'PK',name:'Pakistan',flag:'🇵🇰',symbol:'Rs.',rate:1,cities:'Lahore · Karachi · Islamabad',couriers:[['TCS','tcs.com.pk'],['Leopards','leopards.com.pk'],['M&P','mp.com.pk'],['PostEx','postex.pk'],['Trax','trax.com.pk']],payments:'Cash on Delivery · JazzCash · Easypaisa · Bank transfer'},
+NG:{code:'NG',name:'Nigeria',flag:'🇳🇬',symbol:'₦',rate:5.5,cities:'Lagos · Abuja · Port Harcourt',couriers:[['GIG Logistics','giglogistics.com.ng'],['Kwik Delivery','kwik.delivery'],['DHL Nigeria','dhl.com/ng'],['Fez Delivery','fezdelivery.com'],['Cross-country','crosscountry.com.ng']],payments:'Cash on Delivery · Paystack · Flutterwave · Bank transfer'}};
+function mk(){return window.NX_MARKETS[localStorage.getItem('nx_market')||'PK'];}
+window.nxMarket=function(c){localStorage.setItem('nx_market',c);if(window.render)render();toast(mk().flag+' Market: '+mk().name,'info');};
+function localize(){var m=mk();if(m.code==='PK')return;var PK=window.NX_MARKETS.PK;var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);var n;
+ while(n=w.nextNode()){var t=n.nodeValue;if(!t)continue;var nt=t.replace(/Rs\.\s?([\d,]+)/g,function(mm,num){return m.symbol+Math.round(Number(num.replace(/,/g,''))*m.rate).toLocaleString('en-US');});
+  for(var i=0;i<PK.couriers.length;i++){nt=nt.split(PK.couriers[i][0]).join(m.couriers[i][0]);nt=nt.split(PK.couriers[i][1]).join(m.couriers[i][1]);}
+  nt=nt.split(PK.cities).join(m.cities);if(nt!==t)n.nodeValue=nt;}}
+function swBtn(){if(document.getElementById('nxMk'))return;var h=document.querySelector('header');if(!h)return;var b=document.createElement('button');b.id='nxMk';b.className='icb';b.textContent=mk().flag;b.style.cssText='border:1px solid #d9d0bb;background:#f6f1e4;border-radius:99px;padding:6px 10px;font-size:14px';
+ b.onclick=function(e){e.stopPropagation();var old=document.getElementById('nxMkMenu');if(old){old.remove();return;}var d=document.createElement('div');d.id='nxMkMenu';d.style.cssText='position:fixed;z-index:9999;top:120px;right:14px;background:#f6f1e4;border:1px solid #d9d0bb;border-radius:16px;padding:10px;min-width:230px;box-shadow:0 10px 30px rgba(0,0,0,.25)';
+  d.innerHTML=Object.keys(window.NX_MARKETS).map(function(k){var m=window.NX_MARKETS[k];return '<div style="display:flex;gap:9px;align-items:center;padding:10px;border-radius:12px;cursor:pointer'+(k===mk().code?';background:#efe8d9':'')+'" data-m="'+k+'"><span style="font-size:20px">'+m.flag+'</span><div><div style="font-size:13px;font-weight:700;color:#221d15">'+m.name+'</div><div style="font-size:10px;color:#6b6355">'+m.symbol+' · '+m.cities+'</div></div></div>';}).join('');
+  document.body.appendChild(d);d.addEventListener('click',function(ev){var r=ev.target.closest('[data-m]');if(!r)return;d.remove();nxMarket(r.dataset.m);});setTimeout(function(){document.addEventListener('click',function hh(ev){if(!d.contains(ev.target)){d.remove();document.removeEventListener('click',hh);}});},60);};
+ h.appendChild(b);}
+/* --- Seller FAQ condensado (restaura v15, con la pregunta de Peace) --- */
+window.nxFAQ=function(){var m=mk();var Q=[['What does the COD mean?','Cash on Delivery: the rider brings the box, you open it and check it, and you pay ONLY if you keep it — cash or transfer. No prepayment, no risk.'],
+['Is listing really free?','Yes — 5 products free forever per seller. No card, no commission on the free tier.'],
+['How do I get paid?','Directly: buyers checkout on WhatsApp with you, via '+m.payments+'. NexusShop never holds your money.'],
+['Who delivers the order?','You pick a local courier ('+m.couriers.map(function(c){return c[0];}).join(', ')+') or your own rider.'],
+['What is Committee Buy?','3 buyers join a group, everyone gets -15%, nobody pays until delivery.'],
+['How do subscriptions work?','Outgrow 5 products and upgrade from PKR 2,500/month (or NGN equivalent). Activation only after verified bank transfer — declared ≠ paid.'],
+['Can I sell in another country?','Multi-market is live: tap 🌍 and switch Pakistan ↔ Nigeria (currency, couriers, payments follow).'],
+['How do reviews work?','Only tied to delivered COD orders — impossible to fake.']];
+ var ov=document.createElement('div');ov.className='axov';ov.innerHTML='<div class="axovcard"><button class="btn ghost axback">← Back</button><h2>❓ Seller FAQ — '+m.flag+' '+m.name+'</h2>'+Q.map(function(q){return '<div style="margin:12px 0"><div style="font-size:13.5px;font-weight:800;color:#221d15">'+q[0]+'</div><div style="font-size:12.5px;color:#6b7f74;line-height:1.7;margin-top:4px">'+q[1]+'</div></div>';}).join('')+'<div style="font-size:10.5px;color:#6b7f74;text-align:center;margin-top:10px">© NexusShop platform e-commerce 2026</div></div>';
+ document.body.appendChild(ov);ov.querySelector('.axback').onclick=function(){ov.remove();};};
+function faqBtn(){if(typeof VIEW==='undefined'||VIEW!=='sell'||document.getElementById('nxFaqBtn'))return;var v=document.getElementById('view');if(!v)return;var b=document.createElement('button');b.id='nxFaqBtn';b.className='btn ghost';b.style.marginTop='10px';b.textContent='❓ Seller FAQ — answers before you list';b.onclick=function(){nxFAQ();};v.appendChild(b);}
+/* --- Order placed con selectores reales del cart (v10 pinta .row/.pr) --- */
+document.addEventListener('click',function(e){var b=e.target.closest('button,a');if(!b)return;if(!/checkout|confirm order|place order/i.test(b.textContent))return;
+ setTimeout(function(){var rows=[].slice.call(document.querySelectorAll('#view .row,#view .pcard,#view li')).map(function(r){var nm=(r.querySelector('.nm,h3,.pname')||{}).textContent||'';var pr=(r.querySelector('.pr,.pprice,.price')||{}).textContent||'';var g=r.closest('div[style*="border-radius:14px"],div[style*="border:1px solid"]');var sh=g?((g.querySelector('div')||{}).textContent||'').replace('🏪','').trim():'';return{n:nm.trim(),p:pr.trim(),s:sh||'NexusShop Seller'};}).filter(function(x){return x.n&&x.p;});
+  if(!rows.length)return;document.querySelectorAll('.axov').forEach(function(o){o.remove();});
+  var G={};rows.forEach(function(r){(G[r.s]=G[r.s]||[]).push(r);});
+  var orders=Object.keys(G).map(function(s){return{id:'NX-'+Math.random().toString(36).slice(2,8).toUpperCase(),s:s};});
+  try{var o=JSON.parse(localStorage.getItem('nx_orders')||'[]');orders.forEach(function(x){o.unshift(x);});localStorage.setItem('nx_orders',JSON.stringify(o.slice(0,30)));}catch(e){}
+  var d=document.createElement('div');d.className='axov';d.innerHTML='<div class="axovcard axcenter"><div class="axcheck">✓</div><h2>Order placed</h2><p class="axmuted">Save your order number. The seller will confirm on WhatsApp or by call.</p>'+orders.map(function(x,i){return '<div class="axorder"><b>'+x.s+'</b><div class="axid">'+x.id+'</div><button class="btn wa" data-i="'+i+'">💬 Message seller on WhatsApp</button><button class="btn ghost">Track an order</button></div>';}).join('')+'<button class="btn ghost axstart">Start shopping</button></div>';
+  document.body.appendChild(d);
+  d.querySelector('.axstart').onclick=function(){d.remove();var hb=[].slice.call(document.querySelectorAll('button,a')).filter(function(x){return x.textContent.trim().toLowerCase()==='home'})[0];if(hb)hb.click();};
+  d.querySelectorAll('.wa').forEach(function(btn){btn.onclick=function(){var x=orders[Number(btn.dataset.i)];window.open('https://wa.me/?text='+encodeURIComponent('Hello! I placed order '+x.id+' — '+x.s),'_blank');};});},850);},true);
+function post(){hide();repricing();localize();swBtn();faqBtn();}
+var _r=window.render;if(_r&&!window._nx19){window._nx19=1;window.render=function(){var a=_r.apply(this,arguments);setTimeout(post,320);return a;};}
+setTimeout(post,700);
+});
+})();
