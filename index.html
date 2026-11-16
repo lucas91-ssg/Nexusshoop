@@ -1,12 +1,4 @@
 <!doctype html>
-<!--
-  NexusShop — single-file production build (replaces index.html entirely).
-  INSTALL: overwrite index.html with this file. Do NOT load nx_final.js / legacy modules.
-  Keeps every feature: welcome entry, Raahnuma AI, committee, logistics, per-seller cart,
-  seller center + listing manager + NexusPay desk + admin queue, profile, settings, install,
-  orders + tracking + verified reviews, saved, search/filter/sort, For-You, market PK/NG, FAQ.
-  Languages: English + Urdu only (complete). Palette: approved cream / serif / green.
--->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -130,7 +122,7 @@ summary{cursor:pointer;font-weight:700;color:var(--ink2)}details p{margin-top:8p
 #welcome .tag{color:var(--grn2);font-weight:700;font-size:14px;margin-bottom:14px}
 #welcome .pills{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:18px}
 #welcome .pills span{font-size:11px;border:1px solid var(--ln);background:var(--sf);border-radius:999px;padding:6px 10px;color:var(--ink2)}
-#raahFab{position:fixed;inset-inline-end:14px;bottom:86px;z-index:110;width:54px;height:54px;border-radius:50%;background:var(--grn);color:#fff;font-size:24px;box-shadow:var(--sh);display:flex;align-items:center;justify-content:center}
+#raahFab{position:fixed;inset-inline-end:14px;bottom:86px;z-index:110;width:54px;height:54px;border-radius:50%;background:var(--grn);color:#fff;font-size:24px;box-shadow:var(--sh);display:flex;align-items:center;justify-content:center;cursor:pointer}
 #raah{position:fixed;inset-inline-end:14px;bottom:150px;z-index:115;width:min(360px,calc(100vw - 28px));max-height:60vh;background:var(--sf);border:1px solid var(--ln);border-radius:18px;box-shadow:var(--sh);display:flex;flex-direction:column;overflow:hidden;animation:rise .25s}
 #raah .hd{background:var(--grn);color:#fff;padding:12px 14px;display:flex;justify-content:space-between;align-items:center}
 #raah .msgs{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px;background:var(--sf2)}
@@ -155,7 +147,6 @@ summary{cursor:pointer;font-weight:700;color:var(--ink2)}details p{margin-top:8p
 <div id="toast"></div>
 <script>
 "use strict";
-/* ============ i18n : EN + UR only ============ */
 const I18N={
 en:{preview:"Preview mode: sample products. Connect the backend to go live.",search:"Search products…",
 heroT:"Buy from trusted Pakistani shops. Pay when it arrives.",heroS:"Every order has a number, a seller you can call, and cash on delivery.",
@@ -182,7 +173,7 @@ payTitle:"NexusPay — pay subscription, verified in 24h",paySteps:"Declare → 
 last4:"Last 4 digits of phone",tid:"Transaction ID (TID)",submitPay:"Send for verification",declared:"Declared ≠ paid. Activation only after verification.",
 pending:"Pending",verified:"Verified",rejected:"Rejected",approve:"Approve",reject:"Reject",receipts:"Receipts",
 commT:"Committee Buy",commS:"3 buyers join a group and everyone saves 15%. Nobody pays until delivery.",joinGroup:"Join with a code",code:"Group code",
-members:"members",locked:"Locked −15%",open:"Open",share:"Share on WhatsApp",noGroups:"No groups yet. Open any product and tap “Start a group”.",
+members:"members",locked:"Locked −15%",open:"Open",share:"Share on WhatsApp",noGroups:"No groups yet. Open any product and tap Start a group.",
 back:"Back",home:"Home",navSaved:"Saved",navCart:"Cart",navOrders:"Orders",navAccount:"Account",
 added:"Added to cart",removed:"Removed",savedT:"Saved",unsavedT:"Removed from saved",profileSaved:"Profile saved",loggedOut:"Logged out",
 shopCreated:"Shop created",prodAdded:"Product added",prodUpdated:"Product updated",prodDeleted:"Product deleted",limit:"Free plan allows 5 products. Upgrade to add more.",
@@ -190,18 +181,18 @@ paySent:"Payment sent for verification",payOk:"Payment verified — plan upgrade
 groupJoined:"Joined the group",groupFull:"Group complete — 15% locked",codeNo:"Code not found",resetDone:"Demo data reset",langSet:"Language: English",marketSet:"Market updated",
 noResults:"No products match your search",stPlaced:"Placed",stConfirmed:"Confirmed",stShipped:"Shipped",stDelivered:"Delivered",trackT:"Order tracking",
 courier:"Courier",est:"Estimated delivery",confirmReceipt:"I received it — confirm delivery",receiptDone:"Delivery confirmed — you can now review",
-waHello:"Assalam o Alaikum! My NexusShop order (COD):",waTotal:"Total",install:"Install app",installHint:"Tap ⋮ → “Add to Home screen”",
+waHello:"Assalam o Alaikum! My NexusShop order (COD):",waTotal:"Total",install:"Install app",installHint:"Tap menu → Add to Home screen",
 faqT:"Seller FAQ",q1:"What does COD mean?",a1:"Cash on Delivery: the rider brings the box, you open and check it, and pay only if you keep it. No prepayment.",
 q2:"Is listing really free?",a2:"Yes — 5 products free forever. No card, no commission on the free tier.",
 q3:"How do I get paid?",a3:"Directly: buyers order on WhatsApp and pay you on delivery. NexusShop never holds your money.",
-q4:"Who delivers?",a4:"You choose a local courier or your own rider. Product pages show your market's couriers.",
+q4:"Who delivers?",a4:"You choose a local courier or your own rider. Product pages show your market couriers.",
 q5:"What is Committee Buy?",a5:"3 buyers join a group, everyone gets −15%, nobody pays until delivery.",
 q6:"How do subscriptions work?",a6:"Upgrade from PKR 2,500/month after 5 products. Activation only after a verified transfer.",
 q7:"Can I sell in another country?",a7:"Yes — switch market (Pakistan / Nigeria). Currency, couriers and payments follow.",
 q8:"How do reviews work?",a8:"Only from delivered orders, so ratings cannot be faked.",
 aboutT:"NexusShop is a COD-first marketplace connecting local sellers and buyers in their own language. We do not own inventory; we provide the software.",
-privacyT:"We store only what is needed (name, city, WhatsApp, orders) on your device and in a secured database with row-level security. We never sell personal data. You may request deletion at any time. Pakistan PECA 2016 + GDPR principles.",
-termsT:"Sellers are independent businesses responsible for their products and delivery. Prohibited: illegal or counterfeit goods. The platform is a technology intermediary; jurisdiction Lahore.",
+privacyT:"We store only what is needed (name, city, WhatsApp, orders) on your device and in a secured database with row-level security. We never sell personal data. You may request deletion at any time.",
+termsT:"Sellers are independent businesses responsible for their products and delivery. Prohibited: illegal or counterfeit goods. The platform is a technology intermediary.",
 supportT:"We reply within 24 hours: neuralfocusai@gmail.com",lang:"Language",themeNote:"Brand theme follows the approved design.",
 confirmDel:"Delete this product?",confirmReset:"Reset all demo data on this device?",reviewsN:"{n} reviews",writeRev:"Write a verified review",
 revName:"Your name",revStars:"Stars",revText:"Your review",revSubmit:"Publish review",revThanks:"Review published — thank you",
@@ -236,7 +227,7 @@ payTitle:"NexusPay — سبسکرپشن ادا کریں، 24 گھنٹے میں �
 last4:"فون کے آخری 4 ہندسے",tid:"ٹرانزیکشن ID (TID)",submitPay:"تصدیق کے لیے بھیجیں",declared:"اعلان ≠ ادائیگی۔ تصدیق کے بعد ہی ایکٹیویشن۔",
 pending:"زیر التوا",verified:"تصدیق شدہ",rejected:"مسترد",approve:"منظور کریں",reject:"مسترد کریں",receipts:"رسیدیں",
 commT:"کمیٹی خرید",commS:"3 خریدار گروپ میں شامل ہوں اور سب 15% بچائیں۔ ڈیلیوری تک کوئی ادائیگی نہیں۔",joinGroup:"کوڈ سے شامل ہوں",code:"گروپ کوڈ",
-members:"اراکین",locked:"لاک −15%",open:"کھلا",share:"واٹس ایپ پر شیئر کریں",noGroups:"ابھی کوئی گروپ نہیں۔ کوئی پروڈکٹ کھولیں اور «گروپ شروع کریں» دبائیں۔",
+members:"اراکین",locked:"لاک −15%",open:"کھلا",share:"واٹس ایپ پر شیئر کریں",noGroups:"ابھی کوئی گروپ نہیں۔ کوئی پروڈکٹ کھولیں اور گروپ شروع کریں دبائیں۔",
 back:"واپس",home:"ہوم",navSaved:"محفوظ",navCart:"کارٹ",navOrders:"آرڈرز",navAccount:"اکاؤنٹ",
 added:"کارٹ میں شامل ہو گیا",removed:"ہٹا دیا گیا",savedT:"محفوظ ہو گیا",unsavedT:"محفوظ سے ہٹ گیا",profileSaved:"پروفائل محفوظ ہو گیا",loggedOut:"لاگ آؤٹ ہو گیا",
 shopCreated:"دکان بن گئی",prodAdded:"پروڈکٹ شامل ہو گئی",prodUpdated:"پروڈکٹ اپ ڈیٹ ہو گئی",prodDeleted:"پروڈکٹ حذف ہو گئی",limit:"مفت پلان میں 5 مصنوعات کی اجازت ہے۔ مزید کے لیے اپ گریڈ کریں۔",
@@ -244,7 +235,7 @@ paySent:"ادائیگی تصدیق کے لیے بھیج دی گئی",payOk:"اد
 groupJoined:"گروپ میں شامل ہو گئے",groupFull:"گروپ مکمل — 15% لاک",codeNo:"کوڈ نہیں ملا",resetDone:"ڈیمو ڈیٹا ری سیٹ ہو گیا",langSet:"زبان: اردو",marketSet:"مارکیٹ اپ ڈیٹ ہو گئی",
 noResults:"آپ کی تلاش سے کوئی پروڈکٹ نہیں ملی",stPlaced:"رکھا گیا",stConfirmed:"تصدیق شدہ",stShipped:"روانہ",stDelivered:"ڈیلیور",trackT:"آرڈر ٹریکنگ",
 courier:"کورئیر",est:"متوقع ڈیلیوری",confirmReceipt:"مجھے مل گیا — ڈیلیوری کی تصدیق کریں",receiptDone:"ڈیلیوری کی تصدیق ہو گئی — اب جائزہ لکھ سکتے ہیں",
-waHello:"السلام علیکم! میرا NexusShop آرڈر (COD):",waTotal:"کل",install:"ایپ انسٹال کریں",installHint:"⋮ دبائیں → «Add to Home screen»",
+waHello:"السلام علیکم! میرا NexusShop آرڈر (COD):",waTotal:"کل",install:"ایپ انسٹال کریں",installHint:"مینو دبائیں → Add to Home screen",
 faqT:"سیلر FAQ",q1:"COD کا کیا مطلب ہے؟",a1:"کیش آن ڈیلیوری: رائیڈر ڈبہ لاتا ہے، آپ کھول کر چیک کرتے ہیں اور صرف رکھنے کی صورت میں ادائیگی کرتے ہیں۔ پیشگی ادائیگی نہیں۔",
 q2:"کیا لسٹنگ واقعی مفت ہے؟",a2:"جی ہاں — 5 مصنوعات ہمیشہ مفت۔ نہ کارڈ، نہ کمیشن۔",
 q3:"مجھے ادائیگی کیسے ملتی ہے؟",a3:"براہ راست: خریدار واٹس ایپ پر آرڈر کرتے ہیں اور ڈیلیوری پر آپ کو ادا کرتے ہیں۔ NexusShop آپ کا پیسہ نہیں رکھتا۔",
@@ -254,14 +245,14 @@ q6:"سبسکرپشن کیسے کام کرتی ہے؟",a6:"5 مصنوعات کے 
 q7:"کیا میں دوسرے ملک میں بیچ سکتا ہوں؟",a7:"جی ہاں — مارکیٹ تبدیل کریں (پاکستان / نائجیریا)۔ کرنسی، کورئیر اور ادائیگی خود ڈھل جاتی ہے۔",
 q8:"جائزے کیسے کام کرتے ہیں؟",a8:"صرف ڈیلیور شدہ آرڈرز سے، اس لیے ریٹنگ جعلی نہیں ہو سکتی۔",
 aboutT:"NexusShop ایک COD-first مارکیٹ پلیس ہے جو مقامی فروخت کنندگان اور خریداروں کو ان کی زبان میں جوڑتا ہے۔ ہم انوینٹری نہیں رکھتے؛ ہم سافٹ ویئر فراہم کرتے ہیں۔",
-privacyT:"ہم صرف ضروری ڈیٹا (نام، شہر، واٹس ایپ، آرڈرز) آپ کے آلے اور محفوظ ڈیٹا بیس میں رکھتے ہیں۔ ہم ذاتی ڈیٹا نہیں بیچتے۔ آپ کسی بھی وقت حذف کی درخواست کر سکتے ہیں۔ پاکستان PECA 2016 + GDPR اصول۔",
-termsT:"فروخت کنندگان آزاد کاروبار ہیں جو اپنی مصنوعات اور ڈیلیوری کے ذمہ دار ہیں۔ ممنوع: غیر قانونی یا جعلی سامان۔ پلیٹ فارم ایک تکنیکی ثالث ہے؛ دائرہ اختیار لاہور۔",
+privacyT:"ہم صرف ضروری ڈیٹا (نام، شہر، واٹس ایپ، آرڈرز) آپ کے آلے اور محفوظ ڈیٹا بیس میں رکھتے ہیں۔ ہم ذاتی ڈیٹا نہیں بیچتے۔ آپ کسی بھی وقت حذف کی درخواست کر سکتے ہیں۔",
+termsT:"فروخت کنندگان آزاد کاروبار ہیں جو اپنی مصنوعات اور ڈیلیوری کے ذمہ دار ہیں۔ ممنوع: غیر قانونی یا جعلی سامان۔ پلیٹ فارم ایک تکنیکی ثالث ہے۔",
 supportT:"ہم 24 گھنٹے میں جواب دیتے ہیں: neuralfocusai@gmail.com",lang:"زبان",themeNote:"برانڈ تھیم منظور شدہ ڈیزائن کے مطابق ہے۔",
 confirmDel:"کیا یہ پروڈکٹ حذف کریں؟",confirmReset:"کیا اس آلے کا تمام ڈیمو ڈیٹا ری سیٹ کریں؟",reviewsN:"{n} جائزے",writeRev:"تصدیق شدہ جائزہ لکھیں",
 revName:"آپ کا نام",revStars:"ستارے",revText:"آپ کا جائزہ",revSubmit:"جائزہ شائع کریں",revThanks:"جائزہ شائع ہو گیا — شکریہ",
 raahT:"راہنما · AI اسسٹنٹ",raahPh:"COD، ڈیلیوری، کمیٹی کے بارے میں پوچھیں…",raahSend:"بھیجیں",raahHello:"سلام! میں راہنما ہوں۔ کیش آن ڈیلیوری، کورئیر، کمیٹی گروپ، واپسی یا فروخت کے بارے میں پوچھیں۔",
 raahChips:"COD,ڈیلیوری,کمیٹی,واپسی,فروخت",undo:"واپس لیں",enter:"NexusShop میں داخل ہوں",welcomeTag:"پاکستان کا اپنا بازار — آپ کی مارکیٹ، آپ کی زبان",
-wPills:"ملک بھر COD,واٹس ایپ چیک آؤٹ,کمیٹی −15%,اردو + انگریزی",paused:"روکا ہوا",active:"فعال",stock:"اسٹاک",reorder:"ترتیب बदلیں",bulk:"بلک",
+wPills:"ملک بھر COD,واٹس ایپ چیک آؤٹ,کمیٹی −15%,اردو + انگریزی",paused:"روکا ہوا",active:"فعال",stock:"اسٹاک",reorder:"ترتیب بدلیں",bulk:"بلک",
 noListings:"ابھی کوئی لسٹنگ نہیں۔ اپنی پہلی پروڈکٹ شامل کریں۔",planGate:"5 سے زیادہ مصنوعات کے لیے پریمیم پر اپ گریڈ کریں۔",receiptFor:"رسید · {plan}",
 marketPK:"پاکستان",marketNG:"نائجیریا",searchEmpty:"دوسرا لفظ یا زمرہ آزمائیں۔",revEligible:"آپ نے یہ چیز خریدی — اپنا تجربہ شیئر کریں۔",
 cartBulkHint:"اشیاء منتخب کریں تاکہ ایک ساتھ ہٹائی جا سکیں۔",savedView:"محفوظ اشیاء",ordersView:"آپ کے آرڈرز",receiptsView:"ادائیگی رسیدیں"}
@@ -271,7 +262,7 @@ const MK={PK:{code:"PK",flag:"🇵🇰",sym:"Rs ",rate:1,del:200,free:5000,citie
 NG:{code:"NG",flag:"🇳🇬",sym:"₦",rate:5.5,del:1100,free:27500,cities:"Lagos · Abuja · Port Harcourt",couriers:[["GIG Logistics","giglogistics.com.ng"],["Kwik Delivery","kwik.delivery"],["DHL Nigeria","dhl.com/ng"],["Fez Delivery","fezdelivery.com"],["Cross-country","crosscountry.com.ng"]],pay:"Paystack · Flutterwave · Bank transfer"}};
 const IMG={watch:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=70",attar:"https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&q=70",kettle:"https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&q=70",buds:"https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&q=70",lawn:"https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=600&q=70",rice:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&q=70",spk:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=600&q=70",shoe:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=70",tv:"https://images.unsplash.com/photo-1593356114865-9495d959a59b?w=600&q=70",room:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=70"};
 const SEED=[
-{id:"p1",seller:"Anarkali Threads",swa:"923001234501",city:"Lahore",cat:"fashion",price:4499,old:5999,stock:14,img:IMG.lawn,name:{en:"Embroidered Lawn Suit, 3-piece",ur:"کڑھائی والا لان سوٹ، 3 پیس"},desc:{en:"Unstitched 3-piece lawn: embroidered shirt (3 m), dyed trouser (2.5 m), printed chiffon dupatta (2.5 m).",ur:"غیر سلا ہوا 3 پیس لان: کڑھائی والا قمیض (3 میٹر)، رنگین شلوار (2.5 میٹر)، پرنٹڈ شفون دوپٹہ (2.5 میٹر)۔"},rev:[{n:"Ayesha K.",s:5,en:"Beautiful embroidery, true to photos. COD made it easy.",ur:"خوبصورت کڑھائی، تصویروں کے مطابق۔ COD نے آسان بنا دیا۔"},{n:"Bilal R.",s:4,en:"Good fabric, delivery in 2 days.",ur:"اچھا کپڑا، 2 دن میں ڈیلیوری۔"}]},
+{id:"p1",seller:"Anarkali Threads",swa:"923001234501",city:"Lahore",cat:"fashion",price:4499,old:5999,stock:14,img:IMG.lawn,name:{en:"Embroidered Lawn Suit, 3-piece",ur:"کڑھائی والا لان سوٹ، 3 پیس"},desc:{en:"Unstitched 3-piece lawn: embroidered shirt, dyed trouser, printed chiffon dupatta.",ur:"غیر سلا ہوا 3 پیس لان: کڑھائی والا قمیض، رنگین شلوار، پرنٹڈ شفون دوپٹہ۔"},rev:[{n:"Ayesha K.",s:5,en:"Beautiful embroidery, true to photos. COD made it easy.",ur:"خوبصورت کڑھائی، تصویروں کے مطابق۔ COD نے آسان بنا دیا۔"},{n:"Bilal R.",s:4,en:"Good fabric, delivery in 2 days.",ur:"اچھا کپڑا، 2 دن میں ڈیلیوری۔"}]},
 {id:"p2",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:2499,old:2999,stock:22,img:IMG.buds,name:{en:"Wireless Earbuds with Case",ur:"کیس کے ساتھ وائرلیس ایئربڈز"},desc:{en:"Touch control, charging case, bass boost. One-year warranty.",ur:"ٹچ کنٹرول، چارجنگ کیس، بیس بوسٹ۔ ایک سال وارنٹی۔"},rev:[{n:"Hina S.",s:5,en:"Sound is great for the price.",ur:"قیمت کے حساب سے آواز بہترین۔"}]},
 {id:"p3",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:3499,old:4999,stock:12,img:IMG.watch,name:{en:"Smart Watch T900 Ultra",ur:"اسمارٹ واچ T900 الٹرا"},desc:{en:"Bluetooth calling, heart rate, 7-day battery.",ur:"بلوٹوتھ کالنگ، دل کی دھڑکن، 7 دن بیٹری۔"},rev:[]},
 {id:"p4",seller:"Ghar Bazaar",swa:"923001234503",city:"Lahore",cat:"home",price:2799,old:3599,stock:8,img:IMG.kettle,name:{en:"Electric Kettle 1.8L Steel",ur:"الیکٹرک کیتلی 1.8 لیٹر اسٹیل"},desc:{en:"Fast boil, auto cut-off, 1-year warranty.",ur:"تیز ابال، آٹو کٹ آف، ایک سال وارنٹی۔"},rev:[]},
@@ -282,9 +273,9 @@ const SEED=[
 {id:"p9",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:24999,old:29999,stock:5,img:IMG.tv,name:{en:"LED TV 32 inch Smart",ur:"ایل ای ڈی ٹی وی 32 انچ اسمارٹ"},desc:{en:"Smart apps, HDMI x2, 1-year panel warranty.",ur:"اسمارٹ ایپس، HDMI x2، ایک سال پینل وارنٹی۔"},rev:[]},
 {id:"p10",seller:"Ghar Bazaar",swa:"923001234503",city:"Lahore",cat:"home",price:5499,old:6999,stock:6,img:IMG.room,name:{en:"Accent Chair + Side Table",ur:"اکسنٹ چیئر + سائیڈ ٹیبل"},desc:{en:"Solid wood frame, linen upholstery.",ur:"مضبوط لکڑی کا فریم، لینن اپہولسٹری۔"},rev:[]}
 ];
-/* ============ state ============ */
 const DEF={lang:"en",market:"PK",view:"home",pid:null,qty:1,search:"",cat:"all",sort:"feat",cart:[],bulk:[],saved:[],orders:[],groups:[],payments:[],receipts:[],reviews:{},hist:[],profile:{name:"",email:"",wa:"",city:"",pic:null},shop:null,listings:[],admin:false,track:null,lastOrders:[],editId:null,raahOpen:false,raahMsgs:[],menu:false};
-let S=load();function load(){try{const r=JSON.parse(localStorage.getItem("nx_v3"));return r?Object.assign({},DEF,r):Object.assign({},DEF);}catch(e){return Object.assign({},DEF);}}
+let S=load();
+function load(){try{const r=JSON.parse(localStorage.getItem("nx_v3"));return r?Object.assign({},DEF,r):Object.assign({},DEF);}catch(e){return Object.assign({},DEF);}}
 function save(){localStorage.setItem("nx_v3",JSON.stringify(S));}
 function t(k){return (I18N[S.lang]&&I18N[S.lang][k])||I18N.en[k]||k;}
 function fmt(s,o){return s.replace(/\{(\w+)\}/g,(m,k)=>o[k]!==undefined?o[k]:m);}
@@ -301,7 +292,6 @@ function cartCount(){return S.cart.reduce((a,b)=>a+b.q,0);}
 let _undo=null;
 function toast(msg,undoFn){_undo=undoFn||null;const el=document.getElementById("toast");el.innerHTML=esc(msg)+(_undo?` <button data-a="undo">${esc(t("undo"))}</button>`:"");el.classList.add("show");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("show"),3200);}
 function wa(num,msg){window.open("https://wa.me/"+String(num||"").replace(/\D/g,"")+"?text="+encodeURIComponent(msg),"_blank");}
-/* ============ render ============ */
 function render(){
  document.documentElement.lang=S.lang;document.documentElement.dir=S.lang==="ur"?"rtl":"ltr";document.body.classList.toggle("ur",S.lang==="ur");
  let h="";
@@ -319,7 +309,7 @@ function render(){
  <nav>${nb("home","🏠","home")}${nb("saved","♡","navSaved")}${nb("cart","🛍","navCart",cartCount())}${nb("orders","📦","navOrders")}${nb("account","👤","navAccount")}</nav>`;
  if(S.menu)h+=marketMenu();
  if(S.track)h+=trackModal();
- h+=`<button id="raahFab" data-a="raahToggle" title="${esc(t("raahT"))">🤖</button>`;
+ h+=`<button id="raahFab" data-a="raahToggle" title="${esc(t("raahT"))}">🤖</button>`;
  if(S.raahOpen)h+=raahPanel();
  document.getElementById("app").innerHTML=h;
  const m=document.getElementById("raahMsgs");if(m)m.scrollTop=m.scrollHeight;
@@ -488,7 +478,6 @@ function trackModal(){const o=S.orders.find(x=>x.code===S.track);if(!o)return ""
  <div class="tc"><div>🚚 ${esc(t("courier"))}: ${esc(m.couriers[0][0])}</div><div>📅 ${esc(t("est"))}: 2–4 ${S.lang==="ur"?"دن":"days"}</div></div>
  ${o.status!=="delivered"?`<button class="btn grn" style="width:100%;margin-top:12px" data-a="receipt" data-id="${o.code}">✓ ${esc(t("confirmReceipt"))}</button>`:""}
  <button class="btn wa" style="width:100%;margin-top:8px" data-a="waOrder" data-id="${o.code}">💬 ${esc(t("msgSeller"))}</button></div></div>`;}
-/* ============ Raahnuma ============ */
 const KB=[[/cod|cash|delivery pay|ادائیگی|کیش/i,{en:"COD means Cash on Delivery: the rider brings the box, you open and check it, and pay only if you keep it. No prepayment, no risk.",ur:"COD یعنی کیش آن ڈیلیوری: رائیڈر ڈبہ لاتا ہے، آپ کھول کر چیک کرتے ہیں اور صرف رکھنے کی صورت میں ادائیگی کرتے ہیں۔ پیشگی ادائیگی نہیں۔"}],
 [/deliver|courier|shipping|ڈیلیوری|کورئیر/i,{en:"Delivery is per seller: {d}, free over {f}. Couriers in your market: {c}. Track any order from Orders → Track.",ur:"ڈیلیوری فی فروخت کنندہ ہے: {d}، {f} سے اوپر مفت۔ آپ کی مارکیٹ کے کورئیر: {c}۔ آرڈرز → ٹریک سے کوئی بھی آرڈر ٹریک کریں۔"}],
 [/committee|group|discount|کمیٹی|گروپ/i,{en:"Committee Buy: 3 buyers join a group and everyone saves 15%. Nobody pays until delivery. Start a group from any product page.",ur:"کمیٹی خرید: 3 خریدار گروپ میں شامل ہوں اور سب 15% بچائیں۔ ڈیلیوری تک کوئی ادائیگی نہیں۔ کسی بھی پروڈکٹ صفحے سے گروپ شروع کریں۔"}],
@@ -510,9 +499,8 @@ async function raahSend(text){if(!text)return;S.raahMsgs.push({role:"u",text});S
  }catch(e){}
  if(!answer)answer=raahAnswer(text);
  S.raahTyping=false;S.raahMsgs.push({role:"a",text:answer});save();render();}
-/* ============ actions ============ */
 function addCart(id,q){const it=S.cart.find(x=>x.id===id);if(it)it.q+=q;else S.cart.push({id,q});save();toast(t("added"));render();}
-function orderMsg(o){return t("waHello")+"\n"+o.items.map(i=>{const p=prod(i.id);return "• "+(p?pn(p):i.id)+" x"+i.q;}).join("\n")+"\n"+t("waTotal")+": "+money(o.total)+"\n"+o.code;}
+function orderMessage(o){return t("waHello")+"\n"+o.items.map(i=>{const p=prod(i.id);return "• "+(p?pn(p):i.id)+" x"+i.q;}).join("\n")+"\n"+t("waTotal")+": "+money(o.total)+"\n"+o.code;}
 function val(id){const el=document.getElementById(id);return el?el.value.trim():"";}
 document.addEventListener("click",e=>{
  const el=e.target.closest("[data-a]");if(!el)return;const a=el.dataset.a,id=el.dataset.id;
@@ -543,7 +531,7 @@ document.addEventListener("click",e=>{
   S.cart=[];S.bulk=[];S.view="placed";save();render();window.scrollTo(0,0);break;}
  case "waSeller":{const items=S.cart.filter(it=>{const p=prod(it.id);return p&&p.seller===id;});if(!items.length)break;const p=prod(items[0].id);
   const msg=t("waHello")+" "+id+"\n"+items.map(i=>{const pp=prod(i.id);return "• "+pn(pp)+" x"+i.q+" — "+money(pp.price*i.q);}).join("\n")+"\n"+t("waTotal")+": "+money(items.reduce((a,b)=>a+prod(b.id).price*b.q,0));wa(p.swa,msg);break;}
- case "waOrder":{const o=S.orders.find(x=>x.code===id);if(o)wa(o.swa,orderMsg(o));break;}
+ case "waOrder":{const o=S.orders.find(x=>x.code===id);if(o)wa(o.swa,orderMessage(o));break;}
  case "track":S.track=id;render();break;
  case "closeTrack":S.track=null;render();break;
  case "receipt":{const o=S.orders.find(x=>x.code===id);if(o){o.status="delivered";save();render();toast(t("receiptDone"));}break;}
@@ -588,14 +576,12 @@ document.addEventListener("change",e=>{const id=e.target.id;
  if(id==="pfPic"){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const img=new Image();img.onload=()=>{const c=document.createElement("canvas");const s=128/Math.max(img.width,img.height);c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);c.getContext("2d").drawImage(img,0,0,c.width,c.height);S.profile.pic=c.toDataURL("image/jpeg",.72);save();render();};img.src=ev.target.result;};r.readAsDataURL(f);}
 });
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="raahIn"){e.preventDefault();raahSend(e.target.value.trim());}});
-/* drag reorder for listings */
 let dragId=null;
 document.addEventListener("dragstart",e=>{const row=e.target.closest("[data-lid]");if(row){dragId=row.dataset.lid;e.dataTransfer.effectAllowed="move";}});
 document.addEventListener("dragover",e=>{if(e.target.closest("[data-lid]"))e.preventDefault();});
 document.addEventListener("drop",e=>{const row=e.target.closest("[data-lid]");if(!row||!dragId||row.dataset.lid===dragId)return;e.preventDefault();
  const ls=S.listings.slice().sort((a,b)=>(a.order||0)-(b.order||0));const from=ls.findIndex(x=>x.id===dragId);const to=ls.findIndex(x=>x.id===row.dataset.lid);
  const[m]=ls.splice(from,1);ls.splice(to,0,m);ls.forEach((x,i)=>x.order=i);dragId=null;save();render();});
-/* install */
 let _dp=null;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();_dp=e;});
 function doInstall(){if(_dp){_dp.prompt();_dp.userChoice.then(()=>{_dp=null;});}else toast(t("installHint"));}
 if("serviceWorker" in navigator && location.protocol==="https:"){navigator.serviceWorker.register("sw.js").catch(()=>{});}
