@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NexusShop · Subscriptions & Payments</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<style>
+:root{--bg:#e9e2d3;--sf:#f6f1e4;--ln:#d9d0bb;--ink:#26221b;--mut:#6b6355;--grn:#1d5c3f;--wa:#1d6b45;--gold:#8a6d1f;--red:#a33a2a}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--ink);font-family:'Segoe UI',system-ui,sans-serif;padding:16px;line-height:1.5}
+body.ur{font-family:'Noto Nastaliq Urdu',serif}h1,h2,h3{font-family:Georgia,serif}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:16px;margin-bottom:14px;max-width:640px;margin-inline:auto}
+.btn{display:block;width:100%;background:var(--grn);color:#fff;border:0;border-radius:12px;padding:12px;font-weight:700;font-size:14px;cursor:pointer;margin-top:8px}
+.btn.gh{background:transparent;border:1px solid var(--ink);color:var(--ink)}.btn.wa{background:var(--wa)}
+input,select{width:100%;padding:10px;border:1px solid var(--ln);border-radius:10px;background:#fbf8ef;margin:6px 0;font:inherit}
+label{font-size:12px;color:var(--mut)}
+.st{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;border:1px solid var(--ln);background:var(--bg2,#efe8d9)}
+.st.confirmed{color:var(--grn);border-color:var(--grn)}.st.rejected{color:var(--red);border-color:var(--red)}
+.st.under_review{color:var(--gold);border-color:var(--gold)}
+.row{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--ln);font-size:13px}
+.top{max-width:640px;margin:0 auto 12px;display:flex;justify-content:space-between;align-items:center}
+.mut{color:var(--mut);font-size:12px}.err{color:var(--red);font-size:13px;margin-top:6px}
+</style></head><body>
+<div class="top"><h2>Nexus<b style="color:var(--grn)">Shop</b> · <span id="tTitle">Subscriptions</span></h2>
+<div><button class="btn gh" style="width:auto;padding:6px 12px" id="langB">اردو</button>
+<button class="btn gh" style="width:auto;padding:6px 12px" id="outB" hidden>Exit</button></div></div>
+<div id="app"></div>
+<script>
+"use strict";
+/* ===== CONFIG: pegá tus claves de Supabase (Dashboard → Settings → API) ===== */
+const SUPABASE_URL="https://TU-PROYECTO.supabase.co";
+const SUPABASE_ANON="TU_ANON_KEY_PUBLICA";
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON);
+const L={en:{sub:"Subscriptions",login:"Log in",signup:"Create account",email:"Email",pass:"Password",shop:"Your shop",shopName:"Shop name",city:"City",wa:"WhatsApp",create:"Create shop",
+plans:"Plans",choose:"Choose plan & payment method",method:"Method",order:"Create payment order",instr:"Payment instructions",amount:"Amount",ref:"Reference",deadline:"Pay before",
+tid:"Transaction ID (TID)",receipt:"Receipt photo (optional)",submit:"Submit for verification",mypay:"My payments",mysub:"My subscription",inv:"Invoices",view:"View",renew:"Renew",
+status:"Status",none:"No payments yet",noSub:"No active subscription",grace:"Grace period applies after expiry",logout:"Log out",bank:"Bank",title:"Account title",iban:"IBAN / account",
+warn:"A TID is not proof of payment. An admin verifies the bank movement before activating your plan.",note:"Reviewer note",exp:"Expires",plan:"Plan",print:"Print receipt"},
+ur:{sub:"سبسکرپشنز",login:"لاگ ان",signup:"اکاؤنٹ بنائیں",email:"ای میل",pass:"پاس ورڈ",shop:"آپ کی دکان",shopName:"دکان کا نام",city:"شہر",wa:"واٹس ایپ",create:"دکان بنائیں",
+plans:"پلانز",choose:"پلان اور طریقہ چنیں",method:"طریقہ",order:"پے آرڈر بنائیں",instr:"ادائیگی ہدایات",amount:"رقم",ref:"حوالہ",deadline:"ادائیگی کی آخری تاریخ",
+tid:"ٹرانزیکشن ID (TID)",receipt:"رسید فوٹو (اختیاری)",submit:"تصدیق کے لیے بھیجیں",mypay:"میری ادائیگیاں",mysub:"میری سبسکرپشن",inv:"رسیدیں",view:"دیکھیں",renew:"تجدید",
+status:"حالت",none:"ابھی کوئی ادائیگی نہیں",noSub:"کوئی فعال سبسکرپشن نہیں",grace:"میعاد کے بعد مہلت لاگو ہوتی ہے",logout:"لاگ آؤٹ",bank:"بینک",title:"اکاؤنٹ ٹائٹل",iban:"IBAN / اکاؤنٹ",
+warn:"TID ثبوت نہیں ہے۔ بینک حرکت کی تصدیق کے بعد ہی پلان فعال ہوگا۔",note:"جائزہ نوٹ",exp:"میعاد",plan:"پلان",print:"رسید پرنٹ کریں"}};
+let lang="en",sess=null,shop=null,plans=[],rail=null,orders=[],sub=null,invs=[];
+const T=k=>(L[lang]&&L[lang][k])||L.en[k]||k;
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money=n=>"Rs "+Number(n||0).toLocaleString("en-US");
+function setLang(l){lang=l;document.body.classList.toggle("ur",l==="ur");document.documentElement.dir=l==="ur"?"rtl":"ltr";document.getElementById("langB").textContent=l==="en"?"اردو":"EN";document.getElementById("tTitle").textContent=T("sub");paint();}
+async function load(){sess=(await sb.auth.getSession()).data.session;
+ document.getElementById("outB").hidden=!sess;
+ if(sess){shop=(await sb.from("nx_shops").select("*").limit(1)).data?.[0]||null;
+  if(shop){[plans,rail,orders,sub,invs]=await Promise.all([
+   sb.from("plans").select("*").eq("active",true).order("price_pkr"),
+   sb.from("rail_config").select("*").limit(1),
+   sb.from("payment_orders").select("*").order("created_at",{ascending:false}).limit(10),
+   sb.from("subscriptions").select("*").in("status",["active","suspended"]).limit(1),
+   sb.from("invoices").select("*,payment_orders(ref,status,plan_code)").order("issued_at",{ascending:false}).limit(10)]);
+   plans=plans.data||[];rail=(rail.data||[])[0]||null;orders=orders.data||[];sub=(sub.data||[])[0]||null;invs=invs.data||[];}}
+ paint();}
+function authCard(){return `<div class="card"><h3 id="m">${T("login")}</h3>
+<label>${T("email")}</label><input id="em" type="email"><label>${T("pass")}</label><input id="pw" type="password">
+<button class="btn" id="in">${T("login")}</button><button class="btn gh" id="up">${T("signup")}</button><div class="err" id="ae"></div></div>`;}
+function shopCard(){return `<div class="card"><h3>${T("shop")}</h3><label>${T("shopName")}</label><input id="sn">
+<label>${T("city")}</label><input id="sc"><label>${T("wa")}</label><input id="sw" placeholder="+92...">
+<button class="btn" id="cs">${T("create")}</button><div class="err" id="se"></div></div>`;}
+function mainCard(){const m=(rail&&rail.active_methods)||["bank_transfer"];
+ return `<div class="card"><h3>${T("mysub")}</h3>${sub?`<div class="row"><span>${T("plan")}</span><b>${esc(sub.plan_code.toUpperCase())}</b></div>
+ <div class="row"><span>${T("exp")}</span><b>${new Date(sub.expires_at).toLocaleDateString()}</b></div>
+ <div class="mut">${T("grace")}</div><button class="btn gh" id="rn">${T("renew")}</button>`:`<div class="mut">${T("noSub")}</div>`}</div>
+ <div class="card"><h3>${T("plans")}</h3>${plans.map(p=>`<div class="row"><span><b>${esc(p.name_en)}</b> · ${p.product_limit} products</span><b>${p.price_pkr?money(p.price_pkr)+"/mo":"Free"}</b></div>`).join("")}
+ <label>${T("choose")}</label><select id="pl">${plans.filter(p=>p.price_pkr>0).map(p=>`<option value="${esc(p.code)}">${esc(p.name_en)} — ${money(p.price_pkr)}</option>`).join("")}</select>
+ <label>${T("method")}</label><select id="me">${m.map(x=>`<option value="${x}">${x}</option>`).join("")}</select>
+ <button class="btn" id="co">${T("order")}</button><div class="err" id="oe"></div></div>
+ <div id="instrBox"></div>
+ <div class="card"><h3>${T("mypay")}</h3>${orders.length?orders.map(o=>`<div class="row"><span>${esc(o.ref)} · ${esc(o.plan_code)} · ${money(o.amount_pkr)}</span><span class="st ${o.status}">${o.status}</span></div>${o.review_note?`<div class="mut">${T("note")}: ${esc(o.review_note)}</div>`:""}`).join(""):`<div class="mut">${T("none")}</div>`}</div>
+ <div class="card"><h3>${T("inv")}</h3>${invs.length?invs.map(i=>`<div class="row"><span>${esc(i.number)} · ${esc(i.kind)}</span><button class="btn gh" style="width:auto;padding:4px 10px" data-inv="${i.id}">${T("view")}</button></div>`).join(""):`<div class="mut">—</div>`}</div>`;}
+function instrCard(o){return `<div class="card"><h3>${T("instr")}</h3>
+<div class="row"><span>${T("amount")}</span><b>${money(o.amount_pkr)}</b></div>
+<div class="row"><span>${T("ref")}</span><b>${esc(o.ref)}</b></div>
+<div class="row"><span>${T("bank")}</span><b>${esc(rail?.bank_name||"—")}</b></div>
+<div class="row"><span>${T("title")}</span><b>${esc(rail?.account_title||"—")}</b></div>
+<div class="row"><span>${T("iban")}</span><b>${esc(rail?.iban||"—")}</b></div>
+<div class="row"><span>${T("deadline")}</span><b>${new Date(o.expires_at).toLocaleString()}</b></div>
+<div class="mut">${esc(lang==="ur"?(rail?.instructions_ur||""):(rail?.instructions_en||""))}</div>
+<div class="mut" style="color:var(--red)">${T("warn")}</div>
+<label>${T("tid")}</label><input id="tid"><label>${T("receipt")}</label><input id="rc" type="file" accept="image/*">
+<button class="btn wa" id="sp">${T("submit")}</button><div class="err" id="ie"></div></div>`;}
+function paint(){const a=document.getElementById("app");
+ if(!sess){a.innerHTML=authCard();wireAuth();return;}
+ if(!shop){a.innerHTML=shopCard();wireShop();return;}
+ a.innerHTML=mainCard();wireMain();}
+function wireAuth(){const e=id=>document.getElementById(id);
+ e("in").onclick=async()=>{const r=await sb.auth.signInWithPassword({email:e("em").value,password:e("pw").value});if(r.error)e("ae").textContent=r.error.message;else load();};
+ e("up").onclick=async()=>{const r=await sb.auth.signUp({email:e("em").value,password:e("pw").value});if(r.error)e("ae").textContent=r.error.message;else{e("ae").textContent="Check your email to confirm.";}};}
+function wireShop(){const e=id=>document.getElementById(id);
+ e("cs").onclick=async()=>{const r=await sb.from("nx_shops").insert({owner_id:sess.user.id,name:e("sn").value,city:e("sc").value,wa:e("sw").value}).select();if(r.error)e("se").textContent=r.error.message;else load();};}
+function wireMain(){const e=id=>document.getElementById(id);
+ e("rn")&&=null;const rn=document.getElementById("rn");if(rn)rn.onclick=()=>createOrder();
+ e("co").onclick=()=>createOrder();
+ document.querySelectorAll("[data-inv]").forEach(b=>b.onclick=()=>printInv(b.dataset.inv));}
+async function createOrder(){const pl=document.getElementById("pl").value,me=document.getElementById("me").value;
+ const r=await sb.rpc("nx_create_payment_order",{p_plan_code:pl,p_method:me});
+ if(r.error){document.getElementById("oe").textContent=r.error.message;return;}
+ await load();showInstr(r.data.id);}
+async function showInstr(oid){const o=orders.find(x=>x.id===oid);document.getElementById("instrBox").innerHTML=instrCard(o);
+ const sp=document.getElementById("sp");sp.onclick=async()=>{const tid=document.getElementById("tid").value;let path=null;
+  const f=document.getElementById("rc").files[0];
+  if(f){const up=await sb.storage.from("receipts").upload(o.id+"/"+Date.now()+"_"+f.name,f);if(up.error){document.getElementById("ie").textContent=up.error.message;return;}path=up.data.path;}
+  const r=await sb.rpc("nx_submit_payment",{p_order_id:o.id,p_tid:tid,p_receipt_url:path});
+  if(r.error)document.getElementById("ie").textContent=r.error.message;else{await load();}};}
+function printInv(id){const i=invs.find(x=>x.id===id);if(!i)return;const o=i.payment_orders||{};
+ const w=window.open("","_blank");w.document.write(`<html><head><title>${esc(i.number)}</title>
+ <style>body{font-family:Georgia,serif;padding:32px;color:#222}h1{font-size:22px}table{width:100%;border-collapse:collapse;margin-top:16px}td{padding:8px;border-bottom:1px solid #ddd;font-size:14px}</style></head><body>
+ <h1>NexusShop — ${i.kind==="receipt"?"PAYMENT RECEIPT":"PROFORMA (not a receipt)"}</h1>
+ <table><tr><td>Invoice</td><td><b>${esc(i.number)}</b></td></tr>
+ <tr><td>Order ref</td><td>${esc(o.ref||"")}</td></tr><tr><td>Plan</td><td>${esc(o.plan_code||"")}</td></tr>
+ <tr><td>Amount</td><td><b>${money(i.amount_pkr)} PKR</b></td></tr><tr><td>Issued</td><td>${new Date(i.issued_at).toLocaleString()}</td></tr>
+ <tr><td>Status</td><td>${esc(o.status||"")}</td></tr></table>
+ <p style="margin-top:20px;font-size:12px;color:#666">NexusShop · Lahore, Pakistan · neuralfocusai@gmail.com</p>
+ <script>window.print()<\/script></body></html>`);w.document.close();}
+document.getElementById("langB").onclick=()=>setLang(lang==="en"?"ur":"en");
+document.getElementById("outB").onclick=async()=>{await sb.auth.signOut();load();};
+sb.auth.onAuthStateChange(()=>load());
+setLang("en");load();
+</script></body></html>
