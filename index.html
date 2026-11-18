@@ -172,6 +172,10 @@ edit:"Edit",del:"Delete",pause:"Pause",activate:"Activate",myProducts:"My produc
 payTitle:"NexusPay — pay subscription, verified in 24h",paySteps:"Declare → Transfer → Verify → Active",bank:"Bank / wallet",amount:"Amount",sender:"Sender name",
 last4:"Last 4 digits of phone",tid:"Transaction ID (TID)",submitPay:"Send for verification",declared:"Declared ≠ paid. Activation only after verification.",
 pending:"Pending",verified:"Verified",rejected:"Rejected",approve:"Approve",reject:"Reject",receipts:"Receipts",
+railBank:"Bank",railTitle:"Account title (exactly as registered)",railAcc:"Account number",railIban:"IBAN",
+railInstr:"Transfer the exact amount to this account and write your payment reference in the transfer description. Then submit the TID here; an admin verifies the bank movement before activating your plan.",
+railWarn:"A TID or a screenshot is not proof of payment. Activation only after bank verification.",
+copy:"Copy",copied:"Copied to clipboard",mySub:"My subscription & payments",
 commT:"Committee Buy",commS:"3 buyers join a group and everyone saves 15%. Nobody pays until delivery.",joinGroup:"Join with a code",code:"Group code",
 members:"members",locked:"Locked −15%",open:"Open",share:"Share on WhatsApp",noGroups:"No groups yet. Open any product and tap Start a group.",
 back:"Back",home:"Home",navSaved:"Saved",navCart:"Cart",navOrders:"Orders",navAccount:"Account",
@@ -226,6 +230,10 @@ edit:"ترمیم",del:"حذف کریں",pause:"روکیں",activate:"فعال ک
 payTitle:"NexusPay — سبسکرپشن ادا کریں، 24 گھنٹے میں تصدیق",paySteps:"اعلان → ٹرانسفر → تصدیق → فعال",bank:"بینک / والیٹ",amount:"رقم",sender:"بھیجنے والے کا نام",
 last4:"فون کے آخری 4 ہندسے",tid:"ٹرانزیکشن ID (TID)",submitPay:"تصدیق کے لیے بھیجیں",declared:"اعلان ≠ ادائیگی۔ تصدیق کے بعد ہی ایکٹیویشن۔",
 pending:"زیر التوا",verified:"تصدیق شدہ",rejected:"مسترد",approve:"منظور کریں",reject:"مسترد کریں",receipts:"رسیدیں",
+railBank:"بینک",railTitle:"اکاؤنٹ ٹائٹل (جیسا رجسٹرڈ ہے)",railAcc:"اکاؤنٹ نمبر",railIban:"IBAN",
+railInstr:"عین رقم اس اکاؤنٹ میں منتقل کریں اور تفصیل میں اپنا پیمنٹ حوالہ لکھیں۔ پھر یہاں TID جمع کریں؛ بینک حرکت کی تصدیق کے بعد ہی پلان فعال ہوگا۔",
+railWarn:"TID یا اسکرین شاٹ ثبوت نہیں۔ تصدیق کے بعد ہی ایکٹیویشن۔",
+copy:"کاپی",copied:"کاپی ہو گیا",mySub:"میری سبسکرپشن اور ادائیگیاں",
 commT:"کمیٹی خرید",commS:"3 خریدار گروپ میں شامل ہوں اور سب 15% بچائیں۔ ڈیلیوری تک کوئی ادائیگی نہیں۔",joinGroup:"کوڈ سے شامل ہوں",code:"گروپ کوڈ",
 members:"اراکین",locked:"لاک −15%",open:"کھلا",share:"واٹس ایپ پر شیئر کریں",noGroups:"ابھی کوئی گروپ نہیں۔ کوئی پروڈکٹ کھولیں اور گروپ شروع کریں دبائیں۔",
 back:"واپس",home:"ہوم",navSaved:"محفوظ",navCart:"کارٹ",navOrders:"آرڈرز",navAccount:"اکاؤنٹ",
@@ -260,6 +268,7 @@ cartBulkHint:"اشیاء منتخب کریں تاکہ ایک ساتھ ہٹائی
 const CATS=[{id:"fashion",en:"Fashion",ur:"فیشن"},{id:"electronics",en:"Electronics",ur:"الیکٹرانکس"},{id:"home",en:"Home & Kitchen",ur:"گھر و باورچی خانہ"},{id:"beauty",en:"Beauty",ur:"خوبصورتی"},{id:"grocery",en:"Grocery",ur:"گروسری"}];
 const MK={PK:{code:"PK",flag:"🇵🇰",sym:"Rs ",rate:1,del:200,free:5000,cities:"Lahore · Karachi · Islamabad",couriers:[["TCS","tcs.com.pk"],["Leopards","leopards.com.pk"],["M&P","mp.com.pk"],["PostEx","postex.pk"],["Trax","trax.com.pk"]],pay:"JazzCash · Easypaisa · Bank transfer"},
 NG:{code:"NG",flag:"🇳🇬",sym:"₦",rate:5.5,del:1100,free:27500,cities:"Lagos · Abuja · Port Harcourt",couriers:[["GIG Logistics","giglogistics.com.ng"],["Kwik Delivery","kwik.delivery"],["DHL Nigeria","dhl.com/ng"],["Fez Delivery","fezdelivery.com"],["Cross-country","crosscountry.com.ng"]],pay:"Paystack · Flutterwave · Bank transfer"}};
+const RAIL={bank:"MCB Bank Limited",title:"TALAL REHAN",acc:"1727594371001117",iban:"PK96MUCB1727594371001117"};
 const IMG={watch:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=70",attar:"https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&q=70",kettle:"https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&q=70",buds:"https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&q=70",lawn:"https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=600&q=70",rice:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&q=70",spk:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=600&q=70",shoe:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=70",tv:"https://images.unsplash.com/photo-1593356114865-9495d959a59b?w=600&q=70",room:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=70"};
 const SEED=[
 {id:"p1",seller:"Anarkali Threads",swa:"923001234501",city:"Lahore",cat:"fashion",price:4499,old:5999,stock:14,img:IMG.lawn,name:{en:"Embroidered Lawn Suit, 3-piece",ur:"کڑھائی والا لان سوٹ، 3 پیس"},desc:{en:"Unstitched 3-piece lawn: embroidered shirt, dyed trouser, printed chiffon dupatta.",ur:"غیر سلا ہوا 3 پیس لان: کڑھائی والا قمیض، رنگین شلوار، پرنٹڈ شفون دوپٹہ۔"},rev:[{n:"Ayesha K.",s:5,en:"Beautiful embroidery, true to photos. COD made it easy.",ur:"خوبصورت کڑھائی، تصویروں کے مطابق۔ COD نے آسان بنا دیا۔"},{n:"Bilal R.",s:4,en:"Good fabric, delivery in 2 days.",ur:"اچھا کپڑا، 2 دن میں ڈیلیوری۔"}]},
@@ -415,6 +424,7 @@ function vAccount(){const p=S.profile;return `<h2 class="sec">${esc(t("account")
  <label>${esc(t("city"))}</label><input id="pfCity" value="${esc(p.city)}">
  <div class="row" style="margin-top:12px"><button class="btn grn" data-a="pfSave">${esc(t("save"))}</button>${p.email?`<button class="btn gh" data-a="logout">${esc(t("logout"))}</button>`:""}</div></div>
  <div class="menu">
+ <a class="btn gh" style="width:100%;margin-bottom:8px;text-decoration:none;display:block;text-align:center" href="pay.html">💳 ${esc(t("mySub"))}</a>
  <button data-a="nav" data-v="seller">🏪 ${esc(t("sellerCenter"))}<span>›</span></button>
  <button data-a="nav" data-v="committee">👥 ${esc(t("committee"))}<span>›</span></button>
  <button data-a="menu">🌍 ${esc(t("market"))}<span>${MK[S.market].flag}</span></button>
@@ -445,9 +455,14 @@ function vSeller(){if(!S.shop)return `<h2 class="sec">${esc(t("sellerCenter"))}<
  <button class="btn gh sm" data-a="lsPause" data-id="${l.id}">${esc(t(l.active?"pause":"activate"))}</button>
  <button class="btn gh sm" data-a="lsEdit" data-id="${l.id}">${esc(t("edit"))}</button><button class="btn red sm" data-a="lsDel" data-id="${l.id}">${esc(t("del"))}</button></div></div>`).join(""):`<div class="empty">${esc(t("noListings"))}</div>`}
  <div class="card"><b>${esc(t("payTitle"))}</b><p class="fnt">${esc(t("paySteps"))}</p>
- <div class="bankcard"><div class="fnt" style="color:#dcead9">${esc(t("bank"))}</div><div class="n">NexusShop · Official Account</div><div class="fnt" style="color:#dcead9">${esc(MK[S.market].pay)}</div></div>
+ <div class="bankcard"><div class="fnt" style="color:#dcead9">${esc(t("railBank"))}</div><div class="n">${esc(RAIL.bank)}</div>
+ <div class="fnt" style="color:#dcead9;margin-top:6px">${esc(t("railTitle"))}: <b>${esc(RAIL.title)}</b></div>
+ <div class="row" style="margin-top:8px"><span class="fnt" style="color:#dcead9">${esc(t("railAcc"))}: ${esc(RAIL.acc)}</span><button class="btn sm" style="background:rgba(255,255,255,.16);color:#fff" data-a="copy" data-id="acc">${esc(t("copy"))}</button></div>
+ <div class="row"><span class="fnt" style="color:#dcead9">${esc(t("railIban"))}: ${esc(RAIL.iban)}</span><button class="btn sm" style="background:rgba(255,255,255,.16);color:#fff" data-a="copy" data-id="iban">${esc(t("copy"))}</button></div></div>
+ <p class="mut">${esc(t("railInstr"))}</p>
+ <p class="fnt" style="color:var(--red);margin-top:6px">${esc(t("railWarn"))}</p>
  <div class="steps">${["placed","confirmed","shipped","delivered"].map((s,i)=>`<div class="step ${i<1?"done":""}"><div class="dot"></div><div class="lbl">${esc(t("paySteps").split("→")[i]||s)}</div></div>`).join("")}</div>
- <label>${esc(t("bank"))}</label><select id="payBank"><option>JazzCash</option><option>Easypaisa</option><option>HBL</option><option>Meezan</option></select>
+ <label>${esc(t("bank"))}</label><select id="payBank"><option>MCB Bank transfer</option><option>JazzCash</option><option>Easypaisa</option></select>
  <label>${esc(t("amount"))}</label><input id="payAmt" type="number" value="2500">
  <label>${esc(t("sender"))}</label><input id="payName"><label>${esc(t("last4"))}</label><input id="payLast" maxlength="4"><label>${esc(t("tid"))}</label><input id="payTid">
  <p class="fnt" style="margin-top:8px">${esc(t("declared"))}</p>
@@ -525,6 +540,9 @@ document.addEventListener("click",e=>{
  case "bulkRemove":{if(!S.bulk.length)break;const snap=S.cart.slice();S.cart=S.cart.filter(x=>!S.bulk.includes(x.id));S.bulk=[];save();render();toast(t("removed"),()=>{S.cart=snap;save();render();});break;}
  case "clearCart":{const snap=S.cart.slice();S.cart=[];S.bulk=[];save();render();toast(t("removed"),()=>{S.cart=snap;save();render();});break;}
  case "undo":if(_undo){const f=_undo;_undo=null;f();}break;
+ case "copy":{const v=RAIL[id==="iban"?"iban":"acc"];
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(()=>toast(t("copied")));}
+  else{const ta=document.createElement("textarea");ta.value=v;document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();toast(t("copied"));}break;}
  case "checkout":{if(!S.cart.length)break;const G={};S.cart.forEach(it=>{const p=prod(it.id);(G[p.seller]=G[p.seller]||{swa:p.swa,items:[]}).items.push(it);});
   const m=MK[S.market];S.lastOrders=Object.keys(G).map(s=>{const items=G[s].items;const sub=items.reduce((a,b)=>a+prod(b.id).price*b.q,0);const del=sub>=m.free?0:m.del;
    const o={code:"NX-"+Math.random().toString(36).slice(2,8).toUpperCase(),seller:s,swa:G[s].swa,items:items.map(i=>({id:i.id,q:i.q,price:prod(i.id).price})),total:sub+del,status:"placed",ts:Date.now()};S.orders.unshift(o);return o;});
