@@ -26,7 +26,7 @@ label{font-size:12px;color:var(--mut)}
 <script>
 "use strict";
 const SUPABASE_URL="https://jtbxqwiyktzjdjohcyli.supabase.co";
-const SUPABASE_ANON="sb_publishable_asylEULh3pisF12RzFeCVg_2LOZChDB";
+const SUPABASE_ANON="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0Ynhxd2l5a3R6amRqb2hjeWxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ5MzY5NzIsImV4cCI6MjExMDUxMjk3Mn0.lTQDVQgJqY65_daClS0V7LvO6Kl1Pi7pyGrL5F5j-1U";
 const sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON);
 const L={en:{sub:"Subscriptions",login:"Log in",signup:"Create account",email:"Email",pass:"Password",shop:"Your shop",shopName:"Shop name",city:"City",wa:"WhatsApp",create:"Create shop",
 plans:"Plans",choose:"Choose plan & payment method",method:"Method",order:"Create payment order",instr:"Payment instructions",amount:"Amount",ref:"Reference",deadline:"Pay before",
@@ -45,14 +45,14 @@ const money=n=>"Rs "+Number(n||0).toLocaleString("en-US");
 function setLang(l){lang=l;document.body.classList.toggle("ur",l==="ur");document.documentElement.dir=l==="ur"?"rtl":"ltr";document.getElementById("langB").textContent=l==="en"?"اردو":"EN";document.getElementById("tTitle").textContent=T("sub");paint();}
 async function load(){sess=(await sb.auth.getSession()).data.session;
  document.getElementById("outB").hidden=!sess;
- if(sess){shop=(await sb.from("nx_shops").select("*").limit(1)).data?.[0]||null;
-  if(shop){[plans,rail,orders,sub,invs]=await Promise.all([
+ if(sess){shop=(await sb.from("nx_shops").select("*").eq("owner_id",sess.user.id).limit(1)).data?.[0]||null;
+  if(shop){const[plansR,railR,ordersR,subR,invsR]=await Promise.all([
    sb.from("plans").select("*").eq("active",true).order("price_pkr"),
    sb.from("rail_config").select("*").limit(1),
    sb.from("payment_orders").select("*").order("created_at",{ascending:false}).limit(10),
-   sb.from("subscriptions").select("*").in("status",["active","suspended"]).limit(1),
+   sb.from("subscriptions").select("*").eq("shop_id",shop.id).in("status",["active","suspended"]).limit(1),
    sb.from("invoices").select("*,payment_orders(ref,status,plan_code)").order("issued_at",{ascending:false}).limit(10)]);
-   plans=plans.data||[];rail=(rail.data||[])[0]||null;orders=orders.data||[];sub=(sub.data||[])[0]||null;invs=invs.data||[];}}
+   plans=plansR.data||[];rail=(railR.data||[])[0]||null;orders=ordersR.data||[];sub=(subR.data||[])[0]||null;invs=invsR.data||[];}}
  paint();}
 function authCard(){return `<div class="card"><h3 id="m">${T("login")}</h3>
 <label>${T("email")}</label><input id="em" type="email"><label>${T("pass")}</label><input id="pw" type="password">
@@ -92,15 +92,15 @@ function wireAuth(){const e=id=>document.getElementById(id);
 function wireShop(){const e=id=>document.getElementById(id);
  e("cs").onclick=async()=>{const r=await sb.from("nx_shops").insert({owner_id:sess.user.id,name:e("sn").value,city:e("sc").value,wa:e("sw").value}).select();if(r.error)e("se").textContent=r.error.message;else load();};}
 function wireMain(){const e=id=>document.getElementById(id);
- e("rn")&&=null;const rn=document.getElementById("rn");if(rn)rn.onclick=()=>createOrder();
- e("co").onclick=()=>createOrder();
+ const rn=document.getElementById("rn");if(rn)rn.onclick=()=>createOrder();
+ document.getElementById("co").onclick=()=>createOrder();
  document.querySelectorAll("[data-inv]").forEach(b=>b.onclick=()=>printInv(b.dataset.inv));}
 async function createOrder(){const pl=document.getElementById("pl").value,me=document.getElementById("me").value;
  const r=await sb.rpc("nx_create_payment_order",{p_plan_code:pl,p_method:me});
  if(r.error){document.getElementById("oe").textContent=r.error.message;return;}
  await load();showInstr(r.data.id);}
 async function showInstr(oid){const o=orders.find(x=>x.id===oid);document.getElementById("instrBox").innerHTML=instrCard(o);
- const sp=document.getElementById("sp");sp.onclick=async()=>{const tid=document.getElementById("tid").value;let path=null;
+ document.getElementById("sp").onclick=async()=>{const tid=document.getElementById("tid").value;let path=null;
   const f=document.getElementById("rc").files[0];
   if(f){const up=await sb.storage.from("receipts").upload(o.id+"/"+Date.now()+"_"+f.name,f);if(up.error){document.getElementById("ie").textContent=up.error.message;return;}path=up.data.path;}
   const r=await sb.rpc("nx_submit_payment",{p_order_id:o.id,p_tid:tid,p_receipt_url:path});
