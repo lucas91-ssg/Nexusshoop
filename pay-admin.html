@@ -1,0 +1,84 @@
+<!doctype html><html lang="en" translate="no"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="google" content="notranslate">
+<title>NexusShop · Admin Financial Control</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<style>
+:root{--bg:#e9e2d3;--sf:#f6f1e4;--ln:#d9d0bb;--ink:#26221b;--mut:#6b6355;--grn:#1d5c3f;--gold:#8a6d1f;--red:#a33a2a}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--ink);font-family:'Segoe UI',system-ui,sans-serif;padding:14px;line-height:1.5}
+h1,h2,h3{font-family:Georgia,serif}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:14px;margin-bottom:12px;max-width:860px;margin-inline:auto}
+.bad{border-color:var(--red);background:#f4ded8}
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--grn);color:#fff;border:0;border-radius:10px;padding:9px 14px;font-weight:700;font-size:13px;cursor:pointer}
+.btn.gh{background:transparent;border:1px solid var(--ink);color:var(--ink)}.btn.red{background:var(--red)}.btn.gold{background:var(--gold)}
+input,select{padding:9px;border:1px solid var(--ln);border-radius:10px;background:#fbf8ef;font:inherit;margin:4px 0}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+td,th{padding:8px 6px;border-bottom:1px solid var(--ln);text-align:start;vertical-align:top}
+.st{padding:2px 8px;border-radius:999px;font-size:10.5px;border:1px solid var(--ln)}
+.st.u{color:var(--gold);border-color:var(--gold)}.st.c{color:var(--grn);border-color:var(--grn)}.st.r{color:var(--red);border-color:var(--red)}
+.dup{background:var(--red);color:#fff;border-radius:6px;padding:1px 6px;font-size:10px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.kpi{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:10px;text-align:center}
+.kpi b{display:block;font-size:20px;font-family:Georgia,serif;color:var(--grn)}
+.kpi span{font-size:11px;color:var(--mut)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.mut{color:var(--mut);font-size:12px}.err{color:var(--red);font-size:13px}
+</style></head><body>
+<div style="max-width:860px;margin:0 auto 10px" class="row">
+<h1 style="font-size:22px">Nexus<b style="color:var(--grn)">Shop</b> · Admin</h1>
+<span style="flex:1"></span><button class="btn gh" id="langB">اردو</button><button class="btn gh" id="outB" hidden>Exit</button></div>
+<div id="app"></div>
+<script>
+"use strict";
+const SUPABASE_URL="https://jtbxqwiyktzjdjohcyli.supabase.co";
+const SUPABASE_ANON="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0Ynhxd2l5a3R6amRqb2hjeWxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ5MzY5NzIsImV4cCI6MjExMDUxMjk3Mn0.lTQDVQgJqY65_daClS0V7LvO6Kl1Pi7pyGrL5F5j-1U";
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON);
+const L={en:{q:"Verification queue",ap:"Approve",rj:"Reject",note:"Review note (mandatory for reject)",dup:"DUPLICATE TID",st:"Stats",aw:"Awaiting",ur:"Under review",cf:"Confirmed",rj2:"Rejected",mrr:"MRR (active)",mo:"This month confirmed",shops:"Shops",subs:"Active subs",set:"Monthly settlement",gen:"Generate",csv:"Download CSV",pdf:"Print / PDF",rec:"Record in ledger",conf:"Confirmed payments",ref:"Refund",audit:"Audit log",rate:"EUR rate (PKR per EUR)",dest:"Destination",forb:"Forbidden: your user has no admin role in admin_roles.",login:"Log in",email:"Email",pass:"Password"},
+ur:{q:"تصدیق قطار",ap:"منظور کریں",rj:"مسترد کریں",note:"جائزہ نوٹ (مسترد کرنے کے لیے لازمی)",dup:"نقلی TID",st:"اعداد و شمار",aw:"انتظار",ur:"زیر جائزہ",cf:"تصدیق شدہ",rj2:"مسترد",mrr:"MRR (فعال)",mo:"اس ماہ تصدیق شدہ",shops:"دکانیں",subs:"فعال سبسکرپشنز",set:"ماہانہ تصفیہ",gen:"تیار کریں",csv:"CSV ڈاؤن لوڈ",pdf:"پرنٹ / PDF",rec:"ledger میں درج کریں",conf:"تصدیق شدہ ادائیگیاں",ref:"واپسی",audit:"آڈٹ لاگ",rate:"EUR ریٹ (فی EUR PKR)",dest:"منزل",forb:"ممنوع: آپ کے صارف کا admin_roles میں کردار نہیں۔",login:"لاگ ان",email:"ای میل",pass:"پاس ورڈ"}};
+let lang="en",sess=null,role=null,stats=null,queue=[],conf=[],audit=[],dups=[];
+const T=k=>(L[lang]&&L[lang][k])||L.en[k]||k;
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money=n=>"Rs "+Number(n||0).toLocaleString("en-US");
+async function load(){sess=(await sb.auth.getSession()).data.session;document.getElementById("outB").hidden=!sess;
+ if(!sess){document.getElementById("app").innerHTML=`<div class="card"><h3>${T("login")}</h3><input id="em" type="email" placeholder="${T("email")}"><input id="pw" type="password" placeholder="${T("pass")}"><button class="btn" id="li">${T("login")}</button><div class="err" id="ae"></div></div>`;
+  document.getElementById("li").onclick=async()=>{const r=await sb.auth.signInWithPassword({email:document.getElementById("em").value,password:document.getElementById("pw").value});if(r.error)document.getElementById("ae").textContent=r.error.message;else load();};return;}
+ const rr=await sb.from("admin_roles").select("role").eq("user_id",sess.user.id).limit(1);
+ role=(rr.data||[])[0]?.role||null;
+ if(!role){document.getElementById("app").innerHTML=`<div class="card bad"><b>${T("forb")}</b></div>`;return;}
+ const[s,q,c,a]=await Promise.all([sb.rpc("nx_admin_stats"),
+  sb.from("payment_orders").select("*,nx_shops(name,city)").eq("status","under_review").order("created_at"),
+  sb.from("payment_orders").select("*,invoices(number),nx_shops(name)").eq("status","confirmed").order("reviewed_at",{ascending:false}).limit(20),
+  sb.from("audit_log").select("*").order("created_at",{ascending:false}).limit(30)]);
+ stats=s.data||{};queue=q.data||[];conf=c.data||[];audit=a.data||[];dups=stats.dup_tids||[];paint();}
+function paint(){document.getElementById("app").innerHTML=
+ `<div class="grid4" style="max-width:860px;margin:0 auto 12px">
+  <div class="kpi"><b>${stats.under_review||0}</b><span>${T("ur")}</span></div>
+  <div class="kpi"><b>${stats.awaiting||0}</b><span>${T("aw")}</span></div>
+  <div class="kpi"><b>${stats.confirmed||0}</b><span>${T("cf")}</span></div>
+  <div class="kpi"><b>${money(stats.mrr_pkr||0)}</b><span>${T("mrr")}</span></div>
+  <div class="kpi"><b>${money(stats.confirmed_pkr_month||0)}</b><span>${T("mo")}</span></div>
+  <div class="kpi"><b>${stats.shops||0}</b><span>${T("shops")}</span></div></div>
+ <div class="card"><h3>${T("q")} (${queue.length})</h3>${queue.length?`<table><tr><th>Ref</th><th>Shop</th><th>Plan</th><th>Amount</th><th>Method</th><th>TID</th><th></th></tr>${queue.map(o=>`<tr><td><b>${esc(o.ref)}</b><br><span class="mut">${new Date(o.created_at).toLocaleString()}</span></td><td>${esc(o.nx_shops?.name||"")}<br><span class="mut">${esc(o.nx_shops?.city||"")}</span></td><td>${esc(o.plan_code)}</td><td><b>${money(o.amount_pkr)}</b></td><td>${esc(o.method)}</td><td>${esc(o.tid)} ${dups.includes(o.tid)?`<span class="dup">${T("dup")}</span>`:""} ${o.receipt_url?`<button class="btn gh" style="padding:3px 8px" data-rc="${esc(o.receipt_url)}">📎</button>`:""}</td><td class="row"><button class="btn" data-ap="${o.id}">${T("ap")}</button><button class="btn red" data-rj="${o.id}">${T("rj")}</button></td></tr>`).join("")}</table>`:`<p class="mut">—</p>`}</div>
+ <div class="card"><h3>${T("conf")}</h3>${conf.length?`<table><tr><th>Ref</th><th>Shop</th><th>Amount</th><th>Invoice</th><th></th></tr>${conf.map(o=>`<tr><td>${esc(o.ref)}</td><td>${esc(o.nx_shops?.name||"")}</td><td>${money(o.amount_pkr)}</td><td>${esc(o.invoices?.number||"—")}</td><td><button class="btn gold" data-rf="${o.id}">${T("ref")}</button></td></tr>`).join("")}</table>`:`<p class="mut">—</p>`}</div>
+ <div class="card"><h3>${T("set")}</h3><div class="row"><input type="month" id="per" value="${new Date().toISOString().slice(0,7)}"><label class="mut">${T("rate")}</label><input id="rate" type="number" step="0.01" value="0.0035" style="width:110px"><button class="btn" id="gen">${T("gen")}</button></div><div id="setBox"></div></div>
+ <div class="card"><h3>${T("audit")}</h3><table><tr><th>When</th><th>Actor</th><th>Action</th><th>Entity</th></tr>${audit.map(a=>`<tr><td>${new Date(a.created_at).toLocaleString()}</td><td class="mut">${esc((a.actor_id||"system").slice(0,8))}</td><td><b>${esc(a.action)}</b></td><td>${esc(a.entity)} ${esc(a.entity_id||"").slice(0,8)}</td></tr>`).join("")}</table></div>`;
+ document.querySelectorAll("[data-ap]").forEach(b=>b.onclick=async()=>{const note=prompt(T("note"),"");const r=await sb.rpc("nx_approve_payment",{p_order_id:b.dataset.ap,p_note:note||""});if(r.error)alert(r.error.message);else load();});
+ document.querySelectorAll("[data-rj]").forEach(b=>b.onclick=async()=>{let note="";while(!note.trim())note=prompt(T("note"));const r=await sb.rpc("nx_reject_payment",{p_order_id:b.dataset.rj,p_note:note});if(r.error)alert(r.error.message);else load();});
+ document.querySelectorAll("[data-rf]").forEach(b=>b.onclick=async()=>{const amt=prompt("Amount PKR","2500");if(amt===null)return;let rs="";while(!rs.trim())rs=prompt("Reason");const r=await sb.rpc("nx_create_refund",{p_order_id:b.dataset.rf,p_amount_pkr:Number(amt),p_reason:rs});if(r.error)alert(r.error.message);else load();});
+ document.querySelectorAll("[data-rc]").forEach(b=>b.onclick=async()=>{const u=await sb.storage.from("receipts").createSignedUrl(b.dataset.rc,300);if(u.data)window.open(u.data.signedUrl,"_blank");});
+ document.getElementById("gen").onclick=genSet;}
+async function genSet(){const per=document.getElementById("per").value;const[from,to]=[per+"-01T00:00:00Z",per+"-31T23:59:59Z"];
+ const r=await sb.from("payment_orders").select("amount_pkr,plan_code,ref,reviewed_at,nx_shops(name)").eq("status","confirmed").gte("reviewed_at",from).lte("reviewed_at",to);
+ const rows=r.data||[];const total=rows.reduce((a,b)=>a+b.amount_pkr,0);const byPlan={};rows.forEach(x=>byPlan[x.plan_code]=(byPlan[x.plan_code]||0)+1);
+ const box=document.getElementById("setBox");
+ box.innerHTML=`<table><tr><th>Period</th><th>Orders</th><th>Total PKR</th><th>By plan</th></tr><tr><td><b>${per}</b></td><td>${rows.length}</td><td><b>${money(total)}</b></td><td>${Object.entries(byPlan).map(([k,v])=>k+"×"+v).join(", ")||"—"}</td></tr></table>
+ <div class="row" style="margin-top:8px"><button class="btn gh" id="csv">${T("csv")}</button><button class="btn gh" id="pdf">${T("pdf")}</button><label class="mut">${T("dest")}</label><input id="dest" value="Takenos EUR IBAN (Malta)"><button class="btn" id="rec">${T("rec")}</button></div>`;
+ const csv="ref,shop,plan,amount_pkr,reviewed_at\n"+rows.map(x=>`${x.ref},"${x.nx_shops?.name||""}",${x.plan_code},${x.amount_pkr},${x.reviewed_at}`).join("\n");
+ document.getElementById("csv").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download=`nexusshop-settlement-${per}.csv`;a.click();};
+ document.getElementById("pdf").onclick=()=>{const w=window.open("","_blank");w.document.write(`<html><head><title>Settlement ${per}</title></head><body style="font-family:Georgia,serif;padding:32px"><h2>NexusShop — Settlement ${per}</h2><p>Orders: ${rows.length} · Total: ${money(total)} PKR</p><table border="1" cellpadding="6" style="border-collapse:collapse;width:100%"><tr><th>Ref</th><th>Shop</th><th>Plan</th><th>PKR</th></tr>${rows.map(x=>`<tr><td>${x.ref}</td><td>${esc(x.nx_shops?.name||"")}</td><td>${x.plan_code}</td><td>${x.amount_pkr}</td></tr>`).join("")}</table><p style="margin-top:16px;font-size:12px">Generated ${new Date().toLocaleString()} · basis for invoice to NexusShop PK entity · payout destination: Takenos EUR IBAN</p></body></html>`);w.document.close();setTimeout(()=>w.print(),400);};
+ document.getElementById("rec").onclick=async()=>{const rate=Number(document.getElementById("rate").value)||0.0035;const eur=Math.round(total*rate*100)/100;
+  const s=await sb.rpc("nx_record_settlement",{p_period:per,p_amount_pkr:total,p_amount_eur:eur,p_rate:rate,p_invoice:"NX-SET-"+per,p_destination:document.getElementById("dest").value});
+  if(s.error)alert(s.error.message);else{alert("Settlement recorded: "+eur+" EUR");load();}};}
+document.getElementById("langB").onclick=()=>{lang=lang==="en"?"ur":"en";document.getElementById("langB").textContent=lang==="en"?"اردو":"EN";if(sess&&role)paint();};
+document.getElementById("outB").onclick=async()=>{await sb.auth.signOut();load();};
+load();
+</script></body></html>
