@@ -39,41 +39,43 @@ header{position:sticky;top:0;z-index:60;background:rgba(233,226,211,.94);backdro
 .icb{border:1px solid var(--ln);background:var(--sf);border-radius:999px;padding:8px 12px;font-size:14px;position:relative;color:var(--ink2)}
 .icb:hover{filter:brightness(.97)}
 .bdg{position:absolute;top:-6px;inset-inline-end:-6px;background:var(--grn);color:#fff;border-radius:999px;font-size:10px;min-width:18px;height:18px;display:flex;align-items:center;justify-content:center;padding:0 4px}
-.banner{background:var(--bg2);border-bottom:1px solid var(--ln);color:var(--mut);font-size:12px;text-align:center;padding:6px 12px}
+.banner{background:var(--goldbg);border-bottom:1px solid var(--ln);color:var(--gold);font-size:12px;text-align:center;padding:7px 12px;font-weight:600}
 main{max-width:1100px;margin:0 auto;padding:16px 14px 110px}
 .view{animation:rise .3s ease}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.hero{background:linear-gradient(135deg,var(--sf),var(--bg2));border:1px solid var(--ln);border-radius:22px;padding:28px 22px;margin-bottom:16px;box-shadow:var(--sh);position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;inset-inline-end:-60px;top:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(76,139,106,.18),transparent 70%)}
-.hero h1{font-size:clamp(24px,4.2vw,36px);line-height:1.22;margin-bottom:10px;max-width:640px}
+.hero{background:linear-gradient(135deg,var(--sf),var(--bg2));border:1px solid var(--ln);border-radius:24px;padding:30px 22px;margin-bottom:16px;box-shadow:var(--sh);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;inset-inline-end:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(76,139,106,.20),transparent 70%)}
+.hero h1{font-size:clamp(26px,4.4vw,38px);line-height:1.2;margin-bottom:10px;max-width:640px}
 .hero p{color:var(--mut);font-size:14px;margin-bottom:16px;max-width:560px}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.btn{background:var(--ink);color:var(--sf);border-radius:12px;padding:12px 18px;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:8px;justify-content:center}
+.btn{background:var(--ink);color:var(--sf);border-radius:12px;padding:12px 18px;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:8px;justify-content:center;box-shadow:0 6px 16px rgba(38,34,27,.12)}
 .btn:hover{filter:brightness(1.12)}.btn.grn{background:var(--grn);color:#fff}.btn.wa{background:var(--wa);color:#fff}
-.btn.gh{background:transparent;border:1px solid var(--ink);color:var(--ink)}.btn.sm{padding:8px 12px;font-size:12px;border-radius:10px}
+.btn.gh{background:transparent;border:1px solid var(--ink);color:var(--ink);box-shadow:none}.btn.sm{padding:8px 12px;font-size:12px;border-radius:10px}
 .btn.red{background:var(--red);color:#fff}.btn.gold{background:var(--gold);color:#fff}.btn[disabled]{opacity:.5;cursor:not-allowed}
 .trust{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:12px;color:var(--mut)}
 .live{position:relative;overflow:hidden;border-radius:18px;margin:14px 0;padding:16px;border:1px solid var(--ln);background:linear-gradient(120deg,var(--goldbg),var(--mint),var(--goldbg));background-size:220% 220%;animation:grad 9s ease infinite}
 @keyframes grad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .live b{font-size:15px}.live span{display:block;font-size:12px;color:var(--ink2);margin-top:4px}
 h2.sec{font-size:19px;margin:20px 0 10px;display:flex;align-items:center;gap:8px}
+h2.sec::before{content:"";width:18px;height:3px;background:var(--grn);border-radius:2px;flex:none}
 .tb{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
-.tb select{width:auto;padding:8px 10px;border-radius:999px;font-size:13px}
+.tb select{width:auto;padding:8px 12px;border-radius:999px;font-size:13px;background:var(--sf)}
 .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.chips.sticky{position:sticky;top:102px;z-index:40;background:linear-gradient(var(--bg) 82%,transparent);padding:8px 0 6px}
 .chip{border:1px solid var(--ln);background:var(--sf);border-radius:999px;padding:8px 14px;font-size:13px;white-space:nowrap;color:var(--ink2)}
-.chip.on{background:var(--grn);color:#fff;border-color:var(--grn)}
+.chip.on{background:var(--grn);color:#fff;border-color:var(--grn);box-shadow:0 4px 12px rgba(29,92,63,.25)}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 @media(min-width:640px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media(min-width:960px){.grid{grid-template-columns:repeat(4,1fr)}}
-.pc{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden;position:relative;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s}
+.pc{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden;position:relative;display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(38,34,27,.06);transition:transform .18s,box-shadow .18s}
 .pc:hover{transform:translateY(-3px);box-shadow:var(--sh)}
 .pc .img{height:150px;background:var(--bg2);object-fit:cover;width:100%}
 .pc .bd{padding:10px;display:flex;flex-direction:column;gap:6px;flex:1}
 .pc .nm{font-size:14px;font-weight:700;text-align:start;color:var(--ink)}
-.pr{color:var(--grn);font-weight:700}.old{color:var(--fnt);text-decoration:line-through;font-size:12px}
+.pr{color:var(--grn);font-weight:800;font-size:15px}.old{color:var(--fnt);text-decoration:line-through;font-size:12px}
 .off{position:absolute;top:8px;inset-inline-start:8px;background:var(--gold);color:#fff;font-size:11px;border-radius:8px;padding:3px 7px}
-.ht{position:absolute;top:8px;inset-inline-end:8px;background:var(--sf);border:1px solid var(--ln);border-radius:999px;width:32px;height:32px;font-size:15px;color:var(--mut)}
+.ht{position:absolute;top:8px;inset-inline-end:8px;background:rgba(246,241,228,.9);backdrop-filter:blur(4px);border:1px solid var(--ln);border-radius:999px;width:32px;height:32px;font-size:15px;color:var(--mut)}
 .ht.on{color:var(--red);animation:pop .25s}@keyframes pop{50%{transform:scale(1.25)}}
-.card{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r);padding:16px;margin-bottom:14px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r);padding:16px;margin-bottom:14px;box-shadow:0 2px 10px rgba(38,34,27,.05)}
 .mut{color:var(--mut);font-size:13px}.fnt{color:var(--fnt);font-size:12px}
 .det{display:grid;gap:16px}@media(min-width:820px){.det{grid-template-columns:1fr 1fr}}
 .det .img{border-radius:var(--r);height:320px;object-fit:cover;width:100%;background:var(--bg2)}
@@ -85,9 +87,9 @@ h2.sec{font-size:19px;margin:20px 0 10px;display:flex;align-items:center;gap:8px
 .ci{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--ln)}
 .ci:last-of-type{border-bottom:none}.ci img{width:56px;height:56px;border-radius:10px;object-fit:cover;background:var(--bg2)}
 .ci .gw{flex:1;min-width:0}.tot{display:flex;justify-content:space-between;font-weight:700;padding:10px 0}
-nav{position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(233,226,211,.96);backdrop-filter:blur(10px);border-top:1px solid var(--ln);display:flex;padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
-nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;color:var(--mut);position:relative;padding:4px 0}
-nav button.on{color:var(--grn);font-weight:700}nav .ico{font-size:18px}
+nav{position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(233,226,211,.96);backdrop-filter:blur(10px);border-top:1px solid var(--ln);display:flex;padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;color:var(--mut);position:relative;padding:6px 0;border-radius:14px}
+nav button.on{color:var(--grn);font-weight:700;background:var(--mint)}nav .ico{font-size:18px}
 .chk{width:60px;height:60px;border-radius:50%;background:var(--grn);color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;animation:pop .4s}
 .ctr{text-align:center}.oc{font-family:Georgia,serif;font-size:20px;letter-spacing:1px;font-weight:700;margin:6px 0}
 .st{display:inline-block;border-radius:999px;padding:3px 10px;font-size:11px;background:var(--bg2);border:1px solid var(--ln);color:var(--mut)}
@@ -112,7 +114,7 @@ summary{cursor:pointer;font-weight:700;color:var(--ink2)}details p{margin-top:8p
 .menu button{display:flex;width:100%;justify-content:space-between;align-items:center;background:var(--sf2);border:1px solid var(--ln);border-radius:12px;padding:12px;margin-bottom:8px;font-size:14px;color:var(--ink2)}
 .menu button:hover{background:var(--mint)}
 .rail{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px}
-.rail .rc{flex:0 0 150px;background:var(--sf);border:1px solid var(--ln);border-radius:14px;overflow:hidden;cursor:pointer}
+.rail .rc{flex:0 0 150px;background:var(--sf);border:1px solid var(--ln);border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 2px 10px rgba(38,34,27,.06)}
 .rail .rc img{height:100px;width:100%;object-fit:cover;background:var(--bg2)}.rail .rc .b{padding:8px}
 #welcome{position:fixed;inset:0;z-index:300;background:radial-gradient(900px 500px at 70% -10%,rgba(76,139,106,.16),transparent),radial-gradient(700px 420px at 10% 110%,rgba(138,109,31,.12),transparent),var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;overflow:auto}
 #welcome .ring{perspective:900px;width:230px;height:150px;margin-bottom:10px}
@@ -138,10 +140,12 @@ summary{cursor:pointer;font-weight:700;color:var(--ink2)}details p{margin-top:8p
 .lrow{display:flex;gap:10px;align-items:center;padding:10px;border:1px solid var(--ln);border-radius:12px;margin-bottom:8px;background:var(--sf2);flex-wrap:wrap}
 .lrow img{width:48px;height:48px;border-radius:10px;object-fit:cover;background:var(--bg2)}
 .lrow .gw{flex:1;min-width:0}.lrow>.row{width:100%;justify-content:flex-end}
-.bankcard{background:linear-gradient(135deg,var(--grn),var(--grn2));color:#fff;border-radius:16px;padding:16px;margin:10px 0}
+.bankcard{background:linear-gradient(135deg,var(--grn),var(--grn2));color:#fff;border-radius:16px;padding:16px;margin:10px 0;box-shadow:0 8px 20px rgba(29,92,63,.25)}
 .bankcard .n{font-family:Georgia,serif;font-size:18px;letter-spacing:2px}
 table.nxt{width:100%;border-collapse:collapse;font-size:12px}
 table.nxt td,table.nxt th{padding:6px 4px;border-bottom:1px solid var(--ln);text-align:start;vertical-align:top}
+@keyframes flash{0%{box-shadow:0 0 0 4px var(--grn)}100%{box-shadow:0 0 0 0 transparent}}
+.flash{animation:flash 1s ease 2}
 @media(max-width:480px){.hero{padding:22px 16px}#welcome h1{font-size:30px}}
 </style>
 </head>
@@ -151,7 +155,8 @@ table.nxt td,table.nxt th{padding:6px 4px;border-bottom:1px solid var(--ln);text
 <script>
 "use strict";
 const I18N={
-en:{preview:"Preview mode: sample products. Connect the backend to go live.",search:"Search products…",
+en:{preview:"Demo mode: every product, price and shop shown is an EXAMPLE for testing. Real listings appear once the backend is connected.",search:"Search products…",
+demoLine:"Example catalog — test freely, nothing is charged.",sample:"Example product",payQuick:"Payments & subscription",
 heroT:"Buy from trusted Pakistani shops. Pay when it arrives.",heroS:"Every order has a number, a seller you can call, and cash on delivery.",
 shopNow:"Shop now",startSell:"Start selling free",tCOD:"Cash on delivery",tTrack:"Order tracking",tRev:"Verified reviews",
 liveT:"Bazaar live · {cities}",liveS:"Thousands of deals moving right now — join the committee and save 15%",
@@ -197,7 +202,7 @@ q5:"What is Committee Buy?",a5:"3 buyers join a group, everyone gets −15%, nob
 q6:"How do subscriptions work?",a6:"Upgrade from PKR 2,500/month after 5 products. Activation only after a verified transfer.",
 q7:"Can I sell in another country?",a7:"Yes — switch market (Pakistan / Nigeria). Currency, couriers and payments follow.",
 q8:"How do reviews work?",a8:"Only from delivered orders, so ratings cannot be faked.",
-aboutT:"NexusShop is a COD-first marketplace connecting local sellers and buyers in their own language. We do not own inventory; we provide the software.",
+aboutT:"NexusShop is a COD-first marketplace connecting local sellers and buyers in their own language. We do not own inventory; we provide the software. All catalog items shown in demo mode are examples.",
 privacyT:"We store only what is needed (name, city, WhatsApp, orders) on your device and in a secured database with row-level security. We never sell personal data. You may request deletion at any time.",
 termsT:"Sellers are independent businesses responsible for their products and delivery. Prohibited: illegal or counterfeit goods. The platform is a technology intermediary.",
 supportT:"We reply within 24 hours: neuralfocusai@gmail.com",lang:"Language",themeNote:"Brand theme follows the approved design.",
@@ -209,7 +214,8 @@ wPills:"COD nationwide,WhatsApp checkout,Committee −15%,Urdu + English",paused
 noListings:"No listings yet. Add your first product.",planGate:"Upgrade to Premium to list more than 5 products.",receiptFor:"Receipt · {plan}",
 marketPK:"Pakistan",marketNG:"Nigeria",searchEmpty:"Try another word or category.",revEligible:"You bought this item — share your experience.",
 cartBulkHint:"Select items to remove them together.",savedView:"Saved items",ordersView:"Your orders",receiptsView:"Payment receipts"},
-ur:{preview:"پریویو موڈ: نمونہ مصنوعات۔ لائیو ہونے کے لیے بیک اینڈ جوڑیں۔",search:"مصنوعات تلاش کریں…",
+ur:{preview:"ڈیمو موڈ: دکھائی گئی ہر پروڈکٹ، قیمت اور دکان محض نمونہ ہے۔ حقیقی لسٹنگز بیک اینڈ جڑنے پر آئیں گی۔",search:"مصنوعات تلاش کریں…",
+demoLine:"نمونہ کیٹلاگ — آزماؤ، کچھ وصول نہیں کیا جاتا۔",sample:"نمونہ پروڈکٹ",payQuick:"ادائیگیاں اور سبسکرپشن",
 heroT:"قابلِ اعتماد پاکستانی دکانوں سے خریدیں۔ پہنچنے پر ادائیگی کریں۔",heroS:"ہر آرڈر کا نمبر، فروخت کنندہ کا رابطہ، اور کیش آن ڈیلیوری۔",
 shopNow:"خریداری کریں",startSell:"مفت بیچنا شروع کریں",tCOD:"کیش آن ڈیلیوری",tTrack:"آرڈر ٹریکنگ",tRev:"تصدیق شدہ جائزے",
 liveT:"بازار لائیو · {cities}",liveS:"ہزاروں ڈیلز ابھی چل رہی ہیں — کمیٹی میں شامل ہوں اور 15% بچائیں",
@@ -255,7 +261,7 @@ q5:"کمیٹی خرید کیا ہے؟",a5:"3 خریدار گروپ میں شام
 q6:"سبسکرپشن کیسے کام کرتی ہے؟",a6:"5 مصنوعات کے بعد PKR 2,500/ماہ سے اپ گریڈ۔ تصدیق شدہ ٹرانسفر کے بعد ہی ایکٹیویشن۔",
 q7:"کیا میں دوسرے ملک میں بیچ سکتا ہوں؟",a7:"جی ہاں — مارکیٹ تبدیل کریں (پاکستان / نائجیریا)۔ کرنسی، کورئیر اور ادائیگی خود ڈھل جاتی ہے۔",
 q8:"جائزے کیسے کام کرتے ہیں؟",a8:"صرف ڈیلیور شدہ آرڈرز سے، اس لیے ریٹنگ جعلی نہیں ہو سکتی۔",
-aboutT:"NexusShop ایک COD-first مارکیٹ پلیس ہے جو مقامی فروخت کنندگان اور خریداروں کو ان کی زبان میں جوڑتا ہے۔ ہم انوینٹری نہیں رکھتے؛ ہم سافٹ ویئر فراہم کرتے ہیں۔",
+aboutT:"NexusShop ایک COD-first مارکیٹ پلیس ہے جو مقامی فروخت کنندگان اور خریداروں کو ان کی زبان میں جوڑتا ہے۔ ہم انوینٹری نہیں رکھتے؛ ہم سافٹ ویئر فراہم کرتے ہیں۔ ڈیمو موڈ میں دکھائی گئی تمام مصنوعات نمونہ ہیں۔",
 privacyT:"ہم صرف ضروری ڈیٹا (نام، شہر، واٹس ایپ، آرڈرز) آپ کے آلے اور محفوظ ڈیٹا بیس میں رکھتے ہیں۔ ہم ذاتی ڈیٹا نہیں بیچتے۔ آپ کسی بھی وقت حذف کی درخواست کر سکتے ہیں۔",
 termsT:"فروخت کنندگان آزاد کاروبار ہیں جو اپنی مصنوعات اور ڈیلیوری کے ذمہ دار ہیں۔ ممنوع: غیر قانونی یا جعلی سامان۔ پلیٹ فارم ایک تکنیکی ثالث ہے۔",
 supportT:"ہم 24 گھنٹے میں جواب دیتے ہیں: neuralfocusai@gmail.com",lang:"زبان",themeNote:"برانڈ تھیم منظور شدہ ڈیزائن کے مطابق ہے۔",
@@ -285,7 +291,7 @@ const SEED=[
 {id:"p9",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:24999,old:29999,stock:5,img:IMG.tv,name:{en:"LED TV 32 inch Smart",ur:"ایل ای ڈی ٹی وی 32 انچ اسمارٹ"},desc:{en:"Smart apps, HDMI x2, 1-year panel warranty.",ur:"اسمارٹ ایپس، HDMI x2، ایک سال پینل وارنٹی۔"},rev:[]},
 {id:"p10",seller:"Ghar Bazaar",swa:"923001234503",city:"Lahore",cat:"home",price:5499,old:6999,stock:6,img:IMG.room,name:{en:"Accent Chair + Side Table",ur:"اکسنٹ چیئر + سائیڈ ٹیبل"},desc:{en:"Solid wood frame, linen upholstery.",ur:"مضبوط لکڑی کا فریم، لینن اپہولسٹری۔"},rev:[]}
 ];
-const DEF={lang:"en",market:"PK",view:"home",pid:null,qty:1,search:"",cat:"all",sort:"feat",cart:[],bulk:[],saved:[],orders:[],groups:[],payments:[],receipts:[],reviews:{},hist:[],profile:{name:"",email:"",wa:"",city:"",pic:null},shop:null,listings:[],admin:false,track:null,lastOrders:[],editId:null,raahOpen:false,raahMsgs:[],menu:false};
+const DEF={lang:"en",market:"PK",view:"home",pid:null,qty:1,search:"",cat:"all",sort:"feat",cart:[],bulk:[],saved:[],orders:[],groups:[],payments:[],receipts:[],reviews:{},hist:[],profile:{name:"",email:"",wa:"",city:"",pic:null},shop:null,listings:[],admin:false,track:null,lastOrders:[],editId:null,raahOpen:false,raahMsgs:[],menu:false,payFocus:false};
 let S=load();
 function load(){try{const r=JSON.parse(localStorage.getItem("nx_v3"));return r?Object.assign({},DEF,r):Object.assign({},DEF);}catch(e){return Object.assign({},DEF);}}
 function save(){localStorage.setItem("nx_v3",JSON.stringify(S));}
@@ -313,8 +319,8 @@ function render(){
  <button class="icb" data-a="lang">${S.lang==="en"?"اردو":"EN"}</button>
  <button class="icb" data-a="menu">${MK[S.market].flag}</button>
  <button class="icb" data-a="nav" data-v="cart">🛍${cartCount()?`<span class="bdg">${cartCount()}</span>`:""}</button>
+ <button class="icb" data-a="payfocus" title="${esc(t("payQuick"))}">💳</button>
  <button class="icb" data-a="nav" data-v="settings">⚙️</button>
- <button class="icb" data-a="install">⬇</button>
  <button class="icb" data-a="nav" data-v="account">${S.profile.pic?`<img src="${S.profile.pic}" style="width:22px;height:22px;border-radius:50%;object-fit:cover">`:(S.profile.name?esc(S.profile.name[0].toUpperCase()):"👤")}</button>
  </header><div class="banner">ⓘ ${esc(t("preview"))}</div>
  <main><div class="view">${view()}</div></main>
@@ -351,9 +357,10 @@ function vHome(){const l=filtered();const hist=S.hist;let rail="";
  <div class="live"><b>🎬 ${fmt(t("liveT"),{cities:MK[S.market].cities})}</b><span>${esc(t("liveS"))}</span></div>
  ${rail}
  <h2 class="sec">${esc(t("categories"))}</h2>
- <div class="chips"><button class="chip ${S.cat==="all"?"on":""}" data-a="cat" data-id="all">${esc(t("all"))}</button>${CATS.map(c=>`<button class="chip ${S.cat===c.id?"on":""}" data-a="cat" data-id="${c.id}">${esc(cn(c.id))}</button>`).join("")}</div>
+ <div class="chips sticky"><button class="chip ${S.cat==="all"?"on":""}" data-a="cat" data-id="all">${esc(t("all"))}</button>${CATS.map(c=>`<button class="chip ${S.cat===c.id?"on":""}" data-a="cat" data-id="${c.id}">${esc(cn(c.id))}</button>`).join("")}</div>
  <div class="tb" style="margin-top:10px"><label style="margin:0">${esc(t("sort"))}</label><select id="sortSel"><option value="feat" ${S.sort==="feat"?"selected":""}>${esc(t("sortFeat"))}</option><option value="pa" ${S.sort==="pa"?"selected":""}>${esc(t("sortPA"))}</option><option value="pd" ${S.sort==="pd"?"selected":""}>${esc(t("sortPD"))}</option><option value="r" ${S.sort==="r"?"selected":""}>${esc(t("sortR"))}</option><option value="n" ${S.sort==="n"?"selected":""}>${esc(t("sortN"))}</option></select></div>
  <h2 class="sec">${esc(t("featured"))}</h2>
+ <p class="fnt" style="margin:-6px 0 10px">ⓘ ${esc(t("demoLine"))}</p>
  <div class="grid" id="grid">${l.length?l.map(card).join(""):`<div class="empty" style="grid-column:1/-1"><b>${esc(t("noResults"))}</b><p class="mut">${esc(t("searchEmpty"))}</p></div>`}</div>`;}
 function card(p){const off=p.old?Math.round((1-p.price/p.old)*100):0;const sv=S.saved.includes(p.id);const r=rating(p);
  return `<div class="pc">${off?`<span class="off">−${off}%</span>`:""}<button class="ht ${sv?"on":""}" data-a="save" data-id="${p.id}">${sv?"♥":"♡"}</button>
@@ -367,9 +374,9 @@ function vDetail(){const p=prod(S.pid);if(!p)return vHome();const m=MK[S.market]
  const cp=Math.round(p.price*0.85);
  return `<div class="row" style="justify-content:space-between;margin-bottom:12px"><button class="btn gh sm" data-a="nav" data-v="home">← ${esc(t("back"))}</button><button class="ht ${sv?"on":""}" style="position:static" data-a="save" data-id="${p.id}">${sv?"♥":"♡"}</button></div>
  <div class="det"><img class="img" src="${p.img}" alt="${esc(pn(p))}" onerror="this.style.visibility='hidden'">
- <div><h1 style="font-size:24px">${esc(pn(p))}</h1>
+ <div><h1 style="font-size:24px">${esc(pn(p))} <span class="st placed">${esc(t("sample"))}</span></h1>
  <div class="mut">${r?`<span class="stars">★</span> ${r} · ${fmt(t("reviewsN"),{n:rv.length})}`:esc(t("revNote"))}</div>
- <div style="margin:8px 0"><span class="pr" style="font-size:22px">${money(p.price)}</span> ${p.old?`<span class="old">${money(p.old)}</span> <span class="off" style="position:static">−${Math.round((1-p.price/p.old)*100)}%</span>`:""}</div>
+ <div style="margin:8px 0"><span class="pr" style="font-size:24px">${money(p.price)}</span> ${p.old?`<span class="old">${money(p.old)}</span> <span class="off" style="position:static">−${Math.round((1-p.price/p.old)*100)}%</span>`:""}</div>
  <div class="mut">${p.stock} ${esc(t("inStock"))}</div>
  <label>${esc(t("qty"))}</label><div class="qty"><button data-a="q" data-d="-1">−</button><span>${S.qty}</span><button data-a="q" data-d="1">+</button></div>
  <div class="row" style="margin:14px 0"><button class="btn gh" data-a="addq" data-id="${p.id}">🛍 ${esc(t("add"))}</button><button class="btn" data-a="buy" data-id="${p.id}">⚡ ${esc(t("buy"))}</button></div>
@@ -427,20 +434,21 @@ function vAccount(){const p=S.profile;return `<h2 class="sec">${esc(t("account")
  <label>${esc(t("city"))}</label><input id="pfCity" value="${esc(p.city)}">
  <div class="row" style="margin-top:12px"><button class="btn grn" data-a="pfSave">${esc(t("save"))}</button>${p.email?`<button class="btn gh" data-a="logout">${esc(t("logout"))}</button>`:""}</div></div>
  <div class="menu">
+ <button data-a="payfocus">💳 ${esc(t("mySub"))}<span>›</span></button>
  <button data-a="nav" data-v="seller">🏪 ${esc(t("sellerCenter"))}<span>›</span></button>
  <button data-a="nav" data-v="committee">👥 ${esc(t("committee"))}<span>›</span></button>
  <button data-a="menu">🌍 ${esc(t("market"))}<span>${MK[S.market].flag}</span></button>
  <button data-a="nav" data-v="faq">❓ ${esc(t("faq"))}<span>›</span></button>
  <button data-a="nav" data-v="settings">⚙️ ${esc(t("settings"))}<span>›</span></button>
- <button data-a="install">⬇ ${esc(t("install"))}<span>›</span></button>
  </div>`;}
-function vSeller(){if(!S.shop)return `<h2 class="sec">${esc(t("sellerCenter"))}</h2><div class="card"><b>${esc(t("createShop"))}</b>
+function vSeller(){const head=`<h2 class="sec">${esc(t("sellerCenter"))}</h2>`;
+ if(!S.shop)return head+`<div class="card"><b>${esc(t("createShop"))}</b>
  <label>${esc(t("shopName"))}</label><input id="shName"><label>${esc(t("city"))}</label><input id="shCity"><label>${esc(t("wa"))}</label><input id="shWa">
  <button class="btn grn" style="margin-top:12px" data-a="shCreate">${esc(t("createShop"))}</button></div>`;
  const ed=S.editId?S.listings.find(l=>l.id===S.editId):null;
  const ls=S.listings.slice().sort((a,b)=>(a.order||0)-(b.order||0));
- return `<h2 class="sec">${esc(t("sellerCenter"))}</h2>
- <div class="card sl"><div><b>${esc(S.shop.name)}</b><div class="mut">${esc(S.shop.city)}</div></div><span class="st ${S.shop.plan==="premium"?"delivered":"placed"}">${esc(t(S.shop.plan==="premium"?"premiumPlan":"freePlan"))}</span></div>
+ return head+
+ `<div class="card sl"><div><b>${esc(S.shop.name)}</b><div class="mut">${esc(S.shop.city)}</div></div><span class="st ${S.shop.plan==="premium"?"delivered":"placed"}">${esc(t(S.shop.plan==="premium"?"premiumPlan":"freePlan"))}</span></div>
  <div class="card"><b>${esc(t(ed?"editProduct":"addProduct"))}</b>
  <label>${esc(t("pName"))}</label><input id="mpName" value="${ed?esc(pn(ed)):""}">
  <label>${esc(t("pPrice"))}</label><input id="mpPrice" type="number" value="${ed?ed.price:""}">
@@ -463,7 +471,6 @@ function vSeller(){if(!S.shop)return `<h2 class="sec">${esc(t("sellerCenter"))}<
  <div class="row"><span class="fnt" style="color:#dcead9">${esc(t("railIban"))}: ${esc(RAIL.iban)}</span><button class="btn sm" style="background:rgba(255,255,255,.16);color:#fff" data-a="copy" data-id="iban">${esc(t("copy"))}</button></div></div>
  <p class="mut">${esc(t("railInstr"))}</p>
  <p class="fnt" style="color:var(--red);margin-top:6px">${esc(t("railWarn"))}</p>
- <div class="steps">${["placed","confirmed","shipped","delivered"].map((s,i)=>`<div class="step ${i<1?"done":""}"><div class="dot"></div><div class="lbl">${esc(t("paySteps").split("→")[i]||s)}</div></div>`).join("")}</div>
  <label>${esc(t("bank"))}</label><select id="payBank"><option>MCB Bank transfer</option><option>JazzCash</option><option>Easypaisa</option></select>
  <label>${esc(t("amount"))}</label><input id="payAmt" type="number" value="2500">
  <label>${esc(t("sender"))}</label><input id="payName"><label>${esc(t("last4"))}</label><input id="payLast" maxlength="4"><label>${esc(t("tid"))}</label><input id="payTid">
@@ -527,6 +534,7 @@ document.addEventListener("click",e=>{
  case "lang":S.lang=S.lang==="en"?"ur":"en";save();render();toast(t("langSet"));break;
  case "menu":S.menu=!S.menu;render();break;
  case "marketSet":S.market=id;S.menu=false;save();render();toast(t("marketSet"));break;
+ case "payfocus":S.view="seller";S.payFocus=true;save();render();window.scrollTo(0,0);break;
  case "nav":S.view=el.dataset.v;S.track=null;S.menu=false;S.editId=null;save();render();window.scrollTo(0,0);break;
  case "shopnow":S.view="home";render();setTimeout(()=>{const g=document.getElementById("grid");if(g)g.scrollIntoView({behavior:"smooth"});},60);break;
  case "cat":S.cat=id;render();break;
@@ -641,11 +649,11 @@ function instrBlock(o){return `<div class="tc" style="margin-top:10px"><b>${PT("
 <label>${PT("tid")}</label><input id="nxTid"><label>${PT("receipt")}</label><input id="nxRc" type="file" accept="image/*">
 <button class="btn wa" data-nx="submit" data-id="${o.id}">${PT("submit")}</button><div class="fnt" id="nxSubE" style="color:var(--red)"></div></div>`;}
 function sellerCard(){
- if(!ready)return `<div class="card" data-nxsec-view><b>${PT("paySec")}</b><p class="mut">${PT("connecting")}</p></div>`;
- if(!session)return `<div class="card" data-nxsec-view><b>${PT("paySec")}</b><p class="mut">${PT("payIntro")}</p><button class="btn grn" data-nx="login">${PT("login")}</button></div>`;
- if(!shop)return `<div class="card" data-nxsec-view><b>${PT("createShop")}</b><label>${PT("shopName")}</label><input id="nxShN"><label>${PT("city")}</label><input id="nxShC"><label>${PT("wa")}</label><input id="nxShW" placeholder="+92..."><button class="btn grn" data-nx="shop">${PT("createShop")}</button><div class="fnt" id="nxShE" style="color:var(--red)"></div></div>`;
+ if(!ready)return `<div class="card" data-nxsec-view><b>💳 ${PT("paySec")}</b><p class="mut">${PT("connecting")}</p></div>`;
+ if(!session)return `<div class="card" data-nxsec-view style="border-color:var(--grn3)"><b>💳 ${PT("paySec")}</b><p class="mut">${PT("payIntro")}</p><button class="btn grn" data-nx="login">${PT("login")}</button></div>`;
+ if(!shop)return `<div class="card" data-nxsec-view style="border-color:var(--grn3)"><b>💳 ${PT("paySec")}</b><label>${PT("shopName")}</label><input id="nxShN"><label>${PT("city")}</label><input id="nxShC"><label>${PT("wa")}</label><input id="nxShW" placeholder="+92..."><button class="btn grn" data-nx="shop">${PT("createShop")}</button><div class="fnt" id="nxShE" style="color:var(--red)"></div></div>`;
  var aw=orders.filter(function(o){return o.status==="awaiting_payment";});
- return `<div class="card" data-nxsec-view><b>${PT("mySub")}</b>
+ return `<div class="card" data-nxsec-view style="border-color:var(--grn3)"><b>💳 ${PT("mySub")}</b>
  ${sub?`<div class="row"><span>${PT("plan")}</span><b>${esc(sub.plan_code.toUpperCase())}</b></div><div class="row"><span>${PT("expires")}</span><b>${new Date(sub.expires_at).toLocaleDateString()}</b></div>`:`<p class="mut">${PT("noSub")}</p>`}
  <label>${PT("choosePlan")}</label><select id="nxPlan">${plans.filter(p=>p.price_pkr>0).map(p=>`<option value="${esc(p.code)}">${esc(p.name_en)} — ${money(p.price_pkr)}/mo</option>`).join("")}</select>
  <label>${PT("method")}</label><select id="nxMethod">${((rail&&rail.active_methods)||["bank_transfer"]).map(m=>`<option value="${m}">${m}</option>`).join("")}</select>
@@ -676,7 +684,8 @@ function authOv(){return `<div class="modal" data-nxov><div class="box" style="m
 <button class="btn gh sm" data-nx="closeAuth" style="margin-top:10px">✕</button></div></div>`;}
 function injectView(){document.querySelectorAll("[data-nxsec-view]").forEach(function(e){e.remove();});
  var menu=document.querySelector("[data-nxmenu]");if(menu)menu.remove();
- if(S.view==="seller"){var v=document.querySelector("main .view");if(v)v.insertAdjacentHTML("beforeend",sellerCard());}
+ if(S.view==="seller"){var v=document.querySelector("main .view");if(v){v.insertAdjacentHTML("afterbegin",sellerCard());
+  if(S.payFocus){var c=v.querySelector("[data-nxsec-view]");if(c){c.classList.add("flash");c.scrollIntoView({behavior:"smooth",block:"center"});}S.payFocus=false;}}}
  if(S.view==="account"){var m=document.querySelector(".menu");if(m)m.insertAdjacentHTML("afterbegin",`<div class="menu" data-nxmenu style="margin:0 0 8px"><button data-nx="goseller">💳 ${PT("goPay")}<span>›</span></button>${role?`<button data-nx="admin">🛡️ ${PT("admin")}<span>›</span></button>`:""}</div>`);}}
 function printDoc(html){var w=window.open("","_blank");if(!w)return;w.document.write(html);w.document.close();setTimeout(function(){try{w.print();}catch(e){}},400);}
 function invHtml(i){var o=i.payment_orders||{};return `<html><head><title>${esc(i.number)}</title><style>body{font-family:Georgia,serif;padding:32px;color:#222}h1{font-size:22px}table{width:100%;border-collapse:collapse;margin-top:16px}td{padding:8px;border-bottom:1px solid #ddd;font-size:14px}</style></head><body><h1>NexusShop — ${i.kind==="receipt"?"PAYMENT RECEIPT":"PROFORMA (not a receipt)"}</h1><table><tr><td>Invoice</td><td><b>${esc(i.number)}</b></td></tr><tr><td>Order ref</td><td>${esc(o.ref||"")}</td></tr><tr><td>Plan</td><td>${esc(o.plan_code||"")}</td></tr><tr><td>Amount</td><td><b>${money(i.amount_pkr)} PKR</b></td></tr><tr><td>Issued</td><td>${new Date(i.issued_at).toLocaleString()}</td></tr><tr><td>Status</td><td>${esc(o.status||"")}</td></tr></table><p style="margin-top:20px;font-size:12px;color:#666">NexusShop · Lahore, Pakistan · neuralfocusai@gmail.com</p></body></html>`;}
@@ -685,7 +694,7 @@ document.addEventListener("click",function(e){var el=e.target.closest("[data-nx]
  if(a==="closeAuth"||a==="close"){document.querySelectorAll("[data-nxov]").forEach(function(o){o.remove();});}
  if(a==="authLogin"){sb.auth.signInWithPassword({email:document.getElementById("nxEm").value,password:document.getElementById("nxPw").value}).then(function(r){if(r.error)document.getElementById("nxAuthE").textContent=r.error.message;else{document.querySelectorAll("[data-nxov]").forEach(function(o){o.remove();});refresh();}});}
  if(a==="authSignup"){sb.auth.signUp({email:document.getElementById("nxEm").value,password:document.getElementById("nxPw").value}).then(function(r){if(r.error)document.getElementById("nxAuthE").textContent=r.error.message;else if(!r.data.session)document.getElementById("nxAuthE").textContent=PT("checkMail");else{document.querySelectorAll("[data-nxov]").forEach(function(o){o.remove();});refresh();}});}
- if(a==="goseller"){S.view="seller";save();render();}
+ if(a==="goseller"){S.view="seller";S.payFocus=true;save();render();}
  if(a==="admin"){if(!document.querySelector("[data-nxov]"))document.body.insertAdjacentHTML("beforeend",adminOv());}
  if(a==="shop"){sb.from("nx_shops").insert({owner_id:session.user.id,name:document.getElementById("nxShN").value,city:document.getElementById("nxShC").value,wa:document.getElementById("nxShW").value}).select().then(function(r){if(r.error)document.getElementById("nxShE").textContent=r.error.message;else refresh();});}
  if(a==="order"){sb.rpc("nx_create_payment_order",{p_plan_code:document.getElementById("nxPlan").value,p_method:document.getElementById("nxMethod").value}).then(function(r){if(r.error)document.getElementById("nxOrderErr").textContent=r.error.message;else refresh();});}
