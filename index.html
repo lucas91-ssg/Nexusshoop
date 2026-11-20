@@ -678,9 +678,12 @@ function adminOv(){var dups=stats.dup_tids||[];
  <table class="nxt"><tr><th>When</th><th>Action</th><th>Entity</th></tr>${audit.map(a=>`<tr><td class="fnt">${new Date(a.created_at).toLocaleString()}</td><td><b>${esc(a.action)}</b></td><td class="fnt">${esc(a.entity)} ${esc(a.entity_id||"").slice(0,8)}</td></tr>`).join("")}</table>
  </div></div>`;}
 function authOv(){return `<div class="modal" data-nxov><div class="box" style="max-width:380px"><b>${PT("login")}</b>
+<button class="btn" style="background:#fff;color:#333;border:1px solid var(--ln)" data-nx="google">G · Continue with Google · Google کے ساتھ</button>
+<div class="mut" style="text-align:center;margin:6px 0">— or / یا —</div>
 <label>${PT("email")}</label><input id="nxEm" type="email"><label>${PT("pass")}</label><input id="nxPw" type="password">
 <button class="btn grn" data-nx="authLogin">${PT("login")}</button><button class="btn gh" data-nx="authSignup">${PT("signup")}</button>
 <div class="fnt" id="nxAuthE" style="color:var(--red)"></div>
+<div class="fnt" style="margin-top:8px">Phone login arrives in Phase 5 (SMS/WhatsApp OTP) · فون لاگ ان فیز 5 میں آئے گا</div>
 <button class="btn gh sm" data-nx="closeAuth" style="margin-top:10px">✕</button></div></div>`;}
 function injectView(){document.querySelectorAll("[data-nxsec-view]").forEach(function(e){e.remove();});
  var menu=document.querySelector("[data-nxmenu]");if(menu)menu.remove();
@@ -692,6 +695,7 @@ function invHtml(i){var o=i.payment_orders||{};return `<html><head><title>${esc(
 document.addEventListener("click",function(e){var el=e.target.closest("[data-nx]");if(!el)return;var a=el.dataset.nx,id=el.dataset.id;
  if(a==="login"){document.body.insertAdjacentHTML("beforeend",authOv());}
  if(a==="closeAuth"||a==="close"){document.querySelectorAll("[data-nxov]").forEach(function(o){o.remove();});}
+ if(a==="google"){sb.auth.signInWithOAuth({provider:"google"}).then(function(r){if(r.error){var e2=document.getElementById("nxAuthE");if(e2)e2.textContent=r.error.message;}});}
  if(a==="authLogin"){sb.auth.signInWithPassword({email:document.getElementById("nxEm").value,password:document.getElementById("nxPw").value}).then(function(r){if(r.error)document.getElementById("nxAuthE").textContent=r.error.message;else{document.querySelectorAll("[data-nxov]").forEach(function(o){o.remove();});refresh();}});}
  if(a==="authSignup"){sb.auth.signUp({email:document.getElementById("nxEm").value,password:document.getElementById("nxPw").value}).then(function(r){if(r.error)document.getElementById("nxAuthE").textContent=r.error.message;else if(!r.data.session)document.getElementById("nxAuthE").textContent=PT("checkMail");else{document.querySelectorAll("[data-nxov]").forEach(function(o){o.remove();});refresh();}});}
  if(a==="goseller"){S.view="seller";S.payFocus=true;save();render();}
