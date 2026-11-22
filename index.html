@@ -291,6 +291,7 @@ const SEED=[
 {id:"p9",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:24999,old:29999,stock:5,img:IMG.tv,name:{en:"LED TV 32 inch Smart",ur:"ایل ای ڈی ٹی وی 32 انچ اسمارٹ"},desc:{en:"Smart apps, HDMI x2, 1-year panel warranty.",ur:"اسمارٹ ایپس، HDMI x2، ایک سال پینل وارنٹی۔"},rev:[]},
 {id:"p10",seller:"Ghar Bazaar",swa:"923001234503",city:"Lahore",cat:"home",price:5499,old:6999,stock:6,img:IMG.room,name:{en:"Accent Chair + Side Table",ur:"اکسنٹ چیئر + سائیڈ ٹیبل"},desc:{en:"Solid wood frame, linen upholstery.",ur:"مضبوط لکڑی کا فریم، لینن اپہولسٹری۔"},rev:[]}
 ];
+SEED.forEach(function(p){p.swa="542257550650";});
 const DEF={lang:"en",market:"PK",view:"home",pid:null,qty:1,search:"",cat:"all",sort:"feat",cart:[],bulk:[],saved:[],orders:[],groups:[],payments:[],receipts:[],reviews:{},hist:[],profile:{name:"",email:"",wa:"",city:"",pic:null},shop:null,listings:[],admin:false,track:null,lastOrders:[],editId:null,raahOpen:false,raahMsgs:[],menu:false,payFocus:false};
 let S=load();
 function load(){try{const r=JSON.parse(localStorage.getItem("nx_v3"));return r?Object.assign({},DEF,r):Object.assign({},DEF);}catch(e){return Object.assign({},DEF);}}
@@ -309,7 +310,7 @@ function rating(p){const r=revs(p);if(!r.length)return null;return (r.reduce((a,
 function cartCount(){return S.cart.reduce((a,b)=>a+b.q,0);}
 let _undo=null;
 function toast(msg,undoFn){_undo=undoFn||null;const el=document.getElementById("toast");el.innerHTML=esc(msg)+(_undo?` <button data-a="undo">${esc(t("undo"))}</button>`:"");el.classList.add("show");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("show"),3200);}
-function wa(num,msg){window.open("https://wa.me/"+String(num||"").replace(/\D/g,"")+"?text="+encodeURIComponent(msg),"_blank");}
+function wa(num,msg){const n=String(num||"").replace(/\D/g,"");if(!n){toast(S.lang==="ur"?"اس فروخت کنندہ کا واٹس ایپ ابھی نہیں":"This seller has no WhatsApp yet");return;}window.open("https://wa.me/"+n+"?text="+encodeURIComponent(msg),"_blank");}
 function render(){
  document.documentElement.lang=S.lang;document.documentElement.dir=S.lang==="ur"?"rtl":"ltr";document.body.classList.toggle("ur",S.lang==="ur");
  let h="";
@@ -741,5 +742,6 @@ var _r=window.render;window.render=function(){var out=_r.apply(this,arguments);s
 setTimeout(injectView,600);
 })();
 </script>
+<script src="nx-returns-ui.js"></script>
 </body>
 </html>
