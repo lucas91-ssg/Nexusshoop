@@ -341,7 +341,7 @@ function welcome(){const imgs=[IMG.tv,IMG.watch,IMG.buds,IMG.kettle,IMG.attar,IM
  <h1>Nexus<b>Shop</b></h1><div class="tag">${esc(t("welcomeTag"))}</div>
  <div class="pills">${t("wPills").split(",").map(p=>`<span>${esc(p)}</span>`).join("")}</div>
  <button class="btn grn" style="width:min(340px,86%);padding:16px;font-size:16px" data-a="enter">${esc(t("enter"))} →</button></div>`;}
-function marketMenu(){return `<div class="modal" data-a="menu"><div class="box" style="max-width:320px" onclick="event.stopPropagation()">
+function marketMenu(){return `<div class="modal" data-a="menu"><div class="box" style="max-width:320px">
  ${Object.values(MK).map(m=>`<button class="menu" style="width:100%;display:flex;gap:10px;align-items:center;background:${m.code===S.market?"var(--mint)":"var(--sf2)"};border:1px solid var(--ln);border-radius:12px;padding:12px;margin-bottom:8px" data-a="marketSet" data-id="${m.code}"><span style="font-size:22px">${m.flag}</span><span style="text-align:start"><b>${esc(t(m.code==="PK"?"marketPK":"marketNG"))}</b><br><span class="fnt">${m.sym} · ${esc(m.cities)}</span></span></button>`).join("")}
  </div></div>`;}
 function view(){switch(S.view){case "home":return vHome();case "detail":return vDetail();case "cart":return vCart();case "placed":return vPlaced();case "orders":return vOrders();case "saved":return vSaved();case "account":return vAccount();case "seller":return vSeller();case "committee":return vCommittee();case "settings":return vSettings();case "faq":return vFaq();default:return vHome();}}
@@ -376,7 +376,7 @@ function vDetail(){const p=prod(S.pid);if(!p)return vHome();const m=MK[S.market]
  return `<div class="row" style="justify-content:space-between;margin-bottom:12px"><button class="btn gh sm" data-a="nav" data-v="home">← ${esc(t("back"))}</button><button class="ht ${sv?"on":""}" style="position:static" data-a="save" data-id="${p.id}">${sv?"♥":"♡"}</button></div>
  <div class="det"><img class="img" src="${p.img}" alt="${esc(pn(p))}" onerror="this.style.visibility='hidden'">
  <div><h1 style="font-size:24px">${esc(pn(p))} <span class="st placed">${esc(t("sample"))}</span></h1>
- <div class="mut">${r?`<span class="stars">★</span> ${r} · ${fmt(t("reviewsN"),{n:rv.length})}`:esc(t("revNote"))}</div>
+ <div class="mut">${r?`<span class="stars">★</span> ${r} · ${rv.length} ${rv.length===1?(S.lang==="ur"?"جائزہ":"review"):(S.lang==="ur"?"جائزے":"reviews")}`:esc(t("revNote"))}</div>
  <div style="margin:8px 0"><span class="pr" style="font-size:24px">${money(p.price)}</span> ${p.old?`<span class="old">${money(p.old)}</span> <span class="off" style="position:static">−${Math.round((1-p.price/p.old)*100)}%</span>`:""}</div>
  <div class="mut">${p.stock} ${esc(t("inStock"))}</div>
  <label>${esc(t("qty"))}</label><div class="qty"><button data-a="q" data-d="-1">−</button><span>${S.qty}</span><button data-a="q" data-d="1">+</button></div>
@@ -483,10 +483,12 @@ function vSettings(){return `<h2 class="sec">${esc(t("settings"))}</h2>
  <button class="btn red" style="width:100%" data-a="reset">${esc(t("reset"))}</button>`;}
 function vFaq(){return `<h2 class="sec">${esc(t("faqT"))} · ${MK[S.market].flag} ${esc(t(S.market==="PK"?"marketPK":"marketNG"))}</h2>`+[1,2,3,4,5,6,7,8].map(i=>`<details ${i===1?"open":""}><summary>${esc(t("q"+i))}</summary><p>${esc(t("a"+i))}</p></details>`).join("");}
 function trackModal(){const o=S.orders.find(x=>x.code===S.track);if(!o)return "";const steps=["placed","confirmed","shipped","delivered"];const idx=steps.indexOf(o.status);const m=MK[S.market];
- return `<div class="modal" data-a="closeTrack"><div class="box" onclick="event.stopPropagation()"><div class="sl"><b>${esc(t("trackT"))}</b><button class="btn gh sm" data-a="closeTrack">✕</button></div>
+ return `<div class="modal" data-a="closeTrack"><div class="box"><div class="sl"><b>${esc(t("trackT"))}</b><button class="btn gh sm" data-a="closeTrack">✕</button></div>
  <div class="oc">${o.code}</div><div class="mut">${esc(o.seller)} · ${money(o.total)}</div>
  <div class="steps">${steps.map((s,i)=>`<div class="step ${i<=idx?"done":""}"><div class="dot"></div><div class="lbl">${esc(t("st"+s[0].toUpperCase()+s.slice(1)))}</div></div>`).join("")}</div>
- <div class="tc"><div>🚚 ${esc(t("courier"))}: ${esc(m.couriers[0][0])}</div><div>📅 ${esc(t("est"))}: 2–4 ${S.lang==="ur"?"دن":"days"}</div></div>
+ <div class="tc"><div>🚚 ${S.lang==="ur"?"ٹریکنگ کورئیر فراہم کرتا ہے۔ سیلر سے کنسائنمنٹ نمبر واٹس ایپ پر لیں۔":"Tracking is provided by the courier. Ask the seller for the consignment number on WhatsApp."}</div>
+ <label>${S.lang==="ur"?"کنسائنمنٹ / ٹریکنگ نمبر":"Consignment / tracking number"}</label><input id="trkNo" value="${esc(o.trk||"")}" placeholder="TCS 123456789">
+ <div class="row" style="margin-top:8px"><button class="btn gh sm" data-a="trkSave" data-id="${o.code}">💾 ${S.lang==="ur"?"محفوظ":"Save"}</button>${m.couriers.map(c=>`<button class="btn gh sm" data-a="trkOpen" data-id="${esc(c[0])}">🔎 ${esc(c[0])}</button>`).join("")}</div></div>
  ${o.status!=="delivered"?`<button class="btn grn" style="width:100%;margin-top:12px" data-a="receipt" data-id="${o.code}">✓ ${esc(t("confirmReceipt"))}</button>`:""}
  <button class="btn wa" style="width:100%;margin-top:8px" data-a="waOrder" data-id="${o.code}">💬 ${esc(t("msgSeller"))}</button></div></div>`;}
 const KB=[[/^(hi|hello|salam|assalam|how are you|سلام|ہیلو)/i,{en:"Salam! I am Raahnuma, your NexusShop guide. Ask me about cash on delivery, couriers, committee groups, returns, selling or payments.",ur:"سلام! میں راہنما ہوں، آپ کا NexusShop رہنما۔ کیش آن ڈیلیوری، کورئیر، کمیٹی گروپ، واپسی، فروخت یا ادائیگی کے بارے میں پوچھیں۔"}],
@@ -516,10 +518,11 @@ function orderMessage(o){return t("waHello")+"\n"+o.items.map(i=>{const p=prod(i
 function val(id){const el=document.getElementById(id);return el?el.value.trim():"";}
 document.addEventListener("click",e=>{
  const el=e.target.closest("[data-a]");if(!el)return;const a=el.dataset.a,id=el.dataset.id;
+ if((a==="menu"||a==="closeTrack")&&!e.target.closest("button")&&e.target!==el)return;
  switch(a){
  case "enter":sessionStorage.setItem("nx_in","1");render();break;
  case "lang":S.lang=S.lang==="en"?"ur":"en";save();render();toast(t("langSet"));break;
- case "menu":S.menu=!S.menu;render();break;
+ case "menu":if(el.classList.contains("modal")){S.menu=false;}else{S.menu=!S.menu;}save();render();break;
  case "marketSet":S.market=id;S.menu=false;save();render();toast(t("marketSet"));break;
  case "payfocus":S.view="seller";S.payFocus=true;save();render();window.scrollTo(0,0);break;
  case "nav":S.view=el.dataset.v;S.track=null;S.menu=false;S.editId=null;save();render();window.scrollTo(0,0);break;
@@ -546,8 +549,13 @@ document.addEventListener("click",e=>{
    const o={code:"NX-"+Math.random().toString(36).slice(2,8).toUpperCase(),seller:s,swa:G[s].swa,items:items.map(i=>({id:i.id,q:i.q,price:prod(i.id).price})),total:sub+del,status:"placed",ts:Date.now()};S.orders.unshift(o);return o;});
   S.cart=[];S.bulk=[];S.view="placed";save();render();window.scrollTo(0,0);break;}
  case "waSeller":{const items=S.cart.filter(it=>{const p=prod(it.id);return p&&p.seller===id;});if(!items.length)break;const p=prod(items[0].id);
-  const msg=t("waHello")+" "+id+"\n"+items.map(i=>{const pp=prod(i.id);return "• "+pn(pp)+" x"+i.q+" — "+money(pp.price*i.q);}).join("\n")+"\n"+t("waTotal")+": "+money(items.reduce((a,b)=>a+prod(b.id).price*b.q,0));wa(p.swa,msg);break;}
+  const sub=items.reduce((a,b)=>a+prod(b.id).price*b.q,0);const m=MK[S.market];const del=sub>=m.free?0:m.del;
+  const o={code:"NX-"+Math.random().toString(36).slice(2,8).toUpperCase(),seller:id,swa:p.swa,items:items.map(i=>({id:i.id,q:i.q,price:prod(i.id).price})),total:sub+del,status:"placed",ts:Date.now()};S.orders.unshift(o);
+  S.cart=S.cart.filter(it=>{const pp=prod(it.id);return !(pp&&pp.seller===id);});S.bulk=[];save();
+  wa(p.swa,orderMessage(o));render();break;}
  case "waOrder":{const o=S.orders.find(x=>x.code===id);if(o)wa(o.swa,orderMessage(o));break;}
+ case "trkSave":{const o=S.orders.find(x=>x.code===id);if(o){o.trk=val("trkNo");save();render();toast(S.lang==="ur"?"ٹریکنگ نمبر محفوظ":"Tracking number saved");}break;}
+ case "trkOpen":{const o=S.orders.find(x=>x.code===S.track);const no=(o&&o.trk)||"";window.open("https://www.google.com/search?q="+encodeURIComponent(id+" tracking "+no),"_blank");break;}
  case "track":S.track=id;render();break;
  case "closeTrack":S.track=null;render();break;
  case "receipt":{const o=S.orders.find(x=>x.code===id);if(o){o.status="delivered";save();render();toast(t("receiptDone"));}break;}
