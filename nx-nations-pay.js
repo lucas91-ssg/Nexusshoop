@@ -1,4 +1,4 @@
-/* nx-nations-pay.js — Pagos locales por nación + toggle de idioma co-oficial + hero tagline por país (refina nx-nations.js según feedback de Tomáš/Sopio) */
+/* nx-nations-pay.js — Pagos locales por nación + toggle de idioma co-oficial + hero tagline por país */
 (function(){
 "use strict";
 if(window.__nxPay2)return;window.__nxPay2=true;
@@ -36,21 +36,23 @@ document.head.appendChild(css);
 function payChips(){var list=PAY[S.market]||PAY.GL;
  return '<div class="np-card np-paycard"><b>💳 '+L("Payment method","طریقہ ادائیگی")+'</b><div class="np-chips">'+list.map(function(p){return '<button class="np-chip'+(S.payMethod===p.c?" on":"")+'" data-np-pay="'+p.c+'">'+E(p.n)+"</button>";}).join("")+"</div></div>";}
 function inject(){
- /* payment chooser in cart, right after logistics card */
  var v=document.querySelector("main .view");
  if(v&&S.view==="cart"&&S.cart.length&&!v.querySelector(".np-paycard")){var lg=v.querySelector(".nn-logcard");if(lg)lg.insertAdjacentHTML("afterend",payChips());else v.insertAdjacentHTML("beforeend",payChips());}
- /* quick co-official language toggle in header (Tomáš: English as additional for SK) */
  var hd=document.querySelector("header");
  if(hd&&!hd.querySelector(".np-lang")){var pr=PRIMARY[S.market];var other=(S.lang===pr)?"en":pr;var lbl={sk:"SK",de:"DE",hi:"HI",ur:"UR",en:"EN"}[other]||other.toUpperCase();hd.insertAdjacentHTML("beforeend",'<button class="np-lang" data-np-lang title="Switch language">'+lbl+"</button>");}
- /* nation-specific hero tagline for a distinct experience */
  if(S.view==="home"){var hp=document.querySelector(".hero p");var hset=HERO[S.market];if(hp&&hset){var txt=hset[S.lang]||hset.en;if(txt&&hp.textContent!==txt)hp.textContent=txt;}}
 }
 document.addEventListener("click",function(e){
  var p=e.target.closest("[data-np-pay]");if(p){S.payMethod=p.dataset.npPay;save();inject();return;}
  var g=e.target.closest("[data-np-lang]");if(g){var pr=PRIMARY[S.market];S.lang=(S.lang===pr)?"en":pr;save();render();return;}
 });
-/* order message carries nation payment method + courier (WhatsApp, like Pakistan) */
-var _om=window.orderMessage;window.orderMessage=function(o){var base=_om?_om(o):"";var pm=(PAY[S.market]||PAY.GL).find(function(x){return x.c===S.payMethod;});return base+(pm?"\n"+L("Payment","ادائیگی")+": "+pm.n:"")+(S.courier?"\n"+L("Courier","کورئیر")+": "+S.courier:"");};
+/* orderMessage: agrega el método de pago como bullet, SIN duplicar el courier (eso ya lo hace nx-nations.js en su bloque logístico) */
+var _om=window.orderMessage;window.orderMessage=function(o){
+ var base=_om?_om(o):"";
+ var pm=(PAY[S.market]||PAY.GL).find(function(x){return x.c===S.payMethod;});
+ if(!pm)return base;
+ return base+"\n• "+L("Payment","ادائیگی")+": "+pm.n;
+};
 var _r=window.render;window.render=function(){var out=_r.apply(this,arguments);setTimeout(inject,170);return out;};
 setTimeout(inject,400);
 })();
