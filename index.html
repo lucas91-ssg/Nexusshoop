@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#e9e2d3">
 <meta name="google" content="notranslate">
-<title>NexusShop — Trusted Pakistani shops, pay on delivery</title>
+<title>NexusShop — Trusted shops, pay on delivery</title>
 <link rel="icon" href="icon.svg">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#e9e2d3;--bg2:#efe8d9;--sf:#f6f1e4;--sf2:#fbf8ef;--ln:#d9d0bb;--ln2:#c9bfa6;
 --ink:#26221b;--ink2:#3a3428;--mut:#6b6355;--fnt:#8a8172;--grn:#1d5c3f;--grn2:#2f6b4f;--grn3:#4c8b6a;
@@ -21,7 +21,8 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.55;
 background-image:radial-gradient(1100px 480px at 85% -10%,rgba(76,139,106,.10),transparent 60%),radial-gradient(900px 420px at -10% 110%,rgba(138,109,31,.08),transparent 60%)}
 body.ur{font-family:'Noto Nastaliq Urdu','Segoe UI',serif}
-body.ur h1,body.ur h2,body.ur h3{line-height:1.95}
+body.hi{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif}
+body.ur h1,body.ur h2,body.ur h3,body.hi h1,body.hi h2,body.hi h3{line-height:1.95}
 h1,h2,h3,.serif{font-family:Georgia,'Times New Roman',serif;color:var(--ink)}
 ::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{background:var(--bg2)}
 ::-webkit-scrollbar-thumb{background:var(--grn3);border-radius:8px;border:2px solid var(--bg2)}
@@ -155,9 +156,9 @@ table.nxt td,table.nxt th{padding:6px 4px;border-bottom:1px solid var(--ln);text
 <script>
 "use strict";
 const I18N={
-en:{preview:"Demo mode: every product, price and shop shown is an EXAMPLE for testing. Real listings appear once the backend is connected.",search:"Search products…",
+en:{preview:"Demo mode: every product, price and shop shown is an EXAMPLE for testing.",search:"Search products…",
 demoLine:"Example catalog — test freely, nothing is charged.",sample:"Example product",payQuick:"Payments & subscription",
-heroT:"Buy from trusted Pakistani shops. Pay when it arrives.",heroS:"Every order has a number, a seller you can call, and cash on delivery.",
+heroT:"Buy from trusted shops. Pay when it arrives.",heroS:"Every order has a number, a seller you can call, and cash on delivery.",
 shopNow:"Shop now",startSell:"Start selling free",tCOD:"Cash on delivery",tTrack:"Order tracking",tRev:"Verified reviews",
 liveT:"Bazaar live · {cities}",liveS:"Thousands of deals moving right now — join the committee and save 15%",
 categories:"Categories",featured:"Featured shops",all:"All",add:"Add to cart",buy:"Buy now",soldBy:"Sold by",ask:"Ask",
@@ -175,13 +176,13 @@ account:"Account",profile:"Profile",name:"Full name",email:"Email",wa:"WhatsApp 
 sellerCenter:"Seller Center",committee:"Committee Buy",market:"Market & currency",settings:"Settings",faq:"Seller FAQ",support:"Support",
 about:"About us",privacy:"Privacy policy",terms:"Terms & legal",admin:"Admin mode",payQueue:"Payment verification queue",reset:"Reset demo data",
 freePlan:"Free · unlimited during founding",premiumPlan:"Premium · coming soon",createShop:"Create your shop",shopName:"Shop name",
-addProduct:"Add product",editProduct:"Edit product",pName:"Product name",pPrice:"Price (PKR)",pCat:"Category",pStock:"Stock",pImg:"Image URL (optional)",pDesc:"Description",
+addProduct:"Add product",editProduct:"Edit product",pName:"Product name",pPrice:"Price",pCat:"Category",pStock:"Stock",pImg:"Image URL (optional)",pDesc:"Description",
 edit:"Edit",del:"Delete",pause:"Pause",activate:"Activate",myProducts:"My products",plan:"Plan",upgrade:"Upgrade to Premium",
 payTitle:"NexusPay — pay subscription, verified in 24h",paySteps:"Declare → Transfer → Verify → Active",bank:"Bank / wallet",amount:"Amount",sender:"Sender name",
 last4:"Last 4 digits of phone",tid:"Transaction ID (TID)",submitPay:"Send for verification",declared:"Declared ≠ paid. Activation only after verification.",
 pending:"Pending",verified:"Verified",rejected:"Rejected",approve:"Approve",reject:"Reject",receipts:"Receipts",
 railBank:"Bank",railTitle:"Account title (exactly as registered)",railAcc:"Account number",railIban:"IBAN",
-railInstr:"Transfer the exact amount to this account and write your payment reference in the transfer description. Then submit the TID here; an admin verifies the bank movement before activating your plan.",
+railInstr:"Transfer the exact amount to this account and write your payment reference in the transfer description.",
 railWarn:"A TID or a screenshot is not proof of payment. Activation only after bank verification.",
 copy:"Copy",copied:"Copied to clipboard",mySub:"My subscription & payments",
 commT:"Committee Buy",commS:"3 buyers join a group and everyone saves 15%. Nobody pays until delivery.",joinGroup:"Join with a code",code:"Group code",
@@ -193,30 +194,31 @@ paySent:"Payment sent for verification",payOk:"Payment verified — plan upgrade
 groupJoined:"Joined the group",groupFull:"Group complete — 15% locked",codeNo:"Code not found",resetDone:"Demo data reset",langSet:"Language: English",marketSet:"Market updated",
 noResults:"No products match your search",stPlaced:"Placed",stConfirmed:"Confirmed",stShipped:"Shipped",stDelivered:"Delivered",trackT:"Order tracking",
 courier:"Courier",est:"Estimated delivery",confirmReceipt:"I received it — confirm delivery",receiptDone:"Delivery confirmed — you can now review",
-waHello:"Assalam o Alaikum! My NexusShop order (COD):",waTotal:"Total",install:"Install app",installHint:"Tap menu → Add to Home screen",
-faqT:"Seller FAQ",q1:"What does COD mean?",a1:"Cash on Delivery: the rider brings the box, you open and check it, and pay only if you keep it. No prepayment.",
-q2:"Is listing really free?",a2:"Yes — during the founding phase everything is free and unlimited. No card, no commission.",
+waHello:"Hello! My NexusShop order (COD):",waTotal:"Total",install:"Install app",installHint:"Tap menu → Add to Home screen",installPill:"Install NexusShop",
+faqT:"Seller FAQ",q1:"What does COD mean?",a1:"Cash on Delivery: the rider brings the box, you open and check it, and pay only if you keep it.",
+q2:"Is listing really free?",a2:"Yes — during the founding phase everything is free and unlimited.",
 q3:"How do I get paid?",a3:"Directly: buyers order on WhatsApp and pay you on delivery. NexusShop never holds your money.",
 q4:"Who delivers?",a4:"You choose a local courier or your own rider. Product pages show your market couriers.",
 q5:"What is Committee Buy?",a5:"3 buyers join a group, everyone gets −15%, nobody pays until delivery.",
-q6:"How do subscriptions work?",a6:"Nothing to pay during the founding phase. Premium/Gold arrive later, once the bazaar has real demand.",
-q7:"Can I sell in another country?",a7:"Yes — switch market (Pakistan / Nigeria). Currency, couriers and payments follow.",
+q6:"How do subscriptions work?",a6:"Nothing to pay during the founding phase. Premium/Gold arrive later.",
+q7:"Can I sell in another country?",a7:"Yes — switch market. Currency, couriers and payments follow.",
 q8:"How do reviews work?",a8:"Only from delivered orders, so ratings cannot be faked.",
-aboutT:"NexusShop is a COD-first marketplace connecting local sellers and buyers in their own language. We do not own inventory; we provide the software. All catalog items shown in demo mode are examples.",
-privacyT:"We store only what is needed (name, city, WhatsApp, orders) on your device and in a secured database with row-level security. We never sell personal data. You may request deletion at any time.",
-termsT:"Sellers are independent businesses responsible for their products and delivery. Prohibited: illegal or counterfeit goods. The platform is a technology intermediary.",
+aboutT:"NexusShop is a COD-first marketplace connecting local sellers and buyers in their own language.",
+privacyT:"We store only what is needed on your device and in a secured database. We never sell personal data.",
+termsT:"Sellers are independent businesses responsible for their products and delivery. The platform is a technology intermediary.",
 supportT:"We reply within 24 hours: neuralfocusai@gmail.com",lang:"Language",themeNote:"Brand theme follows the approved design.",
 confirmDel:"Delete this product?",confirmReset:"Reset all demo data on this device?",reviewsN:"{n} reviews",writeRev:"Write a verified review",
 revName:"Your name",revStars:"Stars",revText:"Your review",revSubmit:"Publish review",revThanks:"Review published — thank you",
 raahT:"Raahnuma · AI assistant",raahPh:"Ask about COD, delivery, committee…",raahSend:"Send",raahHello:"Salam! I am Raahnuma. Ask me about cash on delivery, couriers, committee groups, returns or selling.",
-raahChips:"COD,Delivery,Committee,Returns,Sell",undo:"Undo",enter:"Enter NexusShop",welcomeTag:"Pakistan ka apna bazaar — your marketplace, your language",
-wPills:"COD nationwide,WhatsApp checkout,Committee −15%,Urdu + English",paused:"Paused",active:"Active",stock:"Stock",reorder:"Reorder",bulk:"Bulk",
+raahChips:"COD,Delivery,Committee,Returns,Sell",undo:"Undo",enter:"Enter NexusShop",welcomeTag:"Your marketplace, your language",
+wPills:"COD nationwide,WhatsApp checkout,Committee −15%,Multi-language",paused:"Paused",active:"Active",stock:"Stock",reorder:"Reorder",bulk:"Bulk",
 noListings:"No listings yet. Add your first product.",planGate:"Founding phase: unlimited products, free.",receiptFor:"Receipt · {plan}",
-marketPK:"Pakistan",marketNG:"Nigeria",searchEmpty:"Try another word or category.",revEligible:"You bought this item — share your experience.",
+marketPK:"Pakistan",marketNG:"Nigeria",marketSK:"Slovakia",marketDE:"Germany",marketIN:"India",marketGL:"Global",
+searchEmpty:"Try another word or category.",revEligible:"You bought this item — share your experience.",
 cartBulkHint:"Select items to remove them together.",savedView:"Saved items",ordersView:"Your orders",receiptsView:"Payment receipts"},
-ur:{preview:"ڈیمو موڈ: دکھائی گئی ہر پروڈکٹ، قیمت اور دکان محض نمونہ ہے۔ حقیقی لسٹنگز بیک اینڈ جڑنے پر آئیں گی۔",search:"مصنوعات تلاش کریں…",
+ur:{preview:"ڈیمو موڈ: دکھائی گئی ہر پروڈکٹ، قیمت اور دکان محض نمونہ ہے۔",search:"مصنوعات تلاش کریں…",
 demoLine:"نمونہ کیٹلاگ — آزماؤ، کچھ وصول نہیں کیا جاتا۔",sample:"نمونہ پروڈکٹ",payQuick:"ادائیگیاں اور سبسکرپشن",
-heroT:"قابلِ اعتماد پاکستانی دکانوں سے خریدیں۔ پہنچنے پر ادائیگی کریں۔",heroS:"ہر آرڈر کا نمبر، فروخت کنندہ کا رابطہ، اور کیش آن ڈیلیوری۔",
+heroT:"قابلِ اعتماد دکانوں سے خریدیں۔ پہنچنے پر ادائیگی کریں۔",heroS:"ہر آرڈر کا نمبر، فروخت کنندہ کا رابطہ، اور کیش آن ڈیلیوری۔",
 shopNow:"خریداری کریں",startSell:"مفت بیچنا شروع کریں",tCOD:"کیش آن ڈیلیوری",tTrack:"آرڈر ٹریکنگ",tRev:"تصدیق شدہ جائزے",
 liveT:"بازار لائیو · {cities}",liveS:"ہزاروں ڈیلز ابھی چل رہی ہیں — کمیٹی میں شامل ہوں اور 15% بچائیں",
 categories:"زمرے",featured:"نمایاں دکانیں",all:"سب",add:"کارٹ میں شامل کریں",buy:"ابھی خریدیں",soldBy:"فروخت کنندہ",ask:"پوچھیں",
@@ -229,67 +231,217 @@ cart:"کارٹ",cartEmpty:"آپ کا کارٹ خالی ہے",cartEmptyS:"قاب�
 sellers:"{n} فروخت کنندہ — فی فروخت کنندہ ایک آرڈر",subtotal:"ذیلی میزان",delNote:"ڈیلیوری چیک آؤٹ پر فی فروخت کنندہ شامل ہوتی ہے۔",checkout:"چیک آؤٹ",
 orderFrom:"{s} سے آرڈر کریں (COD)",clearCart:"کارٹ خالی کریں",removeSel:"منتخب ہٹائیں",selectAll:"سب منتخب کریں",
 placed:"آرڈر ہو گیا",placedS:"آرڈر نمبر محفوظ کریں۔ فروخت کنندہ واٹس ایپ یا کال پر تصدیق کرے گا۔",msgSeller:"فروخت کنندہ کو واٹس ایپ کریں",
-track:"آرڈر ٹریک کریں",startShop:"خریداری شروع کریں",orders:"آرڈرز",ordersEmpty:"ابھی کوئی آرڈر نہیں",saved:"محفوظ",savedEmpty:"ابھی کچھ محفوظ نہیں۔ کسی پروڈکٹ پر دل دبائیں۔",
+track:"آرڈر ٹریک کریں",startShop:"خریداری شروع کریں",orders:"آرڈرز",ordersEmpty:"ابھی کوئی آرڈر نہیں",saved:"محفوظ",savedEmpty:"ابھی کچھ محفوظ نہیں۔",
 account:"اکاؤنٹ",profile:"پروفائل",name:"پورا نام",email:"ای میل",wa:"واٹس ایپ نمبر",city:"شہر",save:"محفوظ کریں",photo:"تصویر",logout:"لاگ آؤٹ",
 sellerCenter:"سیلر سینٹر",committee:"کمیٹی خرید",market:"مارکیٹ اور کرنسی",settings:"ترتیبات",faq:"سیلر FAQ",support:"مدد",
 about:"ہمارے بارے میں",privacy:"رازداری پالیسی",terms:"شرائط و ضوابط",admin:"ایڈمن موڈ",payQueue:"ادائیگی تصدیق قطار",reset:"ڈیمو ڈیٹا ری سیٹ کریں",
 freePlan:"مفت · بانی مرحلہ میں لامحدود",premiumPlan:"پریمیم · جلد آ رہا ہے",createShop:"اپنی دکان بنائیں",shopName:"دکان کا نام",
-addProduct:"پروڈکٹ شامل کریں",editProduct:"پروڈکٹ میں ترمیم",pName:"پروڈکٹ کا نام",pPrice:"قیمت (PKR)",pCat:"زمرہ",pStock:"اسٹاک",pImg:"تصویر URL (اختیاری)",pDesc:"تفصیل",
+addProduct:"پروڈکٹ شامل کریں",editProduct:"پروڈکٹ میں ترمیم",pName:"پروڈکٹ کا نام",pPrice:"قیمت",pCat:"زمرہ",pStock:"اسٹاک",pImg:"تصویر URL",pDesc:"تفصیل",
 edit:"ترمیم",del:"حذف کریں",pause:"روکیں",activate:"فعال کریں",myProducts:"میری مصنوعات",plan:"پلان",upgrade:"پریمیم پر اپ گریڈ کریں",
 payTitle:"NexusPay — سبسکرپشن ادا کریں، 24 گھنٹے میں تصدیق",paySteps:"اعلان → ٹرانسفر → تصدیق → فعال",bank:"بینک / والیٹ",amount:"رقم",sender:"بھیجنے والے کا نام",
-last4:"فون کے آخری 4 ہندسے",tid:"ٹرانزیکشن ID (TID)",submitPay:"تصدیق کے لیے بھیجیں",declared:"اعلان ≠ ادائیگی۔ تصدیق کے بعد ہی ایکٹیویشن۔",
+last4:"فون کے آخری 4 ہندسے",tid:"ٹرانزیکشن ID",submitPay:"تصدیق کے لیے بھیجیں",declared:"اعلان ≠ ادائیگی۔",
 pending:"زیر التوا",verified:"تصدیق شدہ",rejected:"مسترد",approve:"منظور کریں",reject:"مسترد کریں",receipts:"رسیدیں",
-railBank:"بینک",railTitle:"اکاؤنٹ ٹائٹل (جیسا رجسٹرڈ ہے)",railAcc:"اکاؤنٹ نمبر",railIban:"IBAN",
-railInstr:"عین رقم اس اکاؤنٹ میں منتقل کریں اور تفصیل میں اپنا پیمنٹ حوالہ لکھیں۔ پھر یہاں TID جمع کریں؛ بینک حرکت کی تصدیق کے بعد ہی پلان فعال ہوگا۔",
-railWarn:"TID یا اسکرین شاٹ ثبوت نہیں۔ تصدیق کے بعد ہی ایکٹیویشن۔",
+railBank:"بینک",railTitle:"اکاؤنٹ ٹائٹل",railAcc:"اکاؤنٹ نمبر",railIban:"IBAN",railInstr:"عین رقم اس اکاؤنٹ میں منتقل کریں۔",railWarn:"TID یا اسکرین شاٹ ثبوت نہیں۔",
 copy:"کاپی",copied:"کاپی ہو گیا",mySub:"میری سبسکرپشن اور ادائیگیاں",
-commT:"کمیٹی خرید",commS:"3 خریدار گروپ میں شامل ہوں اور سب 15% بچائیں۔ ڈیلیوری تک کوئی ادائیگی نہیں۔",joinGroup:"کوڈ سے شامل ہوں",code:"گروپ کوڈ",
-members:"اراکین",locked:"لاک −15%",open:"کھلا",share:"واٹس ایپ پر شیئر کریں",noGroups:"ابھی کوئی گروپ نہیں۔ کوئی پروڈکٹ کھولیں اور گروپ شروع کریں دبائیں۔",
+commT:"کمیٹی خرید",commS:"3 خریدار گروپ میں شامل ہوں اور سب 15% بچائیں۔",joinGroup:"کوڈ سے شامل ہوں",code:"گروپ کوڈ",
+members:"اراکین",locked:"لاک −15%",open:"کھلا",share:"واٹس ایپ پر شیئر کریں",noGroups:"ابھی کوئی گروپ نہیں۔",
 back:"واپس",home:"ہوم",navSaved:"محفوظ",navCart:"کارٹ",navOrders:"آرڈرز",navAccount:"اکاؤنٹ",
 added:"کارٹ میں شامل ہو گیا",removed:"ہٹا دیا گیا",savedT:"محفوظ ہو گیا",unsavedT:"محفوظ سے ہٹ گیا",profileSaved:"پروفائل محفوظ ہو گیا",loggedOut:"لاگ آؤٹ ہو گیا",
-shopCreated:"دکان بن گئی",prodAdded:"پروڈکٹ شامل ہو گئی",prodUpdated:"پروڈکٹ اپ ڈیٹ ہو گئی",prodDeleted:"پروڈکٹ حذف ہو گئی",limit:"مفت پلان میں 5 مصنوعات کی اجازت ہے۔ مزید کے لیے اپ گریڈ کریں۔",
-paySent:"ادائیگی تصدیق کے لیے بھیج دی گئی",payOk:"ادائیگی تصدیق شدہ — پلان اپ گریڈ",payNo:"ادائیگی مسترد",groupCreated:"گروپ بن گیا — کوڈ شیئر کریں",
-groupJoined:"گروپ میں شامل ہو گئے",groupFull:"گروپ مکمل — 15% لاک",codeNo:"کوڈ نہیں ملا",resetDone:"ڈیمو ڈیٹا ری سیٹ ہو گیا",langSet:"زبان: اردو",marketSet:"مارکیٹ اپ ڈیٹ ہو گئی",
+shopCreated:"دکان بن گئی",prodAdded:"پروڈکٹ شامل ہو گئی",prodUpdated:"پروڈکٹ اپ ڈیٹ ہو گئی",prodDeleted:"پروڈکٹ حذف ہو گئی",limit:"مفت پلان میں 5 مصنوعات کی اجازت ہے۔",
+paySent:"ادائیگی تصدیق کے لیے بھیج دی گئی",payOk:"ادائیگی تصدیق شدہ",payNo:"ادائیگی مسترد",groupCreated:"گروپ بن گیا",
+groupJoined:"گروپ میں شامل ہو گئے",groupFull:"گروپ مکمل",codeNo:"کوڈ نہیں ملا",resetDone:"ڈیمو ڈیٹا ری سیٹ ہو گیا",langSet:"زبان: اردو",marketSet:"مارکیٹ اپ ڈیٹ ہو گئی",
 noResults:"آپ کی تلاش سے کوئی پروڈکٹ نہیں ملی",stPlaced:"رکھا گیا",stConfirmed:"تصدیق شدہ",stShipped:"روانہ",stDelivered:"ڈیلیور",trackT:"آرڈر ٹریکنگ",
-courier:"کورئیر",est:"متوقع ڈیلیوری",confirmReceipt:"مجھے مل گیا — ڈیلیوری کی تصدیق کریں",receiptDone:"ڈیلیوری کی تصدیق ہو گئی — اب جائزہ لکھ سکتے ہیں",
-waHello:"السلام علیکم! میرا NexusShop آرڈر (COD):",waTotal:"کل",install:"ایپ انسٹال کریں",installHint:"مینو دبائیں → Add to Home screen",
-faqT:"سیلر FAQ",q1:"COD کا کیا مطلب ہے؟",a1:"کیش آن ڈیلیوری: رائیڈر ڈبہ لاتا ہے، آپ کھول کر چیک کرتے ہیں اور صرف رکھنے کی صورت میں ادائیگی کرتے ہیں۔ پیشگی ادائیگی نہیں۔",
-q2:"کیا لسٹنگ واقعی مفت ہے؟",a2:"جی ہاں — بانی مرحلہ میں سب کچھ مفت اور لامحدود ہے۔ نہ کارڈ، نہ کمیشن۔",
-q3:"مجھے ادائیگی کیسے ملتی ہے؟",a3:"براہ راست: خریدار واٹس ایپ پر آرڈر کرتے ہیں اور ڈیلیوری پر آپ کو ادا کرتے ہیں۔ NexusShop آپ کا پیسہ نہیں رکھتا۔",
-q4:"ڈیلیوری کون کرتا ہے؟",a4:"آپ مقامی کورئیر یا اپنا رائیڈر چنتے ہیں۔ پروڈکٹ صفحے آپ کی مارکیٹ کے کورئیر دکھاتے ہیں۔",
-q5:"کمیٹی خرید کیا ہے؟",a5:"3 خریدار گروپ میں شامل ہوں، سب کو −15% ملتا ہے، ڈیلیوری تک کوئی ادائیگی نہیں۔",
-q6:"سبسکرپشن کیسے کام کرتی ہے؟",a6:"بانی مرحلہ میں کچھ ادا نہیں کرنا۔ پریمیم/گولڈ بعد میں آئیں گے جب بازار میں حقیقی مانگ ہوگی۔",
-q7:"کیا میں دوسرے ملک میں بیچ سکتا ہوں؟",a7:"جی ہاں — مارکیٹ تبدیل کریں (پاکستان / نائجیریا)۔ کرنسی، کورئیر اور ادائیگی خود ڈھل جاتی ہے۔",
-q8:"جائزے کیسے کام کرتے ہیں؟",a8:"صرف ڈیلیور شدہ آرڈرز سے، اس لیے ریٹنگ جعلی نہیں ہو سکتی۔",
-aboutT:"NexusShop ایک COD-first مارکیٹ پلیس ہے جو مقامی فروخت کنندگان اور خریداروں کو ان کی زبان میں جوڑتا ہے۔ ہم انوینٹری نہیں رکھتے؛ ہم سافٹ ویئر فراہم کرتے ہیں۔ ڈیمو موڈ میں دکھائی گئی تمام مصنوعات نمونہ ہیں۔",
-privacyT:"ہم صرف ضروری ڈیٹا (نام، شہر، واٹس ایپ، آرڈرز) آپ کے آلے اور محفوظ ڈیٹا بیس میں رکھتے ہیں۔ ہم ذاتی ڈیٹا نہیں بیچتے۔ آپ کسی بھی وقت حذف کی درخواست کر سکتے ہیں۔",
-termsT:"فروخت کنندگان آزاد کاروبار ہیں جو اپنی مصنوعات اور ڈیلیوری کے ذمہ دار ہیں۔ ممنوع: غیر قانونی یا جعلی سامان۔ پلیٹ فارم ایک تکنیکی ثالث ہے۔",
+courier:"کورئیر",est:"متوقع ڈیلیوری",confirmReceipt:"مجھے مل گیا — ڈیلیوری کی تصدیق کریں",receiptDone:"ڈیلیوری کی تصدیق ہو گئی",
+waHello:"السلام علیکم! میرا NexusShop آرڈر (COD):",waTotal:"کل",install:"ایپ انسٹال کریں",installHint:"مینو دبائیں → Add to Home screen",installPill:"NexusShop انسٹال کریں",
+faqT:"سیلر FAQ",q1:"COD کا کیا مطلب ہے؟",a1:"کیش آن ڈیلیوری: رائیڈر ڈبہ لاتا ہے، آپ کھول کر چیک کرتے ہیں اور صرف رکھنے کی صورت میں ادائیگی کرتے ہیں۔",
+q2:"کیا لسٹنگ واقعی مفت ہے؟",a2:"جی ہاں — بانی مرحلہ میں سب کچھ مفت اور لامحدود ہے۔",
+q3:"مجھے ادائیگی کیسے ملتی ہے؟",a3:"براہ راست: خریدار واٹس ایپ پر آرڈر کرتے ہیں اور ڈیلیوری پر آپ کو ادا کرتے ہیں۔",
+q4:"ڈیلیوری کون کرتا ہے؟",a4:"آپ مقامی کورئیر یا اپنا رائیڈر چنتے ہیں۔",
+q5:"کمیٹی خرید کیا ہے؟",a5:"3 خریدار گروپ میں شامل ہوں، سب کو −15% ملتا ہے۔",
+q6:"سبسکرپشن کیسے کام کرتی ہے؟",a6:"بانی مرحلہ میں کچھ ادا نہیں کرنا۔ پریمیم/گولڈ بعد میں آئیں گے۔",
+q7:"کیا میں دوسرے ملک میں بیچ سکتا ہوں؟",a7:"جی ہاں — مارکیٹ تبدیل کریں۔",
+q8:"جائزے کیسے کام کرتے ہیں؟",a8:"صرف ڈیلیور شدہ آرڈرز سے۔",
+aboutT:"NexusShop ایک COD-first مارکیٹ پلیس ہے۔",privacyT:"ہم صرف ضروری ڈیٹا رکھتے ہیں۔",termsT:"فروخت کنندگان آزاد کاروبار ہیں۔",
 supportT:"ہم 24 گھنٹے میں جواب دیتے ہیں: neuralfocusai@gmail.com",lang:"زبان",themeNote:"برانڈ تھیم منظور شدہ ڈیزائن کے مطابق ہے۔",
 confirmDel:"کیا یہ پروڈکٹ حذف کریں؟",confirmReset:"کیا اس آلے کا تمام ڈیمو ڈیٹا ری سیٹ کریں؟",reviewsN:"{n} جائزے",writeRev:"تصدیق شدہ جائزہ لکھیں",
 revName:"آپ کا نام",revStars:"ستارے",revText:"آپ کا جائزہ",revSubmit:"جائزہ شائع کریں",revThanks:"جائزہ شائع ہو گیا — شکریہ",
-raahT:"راہنما · AI اسسٹنٹ",raahPh:"COD، ڈیلیوری، کمیٹی کے بارے میں پوچھیں…",raahSend:"بھیجیں",raahHello:"سلام! میں راہنما ہوں۔ کیش آن ڈیلیوری، کورئیر، کمیٹی گروپ، واپسی یا فروخت کے بارے میں پوچھیں۔",
-raahChips:"COD,ڈیلیوری,کمیٹی,واپسی,فروخت",undo:"واپس لیں",enter:"NexusShop میں داخل ہوں",welcomeTag:"پاکستان کا اپنا بازار — آپ کی مارکیٹ، آپ کی زبان",
-wPills:"ملک بھر COD,واٹس ایپ چیک آؤٹ,کمیٹی −15%,اردو + انگریزی",paused:"روکا ہوا",active:"فعال",stock:"اسٹاک",reorder:"ترتیب بدلیں",bulk:"بلک",
-noListings:"ابھی کوئی لسٹنگ نہیں۔ اپنی پہلی پروڈکٹ شامل کریں۔",planGate:"بانی مرحلہ: لامحدود مصنوعات، مفت۔",receiptFor:"رسید · {plan}",
-marketPK:"پاکستان",marketNG:"نائجیریا",searchEmpty:"دوسرا لفظ یا زمرہ آزمائیں۔",revEligible:"آپ نے یہ چیز خریدی — اپنا تجربہ شیئر کریں۔",
-cartBulkHint:"اشیاء منتخب کریں تاکہ ایک ساتھ ہٹائی جا سکیں۔",savedView:"محفوظ اشیاء",ordersView:"آپ کے آرڈرز",receiptsView:"ادائیگی رسیدیں"}
+raahT:"راہنما · AI اسسٹنٹ",raahPh:"COD، ڈیلیوری، کمیٹی کے بارے میں پوچھیں…",raahSend:"بھیجیں",raahHello:"سلام! میں راہنما ہوں۔",
+raahChips:"COD,ڈیلیوری,کمیٹی,واپسی,فروخت",undo:"واپس لیں",enter:"NexusShop میں داخل ہوں",welcomeTag:"آپ کی مارکیٹ، آپ کی زبان",
+wPills:"ملک بھر COD,واٹس ایپ چیک آؤٹ,کمیٹی −15%,کثیر زبان",paused:"روکا ہوا",active:"فعال",stock:"اسٹاک",reorder:"ترتیب بدلیں",bulk:"بلک",
+noListings:"ابھی کوئی لسٹنگ نہیں۔",planGate:"بانی مرحلہ: لامحدود مصنوعات، مفت۔",receiptFor:"رسید · {plan}",
+marketPK:"پاکستان",marketNG:"نائجیریا",marketSK:"سلوواکیہ",marketDE:"جرمنی",marketIN:"بھارت",marketGL:"عالمی",
+searchEmpty:"دوسرا لفظ یا زمرہ آزمائیں۔",revEligible:"آپ نے یہ چیز خریدی — اپنا تجربہ شیئر کریں۔",
+cartBulkHint:"اشیاء منتخب کریں تاکہ ایک ساتھ ہٹائی جا سکیں۔",savedView:"محفوظ اشیاء",ordersView:"آپ کے آرڈرز",receiptsView:"ادائیگی رسیدیں"},
+sk:{preview:"Demo režim: každý produkt je UKÁŽKA.",search:"Hľadať produkty…",
+demoLine:"Ukážkový katalóg.",sample:"Ukážka",payQuick:"Platby a predplatné",
+heroT:"Nakupujte od overených obchodov. Plaťte pri doručení.",heroS:"Každá objednávka má číslo, predajcu a dobierku.",
+shopNow:"Nakupovať",startSell:"Predávať zadarmo",tCOD:"Dobierka",tTrack:"Sledovanie",tRev:"Overené recenzie",
+liveT:"Živý bazár · {cities}",liveS:"Tisíce ponúk — pridajte sa a ušetrite 15%",
+categories:"Kategórie",featured:"Odporúčané",all:"Všetko",add:"Do košíka",buy:"Kúpiť",soldBy:"Predáva",ask:"Opýtať sa",
+description:"Popis",reviews:"Recenzie",revNote:"Len z doručených objednávok.",inStock:"skladom",qty:"Množstvo",
+codCheck:"Dobierka — tovar si skontrolujte",delInfo:"Doprava: {d} · nad {f} zadarmo",returns:"Vrátenie",
+logT:"Doručenie až k dverám",map:"Mapa",smartMap:"Najbližší kuriér",
+comT:"Komunitný nákup",comS:"3 kupujúci = nižšia cena. Nikto neplatí vopred.",
+startGroup:"Založiť skupinu",forYou:"Pre vás",sort:"Zoradiť",sortFeat:"Odporúčané",sortPA:"Cena od najnižšej",sortPD:"Cena od najvyššej",sortR:"Najlepšie hodnotené",sortN:"Najnovšie",
+cart:"Košík",cartEmpty:"Košík je prázdny",cartEmptyS:"Pridajte produkty.",continue:"Pokračovať v nákupe",
+sellers:"{n} predajca(ovia)",subtotal:"Medzisúčet",delNote:"Doprava za každého predajcu.",checkout:"Pokladňa",
+orderFrom:"Objednať od {s} (dobierka)",clearCart:"Vyprázdniť",removeSel:"Odstrániť vybrané",selectAll:"Vybrať všetko",
+placed:"Objednávka odoslaná",placedS:"Uložte si číslo objednávky.",msgSeller:"Napísať predajcovi",
+track:"Sledovať",startShop:"Začať nakupovať",orders:"Objednávky",ordersEmpty:"Žiadne objednávky",saved:"Uložené",savedEmpty:"Zatiaľ nič uložené.",
+account:"Účet",profile:"Profil",name:"Meno",email:"E-mail",wa:"WhatsApp",city:"Mesto",save:"Uložiť",photo:"Fotka",logout:"Odhlásiť",
+sellerCenter:"Centrum predajcu",committee:"Komunitný nákup",market:"Trh a mena",settings:"Nastavenia",faq:"FAQ",support:"Podpora",
+about:"O nás",privacy:"Ochrana súkromia",terms:"Podmienky",admin:"Admin",reset:"Resetovať demo",
+freePlan:"Free · neobmedzene",createShop:"Vytvoriť obchod",shopName:"Názov obchodu",
+addProduct:"Pridať produkt",pName:"Názov",pPrice:"Cena",pCat:"Kategória",pStock:"Sklad",pImg:"URL obrázka",pDesc:"Popis",
+edit:"Upraviť",del:"Zmazať",pause:"Pozastaviť",activate:"Aktivovať",myProducts:"Moje produkty",
+copy:"Kopírovať",copied:"Skopírované",mySub:"Moje predplatné",
+commT:"Komunitný nákup",commS:"3 kupujúci, každý ušetrí 15%.",joinGroup:"Pridať sa kódom",code:"Kód",
+members:"členovia",locked:"Zamknuté −15%",open:"Otvorené",share:"Zdieľať",noGroups:"Žiadne skupiny.",
+back:"Späť",home:"Domov",navSaved:"Uložené",navCart:"Košík",navOrders:"Objednávky",navAccount:"Účet",
+added:"Pridané",removed:"Odstránené",savedT:"Uložené",langSet:"Jazyk: slovenčina",marketSet:"Trh aktualizovaný",
+noResults:"Žiadne produkty",stPlaced:"Odoslaná",stConfirmed:"Potvrdená",stShipped:"Odoslaná",stDelivered:"Doručená",trackT:"Sledovanie",
+courier:"Kuriér",confirmReceipt:"Potvrdiť doručenie",receiptDone:"Doručenie potvrdené",
+waHello:"Dobrý deň! Moja NexusShop objednávka (dobierka):",waTotal:"Spolu",install:"Inštalovať aplikáciu",installHint:"Menu → Pridať na plochu",installPill:"Inštalovať NexusShop",
+faqT:"FAQ predajcu",q1:"Čo je dobierka?",a1:"Dobierka: kuriér prinesie balík, zaplatíte len ak si ho necháte.",
+q2:"Je listing zadarmo?",a2:"Áno — počas founding fázy všetko zadarmo.",
+q3:"Ako dostanem zaplatené?",a3:"Priamo pri doručení.",
+q4:"Kto doručuje?",a4:"Vyberáte si miestneho kuriéra.",
+q5:"Čo je komunitný nákup?",a5:"3 kupujúci v skupine, všetci −15%.",
+q6:"Ako fungujú predplatné?",a6:"Počas founding nič neplatíte.",
+q7:"Môžem predávať inde?",a7:"Áno — prepnite trh.",
+q8:"Ako fungujú recenzie?",a8:"Len z doručených objednávok.",
+aboutT:"NexusShop je marketplace s dobierkou.",privacyT:"Ukladáme len potrebné údaje.",termsT:"Predajcovia sú nezávislé firmy.",
+supportT:"Odpovedáme do 24 h: neuralfocusai@gmail.com",lang:"Jazyk",themeNote:"Téma podľa dizajnu.",
+confirmDel:"Zmazať produkt?",confirmReset:"Resetovať demo dáta?",reviewsN:"{n} recenzií",writeRev:"Napísať recenziu",
+revName:"Vaše meno",revStars:"Hviezdičky",revText:"Recenzia",revSubmit:"Zverejniť",revThanks:"Recenzia zverejnená",
+raahT:"Raahnuma · AI",raahPh:"Pýtajte sa…",raahSend:"Odoslať",raahHello:"Dobrý deň! Som Raahnuma.",
+raahChips:"Dobierka,Doručenie,Komunita,Vrátenie,Predaj",undo:"Späť",enter:"Vstúpiť do NexusShop",welcomeTag:"Váš marketplace, váš jazyk",
+wPills:"Dobierka,WhatsApp,Komunita,Slovenčina",paused:"Pozastavené",active:"Aktívne",stock:"Sklad",reorder:"Poradie",bulk:"Hromadne",
+noListings:"Žiadne ponuky.",planGate:"Founding: neobmedzene, zadarmo.",receiptFor:"Potvrdenka · {plan}",
+marketPK:"Pakistan",marketNG:"Nigéria",marketSK:"Slovensko",marketDE:"Nemecko",marketIN:"India",marketGL:"Globálne",
+searchEmpty:"Skúste iné slovo.",revEligible:"Kúpili ste — podeľte sa.",
+cartBulkHint:"Vyberte na hromadné odstránenie.",savedView:"Uložené",ordersView:"Vaše objednávky",receiptsView:"Potvrdenky"},
+de:{preview:"Demo-Modus: alles sind BEISPIELE.",search:"Produkte suchen…",
+demoLine:"Beispielkatalog.",sample:"Beispiel",payQuick:"Zahlungen & Abo",
+heroT:"Kaufen bei geprüften Shops. Zahlen bei Lieferung.",heroS:"Jede Bestellung hat Nummer, Verkäufer und Nachnahme.",
+shopNow:"Jetzt shoppen",startSell:"Kostenlos verkaufen",tCOD:"Nachnahme",tTrack:"Sendungsverfolgung",tRev:"Geprüfte Bewertungen",
+liveT:"Live-Basar · {cities}",liveS:"Tausende Angebote — Community beitreten und 15 % sparen",
+categories:"Kategorien",featured:"Empfohlen",all:"Alle",add:"In den Warenkorb",buy:"Jetzt kaufen",soldBy:"Verkauft von",ask:"Fragen",
+description:"Beschreibung",reviews:"Bewertungen",revNote:"Nur aus gelieferten Bestellungen.",inStock:"auf Lager",qty:"Menge",
+codCheck:"Nachnahme — Ware vor dem Bezahlen prüfen",delInfo:"Versand: {d} · ab {f} kostenlos",returns:"Rückgabe",
+logT:"Lieferung bis zur Tür",map:"Karte",smartMap:"Nächster Kurier",
+comT:"Community-Kauf",comS:"3 Käufer = niedrigerer Preis. Keine Vorauszahlung.",
+startGroup:"Gruppe starten",forYou:"Für Sie",sort:"Sortieren",sortFeat:"Empfohlen",sortPA:"Preis aufsteigend",sortPD:"Preis absteigend",sortR:"Best bewertet",sortN:"Neueste",
+cart:"Warenkorb",cartEmpty:"Warenkorb ist leer",cartEmptyS:"Produkte hinzufügen.",continue:"Weiter einkaufen",
+sellers:"{n} Verkäufer",subtotal:"Zwischensumme",delNote:"Versand pro Verkäufer.",checkout:"Kasse",
+orderFrom:"Bestellen bei {s} (Nachnahme)",clearCart:"Leeren",removeSel:"Auswahl entfernen",selectAll:"Alle auswählen",
+placed:"Bestellung aufgegeben",placedS:"Speichern Sie Ihre Bestellnummer.",msgSeller:"Verkäufer schreiben",
+track:"Verfolgen",startShop:"Einkaufen",orders:"Bestellungen",ordersEmpty:"Noch keine Bestellungen",saved:"Gespeichert",savedEmpty:"Noch nichts gespeichert.",
+account:"Konto",profile:"Profil",name:"Name",email:"E-Mail",wa:"WhatsApp",city:"Stadt",save:"Speichern",photo:"Foto",logout:"Abmelden",
+sellerCenter:"Verkäufer-Center",committee:"Community-Kauf",market:"Markt & Währung",settings:"Einstellungen",faq:"FAQ",support:"Support",
+about:"Über uns",privacy:"Datenschutz",terms:"AGB",admin:"Admin",reset:"Demo zurücksetzen",
+freePlan:"Free · unbegrenzt",createShop:"Shop erstellen",shopName:"Shop-Name",
+addProduct:"Produkt hinzufügen",pName:"Name",pPrice:"Preis",pCat:"Kategorie",pStock:"Bestand",pImg:"Bild-URL",pDesc:"Beschreibung",
+edit:"Bearbeiten",del:"Löschen",pause:"Pausieren",activate:"Aktivieren",myProducts:"Meine Produkte",
+copy:"Kopieren",copied:"Kopiert",mySub:"Mein Abo",
+commT:"Community-Kauf",commS:"3 Käufer, jeder spart 15%.",joinGroup:"Mit Code beitreten",code:"Code",
+members:"Mitglieder",locked:"Gesperrt −15%",open:"Offen",share:"Teilen",noGroups:"Noch keine Gruppen.",
+back:"Zurück",home:"Start",navSaved:"Gespeichert",navCart:"Warenkorb",navOrders:"Bestellungen",navAccount:"Konto",
+added:"Hinzugefügt",removed:"Entfernt",savedT:"Gespeichert",langSet:"Sprache: Deutsch",marketSet:"Markt aktualisiert",
+noResults:"Keine Produkte",stPlaced:"Aufgegeben",stConfirmed:"Bestätigt",stShipped:"Versendet",stDelivered:"Geliefert",trackT:"Sendungsverfolgung",
+courier:"Kurier",confirmReceipt:"Empfang bestätigen",receiptDone:"Lieferung bestätigt",
+waHello:"Guten Tag! Meine NexusShop-Bestellung (Nachnahme):",waTotal:"Gesamt",install:"App installieren",installHint:"Menü → Zum Startbildschirm",installPill:"NexusShop installieren",
+faqT:"Verkäufer-FAQ",q1:"Was ist Nachnahme?",a1:"Nachnahme: Kurier bringt das Paket, Sie zahlen nur wenn Sie es behalten.",
+q2:"Ist Listen kostenlos?",a2:"Ja — während Founding alles kostenlos.",
+q3:"Wie werde ich bezahlt?",a3:"Direkt bei Lieferung.",
+q4:"Wer liefert?",a4:"Sie wählen den Kurier.",
+q5:"Was ist Community-Kauf?",a5:"3 Käufer in einer Gruppe, alle −15%.",
+q6:"Wie funktionieren Abos?",a6:"Während Founding zahlen Sie nichts.",
+q7:"Kann ich in anderem Land verkaufen?",a7:"Ja — Markt wechseln.",
+q8:"Wie funktionieren Bewertungen?",a8:"Nur aus gelieferten Bestellungen.",
+aboutT:"NexusShop ist ein Nachnahme-Marktplatz.",privacyT:"Wir speichern nur Nötiges.",termsT:"Verkäufer sind unabhängige Unternehmen.",
+supportT:"Wir antworten in 24 h: neuralfocusai@gmail.com",lang:"Sprache",themeNote:"Marken-Theme folgt Design.",
+confirmDel:"Produkt löschen?",confirmReset:"Demo zurücksetzen?",reviewsN:"{n} Bewertungen",writeRev:"Bewertung schreiben",
+revName:"Ihr Name",revStars:"Sterne",revText:"Bewertung",revSubmit:"Veröffentlichen",revThanks:"Bewertung veröffentlicht",
+raahT:"Raahnuma · KI",raahPh:"Fragen Sie…",raahSend:"Senden",raahHello:"Hallo! Ich bin Raahnuma.",
+raahChips:"Nachnahme,Lieferung,Community,Rückgabe,Verkauf",undo:"Rückgängig",enter:"NexusShop betreten",welcomeTag:"Ihr Marktplatz, Ihre Sprache",
+wPills:"Nachnahme,WhatsApp,Community,Deutsch",paused:"Pausiert",active:"Aktiv",stock:"Bestand",reorder:"Umordnen",bulk:"Mehrfach",
+noListings:"Noch keine Angebote.",planGate:"Founding: unbegrenzt, kostenlos.",receiptFor:"Beleg · {plan}",
+marketPK:"Pakistan",marketNG:"Nigeria",marketSK:"Slowakei",marketDE:"Deutschland",marketIN:"Indien",marketGL:"Global",
+searchEmpty:"Anderes Wort versuchen.",revEligible:"Gekauft — Erfahrung teilen.",
+cartBulkHint:"Artikel auswählen.",savedView:"Gespeichert",ordersView:"Ihre Bestellungen",receiptsView:"Belege"},
+hi:{preview:"डेमो मोड: सब कुछ उदाहरण है।",search:"उत्पाद खोजें…",
+demoLine:"उदाहरण कैटलॉग।",sample:"उदाहरण",payQuick:"भुगतान और सदस्यता",
+heroT:"भरोसेमंद दुकानों से खरीदें। डिलीवरी पर भुगतान करें।",heroS:"हर ऑर्डर में नंबर, विक्रेता और COD।",
+shopNow:"अभी खरीदें",startSell:"मुफ़्त बेचना शुरू",tCOD:"कैश ऑन डिलीवरी",tTrack:"ऑर्डर ट्रैकिंग",tRev:"सत्यापित समीक्षाएँ",
+liveT:"लाइव बाज़ार · {cities}",liveS:"हज़ारों डील — कम्युनिटी से जुड़ें और 15% बचाएँ",
+categories:"श्रेणियाँ",featured:"featured",all:"सभी",add:"कार्ट में",buy:"अभी खरीदें",soldBy:"विक्रेता",ask:"पूछें",
+description:"विवरण",reviews:"समीक्षाएँ",revNote:"केवल डिलीवर ऑर्डर से।",inStock:"स्टॉक में",qty:"मात्रा",
+codCheck:"COD — भुगतान से पहले पार्सल जाँचें",delInfo:"डिलीवरी: {d} · {f} से ऊपर मुफ़्त",returns:"वापसी",
+logT:"घर तक डिलीवरी",map:"नक्शा",smartMap:"नज़दीकी कूरियर",
+comT:"कम्युनिटी खरीद",comS:"3 खरीदार = कम कीमत। कोई अग्रिम भुगतान नहीं।",
+startGroup:"समूह शुरू",forYou:"आपके लिए",sort:"क्रमबद्ध",sortFeat:"featured",sortPA:"कीमत: कम से अधिक",sortPD:"कीमत: अधिक से कम",sortR:"टॉप रेटेड",sortN:"नवीनतम",
+cart:"कार्ट",cartEmpty:"कार्ट खाली है",cartEmptyS:"उत्पाद जोड़ें।",continue:"खरीदारी जारी",
+sellers:"{n} विक्रेता",subtotal:"उप-योग",delNote:"डिलीवरी प्रति विक्रेता।",checkout:"चेकआउट",
+orderFrom:"{s} से ऑर्डर (COD)",clearCart:"खाली करें",removeSel:"चयनित हटाएँ",selectAll:"सभी चुनें",
+placed:"ऑर्डर हो गया",placedS:"ऑर्डर नंबर सहेजें।",msgSeller:"विक्रेता को WhatsApp",
+track:"ट्रैक करें",startShop:"खरीदारी शुरू",orders:"ऑर्डर",ordersEmpty:"कोई ऑर्डर नहीं",saved:"सहेजे",savedEmpty:"अभी कुछ सहेजा नहीं।",
+account:"खाता",profile:"प्रोफ़ाइल",name:"नाम",email:"ईमेल",wa:"WhatsApp",city:"शहर",save:"सहेजें",photo:"फ़ोटो",logout:"लॉग आउट",
+sellerCenter:"विक्रेता केंद्र",committee:"कम्युनिटी खरीद",market:"बाज़ार और मुद्रा",settings:"सेटिंग्स",faq:"FAQ",support:"सहायता",
+about:"हमारे बारे में",privacy:"गोपनीयता",terms:"शर्तें",admin:"एडमिन",reset:"रीसेट",
+freePlan:"Free · असीमित",createShop:"दुकान बनाएँ",shopName:"दुकान का नाम",
+addProduct:"उत्पाद जोड़ें",pName:"नाम",pPrice:"कीमत",pCat:"श्रेणी",pStock:"स्टॉक",pImg:"छवि URL",pDesc:"विवरण",
+edit:"संपादित",del:"हटाएँ",pause:"रोकें",activate:"सक्रिय",myProducts:"मेरे उत्पाद",
+copy:"कॉपी",copied:"कॉपी हो गया",mySub:"मेरी सदस्यता",
+commT:"कम्युनिटी खरीद",commS:"3 खरीदार, हर कोई 15% बचाता है।",joinGroup:"कोड से जुड़ें",code:"कोड",
+members:"सदस्य",locked:"लॉक −15%",open:"खुला",share:"साझा करें",noGroups:"कोई समूह नहीं।",
+back:"वापस",home:"होम",navSaved:"सहेजे",navCart:"कार्ट",navOrders:"ऑर्डर",navAccount:"खाता",
+added:"जोड़ा",removed:"हटाया",savedT:"सहेजा",langSet:"भाषा: हिन्दी",marketSet:"बाज़ार अपडेट",
+noResults:"कोई उत्पाद नहीं",stPlaced:"रखा गया",stConfirmed:"पुष्ट",stShipped:"भेजा",stDelivered:"डिलीवर",trackT:"ट्रैकिंग",
+courier:"कूरियर",confirmReceipt:"डिलीवरी पुष्टि",receiptDone:"डिलीवरी पुष्ट",
+waHello:"नमस्ते! मेरा NexusShop ऑर्डर (COD):",waTotal:"कुल",install:"ऐप इंस्टॉल",installHint:"मेनू → होम स्क्रीन पर",installPill:"NexusShop इंस्टॉल करें",
+faqT:"विक्रेता FAQ",q1:"COD का मतलब?",a1:"COD: राइडर डिब्बा लाता है, रखने पर ही भुगतान।",
+q2:"क्या लिस्टिंग मुफ़्त?",a2:"हाँ — founding में सब मुफ़्त।",
+q3:"भुगतान कैसे मिलता है?",a3:"सीधे डिलीवरी पर।",
+q4:"डिलीवरी कौन?",a4:"आप कूरियर चुनते हैं।",
+q5:"कम्युनिटी खरीद?",a5:"3 खरीदार, सब −15%।",
+q6:"सदस्यता कैसे?",a6:"founding में कुछ नहीं देना।",
+q7:"दूसरे देश में बेच सकता हूँ?",a7:"हाँ — बाज़ार बदलें।",
+q8:"समीक्षाएँ?",a8:"केवल डिलीवर ऑर्डर से।",
+aboutT:"NexusShop एक COD मार्केटप्लेस है।",privacyT:"हम केवल आवश्यक डेटा रखते हैं।",termsT:"विक्रेता स्वतंत्र व्यवसाय हैं।",
+supportT:"हम 24 घंटे में उत्तर देते हैं: neuralfocusai@gmail.com",lang:"भाषा",themeNote:"ब्रांड थीम डिज़ाइन अनुसार।",
+confirmDel:"उत्पाद हटाएँ?",confirmReset:"रीसेट करें?",reviewsN:"{n} समीक्षाएँ",writeRev:"समीक्षा लिखें",
+revName:"नाम",revStars:"सितारे",revText:"समीक्षा",revSubmit:"प्रकाशित",revThanks:"समीक्षा प्रकाशित",
+raahT:"राहनुमा · AI",raahPh:"पूछें…",raahSend:"भेजें",raahHello:"नमस्ते! मैं राहनुमा हूँ।",
+raahChips:"COD,डिलीवरी,कम्युनिटी,वापसी,बेचें",undo:"पूर्ववत",enter:"NexusShop में प्रवेश",welcomeTag:"आपका मार्केटप्लेस, आपकी भाषा",
+wPills:"COD,WhatsApp,कम्युनिटी,हिन्दी",paused:"रुका",active:"सक्रिय",stock:"स्टॉक",reorder:"क्रम",bulk:"थोक",
+noListings:"कोई लिस्टिंग नहीं।",planGate:"founding: असीमित, मुफ़्त।",receiptFor:"रसीद · {plan}",
+marketPK:"पाकिस्तान",marketNG:"नाइजीरिया",marketSK:"स्लोवाकिया",marketDE:"जर्मनी",marketIN:"भारत",marketGL:"वैश्विक",
+searchEmpty:"दूसरा शब्द आज़माएँ।",revEligible:"आपने खरीदी — अनुभव साझा करें।",
+cartBulkHint:"एक साथ हटाने के लिए चुनें।",savedView:"सहेजी वस्तुएँ",ordersView:"आपके ऑर्डर",receiptsView:"भुगतान रसीदें"}
 };
-const CATS=[{id:"fashion",en:"Fashion",ur:"فیشن"},{id:"electronics",en:"Electronics",ur:"الیکٹرانکس"},{id:"home",en:"Home & Kitchen",ur:"گھر و باورچی خانہ"},{id:"beauty",en:"Beauty",ur:"خوبصورتی"},{id:"grocery",en:"Grocery",ur:"گروسری"}];
-const MK={PK:{code:"PK",flag:"🇵🇰",sym:"Rs ",rate:1,del:200,free:5000,cities:"Lahore · Karachi · Islamabad",couriers:[["TCS","tcs.com.pk"],["Leopards","leopards.com.pk"],["M&P","mp.com.pk"],["PostEx","postex.pk"],["Trax","trax.com.pk"]],pay:"JazzCash · Easypaisa · Bank transfer"},
-NG:{code:"NG",flag:"🇳🇬",sym:"₦",rate:5.5,del:1100,free:27500,cities:"Lagos · Abuja · Port Harcourt",couriers:[["GIG Logistics","giglogistics.com.ng"],["Kwik Delivery","kwik.delivery"],["DHL Nigeria","dhl.com/ng"],["Fez Delivery","fezdelivery.com"],["Cross-country","crosscountry.com.ng"]],pay:"Paystack · Flutterwave · Bank transfer"}};
+const CATS=[{id:"fashion",en:"Fashion",ur:"فیشن",sk:"Móda",de:"Mode",hi:"फ़ैशन"},{id:"electronics",en:"Electronics",ur:"الیکٹرانکس",sk:"Elektronika",de:"Elektronik",hi:"इलेक्ट्रॉनिक्स"},{id:"home",en:"Home & Kitchen",ur:"گھر",sk:"Domov",de:"Haushalt",hi:"घर"},{id:"beauty",en:"Beauty",ur:"خوبصورتی",sk:"Krása",de:"Schönheit",hi:"ब्यूटी"},{id:"grocery",en:"Grocery",ur:"گروسری",sk:"Potraviny",de:"Lebensmittel",hi:"किराना"}];
+const MK={
+PK:{code:"PK",flag:"🇵🇰",sym:"Rs ",rate:1,del:200,free:5000,cities:"Lahore · Karachi · Islamabad",couriers:[["TCS","tcs.com.pk"],["Leopards","leopards.com.pk"],["M&P","mp.com.pk"],["PostEx","postex.pk"],["Trax","trax.com.pk"]],pay:"JazzCash · Easypaisa"},
+NG:{code:"NG",flag:"🇳🇬",sym:"₦",rate:5.5,del:1100,free:27500,cities:"Lagos · Abuja · Port Harcourt",couriers:[["GIG Logistics","giglogistics.com.ng"],["Kwik Delivery","kwik.delivery"],["DHL Nigeria","dhl.com/ng"],["Fez Delivery","fezdelivery.com"]],pay:"Paystack · Flutterwave"},
+SK:{code:"SK",flag:"🇸🇰",sym:"€",rate:0.0033,del:1200,free:15000,cities:"Bratislava · Košice · Žilina",couriers:[["Packeta","packeta.sk"],["Slovenská pošta","posta.sk"],["DPD SK","dpd.sk"],["GLS SK","gls-group.com/SK"],["SPS SK","sps-sk.sk"]],pay:"Dobierka · Bank"},
+DE:{code:"DE",flag:"🇩🇪",sym:"€",rate:0.0033,del:1500,free:15000,cities:"Berlin · München · Hamburg",couriers:[["DHL","dhl.de"],["Hermes","hermesworld.com"],["DPD DE","dpd.de"],["GLS DE","gls-group.com/DE"],["UPS DE","ups.com/de"],["Deutsche Post","deutschepost.de"]],pay:"Nachnahme · SEPA · PayPal"},
+IN:{code:"IN",flag:"🇮🇳",sym:"₹",rate:0.30,del:150,free:15000,cities:"Delhi · Mumbai · Bengaluru",couriers:[["India Post","indiapost.gov.in"],["Delhivery","delhivery.com"],["Blue Dart","bluedart.com"],["DTDC","dtdc.in"],["Ecom Express","ecomexpress.in"],["Shadowfax","shadowfax.in"]],pay:"UPI · COD · NetBanking"},
+GL:{code:"GL",flag:"🌍",sym:"$",rate:0.0036,del:1500,free:20000,cities:"Worldwide",couriers:[["DHL Express","dhl.com"],["UPS","ups.com"],["FedEx","fedex.com"],["Aramex","aramex.com"]],pay:"Card · PayPal"}
+};
 const RAIL={bank:"MCB Bank Limited",title:"TALAL REHAN",acc:"1727594371001117",iban:"PK96MUCB1727594371001117"};
 const IMG={watch:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=70",attar:"https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&q=70",kettle:"https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&q=70",buds:"https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&q=70",lawn:"https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=600&q=70",rice:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&q=70",spk:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=600&q=70",shoe:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=70",tv:"https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&q=70",room:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=70"};
 const SEED=[
-{id:"p1",seller:"Anarkali Threads",swa:"923001234501",city:"Lahore",cat:"fashion",price:4499,old:5999,stock:14,img:IMG.lawn,name:{en:"Embroidered Lawn Suit, 3-piece",ur:"کڑھائی والا لان سوٹ، 3 پیس"},desc:{en:"Unstitched 3-piece lawn: embroidered shirt, dyed trouser, printed chiffon dupatta.",ur:"غیر سلا ہوا 3 پیس لان: کڑھائی والا قمیض، رنگین شلوار، پرنٹڈ شفون دوپٹہ۔"},rev:[{n:"Ayesha K.",s:5,en:"Beautiful embroidery, true to photos. COD made it easy.",ur:"خوبصورت کڑھائی، تصویروں کے مطابق۔ COD نے آسان بنا دیا۔"},{n:"Bilal R.",s:4,en:"Good fabric, delivery in 2 days.",ur:"اچھا کپڑا، 2 دن میں ڈیلیوری۔"}]},
-{id:"p2",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:2499,old:2999,stock:22,img:IMG.buds,name:{en:"Wireless Earbuds with Case",ur:"کیس کے ساتھ وائرلیس ایئربڈز"},desc:{en:"Touch control, charging case, bass boost. One-year warranty.",ur:"ٹچ کنٹرول، چارجنگ کیس، بیس بوسٹ۔ ایک سال وارنٹی۔"},rev:[{n:"Hina S.",s:5,en:"Sound is great for the price.",ur:"قیمت کے حساب سے آواز بہترین۔"}]},
-{id:"p3",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:3499,old:4999,stock:12,img:IMG.watch,name:{en:"Smart Watch T900 Ultra",ur:"اسمارٹ واچ T900 الٹرا"},desc:{en:"Bluetooth calling, heart rate, 7-day battery.",ur:"بلوٹوتھ کالنگ، دل کی دھڑکن، 7 دن بیٹری۔"},rev:[]},
-{id:"p4",seller:"Ghar Bazaar",swa:"923001234503",city:"Lahore",cat:"home",price:2799,old:3599,stock:8,img:IMG.kettle,name:{en:"Electric Kettle 1.8L Steel",ur:"الیکٹرک کیتلی 1.8 لیٹر اسٹیل"},desc:{en:"Fast boil, auto cut-off, 1-year warranty.",ur:"تیز ابال، آٹو کٹ آف، ایک سال وارنٹی۔"},rev:[]},
-{id:"p5",seller:"Punjab Pantry",swa:"923001234504",city:"Multan",cat:"grocery",price:1850,old:2200,stock:40,img:IMG.rice,name:{en:"Basmati Rice 5kg Premium",ur:"باسمتی چاول 5 کلو پریمیم"},desc:{en:"Long-grain aged basmati, sealed 5kg bag.",ur:"لمبے دانے والے پرانے باسمتی، سیل بند 5 کلو بیگ۔"},rev:[{n:"Omar F.",s:5,en:"Aged basmati, cooks perfectly.",ur:"پرانے باسمتی، بہترین پکتے ہیں۔"}]},
-{id:"p6",seller:"Ittar House",swa:"923001234505",city:"Lahore",cat:"beauty",price:1299,old:1899,stock:20,img:IMG.attar,name:{en:"Perfume Attar Oud 12ml",ur:"عطر عود 12 ملی لیٹر"},desc:{en:"Long-lasting oud attar in a gift box.",ur:"گفٹ باکس میں دیرپا عود عطر۔"},rev:[]},
-{id:"p7",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:2499,old:3299,stock:15,img:IMG.spk,name:{en:"Bluetooth Speaker Mini",ur:"بلوٹوتھ اسپیکر منی"},desc:{en:"Portable, deep bass, 8-hour playtime.",ur:"پورٹیبل، گہرا بیس، 8 گھنٹے پلے ٹائم۔"},rev:[]},
-{id:"p8",seller:"Anarkali Threads",swa:"923001234501",city:"Lahore",cat:"fashion",price:2500,old:3200,stock:10,img:IMG.shoe,name:{en:"Running Shoes Lightweight",ur:"ہلکے پھلکے رننگ شوز"},desc:{en:"Breathable mesh, cushioned sole, all sizes.",ur:"ہوا دار میش، نرم تلا، تمام سائز۔"},rev:[]},
-{id:"p9",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:24999,old:29999,stock:5,img:IMG.tv,name:{en:"LED TV 32 inch Smart",ur:"ایل ای ڈی ٹی وی 32 انچ اسمارٹ"},desc:{en:"Smart apps, HDMI x2, 1-year panel warranty.",ur:"اسمارٹ ایپس، HDMI x2، ایک سال پینل وارنٹی۔"},rev:[]},
-{id:"p10",seller:"Ghar Bazaar",swa:"923001234503",city:"Lahore",cat:"home",price:5499,old:6999,stock:6,img:IMG.room,name:{en:"Accent Chair + Side Table",ur:"اکسنٹ چیئر + سائیڈ ٹیبل"},desc:{en:"Solid wood frame, linen upholstery.",ur:"مضبوط لکڑی کا فریم، لینن اپہولسٹری۔"},rev:[]}
+{id:"p1",seller:"Anarkali Threads",swa:"923001234501",city:"Lahore",cat:"fashion",price:4499,old:5999,stock:14,img:IMG.lawn,name:{en:"Embroidered Lawn Suit, 3-piece",ur:"کڑھائی والا لان سوٹ",sk:"Vyšívaný lawn oblek",de:"Besticktes Lawn-Set",hi:"कढ़ाई वाला लॉन सूट"},desc:{en:"Unstitched 3-piece lawn: embroidered shirt, dyed trouser, chiffon dupatta.",ur:"غیر سلا ہوا 3 پیس لان۔",sk:"Nezošitý 3-dielny lawn.",de:"Unbesticktes 3-teiliges Set.",hi:"3-पीस लॉन सूट।"},rev:[]},
+{id:"p2",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:2499,old:2999,stock:22,img:IMG.buds,name:{en:"Wireless Earbuds with Case",ur:"وائرلیس ایئربڈز",sk:"Bezdrôtové slúchadlá",de:"Kabellose Ohrhörer",hi:"वायरलेस ईयरबड्स"},desc:{en:"Touch control, charging case, bass boost.",ur:"ٹچ کنٹرول۔",sk:"Dotykové ovládanie.",de:"Touch-Steuerung.",hi:"टच कंट्रोल।"},rev:[]},
+{id:"p3",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:3499,old:4999,stock:12,img:IMG.watch,name:{en:"Smart Watch T900 Ultra",ur:"اسمارٹ واچ T900",sk:"Smart hodinky T900",de:"Smartwatch T900",hi:"स्मार्ट वॉच T900"},desc:{en:"Bluetooth calling, heart rate, 7-day battery.",ur:"بلوٹوتھ کالنگ۔",sk:"Bluetooth hovory.",de:"Bluetooth-Anrufe.",hi:"ब्लूटूथ कॉलिंग।"},rev:[]},
+{id:"p4",seller:"Ghar Bazaar",swa:"923001234503",city:"Lahore",cat:"home",price:2799,old:3599,stock:8,img:IMG.kettle,name:{en:"Electric Kettle 1.8L Steel",ur:"الیکٹرک کیتلی",sk:"Elektrická kanvica 1,8 L",de:"Wasserkocher 1,8 L",hi:"इलेक्ट्रिक केतली 1.8L"},desc:{en:"Fast boil, auto cut-off.",ur:"تیز ابال۔",sk:"Rýchle varenie.",de:"Schnelles Kochen.",hi:"तेज़ उबाल।"},rev:[]},
+{id:"p5",seller:"Punjab Pantry",swa:"923001234504",city:"Multan",cat:"grocery",price:1850,old:2200,stock:40,img:IMG.rice,name:{en:"Basmati Rice 5kg Premium",ur:"باسمتی چاول 5 کلو",sk:"Basmati ryža 5 kg",de:"Basmati Reis 5 kg",hi:"बासमती चावल 5 किलो"},desc:{en:"Long-grain aged basmati.",ur:"لمبے دانے باسمتی۔",sk:"Dlhozrnná basmati.",de:"Langkorn-Basmati.",hi:"लंबे दाने बासमती।"},rev:[]},
+{id:"p6",seller:"Ittar House",swa:"923001234505",city:"Lahore",cat:"beauty",price:1299,old:1899,stock:20,img:IMG.attar,name:{en:"Perfume Attar Oud 12ml",ur:"عطر عود 12 ملی لیٹر",sk:"Parfum Oud 12 ml",de:"Parfüm Oud 12 ml",hi:"इत्र ओउद 12ml"},desc:{en:"Long-lasting oud attar.",ur:"دیرپا عطر۔",sk:"Dlhotrvajúci oud.",de:"Langanhaltender Oud.",hi:"लंबे समय तक चलने वाला इत्र।"},rev:[]},
+{id:"p7",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:2499,old:3299,stock:15,img:IMG.spk,name:{en:"Bluetooth Speaker Mini",ur:"بلوٹوتھ اسپیکر منی",sk:"Bluetooth reproduktor",de:"Bluetooth-Lautsprecher",hi:"ब्लूटूथ स्पीकर"},desc:{en:"Portable, deep bass.",ur:"پورٹیبل۔",sk:"Prenosný.",de:"Tragbar.",hi:"पोर्टेबल।"},rev:[]},
+{id:"p8",seller:"Anarkali Threads",swa:"923001234501",city:"Lahore",cat:"fashion",price:2500,old:3200,stock:10,img:IMG.shoe,name:{en:"Running Shoes Lightweight",ur:"رننگ شوز",sk:"Bežecké topánky",de:"Laufschuhe",hi:"रनिंग शूज़"},desc:{en:"Breathable mesh.",ur:"ہوا دار میش۔",sk:"Priedušný.",de:"Atmungsaktiv.",hi:"ब्रीदेबल मेश।"},rev:[]},
+{id:"p9",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:24999,old:29999,stock:5,img:IMG.tv,name:{en:"LED TV 32 inch Smart",ur:"ایل ای ڈی ٹی وی 32 انچ",sk:"LED TV 32 palcov",de:"LED TV 32 Zoll",hi:"LED TV 32 इंच"},desc:{en:"Smart apps, HDMI x2.",ur:"اسمارٹ ایپس۔",sk:"Smart aplikácie.",de:"Smart-Apps.",hi:"स्मार्ट ऐप्स।"},rev:[]},
+{id:"p10",seller:"Ghar Bazaar",swa:"923001234503",city:"Lahore",cat:"home",price:5499,old:6999,stock:6,img:IMG.room,name:{en:"Accent Chair + Side Table",ur:"کرسی + سائیڈ ٹیبل",sk:"Stolička + stolík",de:"Akzentstuhl + Tisch",hi:"कुर्सी + साइड टेबल"},desc:{en:"Solid wood frame.",ur:"مضبوط لکڑی۔",sk:"Masívny rám.",de:"Massivholzrahmen.",hi:"मजबूत लकड़ी।"},rev:[]}
 ];
 SEED.forEach(function(p){p.swa="542257550650";});
 const DEF={lang:"en",market:"PK",view:"home",pid:null,qty:1,search:"",cat:"all",sort:"feat",cart:[],bulk:[],saved:[],orders:[],groups:[],payments:[],receipts:[],reviews:{},hist:[],profile:{name:"",email:"",wa:"",city:"",pic:null},shop:null,listings:[],admin:false,track:null,lastOrders:[],editId:null,raahOpen:false,raahMsgs:[],menu:false,payFocus:false};
@@ -302,23 +454,23 @@ function money(n){const m=MK[S.market];return m.sym+Math.round(n*m.rate).toLocal
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function prods(){return SEED.concat(S.listings.map(l=>Object.assign({seller:S.shop?S.shop.name:"My Shop",swa:S.shop?S.shop.wa:"",city:S.shop?S.shop.city:"",rev:[]},l)));}
 function prod(id){return prods().find(p=>p.id===id);}
-function pn(p){const n=p.name||{};if(typeof n==="string")return n;return n[S.lang]||n.en||n.ur||"";}
-function pd(p){const d=p.desc||{};if(typeof d==="string")return d;return d[S.lang]||d.en||d.ur||"";}
+function pn(p){const n=p.name||{};if(typeof n==="string")return n;return n[S.lang]||n.en||n.ur||n.sk||n.de||n.hi||"";}
+function pd(p){const d=p.desc||{};if(typeof d==="string")return d;return d[S.lang]||d.en||d.ur||d.sk||d.de||d.hi||"";}
 function cn(id){const c=CATS.find(c=>c.id===id);return c?(c[S.lang]||c.en):id;}
 function revs(p){return (p.rev||[]).concat(S.reviews[p.id]||[]);}
 function rating(p){const r=revs(p);if(!r.length)return null;return (r.reduce((a,b)=>a+b.s,0)/r.length).toFixed(1);}
 function cartCount(){return S.cart.reduce((a,b)=>a+b.q,0);}
 let _undo=null;
 function toast(msg,undoFn){_undo=undoFn||null;const el=document.getElementById("toast");el.innerHTML=esc(msg)+(_undo?` <button data-a="undo">${esc(t("undo"))}</button>`:"");el.classList.add("show");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("show"),3200);}
-function wa(num,msg){const n=String(num||"").replace(/\D/g,"");if(!n){toast(S.lang==="ur"?"اس فروخت کنندہ کا واٹس ایپ ابھی نہیں":"This seller has no WhatsApp yet");return;}window.open("https://wa.me/"+n+"?text="+encodeURIComponent(msg),"_blank");}
+function wa(num,msg){const n=String(num||"").replace(/\D/g,"");if(!n){toast("No WhatsApp");return;}window.open("https://wa.me/"+n+"?text="+encodeURIComponent(msg),"_blank");}
 function render(){
- document.documentElement.lang=S.lang;document.documentElement.dir=S.lang==="ur"?"rtl":"ltr";document.body.classList.toggle("ur",S.lang==="ur");
+ document.documentElement.lang=S.lang;document.documentElement.dir=S.lang==="ur"?"rtl":"ltr";document.body.classList.toggle("ur",S.lang==="ur");document.body.classList.toggle("hi",S.lang==="hi");
  let h="";
  if(!sessionStorage.getItem("nx_in"))h+=welcome();
  h+=`<header><div class="logo">Nexus<b>Shop</b></div>
  <div class="sw"><span class="sic">⌕</span><input id="search" placeholder="${esc(t("search"))}" value="${esc(S.search)}"></div>
- <button class="icb" data-a="lang">${S.lang==="en"?"اردو":"EN"}</button>
  <button class="icb" data-a="menu">${MK[S.market].flag}</button>
+ <button class="icb" data-a="lang">${({en:"EN",ur:"اردو",sk:"SK",de:"DE",hi:"HI"})[S.lang]||"EN"}</button>
  <button class="icb" data-a="nav" data-v="cart">🛍${cartCount()?`<span class="bdg">${cartCount()}</span>`:""}</button>
  <button class="icb" data-a="payfocus" title="${esc(t("payQuick"))}">💳</button>
  <button class="icb" data-a="nav" data-v="settings">⚙️</button>
@@ -331,18 +483,17 @@ function render(){
  h+=`<button id="raahFab" data-a="raahToggle" title="${esc(t("raahT"))}">🤖</button>`;
  if(S.raahOpen)h+=raahPanel();
  document.getElementById("app").innerHTML=h;
- const m=document.getElementById("raahMsgs");if(m)m.scrollTop=m.scrollHeight;
 }
 function nb(v,ico,key,b){const on=S.view===v||(v==="account"&&["seller","settings","faq","committee"].includes(S.view));
  return `<button data-a="nav" data-v="${v}" class="${on?"on":""}"><span class="ico">${ico}</span>${esc(t(key))}${b?`<span class="bdg">${b}</span>`:""}</button>`;}
 function welcome(){const imgs=[IMG.tv,IMG.watch,IMG.buds,IMG.kettle,IMG.attar,IMG.room];
- return `<div id="welcome"><div class="row" style="position:absolute;top:14px;inset-inline-end:14px"><button class="icb" data-a="lang">${S.lang==="en"?"اردو":"EN"}</button></div>
+ return `<div id="welcome"><div class="row" style="position:absolute;top:14px;inset-inline-end:14px"><button class="icb" data-a="lang">${({en:"EN",ur:"اردو",sk:"SK",de:"DE",hi:"HI"})[S.lang]||"EN"}</button></div>
  <div class="ring"><div class="spin">${imgs.map((u,i)=>`<img src="${u}" style="transform:rotateY(${i*60}deg) translateZ(120px)" alt="">`).join("")}</div></div>
  <h1>Nexus<b>Shop</b></h1><div class="tag">${esc(t("welcomeTag"))}</div>
  <div class="pills">${t("wPills").split(",").map(p=>`<span>${esc(p)}</span>`).join("")}</div>
  <button class="btn grn" style="width:min(340px,86%);padding:16px;font-size:16px" data-a="enter">${esc(t("enter"))} →</button></div>`;}
-function marketMenu(){return `<div class="modal" data-a="menu"><div class="box" style="max-width:320px">
- ${Object.values(MK).map(m=>`<button class="menu" style="width:100%;display:flex;gap:10px;align-items:center;background:${m.code===S.market?"var(--mint)":"var(--sf2)"};border:1px solid var(--ln);border-radius:12px;padding:12px;margin-bottom:8px" data-a="marketSet" data-id="${m.code}"><span style="font-size:22px">${m.flag}</span><span style="text-align:start"><b>${esc(t(m.code==="PK"?"marketPK":"marketNG"))}</b><br><span class="fnt">${m.sym} · ${esc(m.cities)}</span></span></button>`).join("")}
+function marketMenu(){return `<div class="modal" data-a="menu"><div class="box" style="max-width:340px">
+ ${Object.values(MK).map(m=>`<button class="menu" style="width:100%;display:flex;gap:10px;align-items:center;background:${m.code===S.market?"var(--mint)":"var(--sf2)"};border:1px solid var(--ln);border-radius:12px;padding:12px;margin-bottom:8px" data-a="marketSet" data-id="${m.code}"><span style="font-size:22px">${m.flag}</span><span style="text-align:start"><b>${esc(t("market"+m.code))}</b><br><span class="fnt">${m.sym} · ${esc(m.cities)}</span></span></button>`).join("")}
  </div></div>`;}
 function view(){switch(S.view){case "home":return vHome();case "detail":return vDetail();case "cart":return vCart();case "placed":return vPlaced();case "orders":return vOrders();case "saved":return vSaved();case "account":return vAccount();case "seller":return vSeller();case "committee":return vCommittee();case "settings":return vSettings();case "faq":return vFaq();default:return vHome();}}
 function filtered(){let l=prods().filter(p=>(S.cat==="all"||p.cat===S.cat)&&(!S.search||pn(p).toLowerCase().includes(S.search.toLowerCase())||p.seller.toLowerCase().includes(S.search.toLowerCase())||pd(p).toLowerCase().includes(S.search.toLowerCase())));
@@ -471,8 +622,8 @@ function vCommittee(){return `<h2 class="sec">${esc(t("commT"))}</h2><div class=
  <div class="card" style="margin-top:12px"><label>${esc(t("code"))}</label><input id="gCode"><button class="btn gh" style="margin-top:10px" data-a="gJoin">${esc(t("joinGroup"))}</button></div>
  ${S.groups.length?S.groups.map(g=>{const p=prod(g.pid);return `<div class="card sl"><div><b>${g.code}</b>${p?`<div class="fnt">${esc(pn(p))}</div>`:""}<div class="mut">${g.members}/3 ${esc(t("members"))}</div></div><div class="row"><span class="st ${g.members>=3?"delivered":"placed"}">${esc(t(g.members>=3?"locked":"open"))}</span><button class="btn wa sm" data-a="gShare" data-id="${g.code}">${esc(t("share"))}</button></div></div>`;}).join(""):`<div class="empty">${esc(t("noGroups"))}</div>`}`;}
 function vSettings(){return `<h2 class="sec">${esc(t("settings"))}</h2>
- <div class="card"><label>${esc(t("lang"))}</label><select id="setLang"><option value="en" ${S.lang==="en"?"selected":""}>English</option><option value="ur" ${S.lang==="ur"?"selected":""}>اردو</option></select>
- <label>${esc(t("market"))}</label><select id="setMarket"><option value="PK" ${S.market==="PK"?"selected":""}>🇵🇰 ${esc(t("marketPK"))} (Rs)</option><option value="NG" ${S.market==="NG"?"selected":""}>🇳🇬 ${esc(t("marketNG"))} (₦)</option></select>
+ <div class="card"><label>${esc(t("lang"))}</label><select id="setLang"><option value="en" ${S.lang==="en"?"selected":""}>English</option><option value="ur" ${S.lang==="ur"?"selected":""}>اردو</option><option value="sk" ${S.lang==="sk"?"selected":""}>Slovenčina</option><option value="de" ${S.lang==="de"?"selected":""}>Deutsch</option><option value="hi" ${S.lang==="hi"?"selected":""}>हिन्दी</option></select>
+ <label>${esc(t("market"))}</label><select id="setMarket">${Object.values(MK).map(m=>`<option value="${m.code}" ${S.market===m.code?"selected":""}>${m.flag} ${esc(t("market"+m.code))} (${m.sym})</option>`).join("")}</select>
  <div class="mut" style="margin-top:10px">${esc(t("themeNote"))}</div>
  <label style="display:flex;gap:8px;align-items:center;margin-top:12px"><input type="checkbox" id="setAdmin" style="width:auto" ${S.admin?"checked":""}> ${esc(t("admin"))}</label>
  <button class="btn gh" style="margin-top:12px" data-a="install">⬇ ${esc(t("install"))}</button></div>
@@ -481,26 +632,26 @@ function vSettings(){return `<h2 class="sec">${esc(t("settings"))}</h2>
  <details><summary>${esc(t("terms"))}</summary><p>${esc(t("termsT"))}</p></details>
  <details><summary>${esc(t("support"))}</summary><p>${esc(t("supportT"))}</p></details>
  <button class="btn red" style="width:100%" data-a="reset">${esc(t("reset"))}</button>`;}
-function vFaq(){return `<h2 class="sec">${esc(t("faqT"))} · ${MK[S.market].flag} ${esc(t(S.market==="PK"?"marketPK":"marketNG"))}</h2>`+[1,2,3,4,5,6,7,8].map(i=>`<details ${i===1?"open":""}><summary>${esc(t("q"+i))}</summary><p>${esc(t("a"+i))}</p></details>`).join("");}
+function vFaq(){return `<h2 class="sec">${esc(t("faqT"))} · ${MK[S.market].flag} ${esc(t("market"+S.market))}</h2>`+[1,2,3,4,5,6,7,8].map(i=>`<details ${i===1?"open":""}><summary>${esc(t("q"+i))}</summary><p>${esc(t("a"+i))}</p></details>`).join("");}
 function trackModal(){const o=S.orders.find(x=>x.code===S.track);if(!o)return "";const steps=["placed","confirmed","shipped","delivered"];const idx=steps.indexOf(o.status);const m=MK[S.market];
  return `<div class="modal" data-a="closeTrack"><div class="box"><div class="sl"><b>${esc(t("trackT"))}</b><button class="btn gh sm" data-a="closeTrack">✕</button></div>
  <div class="oc">${o.code}</div><div class="mut">${esc(o.seller)} · ${money(o.total)}</div>
  <div class="steps">${steps.map((s,i)=>`<div class="step ${i<=idx?"done":""}"><div class="dot"></div><div class="lbl">${esc(t("st"+s[0].toUpperCase()+s.slice(1)))}</div></div>`).join("")}</div>
- <div class="tc"><div>🚚 ${S.lang==="ur"?"ٹریکنگ کورئیر فراہم کرتا ہے۔ سیلر سے کنسائنمنٹ نمبر واٹس ایپ پر لیں۔":"Tracking is provided by the courier. Ask the seller for the consignment number on WhatsApp."}</div>
- <label>${S.lang==="ur"?"کنسائنمنٹ / ٹریکنگ نمبر":"Consignment / tracking number"}</label><input id="trkNo" value="${esc(o.trk||"")}" placeholder="TCS 123456789">
+ <div class="tc"><div>🚚 ${S.lang==="ur"?"ٹریکنگ کورئیر فراہم کرتا ہے۔":"Tracking is provided by the courier."}</div>
+ <label>${S.lang==="ur"?"کنسائنمنٹ نمبر":"Consignment number"}</label><input id="trkNo" value="${esc(o.trk||"")}" placeholder="TCS 123456789">
  <div class="row" style="margin-top:8px"><button class="btn gh sm" data-a="trkSave" data-id="${o.code}">💾 ${S.lang==="ur"?"محفوظ":"Save"}</button>${m.couriers.map(c=>`<button class="btn gh sm" data-a="trkOpen" data-id="${esc(c[0])}">🔎 ${esc(c[0])}</button>`).join("")}</div></div>
  ${o.status!=="delivered"?`<button class="btn grn" style="width:100%;margin-top:12px" data-a="receipt" data-id="${o.code}">✓ ${esc(t("confirmReceipt"))}</button>`:""}
  <button class="btn wa" style="width:100%;margin-top:8px" data-a="waOrder" data-id="${o.code}">💬 ${esc(t("msgSeller"))}</button></div></div>`;}
-const KB=[[/^(hi|hello|salam|assalam|how are you|سلام|ہیلو)/i,{en:"Salam! I am Raahnuma, your NexusShop guide. Ask me about cash on delivery, couriers, committee groups, returns, selling or payments.",ur:"سلام! میں راہنما ہوں، آپ کا NexusShop رہنما۔ کیش آن ڈیلیوری، کورئیر، کمیٹی گروپ، واپسی، فروخت یا ادائیگی کے بارے میں پوچھیں۔"}],
-[/cod|cash|delivery pay|ادائیگی|کیش/i,{en:"COD means Cash on Delivery: the rider brings the box, you open and check it, and pay only if you keep it. No prepayment, no risk.",ur:"COD یعنی کیش آن ڈیلیوری: رائیڈر ڈبہ لاتا ہے، آپ کھول کر چیک کرتے ہیں اور صرف رکھنے کی صورت میں ادائیگی کرتے ہیں۔ پیشگی ادائیگی نہیں۔"}],
-[/deliver|courier|shipping|ڈیلیوری|کورئیر/i,{en:"Delivery is per seller: {d}, free over {f}. Couriers in your market: {c}. Track any order from Orders → Track.",ur:"ڈیلیوری فی فروخت کنندہ ہے: {d}، {f} سے اوپر مفت۔ آپ کی مارکیٹ کے کورئیر: {c}۔ آرڈرز → ٹریک سے کوئی بھی آرڈر ٹریک کریں۔"}],
-[/committee|group|discount|کمیٹی|گروپ/i,{en:"Committee Buy: 3 buyers join a group and everyone saves 15%. Nobody pays until delivery. Start a group from any product page.",ur:"کمیٹی خرید: 3 خریدار گروپ میں شامل ہوں اور سب 15% بچائیں۔ ڈیلیوری تک کوئی ادائیگی نہیں۔ کسی بھی پروڈکٹ صفحے سے گروپ شروع کریں۔"}],
-[/return|refund|exchange|واپسی|رقم/i,{en:"Returns & refunds: check the parcel before paying. If something is wrong, refuse it at the door or message the seller on WhatsApp within 7 days.",ur:"واپسی اور رقم کی واپسی: ادائیگی سے پہلے پارسل چیک کریں۔ کوئی مسئلہ ہو تو دروازے پر واپس کریں یا 7 دن میں فروخت کنندہ کو واٹس ایپ کریں۔"}],
-[/sell|seller|shop|list|فروخت|دکان/i,{en:"Selling is free and unlimited during the founding phase. Create your shop in Seller Center, add listings, and get paid directly on delivery.",ur:"بانی مرحلہ میں فروخت مفت اور لامحدود ہے۔ سیلر سینٹر میں دکان بنائیں، لسٹنگ شامل کریں، اور ڈیلیوری پر براہ راست ادائیگی لیں۔"}],
-[/pay|subscription|plan|premium|ادائیگی|پلان/i,{en:"Nothing to pay during the founding phase. Premium/Gold arrive later, once the bazaar has real demand.",ur:"بانی مرحلہ میں کچھ ادا نہیں کرنا۔ پریمیم/گولڈ بعد میں آئیں گے جب بازار میں حقیقی مانگ ہوگی۔"}],
-[/review|rating|جائزہ|ریٹنگ/i,{en:"Reviews come only from delivered orders, so they cannot be faked. After you confirm delivery, open the product and write your verified review.",ur:"جائزے صرف ڈیلیور شدہ آرڈرز سے آتے ہیں، اس لیے جعلی نہیں ہو سکتے۔ ڈیلیوری کی تصدیق کے بعد پروڈکٹ کھولیں اور تصدیق شدہ جائزہ لکھیں۔"}]];
+const KB=[[/^(hi|hello|salam|assalam|how are you|سلام|ہیلو)/i,{en:"Salam! I am Raahnuma. Ask me about COD, couriers, committee groups, returns, selling or payments.",ur:"سلام! میں راہنما ہوں۔ COD، کورئیر، کمیٹی گروپ، واپسی، فروخت یا ادائیگی کے بارے میں پوچھیں۔"}],
+[/cod|cash|delivery pay|ادائیگی|کیش/i,{en:"COD means Cash on Delivery: the rider brings the box, you open and check it, and pay only if you keep it.",ur:"COD یعنی کیش آن ڈیلیوری: رائیڈر ڈبہ لاتا ہے، آپ کھول کر چیک کرتے ہیں اور صرف رکھنے کی صورت میں ادائیگی کرتے ہیں۔"}],
+[/deliver|courier|shipping|ڈیلیوری|کورئیر/i,{en:"Delivery is per seller: {d}, free over {f}. Couriers in your market: {c}.",ur:"ڈیلیوری فی فروخت کنندہ ہے: {d}، {f} سے اوپر مفت۔ آپ کی مارکیٹ کے کورئیر: {c}۔"}],
+[/committee|group|discount|کمیٹی|گروپ/i,{en:"Committee Buy: 3 buyers join a group and everyone saves 15%.",ur:"کمیٹی خرید: 3 خریدار گروپ میں شامل ہوں اور سب 15% بچائیں۔"}],
+[/return|refund|exchange|واپسی|رقم/i,{en:"Returns: check the parcel before paying. Refuse at the door or message the seller within 7 days.",ur:"واپسی: ادائیگی سے پہلے پارسل چیک کریں۔ 7 دن میں فروخت کنندہ کو واٹس ایپ کریں۔"}],
+[/sell|seller|shop|list|فروخت|دکان/i,{en:"Selling is free and unlimited during the founding phase.",ur:"بانی مرحلہ میں فروخت مفت اور لامحدود ہے۔"}],
+[/pay|subscription|plan|premium|ادائیگی|پلان/i,{en:"Nothing to pay during the founding phase.",ur:"بانی مرحلہ میں کچھ ادا نہیں کرنا۔"}],
+[/review|rating|جائزہ|ریٹنگ/i,{en:"Reviews come only from delivered orders, so they cannot be faked.",ur:"جائزے صرف ڈیلیور شدہ آرڈرز سے آتے ہیں، اس لیے جعلی نہیں ہو سکتے۔"}]];
 function raahAnswer(q){const m=MK[S.market];for(const[re,ans]of KB){if(re.test(q)){let s=ans[S.lang]||ans.en;return s.replace("{d}",money(m.del)).replace("{f}",money(m.free)).replace("{c}",m.couriers.map(c=>c[0]).join(", "));}}
- return S.lang==="ur"?"میں COD، ڈیلیوری، کمیٹی، واپسی، فروخت، ادائیگی اور جائزوں میں مدد کر سکتا ہوں۔ اپنا سوال دوبارہ لکھیں۔":"I can help with COD, delivery, committee, returns, selling, payments and reviews. Please rephrase your question.";}
+ return S.lang==="ur"?"میں COD، ڈیلیوری، کمیٹی، واپسی، فروخت، ادائیگی اور جائزوں میں مدد کر سکتا ہوں۔":"I can help with COD, delivery, committee, returns, selling, payments and reviews.";}
 function raahPanel(){return `<div id="raah"><div class="hd"><b>🤖 ${esc(t("raahT"))}</b><button data-a="raahToggle" style="color:#fff">✕</button></div>
  <div class="msgs" id="raahMsgs">${S.raahMsgs.length?S.raahMsgs.map(m=>`<div class="m ${m.role}">${esc(m.text)}</div>`).join(""):`<div class="m a">${esc(t("raahHello"))}</div>`}${S.raahTyping?`<div class="m a"><span class="typing"><i></i><i></i><i></i></span></div>`:""}</div>
  <div class="chips"><div class="chips">${t("raahChips").split(",").map(c=>`<button class="chip" data-a="raahChip" data-id="${esc(c)}">${esc(c)}</button>`).join("")}</div></div>
@@ -509,7 +660,7 @@ async function raahSend(text){if(!text)return;S.raahMsgs.push({role:"u",text});S
  let answer=null;
  try{const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),8000);
   const r=await fetch("/api/raahnuma",{method:"POST",headers:{"Content-Type":"application/json","x-nx-client":"nx-web-v20"},body:JSON.stringify({prompt:text,lang:S.lang}),signal:ctl.signal});clearTimeout(to);
-  if(r.ok){const j=await r.json();if(j&&j.text)answer=j.text;}else if(r.status===429){toast(S.lang==="ur"?"راہنما: استعمال کی حد، ایک منٹ بعد کوشش کریں":"Raahnuma: rate limit, try again in a minute");}
+  if(r.ok){const j=await r.json();if(j&&j.text)answer=j.text;}
  }catch(e){}
  if(!answer)answer=raahAnswer(text);
  S.raahTyping=false;S.raahMsgs.push({role:"a",text:answer});save();render();}
@@ -521,7 +672,7 @@ document.addEventListener("click",e=>{
  if((a==="menu"||a==="closeTrack")&&!e.target.closest("button")&&e.target!==el)return;
  switch(a){
  case "enter":sessionStorage.setItem("nx_in","1");render();break;
- case "lang":S.lang=S.lang==="en"?"ur":"en";save();render();toast(t("langSet"));break;
+ case "lang":{const langs=["en","ur","sk","de","hi"];const i=langs.indexOf(S.lang);S.lang=langs[(i+1)%langs.length];save();render();toast(t("langSet"));break;}
  case "menu":if(el.classList.contains("modal")){S.menu=false;}else{S.menu=!S.menu;}save();render();break;
  case "marketSet":S.market=id;S.menu=false;save();render();toast(t("marketSet"));break;
  case "payfocus":S.view="seller";S.payFocus=true;save();render();window.scrollTo(0,0);break;
@@ -554,7 +705,7 @@ document.addEventListener("click",e=>{
   S.cart=S.cart.filter(it=>{const pp=prod(it.id);return !(pp&&pp.seller===id);});S.bulk=[];save();
   wa(p.swa,orderMessage(o));render();break;}
  case "waOrder":{const o=S.orders.find(x=>x.code===id);if(o)wa(o.swa,orderMessage(o));break;}
- case "trkSave":{const o=S.orders.find(x=>x.code===id);if(o){o.trk=val("trkNo");save();render();toast(S.lang==="ur"?"ٹریکنگ نمبر محفوظ":"Tracking number saved");}break;}
+ case "trkSave":{const o=S.orders.find(x=>x.code===id);if(o){o.trk=val("trkNo");save();render();toast("Saved");}break;}
  case "trkOpen":{const o=S.orders.find(x=>x.code===S.track);const no=(o&&o.trk)||"";window.open("https://www.google.com/search?q="+encodeURIComponent(id+" tracking "+no),"_blank");break;}
  case "track":S.track=id;render();break;
  case "closeTrack":S.track=null;render();break;
@@ -563,14 +714,14 @@ document.addEventListener("click",e=>{
  case "map":window.open("https://www.google.com/maps/search/"+encodeURIComponent(id+" courier near me"),"_blank");break;
  case "smartmap":{const fallback=()=>window.open("https://www.google.com/maps/search/courier+service+near+me","_blank");
   if(navigator.geolocation)navigator.geolocation.getCurrentPosition(pos=>window.open("https://www.google.com/maps/search/courier+service+near+"+pos.coords.latitude+","+pos.coords.longitude,"_blank"),fallback);else fallback();break;}
- case "gStartPid":case "gStart":{const g={code:"NX"+Math.floor(1000+Math.random()*9000),pid:a==="gStartPid"?id:null,members:1};S.groups.unshift(g);save();render();toast(t("groupCreated"));wa("", "Join my NexusShop committee "+g.code+" — everyone saves 15% (COD).");break;}
+ case "gStartPid":case "gStart":{const g={code:"NX"+Math.floor(1000+Math.random()*9000),pid:a==="gStartPid"?id:null,members:1};S.groups.unshift(g);save();render();toast(t("groupCreated"));wa("","Join my NexusShop committee "+g.code+" — everyone saves 15% (COD).");break;}
  case "gJoin":{const c=val("gCode").toUpperCase();const g=S.groups.find(x=>x.code===c);if(!g){toast(t("codeNo"));break;}if(g.members<3)g.members++;save();render();toast(g.members>=3?t("groupFull"):t("groupJoined"));break;}
  case "gShare":{const g=S.groups.find(x=>x.code===id);wa("","Join my NexusShop committee "+g.code+" — everyone saves 15% (COD).");break;}
  case "pfSave":S.profile={name:val("pfName"),email:val("pfEmail"),wa:val("pfWa"),city:val("pfCity"),pic:S.profile.pic};save();toast(t("profileSaved"));render();break;
  case "logout":S.profile={name:"",email:"",wa:"",city:"",pic:null};save();toast(t("loggedOut"));render();break;
  case "shCreate":{const n=val("shName");if(!n){toast(t("shopName"));break;}S.shop={name:n,city:val("shCity"),wa:val("shWa"),plan:"free"};save();toast(t("shopCreated"));render();break;}
  case "mpSave":{const n=val("mpName"),pr=Number(val("mpPrice"));if(!n||!pr){toast(t("pName"));break;}
-  const data={name:{en:n,ur:n},desc:{en:val("mpDesc"),ur:val("mpDesc")},price:pr,cat:val("mpCat"),stock:Number(val("mpStock"))||10,img:val("mpImg")||IMG.watch,active:true};
+  const data={name:{en:n,ur:n,sk:n,de:n,hi:n},desc:{en:val("mpDesc"),ur:val("mpDesc"),sk:val("mpDesc"),de:val("mpDesc"),hi:val("mpDesc")},price:pr,cat:val("mpCat"),stock:Number(val("mpStock"))||10,img:val("mpImg")||IMG.watch,active:true};
   if(S.editId){const l=S.listings.find(x=>x.id===S.editId);Object.assign(l,data);S.editId=null;toast(t("prodUpdated"));}
   else{S.listings.push(Object.assign({id:"my"+Date.now(),order:S.listings.length},data));toast(t("prodAdded"));}
   save();render();break;}
@@ -602,14 +753,15 @@ document.addEventListener("dragover",e=>{if(e.target.closest("[data-lid]"))e.pre
 document.addEventListener("drop",e=>{const row=e.target.closest("[data-lid]");if(!row||!dragId||row.dataset.lid===dragId)return;e.preventDefault();
  const ls=S.listings.slice().sort((a,b)=>(a.order||0)-(b.order||0));const from=ls.findIndex(x=>x.id===dragId);const to=ls.findIndex(x=>x.id===row.dataset.lid);
  const[m]=ls.splice(from,1);ls.splice(to,0,m);ls.forEach((x,i)=>x.order=i);dragId=null;save();render();});
-let _dp=null;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();_dp=e;});
+let _dp=null;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();_dp=e;window.dispatchEvent(new CustomEvent("nx-pwa-ready"));});
+window.addEventListener("appinstalled",()=>{window.dispatchEvent(new CustomEvent("nx-pwa-installed"));});
 function doInstall(){if(_dp){_dp.prompt();_dp.userChoice.then(()=>{_dp=null;});}else toast(t("installHint"));}
 if("serviceWorker" in navigator && location.protocol==="https:"){navigator.serviceWorker.register("sw.js",{updateViaCache:"none"}).then(r=>{if(r)r.update().catch(()=>{});}).catch(()=>{});}
 document.addEventListener("error",function(e){var t=e.target;if(t&&t.tagName==="IMG"&&!t.dataset.fb){t.dataset.fb="1";t.src="data:image/svg+xml;utf8,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="600" height="400" fill="#efe8d9"/><text x="300" y="210" font-size="60" text-anchor="middle">🛍</text></svg>');}},true);
 render();
 </script>
 <script>
-/* ===== NexusPay UI — founding phase: todo gratis; rail de pagos listo para el futuro ===== */
+/* ===== NexusPay UI — founding phase: todo gratis ===== */
 (function(){
 "use strict";
 var SUPABASE_URL="https://jtbxqwiyktzjdjohcyli.supabase.co";
@@ -764,5 +916,6 @@ setTimeout(injectView,600);
 <script src="nx-nations.js"></script>
 <script src="nx-nations-pay.js"></script>
 <script src="nx-nations-boot.js"></script>
+<script src="nx-install-pwa.js"></script>
 </body>
 </html>
