@@ -462,7 +462,7 @@ function rating(p){const r=revs(p);if(!r.length)return null;return (r.reduce((a,
 function cartCount(){return S.cart.reduce((a,b)=>a+b.q,0);}
 let _undo=null;
 function toast(msg,undoFn){_undo=undoFn||null;const el=document.getElementById("toast");el.innerHTML=esc(msg)+(_undo?` <button data-a="undo">${esc(t("undo"))}</button>`:"");el.classList.add("show");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("show"),3200);}
-function wa(num,msg){const n=String(num||"").replace(/\D/g,"");if(!n){toast("No WhatsApp");return;}window.open("https://wa.me/"+n+"?text="+encodeURIComponent(msg),"_blank");}
+function wa(num,msg){const n=String(num||"").replace(/\D/g,"");if(num&&!n){toast("No WhatsApp");return;}window.open("https://wa.me/"+(n||"")+"?text="+encodeURIComponent(msg),"_blank");}
 function render(){
  document.documentElement.lang=S.lang;document.documentElement.dir=S.lang==="ur"?"rtl":"ltr";document.body.classList.toggle("ur",S.lang==="ur");document.body.classList.toggle("hi",S.lang==="hi");
  let h="";
@@ -714,9 +714,9 @@ document.addEventListener("click",e=>{
  case "map":window.open("https://www.google.com/maps/search/"+encodeURIComponent(id+" courier near me"),"_blank");break;
  case "smartmap":{const fallback=()=>window.open("https://www.google.com/maps/search/courier+service+near+me","_blank");
   if(navigator.geolocation)navigator.geolocation.getCurrentPosition(pos=>window.open("https://www.google.com/maps/search/courier+service+near+"+pos.coords.latitude+","+pos.coords.longitude,"_blank"),fallback);else fallback();break;}
- case "gStartPid":case "gStart":{const g={code:"NX"+Math.floor(1000+Math.random()*9000),pid:a==="gStartPid"?id:null,members:1};S.groups.unshift(g);save();render();toast(t("groupCreated"));wa("","Join my NexusShop committee "+g.code+" — everyone saves 15% (COD).");break;}
+ case "gStartPid":case "gStart":{const g={code:"NX"+Math.floor(1000+Math.random()*9000),pid:a==="gStartPid"?id:null,members:1};S.groups.unshift(g);save();render();toast(t("groupCreated"));wa("","Join my NexusShop committee "+g.code+" — everyone saves 15% (COD). "+location.origin+location.pathname);break;}
  case "gJoin":{const c=val("gCode").toUpperCase();const g=S.groups.find(x=>x.code===c);if(!g){toast(t("codeNo"));break;}if(g.members<3)g.members++;save();render();toast(g.members>=3?t("groupFull"):t("groupJoined"));break;}
- case "gShare":{const g=S.groups.find(x=>x.code===id);wa("","Join my NexusShop committee "+g.code+" — everyone saves 15% (COD).");break;}
+ case "gShare":{const g=S.groups.find(x=>x.code===id);wa("","Join my NexusShop committee "+g.code+" — everyone saves 15% (COD). "+location.origin+location.pathname);break;}
  case "pfSave":S.profile={name:val("pfName"),email:val("pfEmail"),wa:val("pfWa"),city:val("pfCity"),pic:S.profile.pic};save();toast(t("profileSaved"));render();break;
  case "logout":S.profile={name:"",email:"",wa:"",city:"",pic:null};save();toast(t("loggedOut"));render();break;
  case "shCreate":{const n=val("shName");if(!n){toast(t("shopName"));break;}S.shop={name:n,city:val("shCity"),wa:val("shWa"),plan:"free"};save();toast(t("shopCreated"));render();break;}
@@ -811,7 +811,7 @@ var PK={free:["Unlimited products during founding","WhatsApp checkout","COD nati
 function publicPlans(){var list=(plans&&plans.length?plans:PLAN_FALLBACK);
  return `<div data-nxplans style="margin-top:14px;border-top:1px solid var(--ln);padding-top:12px"><b>📦 ${S.lang==="ur"?"پلان":"Plans"}</b> <span class="st delivered">🎁 ${PT("founding")}</span><div class="plans">${list.map(function(p){var on=p.code==="free";var pk=PK[p.code]||PK.pro;
   return `<button class="plansel ${on?"on":""}" data-nx="pickpub" data-id="${esc(p.code)}"><span class="tick">✓</span><div class="pn">${esc(p.name_en||p.code)}</div><div class="pp">${p.code==="free"?PT("free"):PT("comingSoon")}</div><div class="pf">${pk.join(" · ")}</div></button>`;}).join("")}</div><p class="fnt">${PT("foundingNote")}</p></div>`;}
-function stepState(){if(sub)return 4;var ur=orders.some(function(o){return o.status==="under_review";});if(ur)return 3;var aw=orders.some(function(o){return o.status==="awaiting_payment";});if(aw)return 2;if(shop&&session)return 1;return 0;}
+function stepState(){if(sub)return 4;var ur=orders.some(function(o){return o.status==="under_review";});if(ur)return 3;var aw=orders.some(function(o){return o.status==="awaiting_payment"});if(aw)return 2;if(shop&&session)return 1;return 0;}
 function stepper(){var n=stepState();var L=[PT("s1"),PT("s2"),PT("s3"),PT("s4")];
  return `<div class="stepper">${L.map(function(l,i){var k=i+1;var cls=k<n?"done":(k===n?"now":"");return `<div class="stp ${cls}"><div class="dot">${k<n?"✓":k}</div><div class="lb">${l}</div></div>`;}).join("")}</div>`;}
 function payhero(){var pills="";var bar="";
@@ -909,6 +909,7 @@ var _r=window.render;window.render=function(){var out=_r.apply(this,arguments);s
 setTimeout(injectView,600);
 })();
 </script>
+<script src="nx-gate.js"></script>
 <script src="nx-returns-ui.js"></script>
 <script src="nx-raahnuma.js"></script>
 <script src="nx-committee-live.js"></script>
