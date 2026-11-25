@@ -1,0 +1,39 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NexusShop — Generador de íconos PWA</title>
+<style>body{font-family:system-ui,sans-serif;padding:20px;background:#e9e2d3;color:#26221b}
+h2{margin:0 0 6px}p{font-size:13px;color:#6b6355;margin:0 0 16px}
+canvas{border:1px solid #c9bfa6;border-radius:12px;margin:6px;background:#0a2018;vertical-align:top}
+button{display:block;width:100%;margin:8px 0;padding:14px;border:none;border-radius:12px;background:#1d5c3f;color:#fff;font-size:15px;font-weight:700;cursor:pointer}
+input[type=file]{margin:10px 0}</style></head><body>
+<h2>📱 Generador de íconos PWA</h2>
+<p>Seleccioná tu logo PNG. Descargá los 3 archivos y subilos a la raíz del repo.</p>
+<input type="file" id="f" accept="image/*">
+<div>
+<canvas id="c192" width="192" height="192" style="width:96px;height:96px"></canvas>
+<canvas id="c512" width="512" height="512" style="width:96px;height:96px"></canvas>
+<canvas id="cm" width="512" height="512" style="width:96px;height:96px"></canvas>
+</div>
+<button onclick="dl('c192','icon-192.png')">⬇ icon-192.png (cover)</button>
+<button onclick="dl('c512','icon-512.png')">⬇ icon-512.png (cover)</button>
+<button onclick="dl('cm','icon-maskable-512.png')">⬇ icon-maskable-512.png (safe-zone)</button>
+<script>
+var img=null;
+document.getElementById("f").onchange=function(e){
+ var r=new FileReader();
+ r.onload=function(ev){img=new Image();img.onload=draw;img.src=ev.target.result;};
+ r.readAsDataURL(e.target.files[0]);
+};
+function cover(x,s){var w=img.width,h=img.height,sc=Math.max(s/w,s/h),dw=w*sc,dh=h*sc;
+ x.drawImage(img,(s-dw)/2,(s-dh)/2,dw,dh);}
+function mask(x,s){x.fillStyle="#0a2018";x.fillRect(0,0,s,s);
+ var w=img.width,h=img.height,t=s*0.78,sc=Math.min(t/w,t/h),dw=w*sc,dh=h*sc;
+ x.drawImage(img,(s-dw)/2,(s-dh)/2,dw,dh);}
+function draw(){
+ cover(document.getElementById("c192").getContext("2d"),192);
+ cover(document.getElementById("c512").getContext("2d"),512);
+ mask(document.getElementById("cm").getContext("2d"),512);
+}
+function dl(id,name){var c=document.getElementById(id);var a=document.createElement("a");
+ a.download=name;a.href=c.toDataURL("image/png");a.click();}
+</script></body></html>
