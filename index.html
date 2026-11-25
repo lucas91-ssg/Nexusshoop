@@ -26,11 +26,9 @@ body.ur h1,body.ur h2,body.ur h3,body.hi h1,body.hi h2,body.hi h3{line-height:1.
 h1,h2,h3,.serif{font-family:Georgia,'Times New Roman',serif;color:var(--ink)}
 ::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{background:var(--bg2)}
 ::-webkit-scrollbar-thumb{background:var(--grn3);border-radius:8px;border:2px solid var(--bg2)}
-::-webkit-scrollbar-thumb:hover{background:var(--grn)}
 *{scrollbar-width:thin;scrollbar-color:var(--grn3) var(--bg2)}
 button{font:inherit;cursor:pointer;border:none;background:none;color:inherit;transition:transform .12s,filter .15s}
 button:active{transform:scale(.96)}
-button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--grn2);outline-offset:2px}
 input,select,textarea{font:inherit;color:var(--ink);background:var(--sf2);border:1px solid var(--ln);border-radius:12px;padding:10px 12px;width:100%}
 img{display:block;max-width:100%}
 header{position:sticky;top:0;z-index:60;background:rgba(233,226,211,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--ln);padding:10px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -38,45 +36,39 @@ header{position:sticky;top:0;z-index:60;background:rgba(233,226,211,.94);backdro
 .sw{flex:1;min-width:130px;position:relative}.sw input{padding-inline-start:34px;border-radius:999px;background:var(--sf)}
 .sw .sic{position:absolute;inset-inline-start:12px;top:50%;transform:translateY(-50%);color:var(--mut);pointer-events:none}
 .icb{border:1px solid var(--ln);background:var(--sf);border-radius:999px;padding:8px 12px;font-size:14px;position:relative;color:var(--ink2)}
-.icb:hover{filter:brightness(.97)}
 .bdg{position:absolute;top:-6px;inset-inline-end:-6px;background:var(--grn);color:#fff;border-radius:999px;font-size:10px;min-width:18px;height:18px;display:flex;align-items:center;justify-content:center;padding:0 4px}
 .banner{background:var(--goldbg);border-bottom:1px solid var(--ln);color:var(--gold);font-size:12px;text-align:center;padding:7px 12px;font-weight:600}
 main{max-width:1100px;margin:0 auto;padding:16px 14px 110px}
 .view{animation:rise .3s ease}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .hero{background:linear-gradient(135deg,var(--sf),var(--bg2));border:1px solid var(--ln);border-radius:24px;padding:30px 22px;margin-bottom:16px;box-shadow:var(--sh);position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;inset-inline-end:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(76,139,106,.20),transparent 70%)}
-.hero h1{font-size:clamp(26px,4.4vw,38px);line-height:1.2;margin-bottom:10px;max-width:640px}
-.hero p{color:var(--mut);font-size:14px;margin-bottom:16px;max-width:560px}
+.hero h1{font-size:clamp(26px,4.4vw,38px);line-height:1.2;margin-bottom:10px}
+.hero p{color:var(--mut);font-size:14px;margin-bottom:16px}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .btn{background:var(--ink);color:var(--sf);border-radius:12px;padding:12px 18px;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:8px;justify-content:center;box-shadow:0 6px 16px rgba(38,34,27,.12)}
-.btn:hover{filter:brightness(1.12)}.btn.grn{background:var(--grn);color:#fff}.btn.wa{background:var(--wa);color:#fff}
+.btn.grn{background:var(--grn);color:#fff}.btn.wa{background:var(--wa);color:#fff}
 .btn.gh{background:transparent;border:1px solid var(--ink);color:var(--ink);box-shadow:none}.btn.sm{padding:8px 12px;font-size:12px;border-radius:10px}
-.btn.red{background:var(--red);color:#fff}.btn.gold{background:var(--gold);color:#fff}.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn.red{background:var(--red);color:#fff}.btn.gold{background:var(--gold);color:#fff}
 .trust{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:12px;color:var(--mut)}
-.live{position:relative;overflow:hidden;border-radius:18px;margin:14px 0;padding:16px;border:1px solid var(--ln);background:linear-gradient(120deg,var(--goldbg),var(--mint),var(--goldbg));background-size:220% 220%;animation:grad 9s ease infinite}
+.live{position:relative;border-radius:18px;margin:14px 0;padding:16px;border:1px solid var(--ln);background:linear-gradient(120deg,var(--goldbg),var(--mint),var(--goldbg));background-size:220% 220%;animation:grad 9s ease infinite}
 @keyframes grad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .live b{font-size:15px}.live span{display:block;font-size:12px;color:var(--ink2);margin-top:4px}
 h2.sec{font-size:19px;margin:20px 0 10px;display:flex;align-items:center;gap:8px}
 h2.sec::before{content:"";width:18px;height:3px;background:var(--grn);border-radius:2px;flex:none}
-.tb{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
-.tb select{width:auto;padding:8px 12px;border-radius:999px;font-size:13px;background:var(--sf)}
 .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
 .chips.sticky{position:sticky;top:102px;z-index:40;background:linear-gradient(var(--bg) 82%,transparent);padding:8px 0 6px}
 .chip{border:1px solid var(--ln);background:var(--sf);border-radius:999px;padding:8px 14px;font-size:13px;white-space:nowrap;color:var(--ink2)}
-.chip.on{background:var(--grn);color:#fff;border-color:var(--grn);box-shadow:0 4px 12px rgba(29,92,63,.25)}
+.chip.on{background:var(--grn);color:#fff;border-color:var(--grn)}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 @media(min-width:640px){.grid{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:960px){.grid{grid-template-columns:repeat(4,1fr)}}
-.pc{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden;position:relative;display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(38,34,27,.06);transition:transform .18s,box-shadow .18s}
-.pc:hover{transform:translateY(-3px);box-shadow:var(--sh)}
+.pc{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(38,34,27,.06)}
 .pc .img{height:150px;background:var(--bg2);object-fit:cover;width:100%}
 .pc .bd{padding:10px;display:flex;flex-direction:column;gap:6px;flex:1}
-.pc .nm{font-size:14px;font-weight:700;text-align:start;color:var(--ink)}
+.pc .nm{font-size:14px;font-weight:700;color:var(--ink)}
 .pr{color:var(--grn);font-weight:800;font-size:15px}.old{color:var(--fnt);text-decoration:line-through;font-size:12px}
 .off{position:absolute;top:8px;inset-inline-start:8px;background:var(--gold);color:#fff;font-size:11px;border-radius:8px;padding:3px 7px}
-.ht{position:absolute;top:8px;inset-inline-end:8px;background:rgba(246,241,228,.9);backdrop-filter:blur(4px);border:1px solid var(--ln);border-radius:999px;width:32px;height:32px;font-size:15px;color:var(--mut)}
-.ht.on{color:var(--red);animation:pop .25s}@keyframes pop{50%{transform:scale(1.25)}}
-.card{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r);padding:16px;margin-bottom:14px;box-shadow:0 2px 10px rgba(38,34,27,.05)}
+.ht{position:absolute;top:8px;inset-inline-end:8px;background:rgba(246,241,228,.9);border:1px solid var(--ln);border-radius:999px;width:32px;height:32px;font-size:15px;color:var(--mut)}
+.ht.on{color:var(--red)}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r);padding:16px;margin-bottom:14px}
 .mut{color:var(--mut);font-size:13px}.fnt{color:var(--fnt);font-size:12px}
 .det{display:grid;gap:16px}@media(min-width:820px){.det{grid-template-columns:1fr 1fr}}
 .det .img{border-radius:var(--r);height:320px;object-fit:cover;width:100%;background:var(--bg2)}
@@ -88,66 +80,97 @@ h2.sec::before{content:"";width:18px;height:3px;background:var(--grn);border-rad
 .ci{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--ln)}
 .ci:last-of-type{border-bottom:none}.ci img{width:56px;height:56px;border-radius:10px;object-fit:cover;background:var(--bg2)}
 .ci .gw{flex:1;min-width:0}.tot{display:flex;justify-content:space-between;font-weight:700;padding:10px 0}
-nav{position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(233,226,211,.96);backdrop-filter:blur(10px);border-top:1px solid var(--ln);display:flex;padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
-nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;color:var(--mut);position:relative;padding:6px 0;border-radius:14px}
+nav{position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(233,226,211,.96);border-top:1px solid var(--ln);display:flex;padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;color:var(--mut);padding:6px 0;border-radius:14px}
 nav button.on{color:var(--grn);font-weight:700;background:var(--mint)}nav .ico{font-size:18px}
-.chk{width:60px;height:60px;border-radius:50%;background:var(--grn);color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;animation:pop .4s}
+.chk{width:60px;height:60px;border-radius:50%;background:var(--grn);color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
 .ctr{text-align:center}.oc{font-family:Georgia,serif;font-size:20px;letter-spacing:1px;font-weight:700;margin:6px 0}
 .st{display:inline-block;border-radius:999px;padding:3px 10px;font-size:11px;background:var(--bg2);border:1px solid var(--ln);color:var(--mut)}
 .st.placed{color:var(--gold);background:var(--goldbg);border-color:var(--gold)}
 .st.delivered{color:var(--grn);background:var(--mint);border-color:var(--grn3)}
-.st.paused{color:var(--red);background:var(--redbg);border-color:var(--red)}
-.modal{position:fixed;inset:0;background:rgba(38,34,27,.5);z-index:120;display:flex;align-items:center;justify-content:center;padding:16px;animation:fi .2s}
-@keyframes fi{from{opacity:0}to{opacity:1}}
-.modal .box{background:var(--sf);border-radius:20px;padding:20px;max-width:540px;width:100%;max-height:86vh;overflow:auto;box-shadow:var(--sh);animation:rise .25s}
-.steps{display:flex;flex-direction:column;margin:14px 0}
-.step{display:flex;gap:12px;align-items:flex-start}.step .dot{width:14px;height:14px;border-radius:50%;background:var(--ln2);margin-top:4px;flex:none}
-.step.done .dot{background:var(--grn)}
-.step .lbl{font-size:13px;padding-bottom:18px;border-inline-start:2px solid var(--ln);margin-inline-start:-8px;padding-inline-start:18px;color:var(--mut)}
-.step.done .lbl{color:var(--ink)}.step:last-child .lbl{border:none;padding-bottom:0}
+.modal{position:fixed;inset:0;background:rgba(38,34,27,.5);z-index:120;display:flex;align-items:center;justify-content:center;padding:16px}
+.modal .box{background:var(--sf);border-radius:20px;padding:20px;max-width:540px;width:100%;max-height:86vh;overflow:auto}
 label{display:block;font-size:12px;color:var(--mut);margin:10px 0 4px}
-details{border:1px solid var(--ln);border-radius:12px;padding:12px;margin-bottom:10px;background:var(--sf)}
-summary{cursor:pointer;font-weight:700;color:var(--ink2)}details p{margin-top:8px;font-size:13px;color:var(--mut);white-space:pre-line}
 #toast{position:fixed;bottom:86px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--ink);color:var(--sf);padding:10px 16px;border-radius:999px;font-size:13px;z-index:200;opacity:0;pointer-events:none;transition:all .25s;max-width:92vw;display:flex;gap:12px;align-items:center;text-align:center}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
-#toast button{color:var(--goldbg);font-weight:700;text-decoration:underline}
 .empty{padding:44px 10px;text-align:center;color:var(--mut)}
 .menu button{display:flex;width:100%;justify-content:space-between;align-items:center;background:var(--sf2);border:1px solid var(--ln);border-radius:12px;padding:12px;margin-bottom:8px;font-size:14px;color:var(--ink2)}
-.menu button:hover{background:var(--mint)}
 .rail{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px}
-.rail .rc{flex:0 0 150px;background:var(--sf);border:1px solid var(--ln);border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 2px 10px rgba(38,34,27,.06)}
+.rail .rc{flex:0 0 150px;background:var(--sf);border:1px solid var(--ln);border-radius:14px;overflow:hidden;cursor:pointer}
 .rail .rc img{height:100px;width:100%;object-fit:cover;background:var(--bg2)}.rail .rc .b{padding:8px}
-#welcome{position:fixed;inset:0;z-index:300;background:radial-gradient(900px 500px at 70% -10%,rgba(76,139,106,.16),transparent),radial-gradient(700px 420px at 10% 110%,rgba(138,109,31,.12),transparent),var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;overflow:auto}
-#welcome .ring{perspective:900px;width:230px;height:150px;margin-bottom:10px}
-#welcome .spin{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:spin 18s linear infinite}
-@keyframes spin{from{transform:rotateY(0)}to{transform:rotateY(360deg)}}
-#welcome .spin img{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;object-fit:cover;border-radius:16px;border:1px solid var(--ln2);box-shadow:0 10px 26px rgba(38,34,27,.25)}
-#welcome h1{font-size:38px;margin:6px 0}#welcome h1 b{color:var(--grn)}
-#welcome .tag{color:var(--grn2);font-weight:700;font-size:14px;margin-bottom:14px}
-#welcome .pills{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:18px}
-#welcome .pills span{font-size:11px;border:1px solid var(--ln);background:var(--sf);border-radius:999px;padding:6px 10px;color:var(--ink2)}
 #raahFab{position:fixed;inset-inline-end:14px;bottom:86px;z-index:110;width:54px;height:54px;border-radius:50%;background:var(--grn);color:#fff;font-size:24px;box-shadow:var(--sh);display:flex;align-items:center;justify-content:center;cursor:pointer}
-#raah{position:fixed;inset-inline-end:14px;bottom:150px;z-index:115;width:min(360px,calc(100vw - 28px));max-height:60vh;background:var(--sf);border:1px solid var(--ln);border-radius:18px;box-shadow:var(--sh);display:flex;flex-direction:column;overflow:hidden;animation:rise .25s}
+#raah{position:fixed;inset-inline-end:14px;bottom:150px;z-index:115;width:min(360px,calc(100vw - 28px));max-height:60vh;background:var(--sf);border:1px solid var(--ln);border-radius:18px;display:flex;flex-direction:column;overflow:hidden}
 #raah .hd{background:var(--grn);color:#fff;padding:12px 14px;display:flex;justify-content:space-between;align-items:center}
 #raah .msgs{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px;background:var(--sf2)}
 #raah .m{max-width:85%;padding:8px 12px;border-radius:14px;font-size:13px;white-space:pre-line}
 #raah .m.u{align-self:flex-end;background:var(--grn);color:#fff;border-end-end-radius:4px}
 #raah .m.a{align-self:flex-start;background:var(--sf);border:1px solid var(--ln);border-end-start-radius:4px}
-#raah .chips{padding:8px 10px 0;background:var(--sf2)}
 #raah .ft{display:flex;gap:8px;padding:10px;background:var(--sf)}#raah .ft input{border-radius:999px}
-.typing{display:inline-flex;gap:4px}.typing i{width:6px;height:6px;border-radius:50%;background:var(--mut);animation:bl 1s infinite}
-.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}@keyframes bl{50%{opacity:.25}}
-.rev{border-top:1px solid var(--ln);padding:10px 0}.stars{color:var(--gold)}
 .lrow{display:flex;gap:10px;align-items:center;padding:10px;border:1px solid var(--ln);border-radius:12px;margin-bottom:8px;background:var(--sf2);flex-wrap:wrap}
 .lrow img{width:48px;height:48px;border-radius:10px;object-fit:cover;background:var(--bg2)}
 .lrow .gw{flex:1;min-width:0}.lrow>.row{width:100%;justify-content:flex-end}
-.bankcard{background:linear-gradient(135deg,var(--grn),var(--grn2));color:#fff;border-radius:16px;padding:16px;margin:10px 0;box-shadow:0 8px 20px rgba(29,92,63,.25)}
-.bankcard .n{font-family:Georgia,serif;font-size:18px;letter-spacing:2px}
-table.nxt{width:100%;border-collapse:collapse;font-size:12px}
-table.nxt td,table.nxt th{padding:6px 4px;border-bottom:1px solid var(--ln);text-align:start;vertical-align:top}
-@keyframes flash{0%{box-shadow:0 0 0 4px var(--grn)}100%{box-shadow:0 0 0 0 transparent}}
-.flash{animation:flash 1s ease 2}
-@media(max-width:480px){.hero{padding:22px 16px}#welcome h1{font-size:30px}}
+/* ===== Gate (bienvenida) ===== */
+#nxGate{position:fixed;inset:0;z-index:500;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(900px 500px at 15% -10%,rgba(76,139,106,.35),transparent 60%),radial-gradient(800px 460px at 110% 20%,rgba(214,51,108,.28),transparent 60%),radial-gradient(700px 500px at 50% 120%,rgba(245,159,0,.25),transparent 60%),linear-gradient(160deg,#101c16,#1d5c3f 55%,#0d1a13)}
+#nxGate .orb{position:absolute;border-radius:50%;filter:blur(46px);opacity:.5;animation:ngFloat 9s ease-in-out infinite}
+#nxGate .o1{width:260px;height:260px;background:#4c8b6a;top:-60px;left:-70px}
+#nxGate .o2{width:200px;height:200px;background:#f59f00;bottom:-40px;right:-50px;animation-delay:1.6s}
+#nxGate .o3{width:150px;height:150px;background:#d6336c;top:38%;right:8%;animation-delay:3.1s;opacity:.35}
+@keyframes ngFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(26px,-30px) scale(1.12)}}
+#nxGate .chipf{position:absolute;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);color:#eaf5ec;border-radius:999px;padding:7px 14px;font-size:11px;font-weight:700;animation:ngDrift 7s ease-in-out infinite}
+#nxGate .c1{top:12%;left:10%}#nxGate .c2{top:20%;right:12%;animation-delay:1.2s}#nxGate .c3{bottom:16%;left:14%;animation-delay:2.2s}#nxGate .c4{bottom:10%;right:10%;animation-delay:3.4s}
+@keyframes ngDrift{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+#nxGate .card{position:relative;width:min(430px,100%);background:rgba(251,248,239,.92);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.6);border-radius:28px;padding:26px 22px;box-shadow:0 30px 80px rgba(0,0,0,.45);text-align:center;animation:ngIn .55s cubic-bezier(.2,.9,.25,1.1)}
+@keyframes ngIn{from{opacity:0;transform:translateY(34px) scale(.94)}to{opacity:1;transform:none}}
+#nxGate.out .card{animation:ngOut .45s ease forwards}#nxGate.out .orb,#nxGate.out .chipf{animation:ngFade .45s ease forwards}
+@keyframes ngOut{to{opacity:0;transform:translateY(-24px) scale(.9)}}@keyframes ngFade{to{opacity:0}}
+#nxGate .ring{width:150px;height:100px;margin:0 auto 8px;perspective:700px}
+#nxGate .spin{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:ngSpin 14s linear infinite}
+@keyframes ngSpin{from{transform:rotateY(0)}to{transform:rotateY(360deg)}}
+#nxGate .spin img{position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:12px;object-fit:cover;border:1px solid rgba(255,255,255,.7)}
+#nxGate h1{font-family:Georgia,serif;font-size:27px;color:#26221b;margin:2px 0 4px}#nxGate h1 b{background:linear-gradient(120deg,#1d5c3f,#4c8b6a,#8a6d1f);-webkit-background-clip:text;background-clip:text;color:transparent}
+#nxGate .sub{font-size:12.5px;color:#6b6355;margin-bottom:14px}
+#nxGate .glangs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+#nxGate .glangs button{border:1px solid #d9d0bb;background:#fbf8ef;border-radius:999px;padding:5px 11px;font-size:11px;font-weight:700;color:#3a3428}
+#nxGate .glangs button.on{background:#1d5c3f;color:#fff;border-color:#1d5c3f}
+#nxGate .gbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1px solid #d9d0bb;border-radius:14px;padding:13px;font-weight:700;font-size:14px;color:#333;cursor:pointer}
+#nxGate .div{display:flex;align-items:center;gap:10px;color:#8a8172;font-size:11px;margin:14px 0}#nxGate .div:before,#nxGate .div:after{content:'';flex:1;height:1px;background:#d9d0bb}
+#nxGate input{width:100%;background:#fbf8ef;border:1px solid #d9d0bb;border-radius:12px;padding:11px 13px;font-size:13.5px;color:#26221b;margin-bottom:9px;outline:none}
+#nxGate .row2{display:flex;gap:8px}#nxGate .row2 button{flex:1;border-radius:12px;padding:12px;font-weight:700;font-size:13px;cursor:pointer}
+#nxGate .li{background:#1d5c3f;color:#fff;border:none}#nxGate .su{background:transparent;color:#1d5c3f;border:1.5px solid #1d5c3f}
+#nxGate .err{color:#a33a2a;font-size:11.5px;margin-top:8px;min-height:14px}
+#nxGate .demo{margin-top:10px;font-size:11px;color:#6b6355;text-decoration:underline;cursor:pointer}
+/* ===== Selector de idioma premium ===== */
+#nxLangScrim{position:fixed;inset:0;z-index:520;background:rgba(15,12,8,.55);backdrop-filter:blur(10px);display:none;align-items:flex-end;justify-content:center}
+#nxLangScrim.on{display:flex}
+@media(min-width:640px){#nxLangScrim.on{align-items:center}}
+#nxLangSheet{width:100%;max-width:430px;background:linear-gradient(180deg,rgba(251,248,239,.97),rgba(246,241,228,.97));backdrop-filter:blur(20px);border-radius:28px 28px 0 0;padding:18px 18px calc(20px + env(safe-area-inset-bottom));box-shadow:0 -20px 60px rgba(0,0,0,.4);transform:translateY(60px);opacity:0;transition:transform .38s cubic-bezier(.2,.9,.25,1.05),opacity .3s;position:relative;overflow:hidden}
+@media(min-width:640px){#nxLangSheet{border-radius:28px}}
+#nxLangScrim.on #nxLangSheet{transform:none;opacity:1}
+#nxLangSheet:before{content:'';position:absolute;top:0;left:10%;right:10%;height:4px;border-radius:0 0 6px 6px;background:linear-gradient(90deg,var(--grn),var(--gold),var(--grn3))}
+#nxLangSheet .orb{position:absolute;border-radius:50%;filter:blur(34px);opacity:.25;pointer-events:none}
+#nxLangSheet .oa{width:150px;height:150px;background:var(--grn3);top:-50px;right:-40px;animation:nlF 7s ease-in-out infinite}
+#nxLangSheet .ob{width:110px;height:110px;background:var(--gold);bottom:-30px;left:-30px;animation:nlF 9s ease-in-out infinite reverse}
+@keyframes nlF{0%,100%{transform:translate(0,0)}50%{transform:translate(-14px,12px)}}
+#nxLangSheet .hd{display:flex;align-items:center;gap:10px;margin-bottom:4px;position:relative}
+#nxLangSheet .hd .gl{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--grn),var(--grn3));color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px}
+#nxLangSheet .hd b{font-family:Georgia,serif;font-size:17px;color:var(--ink);display:block}
+#nxLangSheet .hd span{font-size:11.5px;color:var(--mut)}
+#nxLangSheet .x{margin-inline-start:auto;width:32px;height:32px;border-radius:50%;background:var(--sf2);border:1px solid var(--ln);color:var(--mut);font-size:14px;cursor:pointer}
+#nxLangList{margin-top:12px;max-height:52vh;overflow-y:auto;padding-right:4px;position:relative}
+.nlRow{display:flex;align-items:center;gap:12px;width:100%;background:var(--sf2);border:1.5px solid var(--ln);border-radius:16px;padding:12px 14px;margin-bottom:8px;cursor:pointer;transition:all .16s}
+.nlRow:hover{transform:translateX(3px);border-color:var(--grn3)}
+.nlRow.on{background:var(--mint);border-color:var(--grn)}
+.nlRow .fl{width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid var(--ln);display:flex;align-items:center;justify-content:center;font-size:20px;flex:none}
+.nlRow .nm{flex:1;text-align:start}.nlRow .nm b{display:block;font-size:15px;color:var(--ink)}.nlRow .nm span{font-size:11px;color:var(--mut);display:block}
+.nlRow .ck{width:24px;height:24px;border-radius:50%;border:2px solid var(--ln2);flex:none}
+.nlRow.on .ck{border-color:var(--grn);background:var(--grn);color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center}
+#nxLangSheet .ft{margin-top:6px;text-align:center;font-size:11px;color:var(--fnt);position:relative}
+/* ===== Pill Install ===== */
+#nxInstallPill{position:fixed;left:50%;bottom:calc(74px + env(safe-area-inset-bottom));transform:translate(-50%,140%);z-index:106;display:none;align-items:center;gap:10px;padding:10px 12px 10px 16px;border-radius:999px;background:rgba(29,92,63,.9);color:#fff;box-shadow:0 10px 30px rgba(29,92,63,.35);cursor:pointer;font-size:13px;font-weight:700;white-space:nowrap;opacity:0;transition:transform .5s cubic-bezier(.2,.9,.25,1.1),opacity .4s}
+#nxInstallPill.on{display:flex;transform:translate(-50%,0);opacity:1}
+#nxInstallPill .i{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#dcead9,#8fd6a8);color:#1d5c3f;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex:none}
+#nxInstallPill .x{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:11px}
+#nxInstallPill.out{transform:translate(-50%,140%);opacity:0}
 </style>
 </head>
 <body>
@@ -157,49 +180,40 @@ table.nxt td,table.nxt th{padding:6px 4px;border-bottom:1px solid var(--ln);text
 "use strict";
 const I18N={
 en:{preview:"Demo mode: every product, price and shop shown is an EXAMPLE for testing.",search:"Search products…",
-demoLine:"Example catalog — test freely, nothing is charged.",sample:"Example product",payQuick:"Payments & subscription",
+demoLine:"Example catalog — test freely, nothing is charged.",sample:"Example product",
 heroT:"Buy from trusted shops. Pay when it arrives.",heroS:"Every order has a number, a seller you can call, and cash on delivery.",
 shopNow:"Shop now",startSell:"Start selling free",tCOD:"Cash on delivery",tTrack:"Order tracking",tRev:"Verified reviews",
-liveT:"Bazaar live · {cities}",liveS:"Thousands of deals moving right now — join the committee and save 15%",
+liveT:"Bazaar live · {cities}",liveS:"Thousands of deals moving right now — request bulk quotes directly from sellers.",
 categories:"Categories",featured:"Featured shops",all:"All",add:"Add to cart",buy:"Buy now",soldBy:"Sold by",ask:"Ask",
 description:"Description",reviews:"Reviews",revNote:"Reviews come only from delivered orders.",inStock:"in stock",qty:"Quantity",
 codCheck:"Cash on delivery — check the parcel before you pay",delInfo:"Delivery: {d} · Free delivery over {f}",returns:"Returns & refunds",
 logT:"Doorstep delivery — your region",map:"Map",smartMap:"Smart map: nearest courier to me",
-comT:"Committee Buy · together cheaper",comS:"Join 3 buyers and everyone pays the committee price. Nobody pays until delivery (COD).",
-startGroup:"Start a group",forYou:"For you — picked from your taste",sort:"Sort",sortFeat:"Featured",sortPA:"Price: low to high",sortPD:"Price: high to low",sortR:"Top rated",sortN:"Newest",
+bulkT:"Bulk & wholesale",bulkS:"Request a wholesale quote directly from the seller on WhatsApp. NexusShop never holds money or stock.",bulkQty:"Quantity",bulkBtn:"Request bulk quote",bulkSent:"Quote request sent to the seller on WhatsApp",bulkNote:"You negotiate and pay the seller directly on delivery. NexusShop is only the showcase.",myBulk:"My bulk requests",bulkNone:"No bulk requests yet.",
+startGroup:"Request quote",forYou:"For you — picked from your taste",sort:"Sort",sortFeat:"Featured",sortPA:"Price: low to high",sortPD:"Price: high to low",sortR:"Top rated",sortN:"Newest",
 cart:"Cart",cartEmpty:"Your cart is empty",cartEmptyS:"Add products from trusted shops and pay when they arrive.",continue:"Continue shopping",
 sellers:"{n} seller(s) — one order per seller",subtotal:"Subtotal",delNote:"Delivery is added per seller at checkout.",checkout:"Checkout",
 orderFrom:"Order from {s} (COD)",clearCart:"Clear cart",removeSel:"Remove selected",selectAll:"Select all",
 placed:"Order placed",placedS:"Save your order number. The seller will confirm on WhatsApp or by call.",msgSeller:"Message seller on WhatsApp",
 track:"Track an order",startShop:"Start shopping",orders:"Orders",ordersEmpty:"No orders yet",saved:"Saved",savedEmpty:"Nothing saved yet. Tap the heart on any product.",
 account:"Account",profile:"Profile",name:"Full name",email:"Email",wa:"WhatsApp number",city:"City",save:"Save",photo:"Photo",logout:"Log out",
-sellerCenter:"Seller Center",committee:"Committee Buy",market:"Market & currency",settings:"Settings",faq:"Seller FAQ",support:"Support",
-about:"About us",privacy:"Privacy policy",terms:"Terms & legal",admin:"Admin mode",payQueue:"Payment verification queue",reset:"Reset demo data",
-freePlan:"Free · unlimited during founding",premiumPlan:"Premium · coming soon",createShop:"Create your shop",shopName:"Shop name",
+sellerCenter:"Seller Center",bulkCenter:"Bulk & Wholesale",market:"Market & currency",settings:"Settings",faq:"Seller FAQ",support:"Support",
+about:"About us",privacy:"Privacy policy",terms:"Terms & legal",admin:"Admin mode",reset:"Reset demo data",
+freePlan:"Free · unlimited during founding",createShop:"Create your shop",shopName:"Shop name",
 addProduct:"Add product",editProduct:"Edit product",pName:"Product name",pPrice:"Price",pCat:"Category",pStock:"Stock",pImg:"Image URL (optional)",pDesc:"Description",
-edit:"Edit",del:"Delete",pause:"Pause",activate:"Activate",myProducts:"My products",plan:"Plan",upgrade:"Upgrade to Premium",
-payTitle:"NexusPay — pay subscription, verified in 24h",paySteps:"Declare → Transfer → Verify → Active",bank:"Bank / wallet",amount:"Amount",sender:"Sender name",
-last4:"Last 4 digits of phone",tid:"Transaction ID (TID)",submitPay:"Send for verification",declared:"Declared ≠ paid. Activation only after verification.",
-pending:"Pending",verified:"Verified",rejected:"Rejected",approve:"Approve",reject:"Reject",receipts:"Receipts",
-railBank:"Bank",railTitle:"Account title (exactly as registered)",railAcc:"Account number",railIban:"IBAN",
-railInstr:"Transfer the exact amount to this account and write your payment reference in the transfer description.",
-railWarn:"A TID or a screenshot is not proof of payment. Activation only after bank verification.",
+edit:"Edit",del:"Delete",pause:"Pause",activate:"Activate",myProducts:"My products",
 copy:"Copy",copied:"Copied to clipboard",mySub:"My subscription & payments",
-commT:"Committee Buy",commS:"3 buyers join a group and everyone saves 15%. Nobody pays until delivery.",joinGroup:"Join with a code",code:"Group code",
-members:"members",locked:"Locked −15%",open:"Open",share:"Share on WhatsApp",noGroups:"No groups yet. Open any product and tap Start a group.",
 back:"Back",home:"Home",navSaved:"Saved",navCart:"Cart",navOrders:"Orders",navAccount:"Account",
 added:"Added to cart",removed:"Removed",savedT:"Saved",unsavedT:"Removed from saved",profileSaved:"Profile saved",loggedOut:"Logged out",
-shopCreated:"Shop created",prodAdded:"Product added",prodUpdated:"Product updated",prodDeleted:"Product deleted",limit:"Free plan allows 5 products. Upgrade to add more.",
-paySent:"Payment sent for verification",payOk:"Payment verified — plan upgraded",payNo:"Payment rejected",groupCreated:"Group created — share the code",
-groupJoined:"Joined the group",groupFull:"Group complete — 15% locked",codeNo:"Code not found",resetDone:"Demo data reset",langSet:"Language: English",marketSet:"Market updated",
+shopCreated:"Shop created",prodAdded:"Product added",prodUpdated:"Product updated",prodDeleted:"Product deleted",
+resetDone:"Demo data reset",langSet:"Language: English",marketSet:"Market updated",
 noResults:"No products match your search",stPlaced:"Placed",stConfirmed:"Confirmed",stShipped:"Shipped",stDelivered:"Delivered",trackT:"Order tracking",
-courier:"Courier",est:"Estimated delivery",confirmReceipt:"I received it — confirm delivery",receiptDone:"Delivery confirmed — you can now review",
-waHello:"Hello! My NexusShop order (COD):",waTotal:"Total",install:"Install app",installHint:"Tap menu → Add to Home screen",installPill:"Install NexusShop",
+confirmReceipt:"I received it — confirm delivery",receiptDone:"Delivery confirmed — you can now review",
+waHello:"Hello! My NexusShop order (COD):",waTotal:"Total",install:"Install app",installHint:"Tap menu → Add to Home screen",
 faqT:"Seller FAQ",q1:"What does COD mean?",a1:"Cash on Delivery: the rider brings the box, you open and check it, and pay only if you keep it.",
 q2:"Is listing really free?",a2:"Yes — during the founding phase everything is free and unlimited.",
 q3:"How do I get paid?",a3:"Directly: buyers order on WhatsApp and pay you on delivery. NexusShop never holds your money.",
 q4:"Who delivers?",a4:"You choose a local courier or your own rider. Product pages show your market couriers.",
-q5:"What is Committee Buy?",a5:"3 buyers join a group, everyone gets −15%, nobody pays until delivery.",
+q5:"What is Bulk & Wholesale?",a5:"Buyers request a wholesale quote directly from the seller on WhatsApp. You negotiate and pay on delivery — NexusShop is only the showcase.",
 q6:"How do subscriptions work?",a6:"Nothing to pay during the founding phase. Premium/Gold arrive later.",
 q7:"Can I sell in another country?",a7:"Yes — switch market. Currency, couriers and payments follow.",
 q8:"How do reviews work?",a8:"Only from delivered orders, so ratings cannot be faked.",
@@ -209,270 +223,242 @@ termsT:"Sellers are independent businesses responsible for their products and de
 supportT:"We reply within 24 hours: neuralfocusai@gmail.com",lang:"Language",themeNote:"Brand theme follows the approved design.",
 confirmDel:"Delete this product?",confirmReset:"Reset all demo data on this device?",reviewsN:"{n} reviews",writeRev:"Write a verified review",
 revName:"Your name",revStars:"Stars",revText:"Your review",revSubmit:"Publish review",revThanks:"Review published — thank you",
-raahT:"Raahnuma · AI assistant",raahPh:"Ask about COD, delivery, committee…",raahSend:"Send",raahHello:"Salam! I am Raahnuma. Ask me about cash on delivery, couriers, committee groups, returns or selling.",
-raahChips:"COD,Delivery,Committee,Returns,Sell",undo:"Undo",enter:"Enter NexusShop",welcomeTag:"Your marketplace, your language",
-wPills:"COD nationwide,WhatsApp checkout,Committee −15%,Multi-language",paused:"Paused",active:"Active",stock:"Stock",reorder:"Reorder",bulk:"Bulk",
-noListings:"No listings yet. Add your first product.",planGate:"Founding phase: unlimited products, free.",receiptFor:"Receipt · {plan}",
+raahT:"Raahnuma · AI assistant",raahPh:"Ask about COD, delivery, bulk…",raahSend:"Send",raahHello:"Salam! I am Raahnuma. Ask me about cash on delivery, couriers, bulk orders, returns or selling.",
+raahChips:"COD,Delivery,Bulk,Returns,Sell",undo:"Undo",enter:"Enter NexusShop",welcomeTag:"Your marketplace, your language",
+wPills:"COD nationwide,WhatsApp checkout,Bulk quotes,Multi-language",paused:"Paused",active:"Active",stock:"Stock",
+noListings:"No listings yet. Add your first product.",planGate:"Founding phase: unlimited products, free.",
 marketPK:"Pakistan",marketNG:"Nigeria",marketSK:"Slovakia",marketDE:"Germany",marketIN:"India",marketGL:"Global",
 searchEmpty:"Try another word or category.",revEligible:"You bought this item — share your experience.",
-cartBulkHint:"Select items to remove them together.",savedView:"Saved items",ordersView:"Your orders",receiptsView:"Payment receipts"},
-ur:{preview:"ڈیمو موڈ: دکھائی گئی ہر پروڈکٹ، قیمت اور دکان محض نمونہ ہے۔",search:"مصنوعات تلاش کریں…",
-demoLine:"نمونہ کیٹلاگ — آزماؤ، کچھ وصول نہیں کیا جاتا۔",sample:"نمونہ پروڈکٹ",payQuick:"ادائیگیاں اور سبسکرپشن",
+gateT:"Welcome to NexusShop",gateS:"Your COD bazaar, in your language, on every screen.",gateG:"Continue with Google",gateOr:"or",gateDemo:"Enter in demo mode (no account)",gateHi:"Welcome back"},
+ur:{preview:"ڈیمو موڈ: دکھائی گئی ہر پروڈکٹ محض نمونہ ہے۔",search:"مصنوعات تلاش کریں…",
+demoLine:"نمونہ کیٹلاگ۔",sample:"نمونہ پروڈکٹ",
 heroT:"قابلِ اعتماد دکانوں سے خریدیں۔ پہنچنے پر ادائیگی کریں۔",heroS:"ہر آرڈر کا نمبر، فروخت کنندہ کا رابطہ، اور کیش آن ڈیلیوری۔",
 shopNow:"خریداری کریں",startSell:"مفت بیچنا شروع کریں",tCOD:"کیش آن ڈیلیوری",tTrack:"آرڈر ٹریکنگ",tRev:"تصدیق شدہ جائزے",
-liveT:"بازار لائیو · {cities}",liveS:"ہزاروں ڈیلز ابھی چل رہی ہیں — کمیٹی میں شامل ہوں اور 15% بچائیں",
+liveT:"بازار لائیو · {cities}",liveS:"ہزاروں ڈیلز — فروخت کنندگان سے تھوک قیمت مانگیں۔",
 categories:"زمرے",featured:"نمایاں دکانیں",all:"سب",add:"کارٹ میں شامل کریں",buy:"ابھی خریدیں",soldBy:"فروخت کنندہ",ask:"پوچھیں",
 description:"تفصیل",reviews:"جائزے",revNote:"جائزے صرف ڈیلیور شدہ آرڈرز سے آتے ہیں۔",inStock:"اسٹاک میں",qty:"تعداد",
 codCheck:"کیش آن ڈیلیوری — ادائیگی سے پہلے پارسل چیک کریں",delInfo:"ڈیلیوری: {d} · {f} سے اوپر مفت ڈیلیوری",returns:"واپسی اور رقم کی واپسی",
-logT:"دہلیز پر ڈیلیوری — آپ کا علاقہ",map:"نقشہ",smartMap:"سمارٹ نقشہ: میرے قریب ترین کورئیر",
-comT:"کمیٹی خرید · ساتھ مل کر سستا",comS:"3 خریدار شامل ہوں اور سب کمیٹی قیمت ادا کریں۔ ڈیلیوری تک کوئی ادائیگی نہیں (COD)۔",
-startGroup:"گروپ شروع کریں",forYou:"آپ کے لیے — آپ کے ذوق سے چنا گیا",sort:"ترتیب",sortFeat:"نمایاں",sortPA:"قیمت: کم سے زیادہ",sortPD:"قیمت: زیادہ سے کم",sortR:"بہترین درجہ",sortN:"تازہ ترین",
-cart:"کارٹ",cartEmpty:"آپ کا کارٹ خالی ہے",cartEmptyS:"قابلِ اعتماد دکانوں سے مصنوعات شامل کریں اور پہنچنے پر ادائیگی کریں۔",continue:"خریداری جاری رکھیں",
-sellers:"{n} فروخت کنندہ — فی فروخت کنندہ ایک آرڈر",subtotal:"ذیلی میزان",delNote:"ڈیلیوری چیک آؤٹ پر فی فروخت کنندہ شامل ہوتی ہے۔",checkout:"چیک آؤٹ",
+logT:"دہلیز پر ڈیلیوری",map:"نقشہ",smartMap:"سمارٹ نقشہ",
+bulkT:"تھوک اور ہول سیل",bulkS:"فروخت کنندہ سے واٹس ایپ پر براہ راست تھوک قیمت مانگیں۔ NexusShop کبھی پیسہ یا اسٹاک نہیں رکھتا۔",bulkQty:"مقدار",bulkBtn:"تھوک قیمت مانگیں",bulkSent:"درخواست فروخت کنندہ کو واٹس ایپ پر بھیج دی گئی",bulkNote:"سودا اور ادائیگی براہ راست فروخت کنندہ سے۔ NexusShop صرف ویترین ہے۔",myBulk:"میری تھوک درخواستیں",bulkNone:"ابھی کوئی درخواست نہیں۔",
+startGroup:"قیمت مانگیں",forYou:"آپ کے لیے",sort:"ترتیب",sortFeat:"نمایاں",sortPA:"قیمت: کم سے زیادہ",sortPD:"قیمت: زیادہ سے کم",sortR:"بہترین درجہ",sortN:"تازہ ترین",
+cart:"کارٹ",cartEmpty:"آپ کا کارٹ خالی ہے",cartEmptyS:"قابلِ اعتماد دکانوں سے مصنوعات شامل کریں۔",continue:"خریداری جاری رکھیں",
+sellers:"{n} فروخت کنندہ",subtotal:"ذیلی میزان",delNote:"ڈیلیوری چیک آؤٹ پر شامل ہوتی ہے۔",checkout:"چیک آؤٹ",
 orderFrom:"{s} سے آرڈر کریں (COD)",clearCart:"کارٹ خالی کریں",removeSel:"منتخب ہٹائیں",selectAll:"سب منتخب کریں",
-placed:"آرڈر ہو گیا",placedS:"آرڈر نمبر محفوظ کریں۔ فروخت کنندہ واٹس ایپ یا کال پر تصدیق کرے گا۔",msgSeller:"فروخت کنندہ کو واٹس ایپ کریں",
+placed:"آرڈر ہو گیا",placedS:"آرڈر نمبر محفوظ کریں۔",msgSeller:"فروخت کنندہ کو واٹس ایپ کریں",
 track:"آرڈر ٹریک کریں",startShop:"خریداری شروع کریں",orders:"آرڈرز",ordersEmpty:"ابھی کوئی آرڈر نہیں",saved:"محفوظ",savedEmpty:"ابھی کچھ محفوظ نہیں۔",
 account:"اکاؤنٹ",profile:"پروفائل",name:"پورا نام",email:"ای میل",wa:"واٹس ایپ نمبر",city:"شہر",save:"محفوظ کریں",photo:"تصویر",logout:"لاگ آؤٹ",
-sellerCenter:"سیلر سینٹر",committee:"کمیٹی خرید",market:"مارکیٹ اور کرنسی",settings:"ترتیبات",faq:"سیلر FAQ",support:"مدد",
-about:"ہمارے بارے میں",privacy:"رازداری پالیسی",terms:"شرائط و ضوابط",admin:"ایڈمن موڈ",payQueue:"ادائیگی تصدیق قطار",reset:"ڈیمو ڈیٹا ری سیٹ کریں",
-freePlan:"مفت · بانی مرحلہ میں لامحدود",premiumPlan:"پریمیم · جلد آ رہا ہے",createShop:"اپنی دکان بنائیں",shopName:"دکان کا نام",
+sellerCenter:"سیلر سینٹر",bulkCenter:"تھوک اور ہول سیل",market:"مارکیٹ اور کرنسی",settings:"ترتیبات",faq:"سیلر FAQ",support:"مدد",
+about:"ہمارے بارے میں",privacy:"رازداری پالیسی",terms:"شرائط و ضوابط",admin:"ایڈمن موڈ",reset:"ڈیمو ڈیٹا ری سیٹ کریں",
+freePlan:"مفت · بانی مرحلہ میں لامحدود",createShop:"اپنی دکان بنائیں",shopName:"دکان کا نام",
 addProduct:"پروڈکٹ شامل کریں",editProduct:"پروڈکٹ میں ترمیم",pName:"پروڈکٹ کا نام",pPrice:"قیمت",pCat:"زمرہ",pStock:"اسٹاک",pImg:"تصویر URL",pDesc:"تفصیل",
-edit:"ترمیم",del:"حذف کریں",pause:"روکیں",activate:"فعال کریں",myProducts:"میری مصنوعات",plan:"پلان",upgrade:"پریمیم پر اپ گریڈ کریں",
-payTitle:"NexusPay — سبسکرپشن ادا کریں، 24 گھنٹے میں تصدیق",paySteps:"اعلان → ٹرانسفر → تصدیق → فعال",bank:"بینک / والیٹ",amount:"رقم",sender:"بھیجنے والے کا نام",
-last4:"فون کے آخری 4 ہندسے",tid:"ٹرانزیکشن ID",submitPay:"تصدیق کے لیے بھیجیں",declared:"اعلان ≠ ادائیگی۔",
-pending:"زیر التوا",verified:"تصدیق شدہ",rejected:"مسترد",approve:"منظور کریں",reject:"مسترد کریں",receipts:"رسیدیں",
-railBank:"بینک",railTitle:"اکاؤنٹ ٹائٹل",railAcc:"اکاؤنٹ نمبر",railIban:"IBAN",railInstr:"عین رقم اس اکاؤنٹ میں منتقل کریں۔",railWarn:"TID یا اسکرین شاٹ ثبوت نہیں۔",
-copy:"کاپی",copied:"کاپی ہو گیا",mySub:"میری سبسکرپشن اور ادائیگیاں",
-commT:"کمیٹی خرید",commS:"3 خریدار گروپ میں شامل ہوں اور سب 15% بچائیں۔",joinGroup:"کوڈ سے شامل ہوں",code:"گروپ کوڈ",
-members:"اراکین",locked:"لاک −15%",open:"کھلا",share:"واٹس ایپ پر شیئر کریں",noGroups:"ابھی کوئی گروپ نہیں۔",
+edit:"ترمیم",del:"حذف کریں",pause:"روکیں",activate:"فعال کریں",myProducts:"میری مصنوعات",
+copy:"کاپی",copied:"کاپی ہو گیا",mySub:"میری سبسکرپشن",
 back:"واپس",home:"ہوم",navSaved:"محفوظ",navCart:"کارٹ",navOrders:"آرڈرز",navAccount:"اکاؤنٹ",
 added:"کارٹ میں شامل ہو گیا",removed:"ہٹا دیا گیا",savedT:"محفوظ ہو گیا",unsavedT:"محفوظ سے ہٹ گیا",profileSaved:"پروفائل محفوظ ہو گیا",loggedOut:"لاگ آؤٹ ہو گیا",
-shopCreated:"دکان بن گئی",prodAdded:"پروڈکٹ شامل ہو گئی",prodUpdated:"پروڈکٹ اپ ڈیٹ ہو گئی",prodDeleted:"پروڈکٹ حذف ہو گئی",limit:"مفت پلان میں 5 مصنوعات کی اجازت ہے۔",
-paySent:"ادائیگی تصدیق کے لیے بھیج دی گئی",payOk:"ادائیگی تصدیق شدہ",payNo:"ادائیگی مسترد",groupCreated:"گروپ بن گیا",
-groupJoined:"گروپ میں شامل ہو گئے",groupFull:"گروپ مکمل",codeNo:"کوڈ نہیں ملا",resetDone:"ڈیمو ڈیٹا ری سیٹ ہو گیا",langSet:"زبان: اردو",marketSet:"مارکیٹ اپ ڈیٹ ہو گئی",
-noResults:"آپ کی تلاش سے کوئی پروڈکٹ نہیں ملی",stPlaced:"رکھا گیا",stConfirmed:"تصدیق شدہ",stShipped:"روانہ",stDelivered:"ڈیلیور",trackT:"آرڈر ٹریکنگ",
-courier:"کورئیر",est:"متوقع ڈیلیوری",confirmReceipt:"مجھے مل گیا — ڈیلیوری کی تصدیق کریں",receiptDone:"ڈیلیوری کی تصدیق ہو گئی",
-waHello:"السلام علیکم! میرا NexusShop آرڈر (COD):",waTotal:"کل",install:"ایپ انسٹال کریں",installHint:"مینو دبائیں → Add to Home screen",installPill:"NexusShop انسٹال کریں",
-faqT:"سیلر FAQ",q1:"COD کا کیا مطلب ہے؟",a1:"کیش آن ڈیلیوری: رائیڈر ڈبہ لاتا ہے، آپ کھول کر چیک کرتے ہیں اور صرف رکھنے کی صورت میں ادائیگی کرتے ہیں۔",
-q2:"کیا لسٹنگ واقعی مفت ہے؟",a2:"جی ہاں — بانی مرحلہ میں سب کچھ مفت اور لامحدود ہے۔",
-q3:"مجھے ادائیگی کیسے ملتی ہے؟",a3:"براہ راست: خریدار واٹس ایپ پر آرڈر کرتے ہیں اور ڈیلیوری پر آپ کو ادا کرتے ہیں۔",
-q4:"ڈیلیوری کون کرتا ہے؟",a4:"آپ مقامی کورئیر یا اپنا رائیڈر چنتے ہیں۔",
-q5:"کمیٹی خرید کیا ہے؟",a5:"3 خریدار گروپ میں شامل ہوں، سب کو −15% ملتا ہے۔",
-q6:"سبسکرپشن کیسے کام کرتی ہے؟",a6:"بانی مرحلہ میں کچھ ادا نہیں کرنا۔ پریمیم/گولڈ بعد میں آئیں گے۔",
-q7:"کیا میں دوسرے ملک میں بیچ سکتا ہوں؟",a7:"جی ہاں — مارکیٹ تبدیل کریں۔",
+shopCreated:"دکان بن گئی",prodAdded:"پروڈکٹ شامل ہو گئی",prodUpdated:"پروڈکٹ اپ ڈیٹ ہو گئی",prodDeleted:"پروڈکٹ حذف ہو گئی",
+resetDone:"ڈیمو ڈیٹا ری سیٹ ہو گیا",langSet:"زبان: اردو",marketSet:"مارکیٹ اپ ڈیٹ ہو گئی",
+noResults:"کوئی پروڈکٹ نہیں ملی",stPlaced:"رکھا گیا",stConfirmed:"تصدیق شدہ",stShipped:"روانہ",stDelivered:"ڈیلیور",trackT:"آرڈر ٹریکنگ",
+confirmReceipt:"مجھے مل گیا — ڈیلیوری کی تصدیق کریں",receiptDone:"ڈیلیوری کی تصدیق ہو گئی",
+waHello:"السلام علیکم! میرا NexusShop آرڈر (COD):",waTotal:"کل",install:"ایپ انسٹال کریں",installHint:"مینو → Add to Home screen",
+faqT:"سیلر FAQ",q1:"COD کا کیا مطلب ہے؟",a1:"کیش آن ڈیلیوری۔",q2:"کیا لسٹنگ واقعی مفت ہے؟",a2:"جی ہاں — بانی مرحلہ میں مفت۔",
+q3:"مجھے ادائیگی کیسے ملتی ہے؟",a3:"براہ راست ڈیلیوری پر۔",q4:"ڈیلیوری کون کرتا ہے؟",a4:"آپ مقامی کورئیر چنتے ہیں۔",
+q5:"تھوک اور ہول سیل کیا ہے؟",a5:"خریدار واٹس ایپ پر فروخت کنندہ سے تھوک قیمت مانگتے ہیں۔ سودا براہ راست۔",
+q6:"سبسکرپشن کیسے کام کرتی ہے؟",a6:"بانی مرحلہ میں کچھ ادا نہیں کرنا۔",q7:"کیا میں دوسرے ملک میں بیچ سکتا ہوں؟",a7:"جی ہاں — مارکیٹ تبدیل کریں۔",
 q8:"جائزے کیسے کام کرتے ہیں؟",a8:"صرف ڈیلیور شدہ آرڈرز سے۔",
 aboutT:"NexusShop ایک COD-first مارکیٹ پلیس ہے۔",privacyT:"ہم صرف ضروری ڈیٹا رکھتے ہیں۔",termsT:"فروخت کنندگان آزاد کاروبار ہیں۔",
 supportT:"ہم 24 گھنٹے میں جواب دیتے ہیں: neuralfocusai@gmail.com",lang:"زبان",themeNote:"برانڈ تھیم منظور شدہ ڈیزائن کے مطابق ہے۔",
 confirmDel:"کیا یہ پروڈکٹ حذف کریں؟",confirmReset:"کیا اس آلے کا تمام ڈیمو ڈیٹا ری سیٹ کریں؟",reviewsN:"{n} جائزے",writeRev:"تصدیق شدہ جائزہ لکھیں",
-revName:"آپ کا نام",revStars:"ستارے",revText:"آپ کا جائزہ",revSubmit:"جائزہ شائع کریں",revThanks:"جائزہ شائع ہو گیا — شکریہ",
-raahT:"راہنما · AI اسسٹنٹ",raahPh:"COD، ڈیلیوری، کمیٹی کے بارے میں پوچھیں…",raahSend:"بھیجیں",raahHello:"سلام! میں راہنما ہوں۔",
-raahChips:"COD,ڈیلیوری,کمیٹی,واپسی,فروخت",undo:"واپس لیں",enter:"NexusShop میں داخل ہوں",welcomeTag:"آپ کی مارکیٹ، آپ کی زبان",
-wPills:"ملک بھر COD,واٹس ایپ چیک آؤٹ,کمیٹی −15%,کثیر زبان",paused:"روکا ہوا",active:"فعال",stock:"اسٹاک",reorder:"ترتیب بدلیں",bulk:"بلک",
-noListings:"ابھی کوئی لسٹنگ نہیں۔",planGate:"بانی مرحلہ: لامحدود مصنوعات، مفت۔",receiptFor:"رسید · {plan}",
+revName:"آپ کا نام",revStars:"ستارے",revText:"آپ کا جائزہ",revSubmit:"جائزہ شائع کریں",revThanks:"جائزہ شائع ہو گیا",
+raahT:"راہنما · AI اسسٹنٹ",raahPh:"COD، ڈیلیوری، تھوک کے بارے میں پوچھیں…",raahSend:"بھیجیں",raahHello:"سلام! میں راہنما ہوں۔",
+raahChips:"COD,ڈیلیوری,تھوک,واپسی,فروخت",undo:"واپس لیں",enter:"NexusShop میں داخل ہوں",welcomeTag:"آپ کی مارکیٹ، آپ کی زبان",
+wPills:"ملک بھر COD,واٹس ایپ چیک آؤٹ,تھوک قیمت,کثیر زبان",paused:"روکا ہوا",active:"فعال",stock:"اسٹاک",
+noListings:"ابھی کوئی لسٹنگ نہیں۔",planGate:"بانی مرحلہ: لامحدود مصنوعات، مفت۔",
 marketPK:"پاکستان",marketNG:"نائجیریا",marketSK:"سلوواکیہ",marketDE:"جرمنی",marketIN:"بھارت",marketGL:"عالمی",
 searchEmpty:"دوسرا لفظ یا زمرہ آزمائیں۔",revEligible:"آپ نے یہ چیز خریدی — اپنا تجربہ شیئر کریں۔",
-cartBulkHint:"اشیاء منتخب کریں تاکہ ایک ساتھ ہٹائی جا سکیں۔",savedView:"محفوظ اشیاء",ordersView:"آپ کے آرڈرز",receiptsView:"ادائیگی رسیدیں"},
-sk:{preview:"Demo režim: každý produkt je UKÁŽKA.",search:"Hľadať produkty…",
-demoLine:"Ukážkový katalóg.",sample:"Ukážka",payQuick:"Platby a predplatné",
+gateT:"NexusShop میں خوش آمدید",gateS:"آپ کی زبان میں، ہر اسکرین پر COD بازار۔",gateG:"Google کے ساتھ جاری رکھیں",gateOr:"یا",gateDemo:"ڈیمو موڈ میں داخل ہوں",gateHi:"خوش آمدید"},
+sk:{preview:"Demo režim.",search:"Hľadať produkty…",demoLine:"Ukážkový katalóg.",sample:"Ukážka",
 heroT:"Nakupujte od overených obchodov. Plaťte pri doručení.",heroS:"Každá objednávka má číslo, predajcu a dobierku.",
 shopNow:"Nakupovať",startSell:"Predávať zadarmo",tCOD:"Dobierka",tTrack:"Sledovanie",tRev:"Overené recenzie",
-liveT:"Živý bazár · {cities}",liveS:"Tisíce ponúk — pridajte sa a ušetrite 15%",
+liveT:"Živý bazár · {cities}",liveS:"Tisíce ponúk — vyžiadajte si veľkoobchodné ceny priamo od predajcov.",
 categories:"Kategórie",featured:"Odporúčané",all:"Všetko",add:"Do košíka",buy:"Kúpiť",soldBy:"Predáva",ask:"Opýtať sa",
 description:"Popis",reviews:"Recenzie",revNote:"Len z doručených objednávok.",inStock:"skladom",qty:"Množstvo",
 codCheck:"Dobierka — tovar si skontrolujte",delInfo:"Doprava: {d} · nad {f} zadarmo",returns:"Vrátenie",
 logT:"Doručenie až k dverám",map:"Mapa",smartMap:"Najbližší kuriér",
-comT:"Komunitný nákup",comS:"3 kupujúci = nižšia cena. Nikto neplatí vopred.",
-startGroup:"Založiť skupinu",forYou:"Pre vás",sort:"Zoradiť",sortFeat:"Odporúčané",sortPA:"Cena od najnižšej",sortPD:"Cena od najvyššej",sortR:"Najlepšie hodnotené",sortN:"Najnovšie",
+bulkT:"Veľkoobchod",bulkS:"Požiadajte predajcu o veľkoobchodnú cenu priamo cez WhatsApp. NexusShop nedrží peniaze ani tovar.",bulkQty:"Množstvo",bulkBtn:"Požiadať o veľkoobchodnú cenu",bulkSent:"Požiadavka odoslaná predajcovi cez WhatsApp",bulkNote:"Obchod a platba prebiehajú priamo s predajcom. NexusShop je len výklad.",myBulk:"Moje požiadavky",bulkNone:"Zatiaľ žiadne požiadavky.",
+startGroup:"Vyžiadať cenu",forYou:"Pre vás",sort:"Zoradiť",sortFeat:"Odporúčané",sortPA:"Cena od najnižšej",sortPD:"Cena od najvyššej",sortR:"Najlepšie hodnotené",sortN:"Najnovšie",
 cart:"Košík",cartEmpty:"Košík je prázdny",cartEmptyS:"Pridajte produkty.",continue:"Pokračovať v nákupe",
 sellers:"{n} predajca(ovia)",subtotal:"Medzisúčet",delNote:"Doprava za každého predajcu.",checkout:"Pokladňa",
 orderFrom:"Objednať od {s} (dobierka)",clearCart:"Vyprázdniť",removeSel:"Odstrániť vybrané",selectAll:"Vybrať všetko",
 placed:"Objednávka odoslaná",placedS:"Uložte si číslo objednávky.",msgSeller:"Napísať predajcovi",
 track:"Sledovať",startShop:"Začať nakupovať",orders:"Objednávky",ordersEmpty:"Žiadne objednávky",saved:"Uložené",savedEmpty:"Zatiaľ nič uložené.",
 account:"Účet",profile:"Profil",name:"Meno",email:"E-mail",wa:"WhatsApp",city:"Mesto",save:"Uložiť",photo:"Fotka",logout:"Odhlásiť",
-sellerCenter:"Centrum predajcu",committee:"Komunitný nákup",market:"Trh a mena",settings:"Nastavenia",faq:"FAQ",support:"Podpora",
+sellerCenter:"Centrum predajcu",bulkCenter:"Veľkoobchod",market:"Trh a mena",settings:"Nastavenia",faq:"FAQ",support:"Podpora",
 about:"O nás",privacy:"Ochrana súkromia",terms:"Podmienky",admin:"Admin",reset:"Resetovať demo",
 freePlan:"Free · neobmedzene",createShop:"Vytvoriť obchod",shopName:"Názov obchodu",
-addProduct:"Pridať produkt",pName:"Názov",pPrice:"Cena",pCat:"Kategória",pStock:"Sklad",pImg:"URL obrázka",pDesc:"Popis",
+addProduct:"Pridať produkt",editProduct:"Upraviť produkt",pName:"Názov",pPrice:"Cena",pCat:"Kategória",pStock:"Sklad",pImg:"URL obrázka",pDesc:"Popis",
 edit:"Upraviť",del:"Zmazať",pause:"Pozastaviť",activate:"Aktivovať",myProducts:"Moje produkty",
 copy:"Kopírovať",copied:"Skopírované",mySub:"Moje predplatné",
-commT:"Komunitný nákup",commS:"3 kupujúci, každý ušetrí 15%.",joinGroup:"Pridať sa kódom",code:"Kód",
-members:"členovia",locked:"Zamknuté −15%",open:"Otvorené",share:"Zdieľať",noGroups:"Žiadne skupiny.",
 back:"Späť",home:"Domov",navSaved:"Uložené",navCart:"Košík",navOrders:"Objednávky",navAccount:"Účet",
-added:"Pridané",removed:"Odstránené",savedT:"Uložené",langSet:"Jazyk: slovenčina",marketSet:"Trh aktualizovaný",
+added:"Pridané",removed:"Odstránené",savedT:"Uložené",unsavedT:"Odstránené",profileSaved:"Profil uložený",loggedOut:"Odhlásené",
+shopCreated:"Obchod vytvorený",prodAdded:"Produkt pridaný",prodUpdated:"Produkt upravený",prodDeleted:"Produkt zmazaný",
+resetDone:"Demo resetované",langSet:"Jazyk: slovenčina",marketSet:"Trh aktualizovaný",
 noResults:"Žiadne produkty",stPlaced:"Odoslaná",stConfirmed:"Potvrdená",stShipped:"Odoslaná",stDelivered:"Doručená",trackT:"Sledovanie",
-courier:"Kuriér",confirmReceipt:"Potvrdiť doručenie",receiptDone:"Doručenie potvrdené",
-waHello:"Dobrý deň! Moja NexusShop objednávka (dobierka):",waTotal:"Spolu",install:"Inštalovať aplikáciu",installHint:"Menu → Pridať na plochu",installPill:"Inštalovať NexusShop",
-faqT:"FAQ predajcu",q1:"Čo je dobierka?",a1:"Dobierka: kuriér prinesie balík, zaplatíte len ak si ho necháte.",
-q2:"Je listing zadarmo?",a2:"Áno — počas founding fázy všetko zadarmo.",
-q3:"Ako dostanem zaplatené?",a3:"Priamo pri doručení.",
-q4:"Kto doručuje?",a4:"Vyberáte si miestneho kuriéra.",
-q5:"Čo je komunitný nákup?",a5:"3 kupujúci v skupine, všetci −15%.",
-q6:"Ako fungujú predplatné?",a6:"Počas founding nič neplatíte.",
-q7:"Môžem predávať inde?",a7:"Áno — prepnite trh.",
+confirmReceipt:"Potvrdiť doručenie",receiptDone:"Doručenie potvrdené",
+waHello:"Dobrý deň! Moja NexusShop objednávka (dobierka):",waTotal:"Spolu",install:"Inštalovať aplikáciu",installHint:"Menu → Pridať na plochu",
+faqT:"FAQ predajcu",q1:"Čo je dobierka?",a1:"Dobierka: kuriér prinesie balík.",q2:"Je listing zadarmo?",a2:"Áno — počas founding všetko zadarmo.",
+q3:"Ako dostanem zaplatené?",a3:"Priamo pri doručení.",q4:"Kto doručuje?",a4:"Vyberáte si miestneho kuriéra.",
+q5:"Čo je veľkoobchod?",a5:"Kupujúci si priamo od predajcu vyžiada veľkoobchodnú cenu cez WhatsApp.",
+q6:"Ako fungujú predplatné?",a6:"Počas founding nič neplatíte.",q7:"Môžem predávať inde?",a7:"Áno — prepnite trh.",
 q8:"Ako fungujú recenzie?",a8:"Len z doručených objednávok.",
 aboutT:"NexusShop je marketplace s dobierkou.",privacyT:"Ukladáme len potrebné údaje.",termsT:"Predajcovia sú nezávislé firmy.",
 supportT:"Odpovedáme do 24 h: neuralfocusai@gmail.com",lang:"Jazyk",themeNote:"Téma podľa dizajnu.",
 confirmDel:"Zmazať produkt?",confirmReset:"Resetovať demo dáta?",reviewsN:"{n} recenzií",writeRev:"Napísať recenziu",
 revName:"Vaše meno",revStars:"Hviezdičky",revText:"Recenzia",revSubmit:"Zverejniť",revThanks:"Recenzia zverejnená",
 raahT:"Raahnuma · AI",raahPh:"Pýtajte sa…",raahSend:"Odoslať",raahHello:"Dobrý deň! Som Raahnuma.",
-raahChips:"Dobierka,Doručenie,Komunita,Vrátenie,Predaj",undo:"Späť",enter:"Vstúpiť do NexusShop",welcomeTag:"Váš marketplace, váš jazyk",
-wPills:"Dobierka,WhatsApp,Komunita,Slovenčina",paused:"Pozastavené",active:"Aktívne",stock:"Sklad",reorder:"Poradie",bulk:"Hromadne",
-noListings:"Žiadne ponuky.",planGate:"Founding: neobmedzene, zadarmo.",receiptFor:"Potvrdenka · {plan}",
+raahChips:"Dobierka,Doručenie,Veľkoobchod,Vrátenie,Predaj",undo:"Späť",enter:"Vstúpiť do NexusShop",welcomeTag:"Váš marketplace, váš jazyk",
+wPills:"Dobierka,WhatsApp,Veľkoobchod,Slovenčina",paused:"Pozastavené",active:"Aktívne",stock:"Sklad",
+noListings:"Žiadne ponuky.",planGate:"Founding: neobmedzene, zadarmo.",
 marketPK:"Pakistan",marketNG:"Nigéria",marketSK:"Slovensko",marketDE:"Nemecko",marketIN:"India",marketGL:"Globálne",
 searchEmpty:"Skúste iné slovo.",revEligible:"Kúpili ste — podeľte sa.",
-cartBulkHint:"Vyberte na hromadné odstránenie.",savedView:"Uložené",ordersView:"Vaše objednávky",receiptsView:"Potvrdenky"},
-de:{preview:"Demo-Modus: alles sind BEISPIELE.",search:"Produkte suchen…",
-demoLine:"Beispielkatalog.",sample:"Beispiel",payQuick:"Zahlungen & Abo",
+gateT:"Vitajte v NexusShop",gateS:"Váš COD bazár vo vašom jazyku.",gateG:"Pokračovať cez Google",gateOr:"alebo",gateDemo:"Vstúpiť v demo režime",gateHi:"Vitajte späť"},
+de:{preview:"Demo-Modus.",search:"Produkte suchen…",demoLine:"Beispielkatalog.",sample:"Beispiel",
 heroT:"Kaufen bei geprüften Shops. Zahlen bei Lieferung.",heroS:"Jede Bestellung hat Nummer, Verkäufer und Nachnahme.",
 shopNow:"Jetzt shoppen",startSell:"Kostenlos verkaufen",tCOD:"Nachnahme",tTrack:"Sendungsverfolgung",tRev:"Geprüfte Bewertungen",
-liveT:"Live-Basar · {cities}",liveS:"Tausende Angebote — Community beitreten und 15 % sparen",
+liveT:"Live-Basar · {cities}",liveS:"Tausende Angebote — fordern Sie Großhandelspreise direkt von Verkäufern an.",
 categories:"Kategorien",featured:"Empfohlen",all:"Alle",add:"In den Warenkorb",buy:"Jetzt kaufen",soldBy:"Verkauft von",ask:"Fragen",
 description:"Beschreibung",reviews:"Bewertungen",revNote:"Nur aus gelieferten Bestellungen.",inStock:"auf Lager",qty:"Menge",
 codCheck:"Nachnahme — Ware vor dem Bezahlen prüfen",delInfo:"Versand: {d} · ab {f} kostenlos",returns:"Rückgabe",
 logT:"Lieferung bis zur Tür",map:"Karte",smartMap:"Nächster Kurier",
-comT:"Community-Kauf",comS:"3 Käufer = niedrigerer Preis. Keine Vorauszahlung.",
-startGroup:"Gruppe starten",forYou:"Für Sie",sort:"Sortieren",sortFeat:"Empfohlen",sortPA:"Preis aufsteigend",sortPD:"Preis absteigend",sortR:"Best bewertet",sortN:"Neueste",
+bulkT:"Großhandel",bulkS:"Fragen Sie den Verkäufer direkt per WhatsApp nach einem Großhandelspreis. NexusShop hält weder Geld noch Ware.",bulkQty:"Menge",bulkBtn:"Großhandelspreis anfragen",bulkSent:"Anfrage per WhatsApp an den Verkäufer gesendet",bulkNote:"Verhandlung und Zahlung laufen direkt mit dem Verkäufer. NexusShop ist nur das Schaufenster.",myBulk:"Meine Anfragen",bulkNone:"Noch keine Anfragen.",
+startGroup:"Preis anfragen",forYou:"Für Sie",sort:"Sortieren",sortFeat:"Empfohlen",sortPA:"Preis aufsteigend",sortPD:"Preis absteigend",sortR:"Best bewertet",sortN:"Neueste",
 cart:"Warenkorb",cartEmpty:"Warenkorb ist leer",cartEmptyS:"Produkte hinzufügen.",continue:"Weiter einkaufen",
 sellers:"{n} Verkäufer",subtotal:"Zwischensumme",delNote:"Versand pro Verkäufer.",checkout:"Kasse",
 orderFrom:"Bestellen bei {s} (Nachnahme)",clearCart:"Leeren",removeSel:"Auswahl entfernen",selectAll:"Alle auswählen",
 placed:"Bestellung aufgegeben",placedS:"Speichern Sie Ihre Bestellnummer.",msgSeller:"Verkäufer schreiben",
 track:"Verfolgen",startShop:"Einkaufen",orders:"Bestellungen",ordersEmpty:"Noch keine Bestellungen",saved:"Gespeichert",savedEmpty:"Noch nichts gespeichert.",
 account:"Konto",profile:"Profil",name:"Name",email:"E-Mail",wa:"WhatsApp",city:"Stadt",save:"Speichern",photo:"Foto",logout:"Abmelden",
-sellerCenter:"Verkäufer-Center",committee:"Community-Kauf",market:"Markt & Währung",settings:"Einstellungen",faq:"FAQ",support:"Support",
+sellerCenter:"Verkäufer-Center",bulkCenter:"Großhandel",market:"Markt & Währung",settings:"Einstellungen",faq:"FAQ",support:"Support",
 about:"Über uns",privacy:"Datenschutz",terms:"AGB",admin:"Admin",reset:"Demo zurücksetzen",
 freePlan:"Free · unbegrenzt",createShop:"Shop erstellen",shopName:"Shop-Name",
-addProduct:"Produkt hinzufügen",pName:"Name",pPrice:"Preis",pCat:"Kategorie",pStock:"Bestand",pImg:"Bild-URL",pDesc:"Beschreibung",
+addProduct:"Produkt hinzufügen",editProduct:"Produkt bearbeiten",pName:"Name",pPrice:"Preis",pCat:"Kategorie",pStock:"Bestand",pImg:"Bild-URL",pDesc:"Beschreibung",
 edit:"Bearbeiten",del:"Löschen",pause:"Pausieren",activate:"Aktivieren",myProducts:"Meine Produkte",
 copy:"Kopieren",copied:"Kopiert",mySub:"Mein Abo",
-commT:"Community-Kauf",commS:"3 Käufer, jeder spart 15%.",joinGroup:"Mit Code beitreten",code:"Code",
-members:"Mitglieder",locked:"Gesperrt −15%",open:"Offen",share:"Teilen",noGroups:"Noch keine Gruppen.",
 back:"Zurück",home:"Start",navSaved:"Gespeichert",navCart:"Warenkorb",navOrders:"Bestellungen",navAccount:"Konto",
-added:"Hinzugefügt",removed:"Entfernt",savedT:"Gespeichert",langSet:"Sprache: Deutsch",marketSet:"Markt aktualisiert",
+added:"Hinzugefügt",removed:"Entfernt",savedT:"Gespeichert",unsavedT:"Entfernt",profileSaved:"Profil gespeichert",loggedOut:"Abgemeldet",
+shopCreated:"Shop erstellt",prodAdded:"Produkt hinzugefügt",prodUpdated:"Produkt aktualisiert",prodDeleted:"Produkt gelöscht",
+resetDone:"Demo zurückgesetzt",langSet:"Sprache: Deutsch",marketSet:"Markt aktualisiert",
 noResults:"Keine Produkte",stPlaced:"Aufgegeben",stConfirmed:"Bestätigt",stShipped:"Versendet",stDelivered:"Geliefert",trackT:"Sendungsverfolgung",
-courier:"Kurier",confirmReceipt:"Empfang bestätigen",receiptDone:"Lieferung bestätigt",
-waHello:"Guten Tag! Meine NexusShop-Bestellung (Nachnahme):",waTotal:"Gesamt",install:"App installieren",installHint:"Menü → Zum Startbildschirm",installPill:"NexusShop installieren",
-faqT:"Verkäufer-FAQ",q1:"Was ist Nachnahme?",a1:"Nachnahme: Kurier bringt das Paket, Sie zahlen nur wenn Sie es behalten.",
-q2:"Ist Listen kostenlos?",a2:"Ja — während Founding alles kostenlos.",
-q3:"Wie werde ich bezahlt?",a3:"Direkt bei Lieferung.",
-q4:"Wer liefert?",a4:"Sie wählen den Kurier.",
-q5:"Was ist Community-Kauf?",a5:"3 Käufer in einer Gruppe, alle −15%.",
-q6:"Wie funktionieren Abos?",a6:"Während Founding zahlen Sie nichts.",
-q7:"Kann ich in anderem Land verkaufen?",a7:"Ja — Markt wechseln.",
+confirmReceipt:"Empfang bestätigen",receiptDone:"Lieferung bestätigt",
+waHello:"Guten Tag! Meine NexusShop-Bestellung (Nachnahme):",waTotal:"Gesamt",install:"App installieren",installHint:"Menü → Zum Startbildschirm",
+faqT:"Verkäufer-FAQ",q1:"Was ist Nachnahme?",a1:"Nachnahme: Kurier bringt das Paket.",q2:"Ist Listen kostenlos?",a2:"Ja — während Founding alles kostenlos.",
+q3:"Wie werde ich bezahlt?",a3:"Direkt bei Lieferung.",q4:"Wer liefert?",a4:"Sie wählen den Kurier.",
+q5:"Was ist Großhandel?",a5:"Käufer fragen direkt beim Verkäufer per WhatsApp einen Großhandelspreis an.",
+q6:"Wie funktionieren Abos?",a6:"Während Founding zahlen Sie nichts.",q7:"Kann ich in anderem Land verkaufen?",a7:"Ja — Markt wechseln.",
 q8:"Wie funktionieren Bewertungen?",a8:"Nur aus gelieferten Bestellungen.",
 aboutT:"NexusShop ist ein Nachnahme-Marktplatz.",privacyT:"Wir speichern nur Nötiges.",termsT:"Verkäufer sind unabhängige Unternehmen.",
 supportT:"Wir antworten in 24 h: neuralfocusai@gmail.com",lang:"Sprache",themeNote:"Marken-Theme folgt Design.",
 confirmDel:"Produkt löschen?",confirmReset:"Demo zurücksetzen?",reviewsN:"{n} Bewertungen",writeRev:"Bewertung schreiben",
 revName:"Ihr Name",revStars:"Sterne",revText:"Bewertung",revSubmit:"Veröffentlichen",revThanks:"Bewertung veröffentlicht",
 raahT:"Raahnuma · KI",raahPh:"Fragen Sie…",raahSend:"Senden",raahHello:"Hallo! Ich bin Raahnuma.",
-raahChips:"Nachnahme,Lieferung,Community,Rückgabe,Verkauf",undo:"Rückgängig",enter:"NexusShop betreten",welcomeTag:"Ihr Marktplatz, Ihre Sprache",
-wPills:"Nachnahme,WhatsApp,Community,Deutsch",paused:"Pausiert",active:"Aktiv",stock:"Bestand",reorder:"Umordnen",bulk:"Mehrfach",
-noListings:"Noch keine Angebote.",planGate:"Founding: unbegrenzt, kostenlos.",receiptFor:"Beleg · {plan}",
+raahChips:"Nachnahme,Lieferung,Großhandel,Rückgabe,Verkauf",undo:"Rückgängig",enter:"NexusShop betreten",welcomeTag:"Ihr Marktplatz, Ihre Sprache",
+wPills:"Nachnahme,WhatsApp,Großhandel,Deutsch",paused:"Pausiert",active:"Aktiv",stock:"Bestand",
+noListings:"Noch keine Angebote.",planGate:"Founding: unbegrenzt, kostenlos.",
 marketPK:"Pakistan",marketNG:"Nigeria",marketSK:"Slowakei",marketDE:"Deutschland",marketIN:"Indien",marketGL:"Global",
 searchEmpty:"Anderes Wort versuchen.",revEligible:"Gekauft — Erfahrung teilen.",
-cartBulkHint:"Artikel auswählen.",savedView:"Gespeichert",ordersView:"Ihre Bestellungen",receiptsView:"Belege"},
-hi:{preview:"डेमो मोड: सब कुछ उदाहरण है।",search:"उत्पाद खोजें…",
-demoLine:"उदाहरण कैटलॉग।",sample:"उदाहरण",payQuick:"भुगतान और सदस्यता",
+gateT:"Willkommen bei NexusShop",gateS:"Ihr COD-Basar in Ihrer Sprache.",gateG:"Mit Google fortfahren",gateOr:"oder",gateDemo:"Im Demo-Modus fortfahren",gateHi:"Willkommen zurück"},
+hi:{preview:"डेमो मोड।",search:"उत्पाद खोजें…",demoLine:"उदाहरण कैटलॉग।",sample:"उदाहरण",
 heroT:"भरोसेमंद दुकानों से खरीदें। डिलीवरी पर भुगतान करें।",heroS:"हर ऑर्डर में नंबर, विक्रेता और COD।",
 shopNow:"अभी खरीदें",startSell:"मुफ़्त बेचना शुरू",tCOD:"कैश ऑन डिलीवरी",tTrack:"ऑर्डर ट्रैकिंग",tRev:"सत्यापित समीक्षाएँ",
-liveT:"लाइव बाज़ार · {cities}",liveS:"हज़ारों डील — कम्युनिटी से जुड़ें और 15% बचाएँ",
+liveT:"लाइव बाज़ार · {cities}",liveS:"हज़ारों डील — विक्रेताओं से सीधे थोक भाव पूछें।",
 categories:"श्रेणियाँ",featured:"featured",all:"सभी",add:"कार्ट में",buy:"अभी खरीदें",soldBy:"विक्रेता",ask:"पूछें",
 description:"विवरण",reviews:"समीक्षाएँ",revNote:"केवल डिलीवर ऑर्डर से।",inStock:"स्टॉक में",qty:"मात्रा",
 codCheck:"COD — भुगतान से पहले पार्सल जाँचें",delInfo:"डिलीवरी: {d} · {f} से ऊपर मुफ़्त",returns:"वापसी",
 logT:"घर तक डिलीवरी",map:"नक्शा",smartMap:"नज़दीकी कूरियर",
-comT:"कम्युनिटी खरीद",comS:"3 खरीदार = कम कीमत। कोई अग्रिम भुगतान नहीं।",
-startGroup:"समूह शुरू",forYou:"आपके लिए",sort:"क्रमबद्ध",sortFeat:"featured",sortPA:"कीमत: कम से अधिक",sortPD:"कीमत: अधिक से कम",sortR:"टॉप रेटेड",sortN:"नवीनतम",
+bulkT:"थोक और होलसेल",bulkS:"विक्रेता से सीधे WhatsApp पर थोक भाव पूछें। NexusShop न पैसा रखता है न स्टॉक।",bulkQty:"मात्रा",bulkBtn:"थोक भाव पूछें",bulkSent:"अनुरोध विक्रेता को WhatsApp पर भेजा गया",bulkNote:"सौदा और भुगतान सीधे विक्रेता से। NexusShop केवल विट्रिन है।",myBulk:"मेरे थोक अनुरोध",bulkNone:"अभी कोई अनुरोध नहीं।",
+startGroup:"भाव पूछें",forYou:"आपके लिए",sort:"क्रमबद्ध",sortFeat:"featured",sortPA:"कीमत: कम से अधिक",sortPD:"कीमत: अधिक से कम",sortR:"टॉप रेटेड",sortN:"नवीनतम",
 cart:"कार्ट",cartEmpty:"कार्ट खाली है",cartEmptyS:"उत्पाद जोड़ें।",continue:"खरीदारी जारी",
 sellers:"{n} विक्रेता",subtotal:"उप-योग",delNote:"डिलीवरी प्रति विक्रेता।",checkout:"चेकआउट",
 orderFrom:"{s} से ऑर्डर (COD)",clearCart:"खाली करें",removeSel:"चयनित हटाएँ",selectAll:"सभी चुनें",
 placed:"ऑर्डर हो गया",placedS:"ऑर्डर नंबर सहेजें।",msgSeller:"विक्रेता को WhatsApp",
 track:"ट्रैक करें",startShop:"खरीदारी शुरू",orders:"ऑर्डर",ordersEmpty:"कोई ऑर्डर नहीं",saved:"सहेजे",savedEmpty:"अभी कुछ सहेजा नहीं।",
 account:"खाता",profile:"प्रोफ़ाइल",name:"नाम",email:"ईमेल",wa:"WhatsApp",city:"शहर",save:"सहेजें",photo:"फ़ोटो",logout:"लॉग आउट",
-sellerCenter:"विक्रेता केंद्र",committee:"कम्युनिटी खरीद",market:"बाज़ार और मुद्रा",settings:"सेटिंग्स",faq:"FAQ",support:"सहायता",
+sellerCenter:"विक्रेता केंद्र",bulkCenter:"थोक और होलसेल",market:"बाज़ार और मुद्रा",settings:"सेटिंग्स",faq:"FAQ",support:"सहायता",
 about:"हमारे बारे में",privacy:"गोपनीयता",terms:"शर्तें",admin:"एडमिन",reset:"रीसेट",
 freePlan:"Free · असीमित",createShop:"दुकान बनाएँ",shopName:"दुकान का नाम",
-addProduct:"उत्पाद जोड़ें",pName:"नाम",pPrice:"कीमत",pCat:"श्रेणी",pStock:"स्टॉक",pImg:"छवि URL",pDesc:"विवरण",
+addProduct:"उत्पाद जोड़ें",editProduct:"उत्पाद संपादित",pName:"नाम",pPrice:"कीमत",pCat:"श्रेणी",pStock:"स्टॉक",pImg:"छवि URL",pDesc:"विवरण",
 edit:"संपादित",del:"हटाएँ",pause:"रोकें",activate:"सक्रिय",myProducts:"मेरे उत्पाद",
 copy:"कॉपी",copied:"कॉपी हो गया",mySub:"मेरी सदस्यता",
-commT:"कम्युनिटी खरीद",commS:"3 खरीदार, हर कोई 15% बचाता है।",joinGroup:"कोड से जुड़ें",code:"कोड",
-members:"सदस्य",locked:"लॉक −15%",open:"खुला",share:"साझा करें",noGroups:"कोई समूह नहीं।",
 back:"वापस",home:"होम",navSaved:"सहेजे",navCart:"कार्ट",navOrders:"ऑर्डर",navAccount:"खाता",
-added:"जोड़ा",removed:"हटाया",savedT:"सहेजा",langSet:"भाषा: हिन्दी",marketSet:"बाज़ार अपडेट",
+added:"जोड़ा",removed:"हटाया",savedT:"सहेजा",unsavedT:"हटाया",profileSaved:"प्रोफ़ाइल सहेजा",loggedOut:"लॉग आउट",
+shopCreated:"दुकान बन गई",prodAdded:"उत्पाद जोड़ा",prodUpdated:"उत्पाद अपडेट",prodDeleted:"उत्पाद हटाया",
+resetDone:"रीसेट हो गया",langSet:"भाषा: हिन्दी",marketSet:"बाज़ार अपडेट",
 noResults:"कोई उत्पाद नहीं",stPlaced:"रखा गया",stConfirmed:"पुष्ट",stShipped:"भेजा",stDelivered:"डिलीवर",trackT:"ट्रैकिंग",
-courier:"कूरियर",confirmReceipt:"डिलीवरी पुष्टि",receiptDone:"डिलीवरी पुष्ट",
-waHello:"नमस्ते! मेरा NexusShop ऑर्डर (COD):",waTotal:"कुल",install:"ऐप इंस्टॉल",installHint:"मेनू → होम स्क्रीन पर",installPill:"NexusShop इंस्टॉल करें",
-faqT:"विक्रेता FAQ",q1:"COD का मतलब?",a1:"COD: राइडर डिब्बा लाता है, रखने पर ही भुगतान।",
-q2:"क्या लिस्टिंग मुफ़्त?",a2:"हाँ — founding में सब मुफ़्त।",
-q3:"भुगतान कैसे मिलता है?",a3:"सीधे डिलीवरी पर।",
-q4:"डिलीवरी कौन?",a4:"आप कूरियर चुनते हैं।",
-q5:"कम्युनिटी खरीद?",a5:"3 खरीदार, सब −15%।",
-q6:"सदस्यता कैसे?",a6:"founding में कुछ नहीं देना।",
-q7:"दूसरे देश में बेच सकता हूँ?",a7:"हाँ — बाज़ार बदलें।",
+confirmReceipt:"डिलीवरी पुष्टि",receiptDone:"डिलीवरी पुष्ट",
+waHello:"नमस्ते! मेरा NexusShop ऑर्डर (COD):",waTotal:"कुल",install:"ऐप इंस्टॉल",installHint:"मेनू → होम स्क्रीन पर",
+faqT:"विक्रेता FAQ",q1:"COD का मतलब?",a1:"COD: राइडर डिब्बा लाता है।",q2:"क्या लिस्टिंग मुफ़्त?",a2:"हाँ — founding में सब मुफ़्त।",
+q3:"भुगतान कैसे मिलता है?",a3:"सीधे डिलीवरी पर।",q4:"डिलीवरी कौन?",a4:"आप कूरियर चुनते हैं।",
+q5:"थोक क्या है?",a5:"खरीदार सीधे विक्रेता से WhatsApp पर थोक भाव पूछते हैं।",
+q6:"सदस्यता कैसे?",a6:"founding में कुछ नहीं देना।",q7:"दूसरे देश में बेच सकता हूँ?",a7:"हाँ — बाज़ार बदलें।",
 q8:"समीक्षाएँ?",a8:"केवल डिलीवर ऑर्डर से।",
 aboutT:"NexusShop एक COD मार्केटप्लेस है।",privacyT:"हम केवल आवश्यक डेटा रखते हैं।",termsT:"विक्रेता स्वतंत्र व्यवसाय हैं।",
 supportT:"हम 24 घंटे में उत्तर देते हैं: neuralfocusai@gmail.com",lang:"भाषा",themeNote:"ब्रांड थीम डिज़ाइन अनुसार।",
 confirmDel:"उत्पाद हटाएँ?",confirmReset:"रीसेट करें?",reviewsN:"{n} समीक्षाएँ",writeRev:"समीक्षा लिखें",
 revName:"नाम",revStars:"सितारे",revText:"समीक्षा",revSubmit:"प्रकाशित",revThanks:"समीक्षा प्रकाशित",
 raahT:"राहनुमा · AI",raahPh:"पूछें…",raahSend:"भेजें",raahHello:"नमस्ते! मैं राहनुमा हूँ।",
-raahChips:"COD,डिलीवरी,कम्युनिटी,वापसी,बेचें",undo:"पूर्ववत",enter:"NexusShop में प्रवेश",welcomeTag:"आपका मार्केटप्लेस, आपकी भाषा",
-wPills:"COD,WhatsApp,कम्युनिटी,हिन्दी",paused:"रुका",active:"सक्रिय",stock:"स्टॉक",reorder:"क्रम",bulk:"थोक",
-noListings:"कोई लिस्टिंग नहीं।",planGate:"founding: असीमित, मुफ़्त।",receiptFor:"रसीद · {plan}",
+raahChips:"COD,डिलीवरी,थोक,वापसी,बेचें",undo:"पूर्ववत",enter:"NexusShop में प्रवेश",welcomeTag:"आपका मार्केटप्लेस, आपकी भाषा",
+wPills:"COD,WhatsApp,थोक,हिन्दी",paused:"रुका",active:"सक्रिय",stock:"स्टॉक",
+noListings:"कोई लिस्टिंग नहीं।",planGate:"founding: असीमित, मुफ़्त।",
 marketPK:"पाकिस्तान",marketNG:"नाइजीरिया",marketSK:"स्लोवाकिया",marketDE:"जर्मनी",marketIN:"भारत",marketGL:"वैश्विक",
 searchEmpty:"दूसरा शब्द आज़माएँ।",revEligible:"आपने खरीदी — अनुभव साझा करें।",
-cartBulkHint:"एक साथ हटाने के लिए चुनें।",savedView:"सहेजी वस्तुएँ",ordersView:"आपके ऑर्डर",receiptsView:"भुगतान रसीदें"}
+gateT:"NexusShop में स्वागत है",gateS:"आपकी भाषा में आपका COD बाज़ार।",gateG:"Google से जारी रखें",gateOr:"या",gateDemo:"डेमो मोड में प्रवेश करें",gateHi:"वापसी पर स्वागत"}
 };
 const CATS=[{id:"fashion",en:"Fashion",ur:"فیشن",sk:"Móda",de:"Mode",hi:"फ़ैशन"},{id:"electronics",en:"Electronics",ur:"الیکٹرانکس",sk:"Elektronika",de:"Elektronik",hi:"इलेक्ट्रॉनिक्स"},{id:"home",en:"Home & Kitchen",ur:"گھر",sk:"Domov",de:"Haushalt",hi:"घर"},{id:"beauty",en:"Beauty",ur:"خوبصورتی",sk:"Krása",de:"Schönheit",hi:"ब्यूटी"},{id:"grocery",en:"Grocery",ur:"گروسری",sk:"Potraviny",de:"Lebensmittel",hi:"किराना"}];
 const MK={
 PK:{code:"PK",flag:"🇵🇰",sym:"Rs ",rate:1,del:200,free:5000,cities:"Lahore · Karachi · Islamabad",couriers:[["TCS","tcs.com.pk"],["Leopards","leopards.com.pk"],["M&P","mp.com.pk"],["PostEx","postex.pk"],["Trax","trax.com.pk"]],pay:"JazzCash · Easypaisa"},
 NG:{code:"NG",flag:"🇳🇬",sym:"₦",rate:5.5,del:1100,free:27500,cities:"Lagos · Abuja · Port Harcourt",couriers:[["GIG Logistics","giglogistics.com.ng"],["Kwik Delivery","kwik.delivery"],["DHL Nigeria","dhl.com/ng"],["Fez Delivery","fezdelivery.com"]],pay:"Paystack · Flutterwave"},
-SK:{code:"SK",flag:"🇸🇰",sym:"€",rate:0.0033,del:1200,free:15000,cities:"Bratislava · Košice · Žilina",couriers:[["Packeta","packeta.sk"],["Slovenská pošta","posta.sk"],["DPD SK","dpd.sk"],["GLS SK","gls-group.com/SK"],["SPS SK","sps-sk.sk"]],pay:"Dobierka · Bank"},
-DE:{code:"DE",flag:"🇩🇪",sym:"€",rate:0.0033,del:1500,free:15000,cities:"Berlin · München · Hamburg",couriers:[["DHL","dhl.de"],["Hermes","hermesworld.com"],["DPD DE","dpd.de"],["GLS DE","gls-group.com/DE"],["UPS DE","ups.com/de"],["Deutsche Post","deutschepost.de"]],pay:"Nachnahme · SEPA · PayPal"},
-IN:{code:"IN",flag:"🇮🇳",sym:"₹",rate:0.30,del:150,free:15000,cities:"Delhi · Mumbai · Bengaluru",couriers:[["India Post","indiapost.gov.in"],["Delhivery","delhivery.com"],["Blue Dart","bluedart.com"],["DTDC","dtdc.in"],["Ecom Express","ecomexpress.in"],["Shadowfax","shadowfax.in"]],pay:"UPI · COD · NetBanking"},
-GL:{code:"GL",flag:"🌍",sym:"$",rate:0.0036,del:1500,free:20000,cities:"Worldwide",couriers:[["DHL Express","dhl.com"],["UPS","ups.com"],["FedEx","fedex.com"],["Aramex","aramex.com"]],pay:"Card · PayPal"}
+SK:{code:"SK",flag:"🇸🇰",sym:"€",rate:0.0033,del:1200,free:15000,cities:"Bratislava · Košice · Žilina",couriers:[["Packeta","packeta.sk"],["Slovenská pošta","posta.sk"],["DPD SK","dpd.sk"],["GLS SK","gls-group.com/SK"]],pay:"Dobierka · Bank"},
+DE:{code:"DE",flag:"🇩🇪",sym:"€",rate:0.0033,del:1500,free:15000,cities:"Berlin · München · Hamburg",couriers:[["DHL","dhl.de"],["Hermes","hermesworld.com"],["DPD DE","dpd.de"],["GLS DE","gls-group.com/DE"],["UPS DE","ups.com/de"]],pay:"Nachnahme · SEPA · PayPal"},
+IN:{code:"IN",flag:"🇮🇳",sym:"₹",rate:0.30,del:150,free:15000,cities:"Delhi · Mumbai · Bengaluru",couriers:[["India Post","indiapost.gov.in"],["Delhivery","delhivery.com"],["Blue Dart","bluedart.com"],["DTDC","dtdc.in"]],pay:"UPI · COD · NetBanking"},
+GL:{code:"GL",flag:"🌍",sym:"$",rate:0.0036,del:1500,free:20000,cities:"Worldwide",couriers:[["DHL Express","dhl.com"],["UPS","ups.com"],["FedEx","fedex.com"]],pay:"Card · PayPal"}
 };
-const RAIL={bank:"MCB Bank Limited",title:"TALAL REHAN",acc:"1727594371001117",iban:"PK96MUCB1727594371001117"};
 const IMG={watch:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=70",attar:"https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&q=70",kettle:"https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&q=70",buds:"https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&q=70",lawn:"https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=600&q=70",rice:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&q=70",spk:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=600&q=70",shoe:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=70",tv:"https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&q=70",room:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=70"};
 const SEED=[
-{id:"p1",seller:"Anarkali Threads",swa:"923001234501",city:"Lahore",cat:"fashion",price:4499,old:5999,stock:14,img:IMG.lawn,name:{en:"Embroidered Lawn Suit, 3-piece",ur:"کڑھائی والا لان سوٹ",sk:"Vyšívaný lawn oblek",de:"Besticktes Lawn-Set",hi:"कढ़ाई वाला लॉन सूट"},desc:{en:"Unstitched 3-piece lawn: embroidered shirt, dyed trouser, chiffon dupatta.",ur:"غیر سلا ہوا 3 پیس لان۔",sk:"Nezošitý 3-dielny lawn.",de:"Unbesticktes 3-teiliges Set.",hi:"3-पीस लॉन सूट।"},rev:[]},
-{id:"p2",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:2499,old:2999,stock:22,img:IMG.buds,name:{en:"Wireless Earbuds with Case",ur:"وائرلیس ایئربڈز",sk:"Bezdrôtové slúchadlá",de:"Kabellose Ohrhörer",hi:"वायरलेस ईयरबड्स"},desc:{en:"Touch control, charging case, bass boost.",ur:"ٹچ کنٹرول۔",sk:"Dotykové ovládanie.",de:"Touch-Steuerung.",hi:"टच कंट्रोल।"},rev:[]},
-{id:"p3",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:3499,old:4999,stock:12,img:IMG.watch,name:{en:"Smart Watch T900 Ultra",ur:"اسمارٹ واچ T900",sk:"Smart hodinky T900",de:"Smartwatch T900",hi:"स्मार्ट वॉच T900"},desc:{en:"Bluetooth calling, heart rate, 7-day battery.",ur:"بلوٹوتھ کالنگ۔",sk:"Bluetooth hovory.",de:"Bluetooth-Anrufe.",hi:"ब्लूटूथ कॉलिंग।"},rev:[]},
-{id:"p4",seller:"Ghar Bazaar",swa:"923001234503",city:"Lahore",cat:"home",price:2799,old:3599,stock:8,img:IMG.kettle,name:{en:"Electric Kettle 1.8L Steel",ur:"الیکٹرک کیتلی",sk:"Elektrická kanvica 1,8 L",de:"Wasserkocher 1,8 L",hi:"इलेक्ट्रिक केतली 1.8L"},desc:{en:"Fast boil, auto cut-off.",ur:"تیز ابال۔",sk:"Rýchle varenie.",de:"Schnelles Kochen.",hi:"तेज़ उबाल।"},rev:[]},
-{id:"p5",seller:"Punjab Pantry",swa:"923001234504",city:"Multan",cat:"grocery",price:1850,old:2200,stock:40,img:IMG.rice,name:{en:"Basmati Rice 5kg Premium",ur:"باسمتی چاول 5 کلو",sk:"Basmati ryža 5 kg",de:"Basmati Reis 5 kg",hi:"बासमती चावल 5 किलो"},desc:{en:"Long-grain aged basmati.",ur:"لمبے دانے باسمتی۔",sk:"Dlhozrnná basmati.",de:"Langkorn-Basmati.",hi:"लंबे दाने बासमती।"},rev:[]},
+{id:"p1",seller:"Anarkali Threads",swa:"923001234501",city:"Lahore",cat:"fashion",price:4499,old:5999,stock:14,img:IMG.lawn,name:{en:"Embroidered Lawn Suit, 3-piece",ur:"کڑھائی والا لان سوٹ",sk:"Vyšívaný lawn oblek",de:"Besticktes Lawn-Set",hi:"कढ़ाई वाला लॉन सूट"},desc:{en:"Unstitched 3-piece lawn.",ur:"غیر سلا ہوا 3 پیس لان۔",sk:"Nezošitý 3-dielny lawn.",de:"Unbesticktes 3-teiliges Set.",hi:"3-पीस लॉन सूट।"},rev:[]},
+{id:"p2",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:2499,old:2999,stock:22,img:IMG.buds,name:{en:"Wireless Earbuds",ur:"وائرلیس ایئربڈز",sk:"Bezdrôtové slúchadlá",de:"Kabellose Ohrhörer",hi:"वायरलेस ईयरबड्स"},desc:{en:"Touch control, charging case.",ur:"ٹچ کنٹرول۔",sk:"Dotykové ovládanie.",de:"Touch-Steuerung.",hi:"टच कंट्रोल।"},rev:[]},
+{id:"p3",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:3499,old:4999,stock:12,img:IMG.watch,name:{en:"Smart Watch T900",ur:"اسمارٹ واچ T900",sk:"Smart hodinky T900",de:"Smartwatch T900",hi:"स्मार्ट वॉच T900"},desc:{en:"Bluetooth calling, 7-day battery.",ur:"بلوٹوتھ کالنگ۔",sk:"Bluetooth hovory.",de:"Bluetooth-Anrufe.",hi:"ब्लूटूथ कॉलिंग।"},rev:[]},
+{id:"p4",seller:"Ghar Bazaar",swa:"923001234503",city:"Lahore",cat:"home",price:2799,old:3599,stock:8,img:IMG.kettle,name:{en:"Electric Kettle 1.8L",ur:"الیکٹرک کیتلی",sk:"Elektrická kanvica",de:"Wasserkocher 1,8 L",hi:"इलेक्ट्रिक केतली"},desc:{en:"Fast boil, auto cut-off.",ur:"تیز ابال۔",sk:"Rýchle varenie.",de:"Schnelles Kochen.",hi:"तेज़ उबाल।"},rev:[]},
+{id:"p5",seller:"Punjab Pantry",swa:"923001234504",city:"Multan",cat:"grocery",price:1850,old:2200,stock:40,img:IMG.rice,name:{en:"Basmati Rice 5kg",ur:"باسمتی چاول 5 کلو",sk:"Basmati ryža 5 kg",de:"Basmati Reis 5 kg",hi:"बासमती चावल 5 किलो"},desc:{en:"Long-grain aged basmati.",ur:"لمبے دانے باسمتی۔",sk:"Dlhozrnná basmati.",de:"Langkorn-Basmati.",hi:"लंबे दाने बासमती।"},rev:[]},
 {id:"p6",seller:"Ittar House",swa:"923001234505",city:"Lahore",cat:"beauty",price:1299,old:1899,stock:20,img:IMG.attar,name:{en:"Perfume Attar Oud 12ml",ur:"عطر عود 12 ملی لیٹر",sk:"Parfum Oud 12 ml",de:"Parfüm Oud 12 ml",hi:"इत्र ओउद 12ml"},desc:{en:"Long-lasting oud attar.",ur:"دیرپا عطر۔",sk:"Dlhotrvajúci oud.",de:"Langanhaltender Oud.",hi:"लंबे समय तक चलने वाला इत्र।"},rev:[]},
-{id:"p7",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:2499,old:3299,stock:15,img:IMG.spk,name:{en:"Bluetooth Speaker Mini",ur:"بلوٹوتھ اسپیکر منی",sk:"Bluetooth reproduktor",de:"Bluetooth-Lautsprecher",hi:"ब्लूटूथ स्पीकर"},desc:{en:"Portable, deep bass.",ur:"پورٹیبل۔",sk:"Prenosný.",de:"Tragbar.",hi:"पोर्टेबल।"},rev:[]},
-{id:"p8",seller:"Anarkali Threads",swa:"923001234501",city:"Lahore",cat:"fashion",price:2500,old:3200,stock:10,img:IMG.shoe,name:{en:"Running Shoes Lightweight",ur:"رننگ شوز",sk:"Bežecké topánky",de:"Laufschuhe",hi:"रनिंग शूज़"},desc:{en:"Breathable mesh.",ur:"ہوا دار میش۔",sk:"Priedušný.",de:"Atmungsaktiv.",hi:"ब्रीदेबल मेश।"},rev:[]},
-{id:"p9",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:24999,old:29999,stock:5,img:IMG.tv,name:{en:"LED TV 32 inch Smart",ur:"ایل ای ڈی ٹی وی 32 انچ",sk:"LED TV 32 palcov",de:"LED TV 32 Zoll",hi:"LED TV 32 इंच"},desc:{en:"Smart apps, HDMI x2.",ur:"اسمارٹ ایپس۔",sk:"Smart aplikácie.",de:"Smart-Apps.",hi:"स्मार्ट ऐप्स।"},rev:[]},
-{id:"p10",seller:"Ghar Bazaar",swa:"923001234503",city:"Lahore",cat:"home",price:5499,old:6999,stock:6,img:IMG.room,name:{en:"Accent Chair + Side Table",ur:"کرسی + سائیڈ ٹیبل",sk:"Stolička + stolík",de:"Akzentstuhl + Tisch",hi:"कुर्सी + साइड टेबल"},desc:{en:"Solid wood frame.",ur:"مضبوط لکڑی۔",sk:"Masívny rám.",de:"Massivholzrahmen.",hi:"मजबूत लकड़ी।"},rev:[]}
+{id:"p7",seller:"Saddar Gadgets",swa:"923001234502",city:"Karachi",cat:"electronics",price:2499,old:3299,stock:15,img:IMG.spk,name:{en:"Bluetooth Speaker Mini",ur:"بلوٹوتھ اسپیکر",sk:"Bluetooth reproduktor",de:"Bluetooth-Lautsprecher",hi:"ब्लूटूथ स्पीकर"},desc:{en:"Portable, deep bass.",ur:"پورٹیبل۔",sk:"Prenosný.",de:"Tragbar.",hi:"पोर्टेबल।"},rev:[]},
+{id:"p8",seller:"Anarkali Threads",swa:"923001234501",city:"Lahore",cat:"fashion",price:2500,old:3200,stock:10,img:IMG.shoe,name:{en:"Running Shoes",ur:"رننگ شوز",sk:"Bežecké topánky",de:"Laufschuhe",hi:"रनिंग शूज़"},desc:{en:"Breathable mesh.",ur:"ہوا دار میش۔",sk:"Priedušný.",de:"Atmungsaktiv.",hi:"ब्रीदेबल मेश।"},rev:[]}
 ];
 SEED.forEach(function(p){p.swa="542257550650";});
-const DEF={lang:"en",market:"PK",view:"home",pid:null,qty:1,search:"",cat:"all",sort:"feat",cart:[],bulk:[],saved:[],orders:[],groups:[],payments:[],receipts:[],reviews:{},hist:[],profile:{name:"",email:"",wa:"",city:"",pic:null},shop:null,listings:[],admin:false,track:null,lastOrders:[],editId:null,raahOpen:false,raahMsgs:[],menu:false,payFocus:false};
+const DEF={lang:"en",market:"PK",view:"home",pid:null,qty:1,search:"",cat:"all",sort:"feat",cart:[],bulk:[],saved:[],orders:[],bulkReqs:[],reviews:{},hist:[],profile:{name:"",email:"",wa:"",city:"",pic:null},shop:null,listings:[],admin:false,track:null,lastOrders:[],editId:null,raahOpen:false,raahMsgs:[],menu:false,payFocus:false,bqQty:10};
 let S=load();
-function load(){try{const r=JSON.parse(localStorage.getItem("nx_v3"));return r?Object.assign({},DEF,r):Object.assign({},DEF);}catch(e){return Object.assign({},DEF);}}
-function save(){localStorage.setItem("nx_v3",JSON.stringify(S));}
+function load(){try{const r=JSON.parse(localStorage.getItem("nx_v4"));return r?Object.assign({},DEF,r):Object.assign({},DEF);}catch(e){return Object.assign({},DEF);}}
+function save(){localStorage.setItem("nx_v4",JSON.stringify(S));}
 function t(k){return (I18N[S.lang]&&I18N[S.lang][k])||I18N.en[k]||k;}
 function fmt(s,o){return s.replace(/\{(\w+)\}/g,(m,k)=>o[k]!==undefined?o[k]:m);}
 function money(n){const m=MK[S.market];return m.sym+Math.round(n*m.rate).toLocaleString("en-US");}
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function prods(){return SEED.concat(S.listings.map(l=>Object.assign({seller:S.shop?S.shop.name:"My Shop",swa:S.shop?S.shop.wa:"",city:S.shop?S.shop.city:"",rev:[]},l)));}
 function prod(id){return prods().find(p=>p.id===id);}
-function pn(p){const n=p.name||{};if(typeof n==="string")return n;return n[S.lang]||n.en||n.ur||n.sk||n.de||n.hi||"";}
-function pd(p){const d=p.desc||{};if(typeof d==="string")return d;return d[S.lang]||d.en||d.ur||d.sk||d.de||d.hi||"";}
+function pn(p){const n=p.name||{};if(typeof n==="string")return n;return n[S.lang]||n.en||"";}
+function pd(p){const d=p.desc||{};if(typeof d==="string")return d;return d[S.lang]||d.en||"";}
 function cn(id){const c=CATS.find(c=>c.id===id);return c?(c[S.lang]||c.en):id;}
 function revs(p){return (p.rev||[]).concat(S.reviews[p.id]||[]);}
 function rating(p){const r=revs(p);if(!r.length)return null;return (r.reduce((a,b)=>a+b.s,0)/r.length).toFixed(1);}
 function cartCount(){return S.cart.reduce((a,b)=>a+b.q,0);}
 let _undo=null;
 function toast(msg,undoFn){_undo=undoFn||null;const el=document.getElementById("toast");el.innerHTML=esc(msg)+(_undo?` <button data-a="undo">${esc(t("undo"))}</button>`:"");el.classList.add("show");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("show"),3200);}
-function wa(num,msg){const n=String(num||"").replace(/\D/g,"");if(!n){toast("No WhatsApp");return;}window.open("https://wa.me/"+n+"?text="+encodeURIComponent(msg),"_blank");}
+function wa(num,msg){const n=String(num||"").replace(/\D/g,"");if(num&&!n){toast("No WhatsApp");return;}window.open("https://wa.me/"+(n||"")+"?text="+encodeURIComponent(msg),"_blank");}
 function render(){
  document.documentElement.lang=S.lang;document.documentElement.dir=S.lang==="ur"?"rtl":"ltr";document.body.classList.toggle("ur",S.lang==="ur");document.body.classList.toggle("hi",S.lang==="hi");
- let h="";
- if(!sessionStorage.getItem("nx_in"))h+=welcome();
- h+=`<header><div class="logo">Nexus<b>Shop</b></div>
+ let h=`<header><div class="logo">Nexus<b>Shop</b></div>
  <div class="sw"><span class="sic">⌕</span><input id="search" placeholder="${esc(t("search"))}" value="${esc(S.search)}"></div>
  <button class="icb" data-a="menu">${MK[S.market].flag}</button>
  <button class="icb" data-a="lang">${({en:"EN",ur:"اردو",sk:"SK",de:"DE",hi:"HI"})[S.lang]||"EN"}</button>
  <button class="icb" data-a="nav" data-v="cart">🛍${cartCount()?`<span class="bdg">${cartCount()}</span>`:""}</button>
- <button class="icb" data-a="payfocus" title="${esc(t("payQuick"))}">💳</button>
  <button class="icb" data-a="nav" data-v="settings">⚙️</button>
  <button class="icb" data-a="nav" data-v="account">${S.profile.pic?`<img src="${S.profile.pic}" style="width:22px;height:22px;border-radius:50%;object-fit:cover">`:(S.profile.name?esc(S.profile.name[0].toUpperCase()):"👤")}</button>
  </header><div class="banner">ⓘ ${esc(t("preview"))}</div>
@@ -484,50 +470,37 @@ function render(){
  if(S.raahOpen)h+=raahPanel();
  document.getElementById("app").innerHTML=h;
 }
-function nb(v,ico,key,b){const on=S.view===v||(v==="account"&&["seller","settings","faq","committee"].includes(S.view));
+function nb(v,ico,key,b){const on=S.view===v||(v==="account"&&["seller","settings","faq","bulk"].includes(S.view));
  return `<button data-a="nav" data-v="${v}" class="${on?"on":""}"><span class="ico">${ico}</span>${esc(t(key))}${b?`<span class="bdg">${b}</span>`:""}</button>`;}
-function welcome(){const imgs=[IMG.tv,IMG.watch,IMG.buds,IMG.kettle,IMG.attar,IMG.room];
- return `<div id="welcome"><div class="row" style="position:absolute;top:14px;inset-inline-end:14px"><button class="icb" data-a="lang">${({en:"EN",ur:"اردو",sk:"SK",de:"DE",hi:"HI"})[S.lang]||"EN"}</button></div>
- <div class="ring"><div class="spin">${imgs.map((u,i)=>`<img src="${u}" style="transform:rotateY(${i*60}deg) translateZ(120px)" alt="">`).join("")}</div></div>
- <h1>Nexus<b>Shop</b></h1><div class="tag">${esc(t("welcomeTag"))}</div>
- <div class="pills">${t("wPills").split(",").map(p=>`<span>${esc(p)}</span>`).join("")}</div>
- <button class="btn grn" style="width:min(340px,86%);padding:16px;font-size:16px" data-a="enter">${esc(t("enter"))} →</button></div>`;}
 function marketMenu(){return `<div class="modal" data-a="menu"><div class="box" style="max-width:340px">
  ${Object.values(MK).map(m=>`<button class="menu" style="width:100%;display:flex;gap:10px;align-items:center;background:${m.code===S.market?"var(--mint)":"var(--sf2)"};border:1px solid var(--ln);border-radius:12px;padding:12px;margin-bottom:8px" data-a="marketSet" data-id="${m.code}"><span style="font-size:22px">${m.flag}</span><span style="text-align:start"><b>${esc(t("market"+m.code))}</b><br><span class="fnt">${m.sym} · ${esc(m.cities)}</span></span></button>`).join("")}
  </div></div>`;}
-function view(){switch(S.view){case "home":return vHome();case "detail":return vDetail();case "cart":return vCart();case "placed":return vPlaced();case "orders":return vOrders();case "saved":return vSaved();case "account":return vAccount();case "seller":return vSeller();case "committee":return vCommittee();case "settings":return vSettings();case "faq":return vFaq();default:return vHome();}}
-function filtered(){let l=prods().filter(p=>(S.cat==="all"||p.cat===S.cat)&&(!S.search||pn(p).toLowerCase().includes(S.search.toLowerCase())||p.seller.toLowerCase().includes(S.search.toLowerCase())||pd(p).toLowerCase().includes(S.search.toLowerCase())));
+function view(){switch(S.view){case "home":return vHome();case "detail":return vDetail();case "cart":return vCart();case "placed":return vPlaced();case "orders":return vOrders();case "saved":return vSaved();case "account":return vAccount();case "seller":return vSeller();case "bulk":return vBulk();case "settings":return vSettings();case "faq":return vFaq();default:return vHome();}}
+function filtered(){let l=prods().filter(p=>(S.cat==="all"||p.cat===S.cat)&&(!S.search||pn(p).toLowerCase().includes(S.search.toLowerCase())||p.seller.toLowerCase().includes(S.search.toLowerCase())));
  if(S.sort==="pa")l=l.slice().sort((a,b)=>a.price-b.price);if(S.sort==="pd")l=l.slice().sort((a,b)=>b.price-a.price);
  if(S.sort==="r")l=l.slice().sort((a,b)=>(rating(b)||0)-(rating(a)||0));if(S.sort==="n")l=l.slice().sort((a,b)=>(b.id>a.id?1:-1));return l;}
-function vHome(){const l=filtered();const hist=S.hist;let rail="";
- if(hist.length){const cnt={};hist.forEach(x=>cnt[x.cat]=(cnt[x.cat]||0)+1);const top=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]).slice(0,2);const seen={};hist.forEach(x=>seen[x.id]=1);
-  const rec=prods().filter(p=>top.includes(p.cat)&&!seen[p.id]).slice(0,6);
-  if(rec.length)rail=`<h2 class="sec">💡 ${esc(t("forYou"))}</h2><div class="rail">${rec.map(p=>`<div class="rc" data-a="open" data-id="${p.id}"><img src="${p.img}" alt=""><div class="b"><div style="font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(pn(p))}</div><div class="pr" style="font-size:12px">${money(p.price)}</div></div></div>`).join("")}</div>`;}
- return `<div class="hero"><h1>${esc(t("heroT"))}</h1><p>${esc(t("heroS"))}</p>
+function vHome(){const l=filtered();return `<div class="hero"><h1>${esc(t("heroT"))}</h1><p>${esc(t("heroS"))}</p>
  <div class="row"><button class="btn" data-a="shopnow">🛍 ${esc(t("shopNow"))}</button><button class="btn gh" data-a="nav" data-v="seller">🏪 ${esc(t("startSell"))}</button></div>
  <div class="trust"><span>💳 ${esc(t("tCOD"))}</span><span>🚚 ${esc(t("tTrack"))}</span><span>✓ ${esc(t("tRev"))}</span></div></div>
  <div class="live"><b>🎬 ${fmt(t("liveT"),{cities:MK[S.market].cities})}</b><span>${esc(t("liveS"))}</span></div>
- ${rail}
  <h2 class="sec">${esc(t("categories"))}</h2>
  <div class="chips sticky"><button class="chip ${S.cat==="all"?"on":""}" data-a="cat" data-id="all">${esc(t("all"))}</button>${CATS.map(c=>`<button class="chip ${S.cat===c.id?"on":""}" data-a="cat" data-id="${c.id}">${esc(cn(c.id))}</button>`).join("")}</div>
- <div class="tb" style="margin-top:10px"><label style="margin:0">${esc(t("sort"))}</label><select id="sortSel"><option value="feat" ${S.sort==="feat"?"selected":""}>${esc(t("sortFeat"))}</option><option value="pa" ${S.sort==="pa"?"selected":""}>${esc(t("sortPA"))}</option><option value="pd" ${S.sort==="pd"?"selected":""}>${esc(t("sortPD"))}</option><option value="r" ${S.sort==="r"?"selected":""}>${esc(t("sortR"))}</option><option value="n" ${S.sort==="n"?"selected":""}>${esc(t("sortN"))}</option></select></div>
  <h2 class="sec">${esc(t("featured"))}</h2>
  <p class="fnt" style="margin:-6px 0 10px">ⓘ ${esc(t("demoLine"))}</p>
- <div class="grid" id="grid">${l.length?l.map(card).join(""):`<div class="empty" style="grid-column:1/-1"><b>${esc(t("noResults"))}</b><p class="mut">${esc(t("searchEmpty"))}</p></div>`}</div>`;}
+ <div class="grid" id="grid">${l.length?l.map(card).join(""):`<div class="empty" style="grid-column:1/-1"><b>${esc(t("noResults"))}</b></div>`}</div>`;}
 function card(p){const off=p.old?Math.round((1-p.price/p.old)*100):0;const sv=S.saved.includes(p.id);const r=rating(p);
- return `<div class="pc">${off?`<span class="off">−${off}%</span>`:""}<button class="ht ${sv?"on":""}" data-a="save" data-id="${p.id}">${sv?"♥":"♡"}</button>
+ return `<div class="pc" style="position:relative">${off?`<span class="off">−${off}%</span>`:""}<button class="ht ${sv?"on":""}" data-a="save" data-id="${p.id}">${sv?"♥":"♡"}</button>
  <img class="img" src="${p.img}" alt="${esc(pn(p))}" loading="lazy" onerror="this.style.visibility='hidden'">
  <div class="bd"><button class="nm" data-a="open" data-id="${p.id}">${esc(pn(p))}</button>
  <div><span class="pr">${money(p.price)}</span> ${p.old?`<span class="old">${money(p.old)}</span>`:""}</div>
- <div class="fnt">${r?`<span class="stars">★</span> ${r} · `:""}${esc(p.seller)} · ${esc(p.city)}</div>
+ <div class="fnt">${r?`<span style="color:var(--gold)">★</span> ${r} · `:""}${esc(p.seller)} · ${esc(p.city)}</div>
  <button class="btn sm grn" data-a="add" data-id="${p.id}">${esc(t("add"))}</button></div></div>`;}
 function vDetail(){const p=prod(S.pid);if(!p)return vHome();const m=MK[S.market];const sv=S.saved.includes(p.id);const r=rating(p);const rv=revs(p);
  const eligible=S.orders.some(o=>o.status==="delivered"&&o.items.some(i=>i.id===p.id));
- const cp=Math.round(p.price*0.85);
  return `<div class="row" style="justify-content:space-between;margin-bottom:12px"><button class="btn gh sm" data-a="nav" data-v="home">← ${esc(t("back"))}</button><button class="ht ${sv?"on":""}" style="position:static" data-a="save" data-id="${p.id}">${sv?"♥":"♡"}</button></div>
  <div class="det"><img class="img" src="${p.img}" alt="${esc(pn(p))}" onerror="this.style.visibility='hidden'">
  <div><h1 style="font-size:24px">${esc(pn(p))} <span class="st placed">${esc(t("sample"))}</span></h1>
- <div class="mut">${r?`<span class="stars">★</span> ${r} · ${rv.length} ${rv.length===1?(S.lang==="ur"?"جائزہ":"review"):(S.lang==="ur"?"جائزے":"reviews")}`:esc(t("revNote"))}</div>
+ <div class="mut">${r?`<span style="color:var(--gold)">★</span> ${r} · ${rv.length} reviews`:esc(t("revNote"))}</div>
  <div style="margin:8px 0"><span class="pr" style="font-size:24px">${money(p.price)}</span> ${p.old?`<span class="old">${money(p.old)}</span> <span class="off" style="position:static">−${Math.round((1-p.price/p.old)*100)}%</span>`:""}</div>
  <div class="mut">${p.stock} ${esc(t("inStock"))}</div>
  <label>${esc(t("qty"))}</label><div class="qty"><button data-a="q" data-d="-1">−</button><span>${S.qty}</span><button data-a="q" data-d="1">+</button></div>
@@ -538,13 +511,14 @@ function vDetail(){const p=prod(S.pid);if(!p)return vHome();const m=MK[S.market]
  <div class="card"><h2 class="sec" style="margin-top:0">🚚 ${esc(t("logT"))}</h2>
  ${m.couriers.map(c=>`<div class="sl" style="padding:8px 0;border-bottom:1px solid var(--ln)"><div><b>${esc(c[0])}</b><div class="fnt">${esc(c[1])}</div></div><button class="btn gh sm" data-a="map" data-id="${esc(c[0])}">📍 ${esc(t("map"))}</button></div>`).join("")}
  <button class="btn grn" style="width:100%;margin-top:10px" data-a="smartmap">📍 ${esc(t("smartMap"))}</button></div>
- <div class="card" style="border-color:var(--grn3)"><h2 class="sec" style="margin-top:0">👥 ${esc(t("comT"))}</h2><p class="mut">${esc(t("comS"))}</p>
- <div style="font-size:20px;font-weight:800;color:var(--grn);margin:8px 0">${money(cp)} <s class="old">${money(p.price)}</s> · −15%</div>
- <button class="btn grn" data-a="gStartPid" data-id="${p.id}">👥 ${esc(t("startGroup"))}</button></div>
+ <div class="card" style="border-color:var(--grn3)"><h2 class="sec" style="margin-top:0">📦 ${esc(t("bulkT"))}</h2><p class="mut">${esc(t("bulkS"))}</p>
+ <label>${esc(t("bulkQty"))}</label><div class="qty"><button data-a="bq" data-d="-1">−</button><span>${S.bqQty||10}</span><button data-a="bq" data-d="1">+</button></div>
+ <button class="btn wa" style="width:100%;margin-top:10px" data-a="bulkQuote" data-id="${p.id}">💬 ${esc(t("bulkBtn"))}</button>
+ <p class="fnt" style="margin-top:8px">🛡 ${esc(t("bulkNote"))}</p></div>
  <h2 class="sec">${esc(t("description"))}</h2><div class="card mut">${esc(pd(p))||"—"}</div>
  <h2 class="sec">${esc(t("reviews"))}</h2>
- <div class="card">${rv.length?rv.map(x=>`<div class="rev"><b>${esc(x.n)}</b> <span class="stars">${"★".repeat(x.s)}${"☆".repeat(5-x.s)}</span><p class="mut">${esc(x[S.lang]||x.en)}</p></div>`).join(""):`<p class="mut">${esc(t("revNote"))}</p>`}
- ${eligible?`<div style="margin-top:12px;border-top:1px solid var(--ln);padding-top:12px"><b>${esc(t("writeRev"))}</b><p class="fnt">${esc(t("revEligible"))}</p>
+ <div class="card">${rv.length?rv.map(x=>`<div style="padding:10px 0;border-top:1px solid var(--ln)"><b>${esc(x.n)}</b> <span style="color:var(--gold)">${"★".repeat(x.s)}</span><p class="mut">${esc(x[S.lang]||x.en)}</p></div>`).join(""):`<p class="mut">${esc(t("revNote"))}</p>`}
+ ${eligible?`<div style="margin-top:12px;border-top:1px solid var(--ln);padding-top:12px"><b>${esc(t("writeRev"))}</b>
  <label>${esc(t("revName"))}</label><input id="rvName" value="${esc(S.profile.name)}">
  <label>${esc(t("revStars"))}</label><select id="rvStars"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>
  <label>${esc(t("revText"))}</label><textarea id="rvText" rows="2"></textarea>
@@ -552,19 +526,15 @@ function vDetail(){const p=prod(S.pid);if(!p)return vHome();const m=MK[S.market]
 function vCart(){if(!S.cart.length)return `<div class="empty"><h2>${esc(t("cartEmpty"))}</h2><p class="mut" style="margin:8px 0 16px">${esc(t("cartEmptyS"))}</p><button class="btn" data-a="nav" data-v="home">${esc(t("continue"))}</button></div>`;
  const G={};S.cart.forEach(it=>{const p=prod(it.id);if(!p)return;(G[p.seller]=G[p.seller]||{swa:p.swa,items:[]}).items.push(it);});
  const ks=Object.keys(G);let sub=0;
- let h=`<h2 class="sec">${esc(t("cart"))}</h2><div class="mut" style="margin-bottom:8px">${fmt(t("sellers"),{n:ks.length})}</div>
- <div class="tb"><label style="margin:0;display:flex;gap:6px;align-items:center"><input type="checkbox" id="bulkAll" style="width:auto" data-a="bulkAll"> ${esc(t("selectAll"))}</label>
- <button class="btn red sm" data-a="bulkRemove" ${S.bulk.length?"":"disabled"}>${esc(t("removeSel"))} (${S.bulk.length})</button>
- <button class="btn gh sm" data-a="clearCart">${esc(t("clearCart"))}</button></div><p class="fnt" style="margin-bottom:10px">${esc(t("cartBulkHint"))}</p>`;
+ let h=`<h2 class="sec">${esc(t("cart"))}</h2><div class="mut" style="margin-bottom:8px">${fmt(t("sellers"),{n:ks.length})}</div>`;
  ks.forEach(s=>{let tot=0;h+=`<div class="cg"><b>🏪 ${esc(s)}</b>`;
   G[s].items.forEach(it=>{const p=prod(it.id);tot+=p.price*it.q;sub+=p.price*it.q;
-   h+=`<div class="ci"><input type="checkbox" style="width:auto" data-a="bulkToggle" data-id="${it.id}" ${S.bulk.includes(it.id)?"checked":""}><img src="${p.img}" onerror="this.style.visibility='hidden'"><div class="gw"><div>${esc(pn(p))}</div><span class="pr">${money(p.price*it.q)}</span></div>
+   h+=`<div class="ci"><img src="${p.img}" onerror="this.style.visibility='hidden'"><div class="gw"><div>${esc(pn(p))}</div><span class="pr">${money(p.price*it.q)}</span></div>
    <div class="qty"><button data-a="cq" data-id="${it.id}" data-d="-1">−</button><span>${it.q}</span><button data-a="cq" data-id="${it.id}" data-d="1">+</button></div>
    <button class="btn red sm" data-a="rm" data-id="${it.id}">🗑</button></div>`;});
   h+=`<div class="tot"><span>${esc(t("subtotal"))}</span><span>${money(tot)}</span></div><button class="btn wa" style="width:100%" data-a="waSeller" data-id="${esc(s)}">💬 ${fmt(t("orderFrom"),{s:esc(s)})}</button></div>`;});
- h+=`<div class="card"><div class="tot"><span>${esc(t("subtotal"))}</span><span>${money(sub)}</span></div><div class="mut">${esc(t("delNote"))}</div>
- <button class="btn grn" style="width:100%;margin-top:12px" data-a="checkout">→ ${esc(t("checkout"))}</button>
- <button class="btn gh" style="width:100%;margin-top:8px" data-a="nav" data-v="home">${esc(t("continue"))}</button></div>`;return h;}
+ h+=`<div class="card"><div class="tot"><span>${esc(t("subtotal"))}</span><span>${money(sub)}</span></div>
+ <button class="btn grn" style="width:100%;margin-top:12px" data-a="checkout">→ ${esc(t("checkout"))}</button></div>`;return h;}
 function vPlaced(){return `<div class="ctr"><div class="chk">✓</div><h2>${esc(t("placed"))}</h2><p class="mut" style="margin:8px 0 16px">${esc(t("placedS"))}</p></div>`+
  S.lastOrders.map(o=>`<div class="card"><div class="sl"><b>${esc(o.seller)}</b><span class="pr">${money(o.total)}</span></div><div class="oc">${o.code}</div>
  <button class="btn wa" style="width:100%" data-a="waOrder" data-id="${o.code}">💬 ${esc(t("msgSeller"))}</button>
@@ -574,7 +544,7 @@ function vOrders(){if(!S.orders.length)return `<div class="empty"><h2>${esc(t("o
  return `<h2 class="sec">${esc(t("orders"))}</h2>`+S.orders.map(o=>`<div class="card"><div class="sl"><b>${esc(o.seller)}</b><span class="st ${o.status}">${esc(t("st"+o.status[0].toUpperCase()+o.status.slice(1)))}</span></div>
  <div class="oc">${o.code}</div><div class="mut">${money(o.total)} · ${new Date(o.ts).toLocaleDateString()}</div>
  <div class="row" style="margin-top:10px"><button class="btn wa sm" data-a="waOrder" data-id="${o.code}">💬 ${esc(t("msgSeller"))}</button><button class="btn gh sm" data-a="track" data-id="${o.code}">🚚 ${esc(t("track"))}</button></div></div>`).join("");}
-function vSaved(){const l=S.saved.map(prod).filter(Boolean);if(!l.length)return `<div class="empty"><h2>${esc(t("savedEmpty"))}</h2><button class="btn" style="margin-top:12px" data-a="nav" data-v="home">${esc(t("startShop"))}</button></div>`;
+function vSaved(){const l=S.saved.map(prod).filter(Boolean);if(!l.length)return `<div class="empty"><h2>${esc(t("savedEmpty"))}</h2></div>`;
  return `<h2 class="sec">${esc(t("saved"))}</h2><div class="grid">${l.map(card).join("")}</div>`;}
 function vAccount(){const p=S.profile;return `<h2 class="sec">${esc(t("account"))}</h2>
  <div class="card"><b>${esc(t("profile"))}</b>
@@ -586,9 +556,8 @@ function vAccount(){const p=S.profile;return `<h2 class="sec">${esc(t("account")
  <label>${esc(t("city"))}</label><input id="pfCity" value="${esc(p.city)}">
  <div class="row" style="margin-top:12px"><button class="btn grn" data-a="pfSave">${esc(t("save"))}</button>${p.email?`<button class="btn gh" data-a="logout">${esc(t("logout"))}</button>`:""}</div></div>
  <div class="menu">
- <button data-a="payfocus">💳 ${esc(t("mySub"))}<span>›</span></button>
  <button data-a="nav" data-v="seller">🏪 ${esc(t("sellerCenter"))}<span>›</span></button>
- <button data-a="nav" data-v="committee">👥 ${esc(t("committee"))}<span>›</span></button>
+ <button data-a="nav" data-v="bulk">📦 ${esc(t("bulkCenter"))}<span>›</span></button>
  <button data-a="menu">🌍 ${esc(t("market"))}<span>${MK[S.market].flag}</span></button>
  <button data-a="nav" data-v="faq">❓ ${esc(t("faq"))}<span>›</span></button>
  <button data-a="nav" data-v="settings">⚙️ ${esc(t("settings"))}<span>›</span></button>
@@ -611,73 +580,58 @@ function vSeller(){const head=`<h2 class="sec">${esc(t("sellerCenter"))}</h2>`;
  <button class="btn grn" style="margin-top:12px" data-a="mpSave">${esc(t(ed?"editProduct":"addProduct"))}</button>
  <p class="fnt" style="margin-top:8px">🎁 ${esc(t("planGate"))}</p></div>
  <h2 class="sec">${esc(t("myProducts"))} (${ls.length})</h2>
- ${ls.length?ls.map((l,i)=>`<div class="lrow" draggable="true" data-lid="${l.id}"><img src="${l.img}" onerror="this.style.visibility='hidden'"><div class="gw"><b>${esc(pn(l))}</b><div class="pr">${money(l.price)}</div><span class="st ${l.active?"delivered":"paused"}">${esc(t(l.active?"active":"paused"))}</span> <span class="fnt">${esc(t("stock"))}: ${l.stock}</span></div>
- <div class="row"><button class="btn gh sm" data-a="lsStock" data-id="${l.id}" data-d="-1">−</button><button class="btn gh sm" data-a="lsStock" data-id="${l.id}" data-d="1">+</button>
- <button class="btn gh sm" data-a="lsUp" data-id="${l.id}" ${i===0?"disabled":""}>↑</button><button class="btn gh sm" data-a="lsDown" data-id="${l.id}" ${i===ls.length-1?"disabled":""}>↓</button>
- <button class="btn gh sm" data-a="lsPause" data-id="${l.id}">${esc(t(l.active?"pause":"activate"))}</button>
+ ${ls.length?ls.map((l,i)=>`<div class="lrow"><img src="${l.img}" onerror="this.style.visibility='hidden'"><div class="gw"><b>${esc(pn(l))}</b><div class="pr">${money(l.price)}</div><span class="st ${l.active?"delivered":"paused"}">${esc(t(l.active?"active":"paused"))}</span></div>
+ <div class="row"><button class="btn gh sm" data-a="lsPause" data-id="${l.id}">${esc(t(l.active?"pause":"activate"))}</button>
  <button class="btn gh sm" data-a="lsEdit" data-id="${l.id}">${esc(t("edit"))}</button><button class="btn red sm" data-a="lsDel" data-id="${l.id}">${esc(t("del"))}</button></div></div>`).join(""):`<div class="empty">${esc(t("noListings"))}</div>`}
  <button class="btn gh" style="width:100%" data-a="nav" data-v="faq">❓ ${esc(t("faq"))}</button>`;}
-function vCommittee(){return `<h2 class="sec">${esc(t("commT"))}</h2><div class="card mut">${esc(t("commS"))}</div>
- <div class="row"><button class="btn grn" data-a="gStart">${esc(t("startGroup"))}</button></div>
- <div class="card" style="margin-top:12px"><label>${esc(t("code"))}</label><input id="gCode"><button class="btn gh" style="margin-top:10px" data-a="gJoin">${esc(t("joinGroup"))}</button></div>
- ${S.groups.length?S.groups.map(g=>{const p=prod(g.pid);return `<div class="card sl"><div><b>${g.code}</b>${p?`<div class="fnt">${esc(pn(p))}</div>`:""}<div class="mut">${g.members}/3 ${esc(t("members"))}</div></div><div class="row"><span class="st ${g.members>=3?"delivered":"placed"}">${esc(t(g.members>=3?"locked":"open"))}</span><button class="btn wa sm" data-a="gShare" data-id="${g.code}">${esc(t("share"))}</button></div></div>`;}).join(""):`<div class="empty">${esc(t("noGroups"))}</div>`}`;}
+function vBulk(){const reqs=S.bulkReqs||[];return `<h2 class="sec">${esc(t("bulkT"))}</h2><div class="card mut">${esc(t("bulkS"))}</div>
+ <h2 class="sec">${esc(t("myBulk"))}</h2>
+ ${reqs.length?reqs.map(r=>{const p=prod(r.pid);return `<div class="card sl"><div><b>${p?esc(pn(p)):r.pid}</b><div class="mut">x${r.qty} · ${new Date(r.ts).toLocaleDateString()}</div></div><span class="st placed">pending</span></div>`;}).join(""):`<div class="empty">${esc(t("bulkNone"))}</div>`}
+ <p class="fnt" style="margin-top:12px">🛡 ${esc(t("bulkNote"))}</p>`;}
 function vSettings(){return `<h2 class="sec">${esc(t("settings"))}</h2>
- <div class="card"><label>${esc(t("lang"))}</label><select id="setLang"><option value="en" ${S.lang==="en"?"selected":""}>English</option><option value="ur" ${S.lang==="ur"?"selected":""}>اردو</option><option value="sk" ${S.lang==="sk"?"selected":""}>Slovenčina</option><option value="de" ${S.lang==="de"?"selected":""}>Deutsch</option><option value="hi" ${S.lang==="hi"?"selected":""}>हिन्दी</option></select>
+ <div class="card">
+ <button class="btn gh" style="width:100%;margin:10px 0" data-a="openLang">🌐 ${esc(t("lang"))} — <b>${({en:"English",ur:"اردو",sk:"Slovenčina",de:"Deutsch",hi:"हिन्दी"})[S.lang]}</b></button>
  <label>${esc(t("market"))}</label><select id="setMarket">${Object.values(MK).map(m=>`<option value="${m.code}" ${S.market===m.code?"selected":""}>${m.flag} ${esc(t("market"+m.code))} (${m.sym})</option>`).join("")}</select>
- <div class="mut" style="margin-top:10px">${esc(t("themeNote"))}</div>
  <label style="display:flex;gap:8px;align-items:center;margin-top:12px"><input type="checkbox" id="setAdmin" style="width:auto" ${S.admin?"checked":""}> ${esc(t("admin"))}</label>
  <button class="btn gh" style="margin-top:12px" data-a="install">⬇ ${esc(t("install"))}</button></div>
- <details><summary>${esc(t("about"))}</summary><p>${esc(t("aboutT"))}</p></details>
- <details><summary>${esc(t("privacy"))}</summary><p>${esc(t("privacyT"))}</p></details>
- <details><summary>${esc(t("terms"))}</summary><p>${esc(t("termsT"))}</p></details>
- <details><summary>${esc(t("support"))}</summary><p>${esc(t("supportT"))}</p></details>
+ <details style="border:1px solid var(--ln);border-radius:12px;padding:12px;margin-bottom:10px;background:var(--sf)"><summary style="cursor:pointer;font-weight:700;color:var(--ink2)">${esc(t("about"))}</summary><p style="margin-top:8px;font-size:13px;color:var(--mut)">${esc(t("aboutT"))}</p></details>
+ <details style="border:1px solid var(--ln);border-radius:12px;padding:12px;margin-bottom:10px;background:var(--sf)"><summary style="cursor:pointer;font-weight:700;color:var(--ink2)">${esc(t("privacy"))}</summary><p style="margin-top:8px;font-size:13px;color:var(--mut)">${esc(t("privacyT"))}</p></details>
+ <details style="border:1px solid var(--ln);border-radius:12px;padding:12px;margin-bottom:10px;background:var(--sf)"><summary style="cursor:pointer;font-weight:700;color:var(--ink2)">${esc(t("terms"))}</summary><p style="margin-top:8px;font-size:13px;color:var(--mut)">${esc(t("termsT"))}</p></details>
+ <details style="border:1px solid var(--ln);border-radius:12px;padding:12px;margin-bottom:10px;background:var(--sf)"><summary style="cursor:pointer;font-weight:700;color:var(--ink2)">${esc(t("support"))}</summary><p style="margin-top:8px;font-size:13px;color:var(--mut)">${esc(t("supportT"))}</p></details>
  <button class="btn red" style="width:100%" data-a="reset">${esc(t("reset"))}</button>`;}
-function vFaq(){return `<h2 class="sec">${esc(t("faqT"))} · ${MK[S.market].flag} ${esc(t("market"+S.market))}</h2>`+[1,2,3,4,5,6,7,8].map(i=>`<details ${i===1?"open":""}><summary>${esc(t("q"+i))}</summary><p>${esc(t("a"+i))}</p></details>`).join("");}
-function trackModal(){const o=S.orders.find(x=>x.code===S.track);if(!o)return "";const steps=["placed","confirmed","shipped","delivered"];const idx=steps.indexOf(o.status);const m=MK[S.market];
+function vFaq(){return `<h2 class="sec">${esc(t("faqT"))} · ${MK[S.market].flag} ${esc(t("market"+S.market))}</h2>`+[1,2,3,4,5,6,7,8].map(i=>`<details style="border:1px solid var(--ln);border-radius:12px;padding:12px;margin-bottom:10px;background:var(--sf)" ${i===1?"open":""}><summary style="cursor:pointer;font-weight:700;color:var(--ink2)">${esc(t("q"+i))}</summary><p style="margin-top:8px;font-size:13px;color:var(--mut);white-space:pre-line">${esc(t("a"+i))}</p></details>`).join("");}
+function trackModal(){const o=S.orders.find(x=>x.code===S.track);if(!o)return "";const steps=["placed","confirmed","shipped","delivered"];const idx=steps.indexOf(o.status);
  return `<div class="modal" data-a="closeTrack"><div class="box"><div class="sl"><b>${esc(t("trackT"))}</b><button class="btn gh sm" data-a="closeTrack">✕</button></div>
  <div class="oc">${o.code}</div><div class="mut">${esc(o.seller)} · ${money(o.total)}</div>
- <div class="steps">${steps.map((s,i)=>`<div class="step ${i<=idx?"done":""}"><div class="dot"></div><div class="lbl">${esc(t("st"+s[0].toUpperCase()+s.slice(1)))}</div></div>`).join("")}</div>
- <div class="tc"><div>🚚 ${S.lang==="ur"?"ٹریکنگ کورئیر فراہم کرتا ہے۔":"Tracking is provided by the courier."}</div>
- <label>${S.lang==="ur"?"کنسائنمنٹ نمبر":"Consignment number"}</label><input id="trkNo" value="${esc(o.trk||"")}" placeholder="TCS 123456789">
- <div class="row" style="margin-top:8px"><button class="btn gh sm" data-a="trkSave" data-id="${o.code}">💾 ${S.lang==="ur"?"محفوظ":"Save"}</button>${m.couriers.map(c=>`<button class="btn gh sm" data-a="trkOpen" data-id="${esc(c[0])}">🔎 ${esc(c[0])}</button>`).join("")}</div></div>
+ <div style="display:flex;flex-direction:column;margin:14px 0">${steps.map((s,i)=>`<div style="display:flex;gap:12px;align-items:flex-start"><div style="width:14px;height:14px;border-radius:50%;background:${i<=idx?"var(--grn)":"var(--ln2)"};margin-top:4px"></div><div style="font-size:13px;color:${i<=idx?"var(--ink)":"var(--mut)"};padding-bottom:18px;border-inline-start:2px solid var(--ln);margin-inline-start:-8px;padding-inline-start:18px">${esc(t("st"+s[0].toUpperCase()+s.slice(1)))}</div></div>`).join("")}</div>
  ${o.status!=="delivered"?`<button class="btn grn" style="width:100%;margin-top:12px" data-a="receipt" data-id="${o.code}">✓ ${esc(t("confirmReceipt"))}</button>`:""}
  <button class="btn wa" style="width:100%;margin-top:8px" data-a="waOrder" data-id="${o.code}">💬 ${esc(t("msgSeller"))}</button></div></div>`;}
-const KB=[[/^(hi|hello|salam|assalam|how are you|سلام|ہیلو)/i,{en:"Salam! I am Raahnuma. Ask me about COD, couriers, committee groups, returns, selling or payments.",ur:"سلام! میں راہنما ہوں۔ COD، کورئیر، کمیٹی گروپ، واپسی، فروخت یا ادائیگی کے بارے میں پوچھیں۔"}],
-[/cod|cash|delivery pay|ادائیگی|کیش/i,{en:"COD means Cash on Delivery: the rider brings the box, you open and check it, and pay only if you keep it.",ur:"COD یعنی کیش آن ڈیلیوری: رائیڈر ڈبہ لاتا ہے، آپ کھول کر چیک کرتے ہیں اور صرف رکھنے کی صورت میں ادائیگی کرتے ہیں۔"}],
-[/deliver|courier|shipping|ڈیلیوری|کورئیر/i,{en:"Delivery is per seller: {d}, free over {f}. Couriers in your market: {c}.",ur:"ڈیلیوری فی فروخت کنندہ ہے: {d}، {f} سے اوپر مفت۔ آپ کی مارکیٹ کے کورئیر: {c}۔"}],
-[/committee|group|discount|کمیٹی|گروپ/i,{en:"Committee Buy: 3 buyers join a group and everyone saves 15%.",ur:"کمیٹی خرید: 3 خریدار گروپ میں شامل ہوں اور سب 15% بچائیں۔"}],
-[/return|refund|exchange|واپسی|رقم/i,{en:"Returns: check the parcel before paying. Refuse at the door or message the seller within 7 days.",ur:"واپسی: ادائیگی سے پہلے پارسل چیک کریں۔ 7 دن میں فروخت کنندہ کو واٹس ایپ کریں۔"}],
-[/sell|seller|shop|list|فروخت|دکان/i,{en:"Selling is free and unlimited during the founding phase.",ur:"بانی مرحلہ میں فروخت مفت اور لامحدود ہے۔"}],
-[/pay|subscription|plan|premium|ادائیگی|پلان/i,{en:"Nothing to pay during the founding phase.",ur:"بانی مرحلہ میں کچھ ادا نہیں کرنا۔"}],
-[/review|rating|جائزہ|ریٹنگ/i,{en:"Reviews come only from delivered orders, so they cannot be faked.",ur:"جائزے صرف ڈیلیور شدہ آرڈرز سے آتے ہیں، اس لیے جعلی نہیں ہو سکتے۔"}]];
-function raahAnswer(q){const m=MK[S.market];for(const[re,ans]of KB){if(re.test(q)){let s=ans[S.lang]||ans.en;return s.replace("{d}",money(m.del)).replace("{f}",money(m.free)).replace("{c}",m.couriers.map(c=>c[0]).join(", "));}}
- return S.lang==="ur"?"میں COD، ڈیلیوری، کمیٹی، واپسی، فروخت، ادائیگی اور جائزوں میں مدد کر سکتا ہوں۔":"I can help with COD, delivery, committee, returns, selling, payments and reviews.";}
+const KB=[[/^(hi|hello|salam|assalam)/i,{en:"Salam! I am Raahnuma.",ur:"سلام! میں راہنما ہوں۔"}],
+[/cod|cash/i,{en:"COD means Cash on Delivery: the rider brings the box, you open and check it, and pay only if you keep it.",ur:"COD یعنی کیش آن ڈیلیوری۔"}],
+[/deliver|courier/i,{en:"Delivery is per seller: {d}, free over {f}.",ur:"ڈیلیوری فی فروخت کنندہ ہے۔"}],
+[/bulk|wholesale/i,{en:"Bulk: request a wholesale quote directly from the seller on WhatsApp.",ur:"تھوک: واٹس ایپ پر فروخت کنندہ سے قیمت مانگیں۔"}],
+[/return|refund/i,{en:"Returns: check the parcel before paying.",ur:"واپسی: ادائیگی سے پہلے پارسل چیک کریں۔"}],
+[/sell|seller/i,{en:"Selling is free and unlimited during the founding phase.",ur:"بانی مرحلہ میں فروخت مفت ہے۔"}]];
+function raahAnswer(q){const m=MK[S.market];for(const[re,ans]of KB){if(re.test(q)){let s=ans[S.lang]||ans.en;return s.replace("{d}",money(m.del)).replace("{f}",money(m.free));}}
+ return S.lang==="ur"?"میں COD، ڈیلیوری، تھوک، واپسی، فروخت میں مدد کر سکتا ہوں۔":"I can help with COD, delivery, bulk, returns, selling.";}
 function raahPanel(){return `<div id="raah"><div class="hd"><b>🤖 ${esc(t("raahT"))}</b><button data-a="raahToggle" style="color:#fff">✕</button></div>
- <div class="msgs" id="raahMsgs">${S.raahMsgs.length?S.raahMsgs.map(m=>`<div class="m ${m.role}">${esc(m.text)}</div>`).join(""):`<div class="m a">${esc(t("raahHello"))}</div>`}${S.raahTyping?`<div class="m a"><span class="typing"><i></i><i></i><i></i></span></div>`:""}</div>
- <div class="chips"><div class="chips">${t("raahChips").split(",").map(c=>`<button class="chip" data-a="raahChip" data-id="${esc(c)}">${esc(c)}</button>`).join("")}</div></div>
+ <div class="msgs" id="raahMsgs" style="display:flex;flex-direction:column;gap:8px">${S.raahMsgs.length?S.raahMsgs.map(m=>`<div class="m ${m.role}">${esc(m.text)}</div>`).join(""):`<div class="m a">${esc(t("raahHello"))}</div>`}</div>
+ <div class="chips" style="padding:8px 10px 0">${t("raahChips").split(",").map(c=>`<button class="chip" data-a="raahChip" data-id="${esc(c)}">${esc(c)}</button>`).join("")}</div>
  <div class="ft"><input id="raahIn" placeholder="${esc(t("raahPh"))}"><button class="btn grn sm" data-a="raahSend">${esc(t("raahSend"))}</button></div></div>`;}
-async function raahSend(text){if(!text)return;S.raahMsgs.push({role:"u",text});S.raahTyping=true;save();render();
- let answer=null;
- try{const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),8000);
-  const r=await fetch("/api/raahnuma",{method:"POST",headers:{"Content-Type":"application/json","x-nx-client":"nx-web-v20"},body:JSON.stringify({prompt:text,lang:S.lang}),signal:ctl.signal});clearTimeout(to);
-  if(r.ok){const j=await r.json();if(j&&j.text)answer=j.text;}
- }catch(e){}
- if(!answer)answer=raahAnswer(text);
- S.raahTyping=false;S.raahMsgs.push({role:"a",text:answer});save();render();}
+function raahSend(text){if(!text)return;S.raahMsgs.push({role:"u",text});const answer=raahAnswer(text);S.raahMsgs.push({role:"a",text:answer});save();render();}
 function addCart(id,q){const it=S.cart.find(x=>x.id===id);if(it)it.q+=q;else S.cart.push({id,q});save();toast(t("added"));render();}
 function orderMessage(o){return t("waHello")+"\n"+o.items.map(i=>{const p=prod(i.id);return "• "+(p?pn(p):i.id)+" x"+i.q;}).join("\n")+"\n"+t("waTotal")+": "+money(o.total)+"\n"+o.code;}
 function val(id){const el=document.getElementById(id);return el?el.value.trim():"";}
 document.addEventListener("click",e=>{
  const el=e.target.closest("[data-a]");if(!el)return;const a=el.dataset.a,id=el.dataset.id;
- if((a==="menu"||a==="closeTrack")&&!e.target.closest("button")&&e.target!==el)return;
+ if(a==="menu"&&!e.target.closest("button")&&e.target!==el)return;
  switch(a){
- case "enter":sessionStorage.setItem("nx_in","1");render();break;
- case "lang":{const langs=["en","ur","sk","de","hi"];const i=langs.indexOf(S.lang);S.lang=langs[(i+1)%langs.length];save();render();toast(t("langSet"));break;}
+ case "lang":openLangSelector();break;
+ case "openLang":openLangSelector();break;
  case "menu":if(el.classList.contains("modal")){S.menu=false;}else{S.menu=!S.menu;}save();render();break;
  case "marketSet":S.market=id;S.menu=false;save();render();toast(t("marketSet"));break;
- case "payfocus":S.view="seller";S.payFocus=true;save();render();window.scrollTo(0,0);break;
  case "nav":S.view=el.dataset.v;S.track=null;S.menu=false;S.editId=null;save();render();window.scrollTo(0,0);break;
- case "shopnow":S.view="home";render();setTimeout(()=>{const g=document.getElementById("grid");if(g)g.scrollIntoView({behavior:"smooth"});},60);break;
+ case "shopnow":S.view="home";render();break;
  case "cat":S.cat=id;render();break;
  case "open":{S.pid=id;S.qty=1;S.view="detail";const p=prod(id);if(p){S.hist.unshift({id,cat:p.cat});S.hist=S.hist.slice(0,60);}save();render();window.scrollTo(0,0);break;}
  case "save":{const i=S.saved.indexOf(id);if(i>=0){S.saved.splice(i,1);toast(t("unsavedT"));}else{S.saved.push(id);toast(t("savedT"));}save();render();break;}
@@ -685,28 +639,23 @@ document.addEventListener("click",e=>{
  case "addq":addCart(id,S.qty);break;
  case "buy":addCart(id,S.qty);S.view="cart";render();break;
  case "q":S.qty=Math.max(1,S.qty+Number(el.dataset.d));render();break;
+ case "bq":S.bqQty=Math.max(5,(S.bqQty||10)+Number(el.dataset.d)*5);save();render();break;
+ case "bulkQuote":{const p=prod(id);if(!p)break;const q=S.bqQty||10;S.bulkReqs=S.bulkReqs||[];S.bulkReqs.unshift({pid:id,qty:q,ts:Date.now()});save();
+  wa(p.swa,(S.lang==="ur"?"السلام علیکم! مجھے تھوک قیمت چاہیے: ":"Hello! I'd like a wholesale quote: ")+pn(p)+" x"+q+" ("+MK[S.market].flag+" "+t("market"+S.market)+"). "+location.origin+location.pathname);
+  toast(t("bulkSent"));break;}
  case "cq":{const it=S.cart.find(x=>x.id===id);if(it){it.q+=Number(el.dataset.d);if(it.q<1)S.cart=S.cart.filter(x=>x.id!==id);}save();render();break;}
- case "rm":{const snap=S.cart.slice();S.cart=S.cart.filter(x=>x.id!==id);S.bulk=S.bulk.filter(x=>x!==id);save();render();toast(t("removed"),()=>{S.cart=snap;save();render();});break;}
- case "bulkToggle":{const i=S.bulk.indexOf(id);if(i>=0)S.bulk.splice(i,1);else S.bulk.push(id);save();render();break;}
- case "bulkAll":{S.bulk=el.checked?S.cart.map(x=>x.id):[];save();render();break;}
- case "bulkRemove":{if(!S.bulk.length)break;const snap=S.cart.slice();S.cart=S.cart.filter(x=>!S.bulk.includes(x.id));S.bulk=[];save();render();toast(t("removed"),()=>{S.cart=snap;save();render();});break;}
- case "clearCart":{const snap=S.cart.slice();S.cart=[];S.bulk=[];save();render();toast(t("removed"),()=>{S.cart=snap;save();render();});break;}
+ case "rm":{const snap=S.cart.slice();S.cart=S.cart.filter(x=>x.id!==id);save();render();toast(t("removed"),()=>{S.cart=snap;save();render();});break;}
  case "undo":if(_undo){const f=_undo;_undo=null;f();}break;
- case "copy":{const v=RAIL[id==="iban"?"iban":"acc"];
-  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(()=>toast(t("copied")));}
-  else{const ta=document.createElement("textarea");ta.value=v;document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();toast(t("copied"));}break;}
  case "checkout":{if(!S.cart.length)break;const G={};S.cart.forEach(it=>{const p=prod(it.id);(G[p.seller]=G[p.seller]||{swa:p.swa,items:[]}).items.push(it);});
   const m=MK[S.market];S.lastOrders=Object.keys(G).map(s=>{const items=G[s].items;const sub=items.reduce((a,b)=>a+prod(b.id).price*b.q,0);const del=sub>=m.free?0:m.del;
    const o={code:"NX-"+Math.random().toString(36).slice(2,8).toUpperCase(),seller:s,swa:G[s].swa,items:items.map(i=>({id:i.id,q:i.q,price:prod(i.id).price})),total:sub+del,status:"placed",ts:Date.now()};S.orders.unshift(o);return o;});
-  S.cart=[];S.bulk=[];S.view="placed";save();render();window.scrollTo(0,0);break;}
+  S.cart=[];S.view="placed";save();render();window.scrollTo(0,0);break;}
  case "waSeller":{const items=S.cart.filter(it=>{const p=prod(it.id);return p&&p.seller===id;});if(!items.length)break;const p=prod(items[0].id);
   const sub=items.reduce((a,b)=>a+prod(b.id).price*b.q,0);const m=MK[S.market];const del=sub>=m.free?0:m.del;
   const o={code:"NX-"+Math.random().toString(36).slice(2,8).toUpperCase(),seller:id,swa:p.swa,items:items.map(i=>({id:i.id,q:i.q,price:prod(i.id).price})),total:sub+del,status:"placed",ts:Date.now()};S.orders.unshift(o);
-  S.cart=S.cart.filter(it=>{const pp=prod(it.id);return !(pp&&pp.seller===id);});S.bulk=[];save();
+  S.cart=S.cart.filter(it=>{const pp=prod(it.id);return !(pp&&pp.seller===id);});save();
   wa(p.swa,orderMessage(o));render();break;}
  case "waOrder":{const o=S.orders.find(x=>x.code===id);if(o)wa(o.swa,orderMessage(o));break;}
- case "trkSave":{const o=S.orders.find(x=>x.code===id);if(o){o.trk=val("trkNo");save();render();toast("Saved");}break;}
- case "trkOpen":{const o=S.orders.find(x=>x.code===S.track);const no=(o&&o.trk)||"";window.open("https://www.google.com/search?q="+encodeURIComponent(id+" tracking "+no),"_blank");break;}
  case "track":S.track=id;render();break;
  case "closeTrack":S.track=null;render();break;
  case "receipt":{const o=S.orders.find(x=>x.code===id);if(o){o.status="delivered";save();render();toast(t("receiptDone"));}break;}
@@ -714,11 +663,8 @@ document.addEventListener("click",e=>{
  case "map":window.open("https://www.google.com/maps/search/"+encodeURIComponent(id+" courier near me"),"_blank");break;
  case "smartmap":{const fallback=()=>window.open("https://www.google.com/maps/search/courier+service+near+me","_blank");
   if(navigator.geolocation)navigator.geolocation.getCurrentPosition(pos=>window.open("https://www.google.com/maps/search/courier+service+near+"+pos.coords.latitude+","+pos.coords.longitude,"_blank"),fallback);else fallback();break;}
- case "gStartPid":case "gStart":{const g={code:"NX"+Math.floor(1000+Math.random()*9000),pid:a==="gStartPid"?id:null,members:1};S.groups.unshift(g);save();render();toast(t("groupCreated"));wa("","Join my NexusShop committee "+g.code+" — everyone saves 15% (COD).");break;}
- case "gJoin":{const c=val("gCode").toUpperCase();const g=S.groups.find(x=>x.code===c);if(!g){toast(t("codeNo"));break;}if(g.members<3)g.members++;save();render();toast(g.members>=3?t("groupFull"):t("groupJoined"));break;}
- case "gShare":{const g=S.groups.find(x=>x.code===id);wa("","Join my NexusShop committee "+g.code+" — everyone saves 15% (COD).");break;}
  case "pfSave":S.profile={name:val("pfName"),email:val("pfEmail"),wa:val("pfWa"),city:val("pfCity"),pic:S.profile.pic};save();toast(t("profileSaved"));render();break;
- case "logout":S.profile={name:"",email:"",wa:"",city:"",pic:null};save();toast(t("loggedOut"));render();break;
+ case "logout":S.profile={name:"",email:"",wa:"",city:"",pic:null};sessionStorage.removeItem("nx_in");save();toast(t("loggedOut"));render();showGate();break;
  case "shCreate":{const n=val("shName");if(!n){toast(t("shopName"));break;}S.shop={name:n,city:val("shCity"),wa:val("shWa"),plan:"free"};save();toast(t("shopCreated"));render();break;}
  case "mpSave":{const n=val("mpName"),pr=Number(val("mpPrice"));if(!n||!pr){toast(t("pName"));break;}
   const data={name:{en:n,ur:n,sk:n,de:n,hi:n},desc:{en:val("mpDesc"),ur:val("mpDesc"),sk:val("mpDesc"),de:val("mpDesc"),hi:val("mpDesc")},price:pr,cat:val("mpCat"),stock:Number(val("mpStock"))||10,img:val("mpImg")||IMG.watch,active:true};
@@ -728,194 +674,130 @@ document.addEventListener("click",e=>{
  case "lsEdit":S.editId=id;render();window.scrollTo(0,0);break;
  case "lsDel":{if(!confirm(t("confirmDel")))break;const idx=S.listings.findIndex(x=>x.id===id);const snap=S.listings[idx];S.listings.splice(idx,1);save();render();toast(t("prodDeleted"),()=>{S.listings.splice(idx,0,snap);save();render();});break;}
  case "lsPause":{const l=S.listings.find(x=>x.id===id);l.active=!l.active;save();render();break;}
- case "lsStock":{const l=S.listings.find(x=>x.id===id);l.stock=Math.max(0,l.stock+Number(el.dataset.d));save();render();break;}
- case "lsUp":case "lsDown":{const ls=S.listings.slice().sort((a,b)=>(a.order||0)-(b.order||0));const i=ls.findIndex(x=>x.id===id);const j=a==="lsUp"?i-1:i+1;if(j<0||j>=ls.length)break;const oi=ls[i].order;ls[i].order=ls[j].order;ls[j].order=oi;save();render();break;}
  case "revSubmit":{const txt=val("rvText");if(!txt){toast(t("revText"));break;}const r={n:val("rvName")||"Buyer",s:Number(val("rvStars"))||5,en:txt,ur:txt};(S.reviews[id]=S.reviews[id]||[]).unshift(r);save();render();toast(t("revThanks"));break;}
- case "reset":if(confirm(t("confirmReset"))){localStorage.removeItem("nx_v3");sessionStorage.removeItem("nx_in");location.reload();}break;
+ case "reset":if(confirm(t("confirmReset"))){localStorage.removeItem("nx_v4");sessionStorage.removeItem("nx_in");location.reload();}break;
  case "raahToggle":S.raahOpen=!S.raahOpen;save();render();break;
  case "raahChip":raahSend(id);break;
  case "raahSend":{const inp=document.getElementById("raahIn");const v=inp?inp.value.trim():"";raahSend(v);break;}
- case "install":doInstall();break;
+ case "install":window.nxInstallGuide();break;
  }
 });
-document.addEventListener("input",e=>{if(e.target.id==="search"){S.search=e.target.value;save();if(S.view!=="home"){S.view="home";render();const s=document.getElementById("search");if(s){s.focus();s.setSelectionRange(s.value.length,s.value.length);}}else{const g=document.getElementById("grid");if(g){const l=filtered();g.innerHTML=l.length?l.map(card).join(""):`<div class="empty" style="grid-column:1/-1"><b>${esc(t("noResults"))}</b><p class="mut">${esc(t("searchEmpty"))}</p></div>`;}}}});
+document.addEventListener("input",e=>{if(e.target.id==="search"){S.search=e.target.value;save();if(S.view!=="home"){S.view="home";render();}else{const g=document.getElementById("grid");if(g){const l=filtered();g.innerHTML=l.length?l.map(card).join(""):`<div class="empty" style="grid-column:1/-1"><b>${esc(t("noResults"))}</b></div>`;}}}});
 document.addEventListener("change",e=>{const id=e.target.id;
- if(id==="sortSel"){S.sort=e.target.value;save();render();}
- if(id==="setLang"){S.lang=e.target.value;save();render();toast(t("langSet"));}
  if(id==="setMarket"){S.market=e.target.value;save();render();toast(t("marketSet"));}
  if(id==="setAdmin"){S.admin=e.target.checked;save();render();}
  if(id==="pfPic"){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const img=new Image();img.onload=()=>{const c=document.createElement("canvas");const s=128/Math.max(img.width,img.height);c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);c.getContext("2d").drawImage(img,0,0,c.width,c.height);S.profile.pic=c.toDataURL("image/jpeg",.72);save();render();};img.src=ev.target.result;};r.readAsDataURL(f);}
 });
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="raahIn"){e.preventDefault();raahSend(e.target.value.trim());}});
-let dragId=null;
-document.addEventListener("dragstart",e=>{const row=e.target.closest("[data-lid]");if(row){dragId=row.dataset.lid;e.dataTransfer.effectAllowed="move";}});
-document.addEventListener("dragover",e=>{if(e.target.closest("[data-lid]"))e.preventDefault();});
-document.addEventListener("drop",e=>{const row=e.target.closest("[data-lid]");if(!row||!dragId||row.dataset.lid===dragId)return;e.preventDefault();
- const ls=S.listings.slice().sort((a,b)=>(a.order||0)-(b.order||0));const from=ls.findIndex(x=>x.id===dragId);const to=ls.findIndex(x=>x.id===row.dataset.lid);
- const[m]=ls.splice(from,1);ls.splice(to,0,m);ls.forEach((x,i)=>x.order=i);dragId=null;save();render();});
-let _dp=null;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();_dp=e;window.dispatchEvent(new CustomEvent("nx-pwa-ready"));});
-window.addEventListener("appinstalled",()=>{window.dispatchEvent(new CustomEvent("nx-pwa-installed"));});
-function doInstall(){if(_dp){_dp.prompt();_dp.userChoice.then(()=>{_dp=null;});}else toast(t("installHint"));}
+/* ===== Selector de idioma premium ===== */
+function openLangSelector(){
+ var old=document.getElementById("nxLangScrim");if(old)old.remove();
+ var LANGS=[["en","English","English","🇬🇧"],["ur","اردو","Urdu","🇵🇰"],["sk","Slovenčina","Slovak","🇸🇰"],["de","Deutsch","German","🇩🇪"],["hi","हिन्दी","Hindi","🇮🇳"]];
+ var scrim=document.createElement("div");scrim.id="nxLangScrim";
+ scrim.innerHTML='<div id="nxLangSheet"><span class="orb oa"></span><span class="orb ob"></span>'+
+ '<div class="hd"><span class="gl">🌐</span><div><b>'+esc(t("lang"))+'</b><span>NexusShop speaks your language</span></div><button class="x" id="nlX">✕</button></div>'+
+ '<div id="nxLangList">'+LANGS.map(function(l){var on=S.lang===l[0];
+  return '<button class="nlRow'+(on?" on":"")+'" data-nl="'+l[0]+'"><span class="fl">'+l[3]+'</span><span class="nm"><b>'+l[1]+'</b><span>'+l[2]+'</span></span><span class="ck">'+(on?"✓":"")+'</span></button>';}).join("")+'</div>'+
+ '<div class="ft">🛍 NexusShop speaks your language</div></div>';
+ document.body.appendChild(scrim);
+ setTimeout(function(){scrim.classList.add("on");},10);
+ scrim.addEventListener("click",function(e){
+  if(e.target===scrim||e.target.closest("#nlX")){scrim.classList.remove("on");setTimeout(function(){if(scrim.parentNode)scrim.remove();},380);return;}
+  var r=e.target.closest("[data-nl]");if(r){S.lang=r.dataset.nl;save();scrim.remove();render();toast(t("langSet"));}
+ });
+}
+/* ===== Gate (bienvenida) integrado ===== */
+var sb=null;
+function showGate(){
+ if(sessionStorage.getItem("nx_in")==="1")return;
+ var old=document.getElementById("nxGate");if(old)old.remove();
+ var gate=document.createElement("div");gate.id="nxGate";
+ var imgs=[IMG.tv,IMG.watch,IMG.buds,IMG.kettle,IMG.attar,IMG.room];
+ var langs=[["en","EN"],["ur","اردو"],["sk","SK"],["de","DE"],["hi","HI"]];
+ gate.innerHTML='<span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span>'+
+ '<span class="chipf c1">💳 COD</span><span class="chipf c2">✓ Reviews</span><span class="chipf c3">🎁 Free</span><span class="chipf c4">🌍 6 markets</span>'+
+ '<div class="card"><div class="ring"><div class="spin">'+imgs.map(function(u,i){return '<img src="'+u+'" style="transform:rotateY('+(i*60)+'deg) translateZ(86px)" alt="">';}).join("")+'</div></div>'+
+ '<h1>Nexus<b>Shop</b></h1><div class="sub" id="ngSub"></div>'+
+ '<div class="glangs">'+langs.map(function(l){return '<button data-glang="'+l[0]+'" class="'+(S.lang===l[0]?"on":"")+'">'+l[1]+'</button>';}).join("")+'</div>'+
+ '<button class="gbtn" id="ngGoogle"><svg viewBox="0 0 48 48" width="19" height="19"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg><span id="ngGtxt"></span></button>'+
+ '<div class="div" id="ngOr"></div>'+
+ '<input id="ngEm" type="email"><input id="ngPw" type="password">'+
+ '<div class="row2"><button class="li" id="ngLi"></button><button class="su" id="ngSu"></button></div>'+
+ '<div class="err" id="ngErr"></div>'+
+ '<div class="demo" id="ngDemo"></div></div>';
+ document.body.appendChild(gate);
+ function paint(){
+  var g=gate;
+  g.querySelector("#ngSub").textContent=t("gateS");
+  g.querySelector("#ngGtxt").textContent=t("gateG");
+  g.querySelector("#ngOr").textContent=t("gateOr");
+  g.querySelector("#ngLi").textContent=S.lang==="ur"?"لاگ ان":S.lang==="sk"?"Prihlásiť sa":S.lang==="de"?"Anmelden":S.lang==="hi"?"लॉग इन":"Log in";
+  g.querySelector("#ngSu").textContent=S.lang==="ur"?"اکاؤنٹ بنائیں":S.lang==="sk"?"Vytvoriť účet":S.lang==="de"?"Konto erstellen":S.lang==="hi"?"खाता बनाएँ":"Create account";
+  g.querySelector("#ngDemo").textContent=t("gateDemo");
+  g.querySelectorAll("[data-glang]").forEach(function(b){b.classList.toggle("on",b.dataset.glang===S.lang);});
+ }
+ gate.addEventListener("click",function(e){
+  var gl=e.target.closest("[data-glang]");if(gl){S.lang=gl.dataset.glang;save();render();paint();return;}
+  if(e.target.closest("#ngGoogle")){
+   if(!sb){gate.querySelector("#ngErr").textContent="Sign-in service unavailable — try demo mode.";return;}
+   sb.auth.signInWithOAuth({provider:"google",options:{redirectTo:location.origin+(location.pathname.endsWith("/")?location.pathname+"index.html":location.pathname)}}).then(function(r){if(r.error)gate.querySelector("#ngErr").textContent=r.error.message;});return;}
+  if(e.target.closest("#ngLi")){if(!sb){gate.querySelector("#ngErr").textContent="Unavailable.";return;}sb.auth.signInWithPassword({email:gate.querySelector("#ngEm").value,password:gate.querySelector("#ngPw").value}).then(function(r){if(r.error)gate.querySelector("#ngErr").textContent=r.error.message;});return;}
+  if(e.target.closest("#ngSu")){if(!sb){gate.querySelector("#ngErr").textContent="Unavailable.";return;}sb.auth.signUp({email:gate.querySelector("#ngEm").value,password:gate.querySelector("#ngPw").value}).then(function(r){if(r.error)gate.querySelector("#ngErr").textContent=r.error.message;});return;}
+  if(e.target.closest("#ngDemo")){enterApp(null);return;}
+ });
+ paint();
+ // Cargar Supabase en background (no bloquea)
+ var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js";
+ s.onload=function(){try{sb=window.supabase.createClient("https://jtbxqwiyktzjdjohcyli.supabase.co","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0Ynhxd2l5a3R6amRqb2hjeWxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ5MzY5NzIsImV4cCI6MjExMDUxMjk3Mn0.lTQDVQgJqY65_daClS0V7LvO6Kl1Pi7pyGrL5F5j-1U",{auth:{persistSession:true}});
+  sb.auth.getSession().then(function(r){if(r.data.session)enterApp(r.data.session.user);});
+  sb.auth.onAuthStateChange(function(ev,ses){if(ev==="SIGNED_IN"&&ses)enterApp(ses.user);});
+ }catch(e){}};
+ s.onerror=function(){};
+ document.head.appendChild(s);
+}
+function enterApp(u){
+ if(u){var m=u.user_metadata||{};if(!S.profile.name)S.profile.name=m.full_name||m.name||"";if(!S.profile.email)S.profile.email=u.email||"";if(!S.profile.pic&&m.avatar_url)S.profile.pic=m.avatar_url;save();}
+ sessionStorage.setItem("nx_in","1");
+ var gate=document.getElementById("nxGate");
+ if(gate){gate.classList.add("out");setTimeout(function(){if(gate.parentNode)gate.parentNode.removeChild(gate);},460);}
+ render();toast(t("gateHi")+", "+(S.profile.name||"")+"! 🎉");
+}
+/* ===== Install PWA ===== */
+var _dp=null;
+window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();_dp=e;showInstallPill();});
+window.addEventListener("appinstalled",function(){_dp=null;hideInstallPill();toast("✓ Installed!");});
+function showInstallPill(){
+ var old=document.getElementById("nxInstallPill");if(old)old.remove();
+ if(sessionStorage.getItem("nx_pwa_dis")&&Date.now()-(+sessionStorage.getItem("nx_pwa_dis")||0)<24*3600*1000)return;
+ var pill=document.createElement("button");pill.id="nxInstallPill";
+ pill.innerHTML='<span class="i">⬇</span><span class="tx">'+t("install")+'</span><span class="x">✕</span>';
+ document.body.appendChild(pill);
+ setTimeout(function(){pill.classList.add("on");},2500);
+ pill.addEventListener("click",function(e){
+  if(e.target.closest(".x")){sessionStorage.setItem("nx_pwa_dis",String(Date.now()));hideInstallPill();return;}
+  window.nxInstallGuide();
+ });
+}
+function hideInstallPill(){var pill=document.getElementById("nxInstallPill");if(!pill)return;pill.classList.add("out");setTimeout(function(){if(pill.parentNode)pill.remove();},420);}
+window.nxInstallGuide=function(){
+ if(_dp){_dp.prompt();_dp.userChoice.then(function(){_dp=null;hideInstallPill();});return;}
+ alert(t("installHint"));
+};
+/* ===== Init ===== */
 if("serviceWorker" in navigator && location.protocol==="https:"){navigator.serviceWorker.register("sw.js",{updateViaCache:"none"}).then(r=>{if(r)r.update().catch(()=>{});}).catch(()=>{});}
 document.addEventListener("error",function(e){var t=e.target;if(t&&t.tagName==="IMG"&&!t.dataset.fb){t.dataset.fb="1";t.src="data:image/svg+xml;utf8,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="600" height="400" fill="#efe8d9"/><text x="300" y="210" font-size="60" text-anchor="middle">🛍</text></svg>');}},true);
+// Mostrar gate al cargar (solo si no hay sesión)
+showGate();
+// Renderizar app en background (siempre, aunque gate esté visible)
 render();
-</script>
-<script>
-/* ===== NexusPay UI — founding phase: todo gratis ===== */
-(function(){
-"use strict";
-var SUPABASE_URL="https://jtbxqwiyktzjdjohcyli.supabase.co";
-var SUPABASE_ANON="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0Ynhxd2l5a3R6amRqb2hjeWxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ5MzY5NzIsImV4cCI6MjExMDUxMjk3Mn0.lTQDVQgJqY65_daClS0V7LvO6Kl1Pi7pyGrL5F5j-1U";
-var FOUNDERS=["neuralfocusai@gmail.com","menteglobalempresarial@gmail.com"];
-var FOUNDING_FREE=true;
-var sb=null,ready=false,session=null,role=null,shop=null,plans=[],rail=null,orders=[],sub=null,invs=[],stats=null,queue=[],conf=[],audit=[],lastSet=null,lastSetPer="",pickPlan="";
-var PD={en:{paySec:"Subscriptions & payments",connecting:"Connecting to payment backend…",payIntro:"Manage your plan, pay by bank transfer and track verification — inside the app.",login:"Log in",signup:"Create account",email:"Email",pass:"Password",createShop:"Create your shop",shopName:"Shop name",city:"City",wa:"WhatsApp",mySub:"My subscription",plan:"Plan",expires:"Expires",daysLeft:"days left",noSub:"No active subscription yet",choosePlan:"Choose your plan",method:"Payment method",createOrder:"Create payment order",openOrders:"Payment history",none:"No payments yet",instructions:"Payment instructions",amount:"Amount",ref:"Reference",bank:"Bank",title:"Account title",iban:"IBAN / account",deadline:"Pay before",tid:"Transaction ID (TID)",receipt:"Receipt photo (optional)",submit:"Submit for verification",warn:"A TID or screenshot is not proof of payment. Activation only after bank verification.",invoices:"Invoices & receipts",print:"Print",admin:"Admin financial control",queue:"Verification queue",approve:"Approve",reject:"Reject",note:"Note",dup:"DUPLICATE TID",confirmed:"Confirmed payments",refund:"Refund",reason:"Reason",settlement:"Monthly settlement",month:"Month",rate:"EUR rate (PKR to EUR)",generate:"Generate",csv:"Download CSV",printPdf:"Print / PDF",record:"Record in ledger",audit:"Audit log",copy:"Copy",copied:"Copied",goPay:"Payments & subscription",checkMail:"Check your email to confirm.",free:"Free",perks:"perks",s1:"Declare",s2:"Transfer",s3:"Verify",s4:"Active",secure:"Bank-verified · audited · refundable",founding:"Founding phase — everything free",foundingNote:"Unlimited products, free. Premium/Gold come later, once the bazaar has real demand.",comingSoon:"Coming soon",freeActive:"Free plan active",later:"Free during founding; Premium/Gold later"},
-ur:{paySec:"سبسکرپشن اور ادائیگیاں",connecting:"پیمنٹ بیک اینڈ سے جڑ رہا ہے…",payIntro:"پلان کا انتظام، بینک ٹرانسفر سے ادائیگی اور تصدیق کی ٹریکنگ — ایپ کے اندر۔",login:"لاگ ان",signup:"اکاؤنٹ بنائیں",email:"ای میل",pass:"پاس ورڈ",createShop:"اپنی دکان بنائیں",shopName:"دکان کا نام",city:"شہر",wa:"واٹس ایپ",mySub:"میری سبسکرپشن",plan:"پلان",expires:"میعاد",daysLeft:"دن باقی",noSub:"ابھی کوئی فعال سبسکرپشن نہیں",choosePlan:"اپنا پلان چنیں",method:"ادائیگی کا طریقہ",createOrder:"پے آرڈر بنائیں",openOrders:"ادائیگی کی تاریخ",none:"ابھی کوئی ادائیگی نہیں",instructions:"ادائیگی ہدایات",amount:"رقم",ref:"حوالہ",bank:"بینک",title:"اکاؤنٹ ٹائٹل",iban:"IBAN / اکاؤنٹ",deadline:"ادائیگی کی آخری تاریخ",tid:"ٹرانزیکشن ID (TID)",receipt:"رسید فوٹو (اختیاری)",submit:"تصدیق کے لیے بھیجیں",warn:"TID یا اسکرین شاٹ ثبوت نہیں۔ بینک تصدیق کے بعد ہی ایکٹیویشن۔",invoices:"رسیدیں اور انوائس",print:"پرنٹ",admin:"ایڈمن مالی کنٹرول",queue:"تصدیق قطار",approve:"منظور",reject:"مسترد",note:"نوٹ",dup:"نقلی TID",confirmed:"تصدیق شدہ ادائیگیاں",refund:"واپسی",reason:"وجہ",settlement:"ماہانہ تصفیہ",month:"مہینہ",rate:"EUR ریٹ",generate:"تیار کریں",csv:"CSV ڈاؤن لوڈ",printPdf:"پرنٹ / PDF",record:"ledger میں درج",audit:"آڈٹ لاگ",copy:"کاپی",copied:"کاپی ہو گیا",goPay:"ادائیگیاں اور سبسکرپشن",checkMail:"تصدیق کے لیے اپنا ای میل دیکھیں۔",free:"مفت",perks:"سہولیات",s1:"اعلان",s2:"ٹرانسفر",s3:"تصدیق",s4:"فعال",secure:"بینک تصدیق شدہ · آڈٹ شدہ · قابلِ واپسی",founding:"بانی مرحلہ — سب کچھ مفت",foundingNote:"لامحدود مصنوعات، مفت۔ پریمیم/گولڈ بعد میں آئیں گے جب بازار میں حقیقی مانگ ہوگی۔",comingSoon:"جلد آ رہا ہے",freeActive:"مفت پلان فعال",later:"بانی مرحلہ میں مفت؛ پریمیم/گولڈ بعد میں"}};
-function PT(k){return (PD[S.lang]&&PD[S.lang][k])||PD.en[k]||k;}
-function st_(s){return s==="confirmed"?"delivered":(s==="rejected"?"paused":"placed");}
-var css=document.createElement("style");css.textContent=
-".payhero{background:linear-gradient(135deg,var(--grn),var(--grn2) 55%,var(--grn3));color:#fff;border-radius:20px;padding:18px;margin-bottom:12px;box-shadow:0 10px 26px rgba(29,92,63,.28);position:relative;overflow:hidden}"+
-".payhero:after{content:'💳';position:absolute;inset-inline-end:-6px;bottom:-16px;font-size:88px;opacity:.15}"+
-".payhero .ph-t{font-family:Georgia,serif;font-size:20px;font-weight:700}.payhero .ph-s{font-size:12px;color:#dcead9;margin-top:2px}"+
-".payhero .ph-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.ph-pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 12px;font-size:11.5px;font-weight:700}"+
-".ph-bar{height:6px;background:rgba(255,255,255,.22);border-radius:99px;margin-top:12px;overflow:hidden}.ph-bar i{display:block;height:100%;background:#fff;border-radius:99px}"+
-".plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}"+
-".plansel{border:1.5px solid var(--ln);background:var(--sf2);border-radius:16px;padding:12px;cursor:pointer;text-align:start;position:relative;transition:all .15s}"+
-".plansel.on{border-color:var(--grn);background:var(--mint);box-shadow:0 6px 16px rgba(29,92,63,.18)}"+
-".plansel .pn{font-weight:800;font-size:14px}.plansel .pp{color:var(--grn);font-weight:800;font-size:19px;font-family:Georgia,serif}.plansel .pf{font-size:11px;color:var(--mut);margin-top:4px;line-height:1.45}"+
-".plansel .tick{position:absolute;top:8px;inset-inline-end:8px;width:20px;height:20px;border-radius:50%;background:var(--grn);color:#fff;font-size:12px;display:none;align-items:center;justify-content:center}.plansel.on .tick{display:flex}"+
-".stepper{display:flex;gap:6px;margin:14px 0 6px}.stp{flex:1;text-align:center}.stp .dot{width:28px;height:28px;border-radius:50%;background:var(--bg2);border:1.5px solid var(--ln);color:var(--mut);font-size:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 4px;font-weight:700}"+
-".stp.done .dot{background:var(--grn);border-color:var(--grn);color:#fff}.stp.now .dot{background:var(--gold);border-color:var(--gold);color:#fff}"+
-".stp .lb{font-size:10px;color:var(--mut)}.stp.done .lb,.stp.now .lb{color:var(--ink);font-weight:600}"+
-".otl{border-inline-start:2px solid var(--ln);margin-inline-start:9px;padding-inline-start:14px;display:flex;flex-direction:column;gap:10px}"+
-".otl .oi{position:relative;background:var(--sf2);border:1px solid var(--ln);border-radius:12px;padding:10px}.otl .oi:before{content:'';position:absolute;inset-inline-start:-20px;top:14px;width:10px;height:10px;border-radius:50%;background:var(--ln2)}"+
-".otl .oi.c:before{background:var(--grn)}.otl .oi.u:before{background:var(--gold)}.otl .oi.r:before{background:var(--red)}"+
-".kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:8px;margin:12px 0}.kpi{background:var(--sf2);border:1px solid var(--ln);border-radius:14px;padding:10px;text-align:center}.kpi b{display:block;font-family:Georgia,serif;font-size:18px;color:var(--grn)}.kpi span{font-size:10.5px;color:var(--mut)}"+
-"table.nxt{width:100%;border-collapse:collapse;font-size:12px}table.nxt td,table.nxt th{padding:6px 4px;border-bottom:1px solid var(--ln);text-align:start;vertical-align:top}";
-document.head.appendChild(css);
-function loadSDK(cb){if(window.supabase){cb();return;}var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js";s.onload=cb;document.head.appendChild(s);}
-loadSDK(function(){sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON,{auth:{flowType:"implicit",detectSessionInUrl:true,persistSession:true}});ready=true;refresh();});
-async function refresh(){if(!ready)return;
- session=(await sb.auth.getSession()).data.session;role=null;shop=null;
- if(session&&(!S.profile.name||!S.profile.email)){var um=session.user.user_metadata||{};if(!S.profile.name)S.profile.name=um.full_name||um.name||"";if(!S.profile.email)S.profile.email=session.user.email||"";save();}
- if(session){var r=await sb.from("admin_roles").select("role").eq("user_id",session.user.id).limit(1);role=(r.data||[])[0]?r.data[0].role:null;
-  if(!role&&FOUNDERS.indexOf(String(session.user.email).toLowerCase())>=0){try{var cf=await sb.rpc("nx_claim_founder");if(cf.data==="super"){var r3=await sb.from("admin_roles").select("role").eq("user_id",session.user.id).limit(1);role=(r3.data||[])[0]?r3.data[0].role:null;}}catch(e){}}
-  var sh=await sb.from("nx_shops").select("*").eq("owner_id",session.user.id).limit(1);shop=(sh.data||[])[0]||null;
-  if(shop){var A=await Promise.all([sb.from("plans").select("*").eq("active",true).order("price_pkr"),sb.from("rail_config").select("*").limit(1),sb.from("payment_orders").select("*").eq("shop_id",shop.id).order("created_at",{ascending:false}).limit(8),sb.from("subscriptions").select("*").eq("shop_id",shop.id).in("status",["active","past_due"]).limit(1),sb.from("invoices").select("*,payment_orders(ref,status,plan_code)").order("issued_at",{ascending:false}).limit(8)]);
-   plans=A[0].data||[];rail=(A[1].data||[])[0]||null;orders=A[2].data||[];sub=(A[3].data||[])[0]||null;invs=A[4].data||[];if(!pickPlan&&plans.length)pickPlan=plans[0].code;}
-  if(role){var B=await Promise.all([sb.rpc("nx_admin_stats"),sb.from("payment_orders").select("*,nx_shops(name,city)").eq("status","under_review").order("created_at"),sb.from("payment_orders").select("*,invoices(number),nx_shops(name)").eq("status","confirmed").order("reviewed_at",{ascending:false}).limit(15),sb.from("audit_log").select("*").order("created_at",{ascending:false}).limit(20)]);
-   stats=B[0].data||{};queue=B[1].data||[];conf=B[2].data||[];audit=B[3].data||[];}}
- injectView();}
-var PLAN_FALLBACK=[{code:"free",name_en:"Free",price_pkr:0},{code:"premium",name_en:"Premium",price_pkr:2500},{code:"gold",name_en:"Gold",price_pkr:6000}];
-var PK={free:["Unlimited products during founding","WhatsApp checkout","COD nationwide"],premium:["Priority verification","Committee tools","Featured slots"],gold:["Everything in Premium","Featured placement","Dedicated support"]};
-function publicPlans(){var list=(plans&&plans.length?plans:PLAN_FALLBACK);
- return `<div data-nxplans style="margin-top:14px;border-top:1px solid var(--ln);padding-top:12px"><b>📦 ${S.lang==="ur"?"پلان":"Plans"}</b> <span class="st delivered">🎁 ${PT("founding")}</span><div class="plans">${list.map(function(p){var on=p.code==="free";var pk=PK[p.code]||PK.pro;
-  return `<button class="plansel ${on?"on":""}" data-nx="pickpub" data-id="${esc(p.code)}"><span class="tick">✓</span><div class="pn">${esc(p.name_en||p.code)}</div><div class="pp">${p.code==="free"?PT("free"):PT("comingSoon")}</div><div class="pf">${pk.join(" · ")}</div></button>`;}).join("")}</div><p class="fnt">${PT("foundingNote")}</p></div>`;}
-function stepState(){if(sub)return 4;var ur=orders.some(function(o){return o.status==="under_review";});if(ur)return 3;var aw=orders.some(function(o){return o.status==="awaiting_payment";});if(aw)return 2;if(shop&&session)return 1;return 0;}
-function stepper(){var n=stepState();var L=[PT("s1"),PT("s2"),PT("s3"),PT("s4")];
- return `<div class="stepper">${L.map(function(l,i){var k=i+1;var cls=k<n?"done":(k===n?"now":"");return `<div class="stp ${cls}"><div class="dot">${k<n?"✓":k}</div><div class="lb">${l}</div></div>`;}).join("")}</div>`;}
-function payhero(){var pills="";var bar="";
- if(sub){var ex=new Date(sub.expires_at);var dl=Math.max(0,Math.ceil((ex-Date.now())/86400000));var pct=Math.min(100,Math.round(dl/30*100));
-  pills=`<span class="ph-pill">⭐ ${esc(sub.plan_code.toUpperCase())}</span><span class="ph-pill">● ${esc(sub.status)}</span><span class="ph-pill">⏳ ${dl} ${PT("daysLeft")}</span>`;
-  bar=`<div class="ph-bar"><i style="width:${pct}%"></i></div>`;}
- else if(session&&shop){pills=`<span class="ph-pill">🎁 ${PT("founding")}</span>`;}
- return `<div class="payhero"><div class="ph-t">💳 ${PT("paySec")}</div><div class="ph-s">${esc(shop?shop.name:(PT("secure")))}</div>${pills?`<div class="ph-row">${pills}</div>`:""}${bar}</div>`;}
-function instrBlock(o){return `<div class="tc" style="margin-top:10px;border-color:var(--grn3)"><b>🏦 ${PT("instructions")} · ${esc(o.ref)}</b>
-<div class="row"><span>${PT("amount")}</span><b style="color:var(--grn);font-size:16px">${money(o.amount_pkr)}</b></div>
-<div class="row"><span>${PT("bank")}</span><b>${esc(rail?rail.bank_name:"—")}</b></div>
-<div class="row"><span>${PT("title")}</span><b>${esc(rail?rail.account_title:"—")}</b></div>
-<div class="row"><span>${PT("iban")}</span><span><b>${esc(rail?rail.iban:"—")}</b> <button class="btn gh sm" data-nx="copy" data-id="iban">${PT("copy")}</button></span></div>
-<div class="row"><span>${PT("deadline")}</span><b>${new Date(o.expires_at).toLocaleString()}</b></div>
-<p class="mut">${esc(S.lang==="ur"?(rail?rail.instructions_ur:""):(rail?rail.instructions_en:""))}</p>
-<p class="fnt" style="color:var(--red)">⚠ ${PT("warn")}</p>
-<label>${PT("tid")}</label><input id="nxTid"><label>${PT("receipt")}</label><input id="nxRc" type="file" accept="image/*">
-<button class="btn wa" data-nx="submit" data-id="${o.id}">📨 ${PT("submit")}</button><div class="fnt" id="nxSubE" style="color:var(--red)"></div></div>`;}
-function sellerCard(){
- if(!ready)return `<div class="card" data-nxsec-view>${payhero()}<p class="mut">${PT("connecting")}</p></div>`;
- if(!session)return `<div class="card" data-nxsec-view style="border-color:var(--grn3)">${payhero()}<p class="mut">${PT("payIntro")}</p><button class="btn grn" data-nx="login">🔐 ${PT("login")}</button></div>`;
- if(!shop)return `<div class="card" data-nxsec-view style="border-color:var(--grn3)">${payhero()}<label>${PT("shopName")}</label><input id="nxShN"><label>${PT("city")}</label><input id="nxShC"><label>${PT("wa")}</label><input id="nxShW" placeholder="+92..."><button class="btn grn" data-nx="shop">${PT("createShop")}</button><div class="fnt" id="nxShE" style="color:var(--red)"></div></div>`;
- var aw=orders.filter(function(o){return o.status==="awaiting_payment";});
- return `<div class="card" data-nxsec-view style="border-color:var(--grn3)">${payhero()}${stepper()}
- ${FOUNDING_FREE?`<div class="tc" style="margin-top:10px;border-color:var(--grn3)"><b>🎁 ${PT("founding")}</b><p class="mut">${PT("foundingNote")}</p></div>`:(sub?"":`<label>${PT("method")}</label><select id="nxMethod">${((rail&&rail.active_methods)||["bank_transfer"]).map(function(m){return `<option value="${m}">${m}</option>`;}).join("")}</select>
- <button class="btn grn" data-nx="order">⚡ ${PT("createOrder")}</button><div class="fnt" id="nxOrderErr" style="color:var(--red)"></div>`)}
- ${aw.length?instrBlock(aw[0]):""}
- <h2 class="sec">${PT("openOrders")}</h2>
- ${orders.length?`<div class="otl">${orders.map(function(o){var cls=o.status==="confirmed"?"c":(o.status==="rejected"?"r":(o.status==="under_review"?"u":""));
-  return `<div class="oi ${cls}"><div class="sl"><b>${esc(o.ref)}</b><span class="st ${st_(o.status)}">${o.status}</span></div><div class="mut">${esc(o.plan_code)} · ${money(o.amount_pkr)} · ${new Date(o.created_at).toLocaleDateString()}</div>${o.review_note?`<p class="fnt">${PT("note")}: ${esc(o.review_note)}</p>`:""}</div>`;}).join("")}</div>`:`<p class="mut">${PT("none")}</p>`}
- <h2 class="sec">${PT("invoices")}</h2>
- ${invs.length?invs.map(function(i){return `<div class="row" style="justify-content:space-between"><span>🧾 ${esc(i.number)} · ${esc(i.kind)}</span><button class="btn gh sm" data-nx="inv" data-id="${i.id}">🖨 ${PT("print")}</button></div>`;}).join(""):`<p class="mut">—</p>`}</div>`;}
-function adminOv(){var dups=stats.dup_tids||[];
- return `<div class="modal" data-nxov style="z-index:150"><div class="box" style="max-width:780px">
- <div class="sl"><b>🛡️ ${PT("admin")}</b><button class="btn gh sm" data-nx="close">✕</button></div>
- <div class="kpis"><div class="kpi"><b>${stats.under_review||0}</b><span>${PT("queue")}</span></div><div class="kpi"><b>${stats.confirmed||0}</b><span>${PT("confirmed")}</span></div><div class="kpi"><b>${money(stats.mrr_pkr||0)}</b><span>MRR</span></div><div class="kpi"><b>${money(stats.confirmed_pkr_month||0)}</b><span>${PT("month")}</span></div><div class="kpi"><b>${stats.shops||0}</b><span>Shops</span></div></div>
- <h2 class="sec">${PT("queue")}</h2>
- ${queue.length?`<table class="nxt"><tr><th>Ref</th><th>Shop</th><th>Amount</th><th>TID</th><th></th></tr>${queue.map(function(o){return `<tr><td><b>${esc(o.ref)}</b><br><span class="fnt">${esc(o.plan_code)} · ${esc(o.method)}</span></td><td>${esc(o.nx_shops?o.nx_shops.name:"")}</td><td>${money(o.amount_pkr)}</td><td>${esc(o.tid)} ${dups.indexOf(o.tid)>=0?`<span class="off" style="position:static">${PT("dup")}</span>`:""}</td><td><button class="btn grn sm" data-nx="approve" data-id="${o.id}">${PT("approve")}</button> <button class="btn red sm" data-nx="reject" data-id="${o.id}">${PT("reject")}</button></td></tr>`;}).join("")}</table>`:`<p class="mut">—</p>`}
- <h2 class="sec">${PT("confirmed")}</h2>
- ${conf.length?`<table class="nxt"><tr><th>Ref</th><th>Shop</th><th>Amount</th><th>Invoice</th><th></th></tr>${conf.map(function(o){return `<tr><td>${esc(o.ref)}</td><td>${esc(o.nx_shops?o.nx_shops.name:"")}</td><td>${money(o.amount_pkr)}</td><td>${esc(o.invoices?o.invoices.number:"—")}</td><td><button class="btn gold sm" data-nx="refund" data-id="${o.id}">${PT("refund")}</button></td></tr>`;}).join("")}</table>`:`<p class="mut">—</p>`}
- <h2 class="sec">${PT("settlement")}</h2>
- <div class="row"><input type="month" id="nxPer" value="${new Date().toISOString().slice(0,7)}" style="max-width:170px"><input id="nxRate" type="number" step="0.0001" value="0.0033" style="max-width:110px"><button class="btn" data-nx="gen">${PT("generate")}</button></div>
- <div id="nxSetBox"></div>
- <h2 class="sec">${PT("audit")}</h2>
- <table class="nxt"><tr><th>When</th><th>Action</th><th>Entity</th></tr>${audit.map(function(a){return `<tr><td class="fnt">${new Date(a.created_at).toLocaleString()}</td><td><b>${esc(a.action)}</b></td><td class="fnt">${esc(a.entity)} ${esc(a.entity_id||"").slice(0,8)}</td></tr>`;}).join("")}</table>
- </div></div>`;}
-function authOv(){return `<div class="modal" data-nxov><div class="box" style="max-width:380px"><b>🔐 ${PT("login")}</b>
-<button class="btn" style="background:#fff;color:#333;border:1px solid var(--ln);width:100%;margin:10px 0" data-nx="google">G · Continue with Google · Google کے ساتھ</button>
-<div class="mut" style="text-align:center;margin:6px 0">— or / یا —</div>
-<label>${PT("email")}</label><input id="nxEm" type="email"><label>${PT("pass")}</label><input id="nxPw" type="password">
-<button class="btn grn" data-nx="authLogin">${PT("login")}</button><button class="btn gh" data-nx="authSignup">${PT("signup")}</button>
-<div class="fnt" id="nxAuthE" style="color:var(--red)"></div>
-<div class="fnt" style="margin-top:8px">Phone login arrives in Phase 5 (SMS/WhatsApp OTP) · فون لاگ ان فیز 5 میں آئے گا</div>
-<button class="btn gh sm" data-nx="closeAuth" style="margin-top:10px">✕</button></div></div>`;}
-function injectView(){document.querySelectorAll("[data-nxsec-view]").forEach(function(e){e.remove();});
- var menu=document.querySelector("[data-nxmenu]");if(menu)menu.remove();
- if(S.view==="seller"){var v=document.querySelector("main .view");if(v){v.insertAdjacentHTML("afterbegin",sellerCard());
-  if(document.getElementById("nxShN")){var dup=document.getElementById("shName");if(dup){var dc=dup.closest(".card");if(dc)dc.remove();}}
-  var pc=v.querySelector("[data-nxsec-view]");if(pc&&!pc.querySelector("[data-nxplans]"))pc.insertAdjacentHTML("beforeend",publicPlans());
-  if(S.payFocus){var c=v.querySelector("[data-nxsec-view]");if(c){c.classList.add("flash");c.scrollIntoView({behavior:"smooth",block:"center"});}S.payFocus=false;}}}
- if(S.view==="account"){var m=document.querySelector(".menu");if(m)m.insertAdjacentHTML("afterbegin",role?`<div class="menu" data-nxmenu style="margin:0 0 8px"><button data-nx="admin">🛡️ ${PT("admin")}<span>›</span></button></div>`:"");}}
-function printDoc(html){var w=window.open("","_blank");if(!w)return;w.document.write(html);w.document.close();setTimeout(function(){try{w.print();}catch(e){}},400);}
-function invHtml(i){var o=i.payment_orders||{};return `<html><head><title>${esc(i.number)}</title><style>body{font-family:Georgia,serif;padding:32px;color:#222}h1{font-size:22px}table{width:100%;border-collapse:collapse;margin-top:16px}td{padding:8px;border-bottom:1px solid #ddd;font-size:14px}</style></head><body><h1>NexusShop — ${i.kind==="receipt"?"PAYMENT RECEIPT":"PROFORMA (not a receipt)"}</h1><table><tr><td>Invoice</td><td><b>${esc(i.number)}</b></td></tr><tr><td>Order ref</td><td>${esc(o.ref||"")}</td></tr><tr><td>Plan</td><td>${esc(o.plan_code||"")}</td></tr><tr><td>Amount</td><td><b>${money(i.amount_pkr)} PKR</b></td></tr><tr><td>Issued</td><td>${new Date(i.issued_at).toLocaleString()}</td></tr><tr><td>Status</td><td>${esc(o.status||"")}</td></tr></table><p style="margin-top:20px;font-size:12px;color:#666">NexusShop · Lahore, Pakistan · neuralfocusai@gmail.com</p></body></html>`;}
-document.addEventListener("click",function(e){var el=e.target.closest("[data-nx]");if(!el)return;var a=el.dataset.nx,id=el.dataset.id;
- if(a==="login"){document.body.insertAdjacentHTML("beforeend",authOv());}
- if(a==="closeAuth"||a==="close"){document.querySelectorAll("[data-nxov]").forEach(function(o){o.remove();});}
- if(a==="google"){sb.auth.signInWithOAuth({provider:"google",options:{redirectTo:location.origin+(location.pathname.endsWith("/")?location.pathname+"index.html":location.pathname)}}).then(function(r){if(r.error){var e2=document.getElementById("nxAuthE");if(e2)e2.textContent=r.error.message;}});}
- if(a==="pickpub"){toast(id==="free"?PT("freeActive"):PT("later"));return;}
- if(a==="pick"){pickPlan=id;document.querySelectorAll(".plansel").forEach(function(b){var on=b.dataset.id===pickPlan;b.classList.toggle("on",on);var tk=b.querySelector(".tick");if(tk)tk.style.display=on?"flex":"none";});}
- if(a==="authLogin"){sb.auth.signInWithPassword({email:document.getElementById("nxEm").value,password:document.getElementById("nxPw").value}).then(function(r){if(r.error)document.getElementById("nxAuthE").textContent=r.error.message;else{document.querySelectorAll("[data-nxov]").forEach(function(o){o.remove();});refresh();}});}
- if(a==="authSignup"){sb.auth.signUp({email:document.getElementById("nxEm").value,password:document.getElementById("nxPw").value}).then(function(r){if(r.error)document.getElementById("nxAuthE").textContent=r.error.message;else if(!r.data.session)document.getElementById("nxAuthE").textContent=PT("checkMail");else{document.querySelectorAll("[data-nxov]").forEach(function(o){o.remove();});refresh();}});}
- if(a==="goseller"){S.view="seller";S.payFocus=true;save();render();}
- if(a==="admin"){if(!document.querySelector("[data-nxov]"))document.body.insertAdjacentHTML("beforeend",adminOv());}
- if(a==="shop"){sb.from("nx_shops").insert({owner_id:session.user.id,name:document.getElementById("nxShN").value,city:document.getElementById("nxShC").value,wa:document.getElementById("nxShW").value}).select().then(function(r){if(r.error)document.getElementById("nxShE").textContent=r.error.message;else refresh();});}
- if(a==="order"){if(FOUNDING_FREE){toast(PT("founding"));return;}sb.rpc("nx_create_payment_order",{p_plan_code:pickPlan||"pro",p_method:document.getElementById("nxMethod").value}).then(function(r){if(r.error)document.getElementById("nxOrderErr").textContent=r.error.message;else refresh();});}
- if(a==="copy"){var v=(id==="iban"&&rail)?rail.iban:(rail?(rail.account_number||rail.iban):"");if(!v)v=(id==="iban")?RAIL.iban:RAIL.acc;if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(v).then(function(){toast(PT("copied"));});else{var ta=document.createElement("textarea");ta.value=v;document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();toast(PT("copied"));}}
- if(a==="submit"){var tid=document.getElementById("nxTid").value;var fi=document.getElementById("nxRc").files[0];var err=document.getElementById("nxSubE");
-  var send=function(path){sb.rpc("nx_submit_payment",{p_order_id:id,p_tid:tid,p_receipt_url:path}).then(function(r){if(r.error)err.textContent=r.error.message;else refresh();});};
-  if(!tid){err.textContent=PT("tid");return;}
-  if(fi){sb.storage.from("receipts").upload(id+"/"+Date.now()+"_"+fi.name,fi).then(function(u){if(u.error){err.textContent=u.error.message;return;}send(u.data.path);});}else send(null);}
- if(a==="inv"){var i=invs.find(function(x){return x.id===id;});if(i)printDoc(invHtml(i));}
- if(a==="approve"){var note=prompt(PT("note"),"")||"";sb.rpc("nx_approve_payment",{p_order_id:id,p_note:note}).then(function(r){if(r.error)alert(r.error.message);else refresh();});}
- if(a==="reject"){var n2="";while(!n2.trim())n2=prompt(PT("note"))||"";sb.rpc("nx_reject_payment",{p_order_id:id,p_note:n2}).then(function(r){if(r.error)alert(r.error.message);else refresh();});}
- if(a==="refund"){var amt=prompt(PT("amount"),"2500");if(amt===null)return;var rs="";while(!rs.trim())rs=prompt(PT("reason"))||"";sb.rpc("nx_create_refund",{p_order_id:id,p_amount_pkr:Number(amt),p_reason:rs}).then(function(r){if(r.error)alert(r.error.message);else refresh();});}
- if(a==="gen"){var per=document.getElementById("nxPer").value;var from=per+"-01T00:00:00Z";var to=per+"-31T23:59:59Z";
-  sb.from("payment_orders").select("amount_pkr,plan_code,ref,reviewed_at,nx_shops(name)").eq("status","confirmed").gte("reviewed_at",from).lte("reviewed_at",to).then(function(r){
-   lastSet=r.data||[];lastSetPer=per;var total=lastSet.reduce(function(a,b){return a+b.amount_pkr;},0);var by={};lastSet.forEach(function(x){by[x.plan_code]=(by[x.plan_code]||0)+1;});
-   document.getElementById("nxSetBox").innerHTML=`<table class="nxt"><tr><th>${PT("month")}</th><th>Orders</th><th>Total</th><th>Plans</th></tr><tr><td><b>${per}</b></td><td>${lastSet.length}</td><td><b>${money(total)}</b></td><td>${Object.keys(by).map(function(k){return k+"×"+by[k];}).join(", ")||"—"}</td></tr></table><div class="row" style="margin-top:8px"><button class="btn gh sm" data-nx="csv">${PT("csv")}</button><button class="btn gh sm" data-nx="printset">${PT("printPdf")}</button><button class="btn grn sm" data-nx="record">${PT("record")}</button></div>`;});}
- if(a==="csv"&&lastSet){var csv="ref,shop,plan,amount_pkr,reviewed_at\n"+lastSet.map(function(x){return x.ref+",'"+(x.nx_shops?x.nx_shops.name:"")+"',"+x.plan_code+","+x.amount_pkr+","+x.reviewed_at;}).join("\n");var a2=document.createElement("a");a2.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a2.download="nexusshop-settlement-"+lastSetPer+".csv";a2.click();}
- if(a==="printset"&&lastSet){var tot=lastSet.reduce(function(a,b){return a+b.amount_pkr;},0);printDoc(`<html><head><title>Settlement ${lastSetPer}</title></head><body style="font-family:Georgia,serif;padding:32px"><h2>NexusShop — Settlement ${lastSetPer}</h2><p>Orders: ${lastSet.length} · Total: ${money(tot)} PKR</p><table border="1" cellpadding="6" style="border-collapse:collapse;width:100%"><tr><th>Ref</th><th>Shop</th><th>Plan</th><th>PKR</th></tr>${lastSet.map(function(x){return `<tr><td>${x.ref}</td><td>${esc(x.nx_shops?x.nx_shops.name:"")}</td><td>${x.plan_code}</td><td>${x.amount_pkr}</td></tr>`;}).join("")}</table><p style="margin-top:16px;font-size:12px">Generated ${new Date().toLocaleString()} · basis for invoice · payout: Takenos EUR IBAN (Malta)</p></body></html>`);}
- if(a==="record"&&lastSet){var t2=lastSet.reduce(function(a,b){return a+b.amount_pkr;},0);var rate=Number(document.getElementById("nxRate").value)||0.0033;var eur=Math.round(t2*rate*100)/100;
-  sb.rpc("nx_record_settlement",{p_period:lastSetPer,p_amount_pkr:t2,p_amount_eur:eur,p_rate:rate,p_invoice:"NX-SET-"+lastSetPer,p_destination:"Takenos EUR IBAN (Malta)"}).then(function(r){if(r.error)alert(r.error.message);else{toast("Settlement recorded: "+eur+" EUR");document.querySelectorAll("[data-nxov]").forEach(function(o){o.remove();});refresh();document.body.insertAdjacentHTML("beforeend",adminOv());}});}
-});
-var _r=window.render;window.render=function(){var out=_r.apply(this,arguments);setTimeout(injectView,140);return out;};
-setTimeout(injectView,600);
-})();
+// Si hay sesión previa, saltar gate automáticamente
+if(sessionStorage.getItem("nx_in")==="1"){var gate=document.getElementById("nxGate");if(gate){gate.classList.add("out");setTimeout(function(){if(gate.parentNode)gate.parentNode.removeChild(gate);},10);}}
 </script>
 <script src="nx-returns-ui.js"></script>
 <script src="nx-raahnuma.js"></script>
-<script src="nx-committee-live.js"></script>
 <script src="nx-bazaar-loot.js"></script>
 <script src="nx-nations.js"></script>
 <script src="nx-nations-pay.js"></script>
 <script src="nx-nations-boot.js"></script>
-<script src="nx-install-pwa.js"></script>
 </body>
 </html>
