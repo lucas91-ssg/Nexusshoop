@@ -117,15 +117,6 @@ summary{cursor:pointer;font-weight:700;color:var(--ink2)}details p{margin-top:8p
 .rail{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px}
 .rail .rc{flex:0 0 150px;background:var(--sf);border:1px solid var(--ln);border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 2px 10px rgba(38,34,27,.06)}
 .rail .rc img{height:100px;width:100%;object-fit:cover;background:var(--bg2)}.rail .rc .b{padding:8px}
-#welcome{position:fixed;inset:0;z-index:300;background:radial-gradient(900px 500px at 70% -10%,rgba(76,139,106,.16),transparent),radial-gradient(700px 420px at 10% 110%,rgba(138,109,31,.12),transparent),var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;overflow:auto}
-#welcome .ring{perspective:900px;width:230px;height:150px;margin-bottom:10px}
-#welcome .spin{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:spin 18s linear infinite}
-@keyframes spin{from{transform:rotateY(0)}to{transform:rotateY(360deg)}}
-#welcome .spin img{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;object-fit:cover;border-radius:16px;border:1px solid var(--ln2);box-shadow:0 10px 26px rgba(38,34,27,.25)}
-#welcome h1{font-size:38px;margin:6px 0}#welcome h1 b{color:var(--grn)}
-#welcome .tag{color:var(--grn2);font-weight:700;font-size:14px;margin-bottom:14px}
-#welcome .pills{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:18px}
-#welcome .pills span{font-size:11px;border:1px solid var(--ln);background:var(--sf);border-radius:999px;padding:6px 10px;color:var(--ink2)}
 #raahFab{position:fixed;inset-inline-end:14px;bottom:86px;z-index:110;width:54px;height:54px;border-radius:50%;background:var(--grn);color:#fff;font-size:24px;box-shadow:var(--sh);display:flex;align-items:center;justify-content:center;cursor:pointer}
 #raah{position:fixed;inset-inline-end:14px;bottom:150px;z-index:115;width:min(360px,calc(100vw - 28px));max-height:60vh;background:var(--sf);border:1px solid var(--ln);border-radius:18px;box-shadow:var(--sh);display:flex;flex-direction:column;overflow:hidden;animation:rise .25s}
 #raah .hd{background:var(--grn);color:#fff;padding:12px 14px;display:flex;justify-content:space-between;align-items:center}
@@ -147,7 +138,39 @@ table.nxt{width:100%;border-collapse:collapse;font-size:12px}
 table.nxt td,table.nxt th{padding:6px 4px;border-bottom:1px solid var(--ln);text-align:start;vertical-align:top}
 @keyframes flash{0%{box-shadow:0 0 0 4px var(--grn)}100%{box-shadow:0 0 0 0 transparent}}
 .flash{animation:flash 1s ease 2}
-@media(max-width:480px){.hero{padding:22px 16px}#welcome h1{font-size:30px}}
+@media(max-width:480px){.hero{padding:22px 16px}}
+/* ===== Welcome Gate ===== */
+#nxGate{position:fixed;inset:0;z-index:500;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(900px 500px at 15% -10%,rgba(76,139,106,.35),transparent 60%),radial-gradient(800px 460px at 110% 20%,rgba(214,51,108,.28),transparent 60%),radial-gradient(700px 500px at 50% 120%,rgba(245,159,0,.25),transparent 60%),linear-gradient(160deg,#101c16,#1d5c3f 55%,#0d1a13)}
+#nxGate .orb{position:absolute;border-radius:50%;filter:blur(46px);opacity:.5;animation:ngFloat 9s ease-in-out infinite}
+#nxGate .o1{width:260px;height:260px;background:#4c8b6a;top:-60px;left:-70px}
+#nxGate .o2{width:200px;height:200px;background:#f59f00;bottom:-40px;right:-50px;animation-delay:1.6s}
+#nxGate .o3{width:150px;height:150px;background:#d6336c;top:38%;right:8%;animation-delay:3.1s;opacity:.35}
+@keyframes ngFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(26px,-30px) scale(1.12)}}
+#nxGate .chipf{position:absolute;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);color:#eaf5ec;border-radius:999px;padding:7px 14px;font-size:11px;font-weight:700;animation:ngDrift 7s ease-in-out infinite}
+#nxGate .c1{top:12%;left:10%}#nxGate .c2{top:20%;right:12%;animation-delay:1.2s}#nxGate .c3{bottom:16%;left:14%;animation-delay:2.2s}#nxGate .c4{bottom:10%;right:10%;animation-delay:3.4s}
+@keyframes ngDrift{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+#nxGate .card{position:relative;width:min(430px,100%);background:rgba(251,248,239,.92);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.6);border-radius:28px;padding:26px 22px;box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 1px 0 #fff;text-align:center;animation:ngIn .55s cubic-bezier(.2,.9,.25,1.1)}
+@keyframes ngIn{from{opacity:0;transform:translateY(34px) scale(.94)}to{opacity:1;transform:none}}
+#nxGate.out .card{animation:ngOut .45s ease forwards}#nxGate.out .orb,#nxGate.out .chipf{animation:ngFade .45s ease forwards}
+@keyframes ngOut{to{opacity:0;transform:translateY(-24px) scale(.9)}}@keyframes ngFade{to{opacity:0}}
+#nxGate .ring{width:150px;height:100px;margin:0 auto 8px;perspective:700px}
+#nxGate .spin{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:ngSpin 14s linear infinite}
+@keyframes ngSpin{from{transform:rotateY(0)}to{transform:rotateY(360deg)}}
+#nxGate .spin img{position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:12px;object-fit:cover;border:1px solid rgba(255,255,255,.7);box-shadow:0 8px 20px rgba(0,0,0,.25)}
+#nxGate h1{font-family:Georgia,serif;font-size:27px;color:#26221b;margin:2px 0 4px}#nxGate h1 b{background:linear-gradient(120deg,#1d5c3f,#4c8b6a,#8a6d1f);-webkit-background-clip:text;background-clip:text;color:transparent}
+#nxGate .sub{font-size:12.5px;color:#6b6355;margin-bottom:14px}
+#nxGate .glangs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+#nxGate .glangs button{border:1px solid #d9d0bb;background:#fbf8ef;border-radius:999px;padding:5px 11px;font-size:11px;font-weight:700;color:#3a3428}
+#nxGate .glangs button.on{background:#1d5c3f;color:#fff;border-color:#1d5c3f}
+#nxGate .gbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1px solid #d9d0bb;border-radius:14px;padding:13px;font-weight:700;font-size:14px;color:#333;cursor:pointer;box-shadow:0 6px 18px rgba(38,34,27,.12);transition:transform .12s,box-shadow .2s}
+#nxGate .gbtn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(38,34,27,.18)}
+#nxGate .gbtn svg{width:19px;height:19px}
+#nxGate .div{display:flex;align-items:center;gap:10px;color:#8a8172;font-size:11px;margin:14px 0}#nxGate .div:before,#nxGate .div:after{content:'';flex:1;height:1px;background:#d9d0bb}
+#nxGate input{width:100%;background:#fbf8ef;border:1px solid #d9d0bb;border-radius:12px;padding:11px 13px;font-size:13.5px;color:#26221b;margin-bottom:9px;outline:none}#nxGate input:focus{border-color:#4c8b6a;box-shadow:0 0 0 3px rgba(76,139,106,.16)}
+#nxGate .row2{display:flex;gap:8px}#nxGate .row2 button{flex:1;border-radius:12px;padding:12px;font-weight:700;font-size:13px;cursor:pointer}
+#nxGate .li{background:#1d5c3f;color:#fff;border:none}#nxGate .su{background:transparent;color:#1d5c3f;border:1.5px solid #1d5c3f}
+#nxGate .err{color:#a33a2a;font-size:11.5px;margin-top:8px;min-height:14px}
+#nxGate .demo{margin-top:10px;font-size:11px;color:#6b6355;text-decoration:underline;cursor:pointer}
 </style>
 </head>
 <body>
@@ -444,7 +467,7 @@ const SEED=[
 {id:"p10",seller:"Ghar Bazaar",swa:"923001234503",city:"Lahore",cat:"home",price:5499,old:6999,stock:6,img:IMG.room,name:{en:"Accent Chair + Side Table",ur:"کرسی + سائیڈ ٹیبل",sk:"Stolička + stolík",de:"Akzentstuhl + Tisch",hi:"कुर्सी + साइड टेबल"},desc:{en:"Solid wood frame.",ur:"مضبوط لکڑی۔",sk:"Masívny rám.",de:"Massivholzrahmen.",hi:"मजबूत लकड़ी।"},rev:[]}
 ];
 SEED.forEach(function(p){p.swa="542257550650";});
-const DEF={lang:"en",market:"PK",view:"home",pid:null,qty:1,search:"",cat:"all",sort:"feat",cart:[],bulk:[],saved:[],orders:[],groups:[],payments:[],receipts:[],reviews:{},hist:[],profile:{name:"",email:"",wa:"",city:"",pic:null},shop:null,listings:[],admin:false,track:null,lastOrders:[],editId:null,raahOpen:false,raahMsgs:[],menu:false,payFocus:false};
+const DEF={lang:"en",market:"PK",view:"home",pid:null,qty:1,search:"",cat:"all",sort:"feat",cart:[],bulk:[],saved:[],orders:[],groups:[],payments:[],receipts:[],reviews:{},hist:[],profile:{name:"",email:"",wa:"",city:"",pic:null},shop:null,listings:[],admin:false,track:null,lastOrders:[],editId:null,raahOpen:false,raahMsgs:[],menu:false,langMenu:false,payFocus:false,lastGroup:null,courier:null};
 let S=load();
 function load(){try{const r=JSON.parse(localStorage.getItem("nx_v3"));return r?Object.assign({},DEF,r):Object.assign({},DEF);}catch(e){return Object.assign({},DEF);}}
 function save(){localStorage.setItem("nx_v3",JSON.stringify(S));}
@@ -466,7 +489,6 @@ function wa(num,msg){const n=String(num||"").replace(/\D/g,"");if(num&&!n){toast
 function render(){
  document.documentElement.lang=S.lang;document.documentElement.dir=S.lang==="ur"?"rtl":"ltr";document.body.classList.toggle("ur",S.lang==="ur");document.body.classList.toggle("hi",S.lang==="hi");
  let h="";
- if(!sessionStorage.getItem("nx_in"))h+=welcome();
  h+=`<header><div class="logo">Nexus<b>Shop</b></div>
  <div class="sw"><span class="sic">⌕</span><input id="search" placeholder="${esc(t("search"))}" value="${esc(S.search)}"></div>
  <button class="icb" data-a="menu">${MK[S.market].flag}</button>
@@ -479,6 +501,7 @@ function render(){
  <main><div class="view">${view()}</div></main>
  <nav>${nb("home","🏠","home")}${nb("saved","♡","navSaved")}${nb("cart","🛍","navCart",cartCount())}${nb("orders","📦","navOrders")}${nb("account","👤","navAccount")}</nav>`;
  if(S.menu)h+=marketMenu();
+ if(S.langMenu)h+=langMenu();
  if(S.track)h+=trackModal();
  h+=`<button id="raahFab" data-a="raahToggle" title="${esc(t("raahT"))}">🤖</button>`;
  if(S.raahOpen)h+=raahPanel();
@@ -486,12 +509,10 @@ function render(){
 }
 function nb(v,ico,key,b){const on=S.view===v||(v==="account"&&["seller","settings","faq","committee"].includes(S.view));
  return `<button data-a="nav" data-v="${v}" class="${on?"on":""}"><span class="ico">${ico}</span>${esc(t(key))}${b?`<span class="bdg">${b}</span>`:""}</button>`;}
-function welcome(){const imgs=[IMG.tv,IMG.watch,IMG.buds,IMG.kettle,IMG.attar,IMG.room];
- return `<div id="welcome"><div class="row" style="position:absolute;top:14px;inset-inline-end:14px"><button class="icb" data-a="lang">${({en:"EN",ur:"اردو",sk:"SK",de:"DE",hi:"HI"})[S.lang]||"EN"}</button></div>
- <div class="ring"><div class="spin">${imgs.map((u,i)=>`<img src="${u}" style="transform:rotateY(${i*60}deg) translateZ(120px)" alt="">`).join("")}</div></div>
- <h1>Nexus<b>Shop</b></h1><div class="tag">${esc(t("welcomeTag"))}</div>
- <div class="pills">${t("wPills").split(",").map(p=>`<span>${esc(p)}</span>`).join("")}</div>
- <button class="btn grn" style="width:min(340px,86%);padding:16px;font-size:16px" data-a="enter">${esc(t("enter"))} →</button></div>`;}
+function langMenu(){const L=[["en","English","🇬🇧"],["ur","اردو","🇵🇰"],["sk","Slovenčina","🇸🇰"],["de","Deutsch","🇩🇪"],["hi","हिन्दी","🇮🇳"]];
+ return `<div class="modal" data-a="langClose"><div class="box" style="max-width:320px"><b>🌐 ${esc(t("lang"))}</b>
+ ${L.map(l=>`<button style="width:100%;display:flex;gap:10px;align-items:center;background:${l[0]===S.lang?"var(--mint)":"var(--sf2)"};border:1px solid var(--ln);border-radius:12px;padding:13px;margin-top:8px;font-size:15px;font-weight:${l[0]===S.lang?"800":"600"};color:var(--ink2)" data-a="langPick" data-id="${l[0]}"><span style="font-size:20px">${l[2]}</span><span>${l[1]}</span>${l[0]===S.lang?'<span style="margin-inline-start:auto;color:var(--grn);font-weight:800">✓</span>':""}</button>`).join("")}
+ </div></div>`;}
 function marketMenu(){return `<div class="modal" data-a="menu"><div class="box" style="max-width:340px">
  ${Object.values(MK).map(m=>`<button class="menu" style="width:100%;display:flex;gap:10px;align-items:center;background:${m.code===S.market?"var(--mint)":"var(--sf2)"};border:1px solid var(--ln);border-radius:12px;padding:12px;margin-bottom:8px" data-a="marketSet" data-id="${m.code}"><span style="font-size:22px">${m.flag}</span><span style="text-align:start"><b>${esc(t("market"+m.code))}</b><br><span class="fnt">${m.sym} · ${esc(m.cities)}</span></span></button>`).join("")}
  </div></div>`;}
@@ -669,14 +690,15 @@ function orderMessage(o){return t("waHello")+"\n"+o.items.map(i=>{const p=prod(i
 function val(id){const el=document.getElementById(id);return el?el.value.trim():"";}
 document.addEventListener("click",e=>{
  const el=e.target.closest("[data-a]");if(!el)return;const a=el.dataset.a,id=el.dataset.id;
- if((a==="menu"||a==="closeTrack")&&!e.target.closest("button")&&e.target!==el)return;
+ if((a==="menu"||a==="closeTrack"||a==="langClose")&&!e.target.closest("button")&&e.target!==el)return;
  switch(a){
- case "enter":sessionStorage.setItem("nx_in","1");render();break;
- case "lang":{const langs=["en","ur","sk","de","hi"];const i=langs.indexOf(S.lang);S.lang=langs[(i+1)%langs.length];save();render();toast(t("langSet"));break;}
+ case "lang":S.langMenu=!S.langMenu;save();render();break;
+ case "langClose":S.langMenu=false;save();render();break;
+ case "langPick":S.lang=id;S.langMenu=false;save();render();toast(t("langSet"));break;
  case "menu":if(el.classList.contains("modal")){S.menu=false;}else{S.menu=!S.menu;}save();render();break;
  case "marketSet":S.market=id;S.menu=false;save();render();toast(t("marketSet"));break;
  case "payfocus":S.view="seller";S.payFocus=true;save();render();window.scrollTo(0,0);break;
- case "nav":S.view=el.dataset.v;S.track=null;S.menu=false;S.editId=null;save();render();window.scrollTo(0,0);break;
+ case "nav":S.view=el.dataset.v;S.track=null;S.menu=false;S.langMenu=false;S.editId=null;save();render();window.scrollTo(0,0);break;
  case "shopnow":S.view="home";render();setTimeout(()=>{const g=document.getElementById("grid");if(g)g.scrollIntoView({behavior:"smooth"});},60);break;
  case "cat":S.cat=id;render();break;
  case "open":{S.pid=id;S.qty=1;S.view="detail";const p=prod(id);if(p){S.hist.unshift({id,cat:p.cat});S.hist=S.hist.slice(0,60);}save();render();window.scrollTo(0,0);break;}
@@ -697,11 +719,11 @@ document.addEventListener("click",e=>{
   else{const ta=document.createElement("textarea");ta.value=v;document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();toast(t("copied"));}break;}
  case "checkout":{if(!S.cart.length)break;const G={};S.cart.forEach(it=>{const p=prod(it.id);(G[p.seller]=G[p.seller]||{swa:p.swa,items:[]}).items.push(it);});
   const m=MK[S.market];S.lastOrders=Object.keys(G).map(s=>{const items=G[s].items;const sub=items.reduce((a,b)=>a+prod(b.id).price*b.q,0);const del=sub>=m.free?0:m.del;
-   const o={code:"NX-"+Math.random().toString(36).slice(2,8).toUpperCase(),seller:s,swa:G[s].swa,items:items.map(i=>({id:i.id,q:i.q,price:prod(i.id).price})),total:sub+del,status:"placed",ts:Date.now()};S.orders.unshift(o);return o;});
+   const o={code:"NX-"+Math.random().toString(36).slice(2,8).toUpperCase(),seller:s,swa:G[s].swa,items:items.map(i=>({id:i.id,q:i.q,price:prod(i.id).price})),total:sub+del,status:"placed",ts:Date.now(),courier:S.courier||null};S.orders.unshift(o);return o;});
   S.cart=[];S.bulk=[];S.view="placed";save();render();window.scrollTo(0,0);break;}
  case "waSeller":{const items=S.cart.filter(it=>{const p=prod(it.id);return p&&p.seller===id;});if(!items.length)break;const p=prod(items[0].id);
   const sub=items.reduce((a,b)=>a+prod(b.id).price*b.q,0);const m=MK[S.market];const del=sub>=m.free?0:m.del;
-  const o={code:"NX-"+Math.random().toString(36).slice(2,8).toUpperCase(),seller:id,swa:p.swa,items:items.map(i=>({id:i.id,q:i.q,price:prod(i.id).price})),total:sub+del,status:"placed",ts:Date.now()};S.orders.unshift(o);
+  const o={code:"NX-"+Math.random().toString(36).slice(2,8).toUpperCase(),seller:id,swa:p.swa,items:items.map(i=>({id:i.id,q:i.q,price:prod(i.id).price})),total:sub+del,status:"placed",ts:Date.now(),courier:S.courier||null};S.orders.unshift(o);
   S.cart=S.cart.filter(it=>{const pp=prod(it.id);return !(pp&&pp.seller===id);});S.bulk=[];save();
   wa(p.swa,orderMessage(o));render();break;}
  case "waOrder":{const o=S.orders.find(x=>x.code===id);if(o)wa(o.swa,orderMessage(o));break;}
@@ -714,11 +736,11 @@ document.addEventListener("click",e=>{
  case "map":window.open("https://www.google.com/maps/search/"+encodeURIComponent(id+" courier near me"),"_blank");break;
  case "smartmap":{const fallback=()=>window.open("https://www.google.com/maps/search/courier+service+near+me","_blank");
   if(navigator.geolocation)navigator.geolocation.getCurrentPosition(pos=>window.open("https://www.google.com/maps/search/courier+service+near+"+pos.coords.latitude+","+pos.coords.longitude,"_blank"),fallback);else fallback();break;}
- case "gStartPid":case "gStart":{const g={code:"NX"+Math.floor(1000+Math.random()*9000),pid:a==="gStartPid"?id:null,members:1};S.groups.unshift(g);save();render();toast(t("groupCreated"));wa("","Join my NexusShop committee "+g.code+" — everyone saves 15% (COD). "+location.origin+location.pathname);break;}
+ case "gStartPid":case "gStart":{const g={code:"NX"+Math.floor(1000+Math.random()*9000),pid:a==="gStartPid"?id:null,members:1,ts:Date.now()};S.groups.unshift(g);S.lastGroup=g.code;save();render();toast(t("groupCreated"));if(window.nxShowGroup)nxShowGroup(g);break;}
  case "gJoin":{const c=val("gCode").toUpperCase();const g=S.groups.find(x=>x.code===c);if(!g){toast(t("codeNo"));break;}if(g.members<3)g.members++;save();render();toast(g.members>=3?t("groupFull"):t("groupJoined"));break;}
- case "gShare":{const g=S.groups.find(x=>x.code===id);wa("","Join my NexusShop committee "+g.code+" — everyone saves 15% (COD). "+location.origin+location.pathname);break;}
+ case "gShare":{const g=S.groups.find(x=>x.code===id);if(window.nxShowGroup)nxShowGroup(g);break;}
  case "pfSave":S.profile={name:val("pfName"),email:val("pfEmail"),wa:val("pfWa"),city:val("pfCity"),pic:S.profile.pic};save();toast(t("profileSaved"));render();break;
- case "logout":S.profile={name:"",email:"",wa:"",city:"",pic:null};save();toast(t("loggedOut"));render();break;
+ case "logout":S.profile={name:"",email:"",wa:"",city:"",pic:null};save();toast(t("loggedOut"));render();if(window.__nxGateShow)__nxGateShow();break;
  case "shCreate":{const n=val("shName");if(!n){toast(t("shopName"));break;}S.shop={name:n,city:val("shCity"),wa:val("shWa"),plan:"free"};save();toast(t("shopCreated"));render();break;}
  case "mpSave":{const n=val("mpName"),pr=Number(val("mpPrice"));if(!n||!pr){toast(t("pName"));break;}
   const data={name:{en:n,ur:n,sk:n,de:n,hi:n},desc:{en:val("mpDesc"),ur:val("mpDesc"),sk:val("mpDesc"),de:val("mpDesc"),hi:val("mpDesc")},price:pr,cat:val("mpCat"),stock:Number(val("mpStock"))||10,img:val("mpImg")||IMG.watch,active:true};
@@ -735,7 +757,7 @@ document.addEventListener("click",e=>{
  case "raahToggle":S.raahOpen=!S.raahOpen;save();render();break;
  case "raahChip":raahSend(id);break;
  case "raahSend":{const inp=document.getElementById("raahIn");const v=inp?inp.value.trim():"";raahSend(v);break;}
- case "install":doInstall();break;
+ case "install":if(window.nxInstallGuide)nxInstallGuide();else doInstall();break;
  }
 });
 document.addEventListener("input",e=>{if(e.target.id==="search"){S.search=e.target.value;save();if(S.view!=="home"){S.view="home";render();const s=document.getElementById("search");if(s){s.focus();s.setSelectionRange(s.value.length,s.value.length);}}else{const g=document.getElementById("grid");if(g){const l=filtered();g.innerHTML=l.length?l.map(card).join(""):`<div class="empty" style="grid-column:1/-1"><b>${esc(t("noResults"))}</b><p class="mut">${esc(t("searchEmpty"))}</p></div>`;}}}});
@@ -759,6 +781,65 @@ function doInstall(){if(_dp){_dp.prompt();_dp.userChoice.then(()=>{_dp=null;});}
 if("serviceWorker" in navigator && location.protocol==="https:"){navigator.serviceWorker.register("sw.js",{updateViaCache:"none"}).then(r=>{if(r)r.update().catch(()=>{});}).catch(()=>{});}
 document.addEventListener("error",function(e){var t=e.target;if(t&&t.tagName==="IMG"&&!t.dataset.fb){t.dataset.fb="1";t.src="data:image/svg+xml;utf8,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="600" height="400" fill="#efe8d9"/><text x="300" y="210" font-size="60" text-anchor="middle">🛍</text></svg>');}},true);
 render();
+</script>
+<script>
+/* ===== Welcome Gate — aparece SIEMPRE al cargar; Supabase solo decide si ocultarla ===== */
+(function(){
+"use strict";
+if(window.__nxGate)return;window.__nxGate=true;
+var SUPABASE_URL="https://jtbxqwiyktzjdjohcyli.supabase.co";
+var SUPABASE_ANON="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0Ynhxd2l5a3R6amRqb2hjeWxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ5MzY5NzIsImV4cCI6MjExMDUxMjk3Mn0.lTQDVQgJqY65_daClS0V7LvO6Kl1Pi7pyGrL5F5j-1U";
+var GD={en:{t:"Welcome to NexusShop",s:"Your COD bazaar, in your language, on every screen.",g:"Continue with Google",or:"or",e:"Email",p:"Password",li:"Log in",su:"Create account",ck:"Check your email to confirm.",demo:"Enter in demo mode (no account)",hi:"Welcome back",err:"Sign-in service unavailable — you can enter in demo mode."},
+ur:{t:"NexusShop میں خوش آمدید",s:"آپ کی زبان میں، ہر اسکرین پر COD بازار۔",g:"Google کے ساتھ جاری رکھیں",or:"یا",e:"ای میل",p:"پاس ورڈ",li:"لاگ ان",su:"اکاؤنٹ بنائیں",ck:"تصدیق کے لیے ای میل دیکھیں۔",demo:"ڈیمو موڈ میں داخل ہوں",hi:"خوش آمدید",err:"سائن ان سروس دستیاب نہیں — ڈیمو موڈ میں داخل ہوں۔"},
+sk:{t:"Vitajte v NexusShop",s:"Váš COD bazár vo vašom jazyku.",g:"Pokračovať cez Google",or:"alebo",e:"E-mail",p:"Heslo",li:"Prihlásiť sa",su:"Vytvoriť účet",ck:"Skontrolujte e-mail.",demo:"Vstúpiť v demo režime",hi:"Vitajte späť",err:"Prihlasovacia služba nedostupná — použite demo režim."},
+de:{t:"Willkommen bei NexusShop",s:"Ihr COD-Basar in Ihrer Sprache.",g:"Mit Google fortfahren",or:"oder",e:"E-Mail",p:"Passwort",li:"Anmelden",su:"Konto erstellen",ck:"Bitte E-Mail prüfen.",demo:"Im Demo-Modus fortfahren",hi:"Willkommen zurück",err:"Anmeldedienst nicht verfügbar — Demo-Modus nutzen."},
+hi:{t:"NexusShop में स्वागत है",s:"आपकी भाषा में आपका COD बाज़ार।",g:"Google से जारी रखें",or:"या",e:"ईमेल",p:"पासवर्ड",li:"लॉग इन",su:"खाता बनाएँ",ck:"ईमेल जाँचें।",demo:"डेमो मोड में प्रवेश करें",hi:"वापसी पर स्वागत",err:"साइन-इन सेवा उपलब्ध नहीं — डेमो मोड चुनें।"}};
+function GT(k){return (GD[S.lang]&&GD[S.lang][k])||GD.en[k];}
+var sb=null,sdkTried=false;
+var gate=document.createElement("div");gate.id="nxGate";
+function paint(){
+ var imgs=[IMG.tv,IMG.watch,IMG.buds,IMG.kettle,IMG.attar,IMG.room];
+ var langs=[["en","EN"],["ur","اردو"],["sk","SK"],["de","DE"],["hi","HI"]];
+ gate.innerHTML='<span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span>'+
+ '<span class="chipf c1">💳 COD</span><span class="chipf c2">✓ Reviews</span><span class="chipf c3">🎁 Free</span><span class="chipf c4">🌍 6 markets</span>'+
+ '<div class="card"><div class="ring"><div class="spin">'+imgs.map(function(u,i){return '<img src="'+u+'" style="transform:rotateY('+(i*60)+'deg) translateZ(86px)" alt="">';}).join("")+'</div></div>'+
+ '<h1>Nexus<b>Shop</b></h1><div class="sub">'+GT("s")+'</div>'+
+ '<div class="glangs">'+langs.map(function(l){return '<button data-glang="'+l[0]+'" class="'+(S.lang===l[0]?"on":"")+'">'+l[1]+'</button>';}).join("")+'</div>'+
+ '<button class="gbtn" id="ngGoogle"><svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>'+GT("g")+'</button>'+
+ '<div class="div">'+GT("or")+'</div>'+
+ '<input id="ngEm" type="email" placeholder="'+GT("e")+'"><input id="ngPw" type="password" placeholder="'+GT("p")+'">'+
+ '<div class="row2"><button class="li" id="ngLi">'+GT("li")+'</button><button class="su" id="ngSu">'+GT("su")+'</button></div>'+
+ '<div class="err" id="ngErr"></div>'+
+ '<div class="demo" id="ngDemo" style="display:'+(sdkTried&&sb?"none":"block")+'">'+GT("demo")+'</div></div>';
+}
+function show(){if(!gate.parentNode)document.body.appendChild(gate);gate.classList.remove("out");paint();}
+window.__nxGateShow=show;
+function hide(){if(!gate.parentNode)return;gate.classList.add("out");setTimeout(function(){if(gate.parentNode)gate.parentNode.removeChild(gate);},460);}
+function enter(u){if(u){var m=u.user_metadata||{};if(!S.profile.name)S.profile.name=m.full_name||m.name||"";if(!S.profile.email)S.profile.email=u.email||"";if(!S.profile.pic&&m.avatar_url)S.profile.pic=m.avatar_url;save();}
+ sessionStorage.setItem("nx_in","1");hide();render();toast(GT("hi")+", "+(S.profile.name||"")+"! 🎉");}
+gate.addEventListener("click",function(e){
+ var gl=e.target.closest("[data-glang]");if(gl){S.lang=gl.dataset.glang;save();render();paint();return;}
+ if(e.target.closest("#ngGoogle")){var err=gate.querySelector("#ngErr");
+  if(!sb){err.textContent=GT("err");return;}
+  sb.auth.signInWithOAuth({provider:"google",options:{redirectTo:location.origin+(location.pathname.endsWith("/")?location.pathname+"index.html":location.pathname)}}).then(function(r){if(r.error)err.textContent=r.error.message;});return;}
+ if(e.target.closest("#ngLi")){if(!sb){gate.querySelector("#ngErr").textContent=GT("err");return;}sb.auth.signInWithPassword({email:gate.querySelector("#ngEm").value,password:gate.querySelector("#ngPw").value}).then(function(r){if(r.error)gate.querySelector("#ngErr").textContent=r.error.message;});return;}
+ if(e.target.closest("#ngSu")){if(!sb){gate.querySelector("#ngErr").textContent=GT("err");return;}sb.auth.signUp({email:gate.querySelector("#ngEm").value,password:gate.querySelector("#ngPw").value}).then(function(r){if(r.error)gate.querySelector("#ngErr").textContent=r.error.message;else if(!r.data.session)gate.querySelector("#ngErr").textContent=GT("ck");});return;}
+ if(e.target.closest("#ngDemo")){enter(null);return;}
+});
+/* La bienvenida se muestra INMEDIATAMENTE, sin esperar a Supabase */
+show();
+/* SDK con onerror + timeout: si falla, queda el botón demo visible */
+var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js";
+var settled=false;
+function fail(){if(settled)return;settled=true;sdkTried=true;sb=null;paint();}
+s.onload=function(){if(settled)return;settled=true;sdkTried=true;
+ try{sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON,{auth:{persistSession:true}});
+  sb.auth.getSession().then(function(r){if(r.data.session)enter(r.data.session.user);});
+  sb.auth.onAuthStateChange(function(ev,ses){if(ev==="SIGNED_IN"&&ses)enter(ses.user);});
+ }catch(e){sb=null;paint();}};
+s.onerror=fail;document.head.appendChild(s);
+setTimeout(fail,7000);
+})();
 </script>
 <script>
 /* ===== NexusPay UI — founding phase: todo gratis ===== */
@@ -811,7 +892,7 @@ var PK={free:["Unlimited products during founding","WhatsApp checkout","COD nati
 function publicPlans(){var list=(plans&&plans.length?plans:PLAN_FALLBACK);
  return `<div data-nxplans style="margin-top:14px;border-top:1px solid var(--ln);padding-top:12px"><b>📦 ${S.lang==="ur"?"پلان":"Plans"}</b> <span class="st delivered">🎁 ${PT("founding")}</span><div class="plans">${list.map(function(p){var on=p.code==="free";var pk=PK[p.code]||PK.pro;
   return `<button class="plansel ${on?"on":""}" data-nx="pickpub" data-id="${esc(p.code)}"><span class="tick">✓</span><div class="pn">${esc(p.name_en||p.code)}</div><div class="pp">${p.code==="free"?PT("free"):PT("comingSoon")}</div><div class="pf">${pk.join(" · ")}</div></button>`;}).join("")}</div><p class="fnt">${PT("foundingNote")}</p></div>`;}
-function stepState(){if(sub)return 4;var ur=orders.some(function(o){return o.status==="under_review";});if(ur)return 3;var aw=orders.some(function(o){return o.status==="awaiting_payment"});if(aw)return 2;if(shop&&session)return 1;return 0;}
+function stepState(){if(sub)return 4;var ur=orders.some(function(o){return o.status==="under_review";});if(ur)return 3;var aw=orders.some(function(o){return o.status==="awaiting_payment";});if(aw)return 2;if(shop&&session)return 1;return 0;}
 function stepper(){var n=stepState();var L=[PT("s1"),PT("s2"),PT("s3"),PT("s4")];
  return `<div class="stepper">${L.map(function(l,i){var k=i+1;var cls=k<n?"done":(k===n?"now":"");return `<div class="stp ${cls}"><div class="dot">${k<n?"✓":k}</div><div class="lb">${l}</div></div>`;}).join("")}</div>`;}
 function payhero(){var pills="";var bar="";
@@ -909,7 +990,6 @@ var _r=window.render;window.render=function(){var out=_r.apply(this,arguments);s
 setTimeout(injectView,600);
 })();
 </script>
-<script src="nx-gate.js"></script>
 <script src="nx-returns-ui.js"></script>
 <script src="nx-raahnuma.js"></script>
 <script src="nx-committee-live.js"></script>
@@ -918,5 +998,6 @@ setTimeout(injectView,600);
 <script src="nx-nations-pay.js"></script>
 <script src="nx-nations-boot.js"></script>
 <script src="nx-install-pwa.js"></script>
+<script src="nx-committee-modal.js"></script>
 </body>
 </html>
